@@ -7,7 +7,11 @@
     --card-bg-2: #242424;      /* 卡片2底色 */
     --card-bg-3: #2e2e2e;      /* 卡片3底色 */
 }
-
+h2 {
+    /* ... 之前的代码 ... */
+    hyphens: auto;           /* 自动加连字符（如果浏览器支持） */
+    overflow-wrap: break-word; /* 强制长单词换行，不破坏布局 */
+}
 * {
     margin: 0;
     padding: 0;
