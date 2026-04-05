@@ -111,7 +111,7 @@ body {
     background-color: var(--card-bg-2); 
     z-index: 2; 
      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url('images/japan.jpg');
+    url('images/japan1.jpg');
 }
 .card-3 { 
     top: calc(14vh + 60px); /*每加一个卡片+30px*/
