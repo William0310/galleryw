@@ -140,6 +140,13 @@ body {
     top: calc(10vh + 90px); /*每加一个卡片+30px*/
     background-color: var(--card-bg-3); 
     z-index: 4; 
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+    url('images/lijiang1.jpg');
+     background-size:cover;
+    background-repeat:no-repeat;
+    transform:translateZ(0);
+    background-clip:padding-box;
+    overflow: hidden;
 }
 .card-5 { 
     top: calc(10vh + 120px); /*每加一个卡片+30px*/
