@@ -1,3 +1,6 @@
+* { border: 5px solid red !important; }
+
+
 /* --- 1. 基础重置与暗黑背景 --- */
 html, body {
     margin: 0;
