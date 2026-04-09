@@ -6,8 +6,7 @@ html, body {
     color: #e0e0e0;
     font-family: 'Manrope', sans-serif;
     overflow-x: hidden;
-  
-    
+    scroll-behavior: smooth;
 }
 
 /* --- 2. 悬浮返回按钮 (复用青海设计) --- */
@@ -34,6 +33,7 @@ html, body {
     justify-content: center;
     align-items: center;
     text-align: center;
+    height: 100dvh;
 }
 
 .hero-title {
@@ -115,8 +115,19 @@ html, body {
 }
 
 /* 悬停时画框不动，照片缓慢拉近 */
-.photo-card:hover .image-wrapper img {
-    transform: scale(1.04);
+/* 🛡️ 只有在拥有真实鼠标的设备上，才启用悬停特效 */
+@media (hover: hover) and (pointer: fine) {
+    
+    /* 鼠标悬停放大照片 */
+    .photo-card:hover .image-wrapper img {
+        transform: scale(1.04);
+    }
+
+    /* 合作者链接悬停高亮 */
+    .collab-link:hover {
+        border-bottom: 1.5px solid #fff;
+        opacity: 0.8;
+    }
 }
 
 /* --- 6. 文字参数排版 --- */
