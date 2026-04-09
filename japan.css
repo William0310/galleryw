@@ -1,12 +1,14 @@
 /* --- 1. 基础设定 --- */
 html, body {
- margin: 0;
+    margin: 0;
     padding: 0;
     background-color: #0c0c0e; 
     color: #e0e0e0;
     font-family: 'Manrope', sans-serif;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
+    
+    /* 🎯 修复：删除了 scroll-behavior，并将 hidden 改为 clip，彻底释放原生滑动动量 */
+    overflow-x: clip; 
+    min-height: 101vh; /* 🎯 修复：强行撑开高度，防止 iOS 误判触底回弹 */
 }
 
 /* --- 2. 悬浮返回按钮 (复用青海设计) --- */
@@ -27,13 +29,13 @@ html, body {
 
 /* --- 3. 首屏：巨幕标题 --- */
 .hero-section {
-    height: 100vh;
+    /* 🎯 修复：使用 min-height 代替 height */
+    min-height: 100dvh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100dvh;
 }
 
 .hero-title {
@@ -63,8 +65,10 @@ html, body {
 }
 
 /* 单个照片容器 */
+/* 单个照片容器 */
 .photo-card {
-    margin-bottom: 25vh; /* 极其奢侈的上下留白 */
+    /* 🎯 修复：从 25vh 改为 12vh，恢复紧凑高级的杂志呼吸感 */
+    margin-bottom: 23vh; 
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -102,7 +106,7 @@ html, body {
     width: 100%;
     /* 隐藏溢出，配合悬停放大特效 */
     overflow: hidden; 
-    border-radius: 4px; /* 日本风更克制，用小圆角 */
+    border-radius: 6px; /* 日本风更克制，用小圆角 */
     box-shadow: 0 30px 60px rgba(0,0,0,0.6);
 }
 
@@ -157,13 +161,15 @@ html, body {
 }
 
 /* --- 7. 动画：滚动浮现 (Scroll Reveal) --- */
+/* --- 7. 动画：滚动浮现 (Scroll Reveal) --- */
 .reveal-item {
     opacity: 0;
-    transform: translateY(60px); /* 初始位置往下偏移 */
+    transform: translateY(60px); 
     transition: opacity 1s ease-out, transform 1.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+    /* 🎯 修复：强制开启硬件加速，滑动极其丝滑 */
+    will-change: transform, opacity; 
 }
 
-/* JS 加上这个 class 时，元素浮上来 */
 .reveal-item.is-visible {
     opacity: 1;
     transform: translateY(0);
@@ -193,10 +199,11 @@ html, body {
     }
     
     /* 手机端取消所有错落，全部满宽，保证清晰度 */
-    .photo-card {
+   .photo-card {
         width: 100% !important;
         margin-top: 0 !important;
-        margin-bottom: 15vh; 
+        /* 🎯 修复：手机端边距收缩到 8vh，划起来更连贯 */
+        margin-bottom: 8vh; 
     }
 
     .meta-data {
@@ -204,7 +211,18 @@ html, body {
         align-items: flex-start;
         gap: 0.5rem;
     }
+.photo-card .image-wrapper img,
+    .photo-card:active .image-wrapper img,
+    .photo-card:hover .image-wrapper img {
+        transform: none !important;
+        transition: none !important; /* 连计算的机会都不给显卡留 */
+        will-change: auto !important; /* 释放之前强占的 GPU 内存 */
+    }
 
+    /* 2. 终极防线：告诉浏览器，在这里手指只能上下划（Pan-Y） */
+    .image-wrapper {
+        touch-action: pan-y !important; 
+    }
     .meta-data h2 { font-size: 1.5rem; }
 }
 /* 针对合作链接的专项美化 */
