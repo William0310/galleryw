@@ -149,4 +149,19 @@ html, body {
     .altitude-box h2 { font-size: 3.5rem; }
     .exif-box { text-align: left; }
     .scroll-hint { display: none; } /* 手机屏太小，藏掉多余提示 */
+    /* 滑动引力线转移到右侧 */
+    .scroll-indicator {
+        left: auto;             
+        transform: none;        
+        right: 6vw;             
+        bottom: 3rem;           
+        align-items: center;  /* 保持文字和线条居中对齐 */
+    }
+
+    /* 🎯 你的坚持：保留文字，并改为极简的竖排排版 */
+    .indicator-text {
+        writing-mode: vertical-rl; /* 竖排显示，不占横向空间 */
+        margin-bottom: 0.5rem;     /* 和下方的线条拉开一点呼吸感 */
+        letter-spacing: 0.3em;     /* 竖排时稍微收紧一点字间距 */
+    }
 }
