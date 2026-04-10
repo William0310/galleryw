@@ -13,3 +13,9 @@ Change Log V2.0 Beta
 Change Log V2.1
 
 -Change All photos to webp for better loading experience (up to 50% faster)
+
+Change Log V2.2
+
+-We are almost there!
+
+Lijiang is the only gallery left to be built!
