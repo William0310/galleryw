@@ -8,24 +8,20 @@
     <link rel="stylesheet" href="style.css?v=1008">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body>
+<body class="is-loading">
 
-
-<div class="loading-overlay" id="loading-overlay">
+    <div class="loading-overlay" id="loading-overlay">
         <div class="loading-text">
             WILL'S PHOTO GALLERY<br>
             <span class="italic-sub">LOADING IMAGINATION</span>
         </div>
     </div>
 
-
-
-
     <div class="container">
         <header class="hero">
             <p class="tag">Will's Photo Gallery</p>
             <h1>Frames of<br>Mind.</h1>
-          <p class="tag1">Scroll To Start</p>
+            <p class="tag1">Scroll To Start</p>
         </header>
 
         <div class="projects-stack">
@@ -65,7 +61,8 @@
                     <a href="chongqing.html" class="btn-view">Explore</a>
                 </div>
             </article>
-              <article class="project-card card-4">
+
+            <article class="project-card card-4">
                 <div class="card-header">
                     <span class="card-year">25Q4</span>
                     <span class="card-year">Mini Plog</span>
@@ -76,7 +73,8 @@
                     <a href="yulong.html" class="btn-view">Explore</a>
                 </div>
             </article>
-<article class="project-card card-5">
+
+            <article class="project-card card-5">
                 <div class="card-header">
                     <span class="card-year">∞</span>
                     <span class="card-year">...</span>
@@ -90,31 +88,37 @@
         </div>
           
     </div>
- <footer>
-        <p> V2.2.1(121)William's Photo Gallery. All Rights Reserved.
-&copy;2023-2026</p>
+
+    <footer>
+        <p> V2.2.1(121)William's Photo Gallery. All Rights Reserved. &copy;2023-2026</p>
     </footer>
 
     <script>
-        // window.addEventListener('load') 的意思是：
-        // 必须等 HTML、CSS、JS 甚至所有 <img> 图片全部下载到本地后，才执行。
-        window.addEventListener('load', () => {
-            const overlay = document.getElementById('loading-overlay');
+        let isLoaded = false;
+        
+        // 核心滑开函数
+        function revealGallery() {
+            if (isLoaded) return; // 防止重复执行
+            isLoaded = true;
             
-            // 稍微加 300ms 的延迟，防止网速太快时画面一闪而过，保证仪式感的完整
-            setTimeout(() => {
-                // 1. 向上拉开黑色幕布
-                overlay.classList.add('slide-up');
-                
-                // 2. 解除对滚动的锁定，把自由还给用户
-                document.body.classList.remove('is-loading');
-                
-                // 3. 等动画彻底播完 (1.2s)，把这个遮罩从代码里杀掉，不占用任何内存
+            const overlay = document.getElementById('loading-overlay');
+            if (overlay) {
                 setTimeout(() => {
-                    overlay.remove();
-                }, 1200);
-            }, 300);
-        });
+                    overlay.classList.add('slide-up');
+                    document.body.classList.remove('is-loading');
+                    
+                    setTimeout(() => {
+                        overlay.remove();
+                    }, 1200);
+                }, 300);
+            }
+        }
+
+        // 路线 A：正常情况，所有大图和 CSS 下载完毕后，优雅滑开
+        window.addEventListener('load', revealGallery);
+
+        // 路线 B（保底防卡死）：如果 GitHub Pages 太拉胯，等了 3.5 秒还没下完，强行滑开，不让用户干等
+        setTimeout(revealGallery, 3500);
     </script>
 
 </body>
