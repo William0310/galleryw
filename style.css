@@ -155,22 +155,17 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
-
     border: 1px solid rgba(255, 255, 255, 0.05);
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.6); 
-    
+    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.2);
     transform-origin: top center;
     overflow: hidden;
-    
-
     background-size: cover;
     background-position: center;
 }
 .project-card:hover, 
 .project-card:active { /* :active 是为了兼容手机端的手指点按 */
     /* 🎯 亮度提升 20%，让底部的暗调照片和文字瞬间通透 */
-    filter: brightness(1.3); 
+    filter: brightness(1.7); 
     
     /* 🎯 加一圈极弱的纯白光晕，增强“被激活”的物理质感 */
     box-shadow: 0 0 40px rgba(255, 255, 255, 0.15), 0 -20px 40px rgba(0, 0, 0, 0.6);
