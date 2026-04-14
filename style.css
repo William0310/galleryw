@@ -148,7 +148,7 @@ body {
 .project-card {
     /* 核心 CSS 魔法：吸顶效果 */
     position: sticky;
-    
+    transition: filter 0.4s ease, box-shadow 0.4s ease;
     height: 75vh;
     border-radius: 32px;
     padding: 3rem;
@@ -167,7 +167,14 @@ body {
     background-size: cover;
     background-position: center;
 }
-
+.project-card:hover, 
+.project-card:active { /* :active 是为了兼容手机端的手指点按 */
+    /* 🎯 亮度提升 20%，让底部的暗调照片和文字瞬间通透 */
+    filter: brightness(1.3); 
+    
+    /* 🎯 加一圈极弱的纯白光晕，增强“被激活”的物理质感 */
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.15), 0 -20px 40px rgba(0, 0, 0, 0.6);
+}
 /* cards */
 .card-1 { 
     
