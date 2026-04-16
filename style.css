@@ -193,8 +193,8 @@ body {
 .project-card.is-active { /* :active 是为了兼容手机端的手指点按 */
     /* 🎯 亮度提升 20%，让底部的暗调照片和文字瞬间通透 */
     filter: brightness(1.2); 
-    box-shadow: 0 0 45px rgba(255, 255, 255, 0.2);
-    transform: scale(1.03); /* 微微放大，推向用户 */
+    box-shadow: 0 0 45px rgba(255, 255, 255, 0.3);
+    transform: scale(1.04); /* 微微放大，推向用户 */
      /* 确保亮起的卡片光晕不会被上面的卡片挡住 */
 }
 /* cards */
