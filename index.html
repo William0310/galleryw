@@ -9,6 +9,13 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="is-loading">
+    <script>
+        if (sessionStorage.getItem('introPlayed')) {
+            // 如果已经看过，立刻撕掉 loading 标签并隐藏幕布
+            document.body.classList.remove('is-loading');
+            document.head.insertAdjacentHTML('beforeend', '<style>#loading-overlay { display: none !important; }</style>');
+        }
+    </script>
 <nav class="scroll-compass">
     <div class="compass-line-track">
         <div class="compass-active-bar" id="compass-bar"></div>
@@ -134,21 +141,22 @@
         
         // 核心滑开函数
         function revealGallery() {
-            if (isLoaded) return; // 防止重复执行
-            isLoaded = true;
-            
-            const overlay = document.getElementById('loading-overlay');
-            if (overlay) {
-                setTimeout(() => {
-                    overlay.classList.add('slide-up');
-                    document.body.classList.remove('is-loading');
-                    
-                    setTimeout(() => {
-                        overlay.remove();
-                    }, 1200);
-                }, 300);
-            }
-        }
+    // 因为拦截器已经工作，如果看过动画，body 上就没有 is-loading 了，这个 if 就会被直接跳过
+    if (document.body.classList.contains('is-loading')) {
+        
+        // 💡 新增：在浏览器里刻下“已播放”的记忆
+        sessionStorage.setItem('introPlayed', 'true');
+
+        document.body.classList.remove('is-loading');
+        const overlay = document.getElementById('loading-overlay');
+        setTimeout(() => {
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.remove();
+            }, 1200);
+        }, 300);
+    }
+}
 
         // 路线 A：正常情况，所有大图和 CSS 下载完毕后，优雅滑开
         window.addEventListener('load', revealGallery);
