@@ -9,7 +9,21 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="is-loading">
+<nav class="scroll-compass">
+    <div class="compass-line-track">
+        <div class="compass-active-bar" id="compass-bar"></div>
+    </div>
+    <ul class="compass-steps">
+        <li class="step-item is-active" data-index="0">01</li>
+        <li class="step-item" data-index="1">02</li>
+        <li class="step-item" data-index="2">03</li>
+        <li class="step-item" data-index="3">04</li>
+        <li class="step-item" data-index="4">05</li>
+    </ul>
+</nav>
 
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-viewfinder" id="cursor-viewfinder"></div>
     <div class="loading-overlay" id="loading-overlay">
         <div class="loading-text">
             WILL'S PHOTO GALLERY<br>
@@ -220,9 +234,112 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// index.html 底部脚本追加
 
+// 1. 确保在脚本顶部定义了罗盘更新函数
+function updateCompass(index) {
+    const bar = document.getElementById('compass-bar');
+    const steps = document.querySelectorAll('.step-item');
+    if (!bar || index === -1) return;
 
+    // 移动高亮条：180px总高 / 5个档位 = 36px/档
+    bar.style.transform = `translateY(${index * 36}px)`;
 
+    // 切换文字激活状态
+    steps.forEach((step, i) => {
+        if (i === index) {
+            step.classList.add('is-active');
+        } else {
+            step.classList.remove('is-active');
+        }
+    });
+}
+
+// 2. 修改你原有的 updateActiveCard 函数
+function updateActiveCard() {
+    const triggerLine = window.innerHeight * 0.83; 
+    let activeIndex = -1;
+
+    // 这里的 cards 是你原有的 document.querySelectorAll('.project-card')
+    for (let i = cards.length - 1; i >= 0; i--) {
+        const rect = cards[i].getBoundingClientRect();
+        if (rect.top < triggerLine) {
+            activeIndex = i;
+            break;
+        }
+    }
+
+    cards.forEach((card, index) => {
+        if (index === activeIndex) {
+            card.classList.add('is-active');
+        } else {
+            card.classList.remove('is-active');
+        }
+    });
+
+    // 💡 关键：在这里调用罗盘更新
+    updateCompass(activeIndex);
+}
+// index.html 底部脚本追加
+
+// --- 1. 取景器光标逻辑 ---
+const dot = document.getElementById('cursor-dot');
+const viewfinder = document.getElementById('cursor-viewfinder');
+let mouseX = 0, mouseY = 0; // 实际鼠标位置
+let dotX = 0, dotY = 0;     // 圆点平滑位置
+let vX = 0, vY = 0;         // 取景器平滑位置
+
+window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // 监测悬停目标
+    const target = e.target;
+    if (target.closest('a') || target.closest('button') || target.closest('.project-card')) {
+        viewfinder.classList.add('is-hovering');
+    } else {
+        viewfinder.classList.remove('is-hovering');
+    }
+});
+
+function animateCursor() {
+    // 圆点跟随：极快，接近同步
+    dotX += (mouseX - dotX) * 0.2;
+    dotY += (mouseY - dotY) * 0.2;
+    dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+
+    // 取景器跟随：较慢，产生优雅的延迟感（阻尼）
+    vX += (mouseX - vX) * 0.1;
+    vY += (mouseY - vY) * 0.1;
+    viewfinder.style.transform = `translate(${vX}px, ${vY}px) translate(-50%, -50%)`;
+
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+// --- 2. 罗盘指示器逻辑 ---
+// 复用你现有的 updateActiveCard 函数，仅需在内部添加以下逻辑
+function updateCompass(index) {
+    const bar = document.getElementById('compass-bar');
+    const steps = document.querySelectorAll('.step-item');
+    
+    if (index === -1) return;
+
+    // 移动高亮条：每格 36px (根据 CSS 中的 height 设置)
+    bar.style.transform = `translateY(${index * 36}px)`;
+
+    // 切换文字高亮
+    steps.forEach((step, i) => {
+        if (i === index) {
+            step.classList.add('is-active');
+        } else {
+            step.classList.remove('is-active');
+        }
+    });
+}
+
+// 在你的 updateActiveCard() 函数末尾调用：
+// updateCompass(activeIndex);
 
     </script>
 

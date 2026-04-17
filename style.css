@@ -192,7 +192,7 @@ body {
 
 .project-card.is-active { /* :active 是为了兼容手机端的手指点按 */
     /* 🎯 亮度提升 20%，让底部的暗调照片和文字瞬间通透 */
-    filter: brightness(1.2); 
+    filter: brightness(1.4); 
     box-shadow: 0 0 45px rgba(255, 255, 255, 0.3);
     transform: scale(1.025); /* 微微放大，推向用户 */
      /* 确保亮起的卡片光晕不会被上面的卡片挡住 */
@@ -435,5 +435,154 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         gap: 1.5rem;
+    }
+}
+
+/* --- 罗盘：侧边指示器 --- */
+.scroll-compass {
+    position: fixed;
+    right: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.compass-line-track {
+    width: 1px;
+    height: 180px;
+    background: rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.compass-active-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    height: 36px; /* 180 / 5 */
+    background: #fff;
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.compass-steps {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.step-item {
+    font-family: 'Manrope', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.4s ease;
+}
+
+.step-item.is-active {
+    color: #fff;
+}
+
+/* --- 光标：自定义取景器 --- */
+body {
+    cursor: none; /* 全局隐藏原生光标 */
+}
+
+/* 所有的交互元素都要加这个类，或者在 JS 中全局处理 */
+a, button, .project-card {
+    cursor: none;
+}
+
+.cursor-dot {
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.cursor-viewfinder {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, border 0.3s ease;
+}
+
+/* 悬停状态下的取景器变大且合焦 */
+.cursor-viewfinder.is-hovering {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* 适配移动端：关闭自定义光标 */
+@media (max-width: 768px) {
+    body { cursor: auto; }
+    .cursor-dot, .cursor-viewfinder, .scroll-compass { display: none; }
+}
+
+
+
+/* 修改 style.css 中的 Media Query 部分 */
+@media (max-width: 768px) {
+    /* 隐藏垂直形态 */
+    .scroll-compass {
+        right: auto;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        transform: none;
+        padding: 0 10%;
+        flex-direction: row; /* 横向排列 */
+        justify-content: space-between;
+        background: linear-gradient(to top, rgba(3,3,5,0.8), transparent);
+    }
+
+    .compass-line-track {
+        display: none; /* 手机端隐藏竖线 */
+    }
+
+    .compass-steps {
+        flex-direction: row; /* 数字横向排开 */
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+    }
+
+    .step-item {
+        font-size: 0.6rem;
+        opacity: 0.5;
+    }
+    
+    .step-item.is-active {
+        opacity: 1;
+        border-bottom: 1px solid #fff;
+        padding-bottom: 4px;
+    }
+
+    /* 手机端自定义光标通常会造成误触，建议强制关闭 */
+    .cursor-dot, .cursor-viewfinder {
+        display: none !important;
+    }
+    body {
+        cursor: auto !important;
     }
 }
