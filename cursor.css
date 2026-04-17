@@ -31,6 +31,7 @@
         top: 2px; left: 2px;
         pointer-events: none;
         z-index: 9998;
+        background: rgba(144, 144, 144, 0.2);
         transform: translate(-50%, -50%);
         opacity: 0; /* 初始隐藏 */
         transition: width 0.3s ease, height 0.3s ease, border 0.3s ease, background 0.3s ease, opacity 0.3s ease;
@@ -41,7 +42,7 @@
         width: 55px;
         height: 55px;
         border: 2px solid rgba(255, 255, 255, 0.8);
-        background: rgba(144, 144, 144, 0.5);
+        background: rgba(144, 144, 144, 0.35);
     }
 }
 
