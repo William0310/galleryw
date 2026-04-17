@@ -33,23 +33,43 @@ document.addEventListener('DOMContentLoaded', () => {
             // --- 显隐逻辑 (极其重要，优化性能) ---
             // 距离大于 2000 的太远了，完全透明。
             // 距离穿过屏幕 (-500) 时，也完全透明。
+            // --- 显隐与光学景深逻辑 ---
             if (distance > 2500 || distance < -800) {
                 item.style.opacity = 0;
+                item.style.filter = 'blur(20px)'; // 远端彻底模糊，降低 GPU 渲染压力
                 item.classList.remove('active');
             } else {
-                // 进入可视范围，根据距离计算透明度，产生“从雾中浮现”的效果
-                // 距离 2000 开始浮现，距离 1000 时完全清晰
+                // 1. 透明度计算 (你原有的完美逻辑)
                 const opacity = Math.min(1, (2500 - distance) / 1500);
-                // 穿过屏幕时迅速淡出
                 const fadeOut = distance < 0 ? (1 + distance / 800) : 1;
                 item.style.opacity = opacity * fadeOut;
 
-                // --- 霓虹环境光打击逻辑 ---
-                // 当照片推进到距离镜头 800px 到 -200px 这个黄金区间时，点亮环境光
+                // 2. 光学景深模糊计算 (Optical Depth of Field)
+                // ...
+let blurValue = 0;
+if (distance > 800) {
+    blurValue = (distance - 800) / 150; 
+} else if (distance < 0) {
+    blurValue = Math.abs(distance) / 50;
+}
+// 🎯 性能优化核心：限制最大为 10px，并且强制取整，拒绝小数像素渲染
+blurValue = Math.min(Math.round(blurValue), 8);
+
+// 如果模糊值为 0，直接移除 filter 属性，彻底释放显卡
+if (blurValue === 0) {
+    item.style.filter = 'none';
+} else {
+    item.style.filter = `blur(${blurValue}px)`;
+}
+// ...
+                
+                
+
+                // 3. 霓虹环境光打击逻辑 (保留你的原有代码)
                 if (distance < 800 && distance > -200) {
-                    item.classList.add('active'); // 照片自身的背光点亮
+                    item.classList.add('active'); 
                     const color = item.getAttribute('data-color');
-                    ambientBg.style.boxShadow = `inset 0 0 150px ${color}`; // 全局环境光晕染
+                    ambientBg.style.boxShadow = `inset 0 0 150px ${color}`; 
                 } else {
                     item.classList.remove('active');
                 }

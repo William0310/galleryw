@@ -165,3 +165,10 @@ html, body {
         width: 70vw; /* 减小到 70vw，给顶部和底部留出更多呼吸空间，看着更舒服 */
     }
 }
+
+
+
+.tunnel-item {
+    /* ... 你原有的样式 ... */
+    will-change: transform, opacity, filter; /* 提前唤醒 GPU 分配显存 */
+}
