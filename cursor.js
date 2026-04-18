@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             target.closest('.project-card') ||
                             target.closest('.photo-card') ||
                             target.closest('.tunnel-item');
+                            target.closest('.manifesto-container');
 
         if (isHoverable) {
             viewfinder.classList.add('is-hovering');

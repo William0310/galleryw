@@ -58,7 +58,7 @@ html, body {
 /* --- 4. 视觉中心：错位巨幕字体 --- */
 .center-title {
     position: absolute;
-    top: 50%; left: 20%;
+    top: 50%; left: 15%;
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
@@ -67,7 +67,62 @@ html, body {
     /* 防止巨型字体挡住四角的点击 */
     pointer-events: none; 
 }
+/* --- 暗房显影宣言样式 --- */
+.manifesto-container {
+    position: absolute;
+    left: 30%;
+    bottom: 80%; /* 位于页面中下方 */
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+}
 
+.manifesto-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    /* 核心效果：初始失焦 */
+    filter: blur(8px);
+    transition: filter 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), color 1.2s ease;
+    cursor: none; /* 确保使用自定义取景器 */
+}
+
+/* 当鼠标悬停（合焦）时 */
+.manifesto-container:hover .manifesto-text {
+    filter: blur(0px);
+    color: #ffffff;
+}
+
+.manifesto-label {
+    display: block;
+    margin-top: 1.5rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.4em;
+    color: rgba(255, 255, 255, 0.2);
+    transition: color 0.8s ease;
+}
+
+.manifesto-container:hover .manifesto-label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* 适配移动端：默认清晰，因为没有悬停交互 */
+/* 针对手机端的优化 */
+@media (max-width: 768px) {
+    /* 💡 直接在手机端物理移除宣言区域 */
+    .manifesto-container {
+        display: none !important;
+    }
+
+    /* 适当微调中心大标题的位置，防止由于宣言消失导致的视觉重心失衡 */
+    .center-title {
+        transform: translate(-50%, -55%); /* 稍微往上移一点点 */
+    }
+}
 .title-layer {
     font-family: 'Playfair Display', serif;
     /* clamp：极其高级的缩放逻辑。字号会在 3rem 到 12vw 之间动态调整，绝不换行 */

@@ -63,12 +63,38 @@ html, body {
 }
 /* --- 2. 悬浮组件 --- */
 .btn-back {
-    position: fixed; top: 2rem; left: 2rem; z-index: 100;
-    color: rgba(255,255,255,0.8); text-decoration: none; 
-    font-size: 1rem; letter-spacing: 0.2em; font-weight: 600;
-    transition: color 0.3s;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    /* 💡 1. 核心：启动 Flex 引擎 */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem; /* 初始挡位间距 */
+    
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 0.2rem; /* 建议加一点 padding，让下划线别贴着字 */
+    z-index: 100;
+    opacity: 0.8;
+    /* 💡 2. 核心：确保 transition 监听了 gap 属性 */
+    transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); 
 }
-.btn-back:hover { color: #fff; }
+
+.btn-back:hover { 
+    opacity: 1; 
+    gap: 1.2rem; /* 悬停时箭头被有力地向左推开 */
+    border-bottom: 1px solid #fff;
+}
+
+/* 进阶：单独控制箭头的弹性 */
+.back-arrow {
+    transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
 
 .hero-fixed {
     position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
