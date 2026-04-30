@@ -451,17 +451,14 @@ body.viewer-open {
 }
 
 @media (max-width: 720px) {
-    .series-page .page-shell {
-        width: min(var(--max-width), calc(100% - 24px));
-    }
-
     .series-page .page-shell::after {
-        inset: 104px 0 auto;
+        inset: 88px 0 auto;
+        opacity: 0.72;
     }
 
     .series-hero {
         gap: 18px;
-        padding-top: 8px;
+        padding-top: 22px;
         margin-bottom: 28px;
     }
 
@@ -507,7 +504,29 @@ body.viewer-open {
     }
 
     .hero-note .metric-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .hero-note .metric-card {
+        padding: 12px 10px 13px;
+    }
+
+    .hero-note .metric-card span {
+        margin-bottom: 6px;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+    }
+
+    .hero-note .metric-card strong {
+        font-size: 1.5rem;
+        line-height: 0.92;
+    }
+
+    .hero-note .metric-card p {
+        margin-top: 7px;
+        font-size: 0.68rem;
+        line-height: 1.32;
     }
 
     .story-card__hint {

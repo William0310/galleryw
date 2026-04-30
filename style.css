@@ -211,12 +211,11 @@
     }
 
     .hero-tags {
-        order: 2;
-        margin-top: 2px;
+        display: none;
     }
 
     .hero-actions {
-        order: 3;
+        order: 2;
         display: grid;
         grid-template-columns: 1fr;
         gap: 12px;
@@ -229,23 +228,6 @@
         width: 100%;
         margin: 0;
         min-height: 52px;
-    }
-
-    .hero-tags {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 8px;
-    }
-
-    .hero-tags .chip {
-        width: auto;
-        min-height: 52px;
-        padding: 8px 7px;
-        justify-content: center;
-        text-align: center;
-        font-size: 0.68rem;
-        line-height: 1.25;
-        letter-spacing: 0.02em;
     }
 
     .hero-note {

@@ -19,6 +19,7 @@
     --radius-sm: 12px;
     --max-width: 1180px;
     --page-padding: clamp(20px, 3vw, 36px);
+    --mobile-page-gutter: 25px;
 }
 
 *,
@@ -376,7 +377,7 @@ select {
 
 @media (max-width: 720px) {
     .page-shell {
-        width: min(var(--max-width), calc(100% - 20px));
+        width: min(var(--max-width), calc(100% - (var(--mobile-page-gutter) * 2)));
         padding: 16px 0 56px;
     }
 
