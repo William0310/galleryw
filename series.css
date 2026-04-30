@@ -340,9 +340,13 @@ body.viewer-open {
     right: 0;
 }
 
-.series-viewer__nav:hover,
-.series-viewer__close:hover {
+.series-viewer__nav:hover {
     transform: translateY(calc(-50% - 2px));
+    border-color: rgba(255, 255, 255, 0.34);
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.series-viewer__close:hover {
     border-color: rgba(255, 255, 255, 0.34);
     background: rgba(255, 255, 255, 0.14);
 }
