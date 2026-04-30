@@ -19,7 +19,7 @@
     --radius-sm: 12px;
     --max-width: 1180px;
     --page-padding: clamp(20px, 3vw, 36px);
-    --mobile-page-gutter: 25px;
+    --mobile-page-gutter: 22px;
 }
 
 *,
