@@ -306,6 +306,7 @@ body.viewer-open {
     width: min(100%, 1480px);
     display: grid;
     justify-items: center;
+    max-height: calc(100vh - clamp(40px, 8vw, 80px));
     outline: none;
 }
 
@@ -354,9 +355,13 @@ body.viewer-open {
 
 .series-viewer__panel {
     display: grid;
-    gap: 14px;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: 12px;
     justify-items: center;
     margin: 0;
+    width: 100%;
+    max-height: inherit;
+    min-height: 0;
 }
 
 .series-viewer__toolbar {
@@ -384,7 +389,8 @@ body.viewer-open {
     align-items: center;
     justify-content: center;
     max-width: 100%;
-    max-height: calc(100vh - 150px);
+    max-height: 100%;
+    min-height: 0;
     padding: clamp(8px, 1vw, 12px);
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.18);
@@ -396,7 +402,7 @@ body.viewer-open {
     display: block;
     width: auto;
     max-width: min(calc(100vw - 220px), 1280px);
-    max-height: calc(100vh - 190px);
+    max-height: calc(100vh - 310px);
     height: auto;
     border-radius: 18px;
     object-fit: contain;
@@ -408,6 +414,9 @@ body.viewer-open {
     gap: 6px;
     padding: 0 8px;
     text-align: center;
+    max-height: 120px;
+    overflow: auto;
+    scrollbar-width: thin;
 }
 
 .series-viewer__eyebrow,
@@ -425,14 +434,14 @@ body.viewer-open {
 .series-viewer__title {
     margin: 0;
     font-family: "Cormorant Garamond", Georgia, serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: clamp(1.75rem, 3vw, 2.7rem);
     line-height: 0.96;
     color: #fbf6ef;
 }
 
 .series-viewer__description {
-    font-size: 0.96rem;
-    line-height: 1.6;
+    font-size: 0.92rem;
+    line-height: 1.48;
 }
 
 @media (max-width: 960px) {
