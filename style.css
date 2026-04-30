@@ -19,6 +19,11 @@
     gap: 22px;
 }
 
+.hero-intro {
+    display: grid;
+    gap: 22px;
+}
+
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -62,6 +67,11 @@
 
 .collections-section {
     margin-top: 54px;
+    scroll-margin-top: 110px;
+}
+
+#home-story {
+    scroll-margin-top: 110px;
 }
 
 .collection-grid {
@@ -173,15 +183,46 @@
 @media (max-width: 720px) {
     .home-hero {
         min-height: auto;
+        gap: 28px;
+        padding: 0 0 44px;
+    }
+
+    .hero-copy {
+        display: flex;
+        flex-direction: column;
+        min-height: calc(100svh - 132px);
         gap: 18px;
-        padding: 8px 0 34px;
+        padding-top: clamp(64px, 14svh, 128px);
+    }
+
+    .hero-intro {
+        order: 1;
+        gap: 18px;
+    }
+
+    .home-page .headline {
+        font-size: 4.5rem;
+        line-height: 0.88;
+        margin-top: 0;
+    }
+
+    .hero-copy .lede {
+        max-width: 30rem;
+    }
+
+    .hero-tags {
+        order: 2;
+        margin-top: 2px;
     }
 
     .hero-actions {
+        order: 3;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 10px;
+        gap: 12px;
         width: 100%;
+        margin-top: auto;
+        padding-bottom: max(8px, env(safe-area-inset-bottom));
     }
 
     .hero-actions .cta-link {

@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William's Gallery</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="theme.css?v=2003">
-    <link rel="stylesheet" href="style.css?v=2003">
+    <link rel="stylesheet" href="theme.css?v=2006">
+    <link rel="stylesheet" href="style.css?v=2007">
     <link rel="stylesheet" href="cursor.css?v=2001">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -17,8 +17,8 @@
     <main class="page-shell">
         <header class="page-topbar">
             <div class="brand-mark">
-                <strong>William's Photo Gallery</strong>
-                <span>Online archive of trips, light, and memory</span>
+                <strong> William's Photo Gallery</strong>
+           
             </div>
             <nav class="topbar-links topbar-links--home" aria-label="Primary">
                 <a href="archive.html">Archive</a>
@@ -28,14 +28,16 @@
 
         <section class="home-hero">
             <div class="hero-copy">
-                <p class="eyebrow">Online gallery / 2023-2026</p>
-                <h1 class="headline">Frames Of Mind.</h1>
-                <p class="lede">
-                    Alpine silence, neon density, temple rhythm, and winter air.
-                    This site succeeds galleryw.net, which is currently offline.
-                </p>
+                <div class="hero-intro">
+                    <p class="eyebrow">Online gallery / 2023-2026</p>
+                    <h1 class="headline">Frames Of Mind.</h1>
+                    <p class="lede">
+                        Alpine silence, neon density, temple rhythm, and winter air.
+                        This site succeeds galleryw.net, which is currently offline.
+                    </p>
+                </div>
                 <div class="series-actions hero-actions">
-                    <a href="#collections" class="cta-link">Enter the collections</a>
+                    <a href="#home-story" class="cta-link" data-scroll-step>Enter the collections</a>
                     <a href="about.html" class="cta-link cta-link--muted">Read the manifesto</a>
                 </div>
                 <div class="chip-row hero-tags">
@@ -45,7 +47,7 @@
                 </div>
             </div>
 
-            <aside class="hero-aside stack">
+            <aside class="hero-aside stack" id="home-story" aria-label="Current edit notes">
                 <section class="glass-card hero-note">
                     <div class="hero-note__intro">
                         <p class="meta-kicker hero-note__kicker">Current edit</p>
@@ -160,9 +162,9 @@
                         </div>
                         <h3>William</h3>
                         <p>
-                            I am Whatever It Takes.
+                            Read information about this website, my motivation, and my equipments. This Website is still under construction, any feedback is appreciated.
                         </p>
-                        <a href="about.html" class="cta-link">Read about me</a>
+                        <a href="about.html" class="cta-link">Read</a>
                     </div>
                 </article>
             </div>
@@ -186,6 +188,7 @@
     </main>
 
     <script src="cursor.js"></script>
+    <script src="home.js?v=2001"></script>
     <script src="transition.js"></script>
 </body>
 </html>
