@@ -4,488 +4,188 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>William's Gallery</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=1061">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css?v=2003">
+    <link rel="stylesheet" href="style.css?v=2003">
+    <link rel="stylesheet" href="cursor.css?v=2001">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    
-    <style>
-        /* 默认隐藏幕布，防止老访客看到它闪烁 */
-        #loading-overlay { display: none; }
-        /* 只有首次访问，才显示幕布并锁定滚动 */
-        html.first-visit #loading-overlay { display: flex; }
-        html.first-visit body { overflow: hidden; }
-    </style>
-    <script>
-        // 在任何像素渲染前执行
-        if (!sessionStorage.getItem('introPlayed')) {
-            document.documentElement.classList.add('first-visit');
-        }
-    </script>
 </head>
-<body>
-    
-    <nav class="scroll-compass">
-        <div class="compass-line-track">
-            <div class="compass-active-bar" id="compass-bar"></div>
-        </div>
-        <ul class="compass-steps">
-            <li class="step-item is-active" data-index="0">01</li>
-            <li class="step-item" data-index="1">02</li>
-            <li class="step-item" data-index="2">03</li>
-            <li class="step-item" data-index="3">04</li>
-            <li class="step-item" data-index="4">05</li>
-        </ul>
-    </nav>
-
+<body class="home-page">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
-    <div class="loading-overlay" id="loading-overlay">
-        <div class="loading-text">
-            WILL'S PHOTO GALLERY<br>
-            <span class="italic-sub">LOADING IMAGINATION</span>
-        </div>
-    </div>
-
-    <div class="container">
-        <header class="hero">
-            <p class="tag">Will's Photo Gallery</p>
-            <h1>Frames of<br>Mind.</h1>
-            <p class="tag1">Scroll To Start</p>
+    <main class="page-shell">
+        <header class="page-topbar">
+            <div class="brand-mark">
+                <strong>William's Photo Gallery</strong>
+                <span>Online archive of trips, light, and memory</span>
+            </div>
+            <nav class="topbar-links topbar-links--home" aria-label="Primary">
+                <a href="archive.html">Archive</a>
+                <a href="about.html">About William</a>
+            </nav>
         </header>
 
-        <div class="projects-stack">
-            <article class="project-card card-1">
-                <div class="card-header">
-                    <span class="card-year">07/2024</span>
-                    <span class="card-year">Canon R5</span>
+        <section class="home-hero">
+            <div class="hero-copy">
+                <p class="eyebrow">Online gallery / 2023-2026</p>
+                <h1 class="headline">Frames Of Mind.</h1>
+                <p class="lede">
+                    Alpine silence, neon density, temple rhythm, and winter air.
+                    This site succeeds galleryw.net, which is currently offline.
+                </p>
+                <div class="series-actions hero-actions">
+                    <a href="#collections" class="cta-link">Enter the collections</a>
+                    <a href="about.html" class="cta-link cta-link--muted">Read the manifesto</a>
                 </div>
-                <div class="card-content">
-                    <h2>Qinghai</h2>
-                    <p>Ta'er Temple, Chaka, Qunjia.</p>
-                    <a href="qinghai.html" class="btn-view">Explore</a>
+                <div class="chip-row hero-tags">
+                    <span class="chip">4 featured journeys</span>
+                    <span class="chip">Qinghai to Kyoto</span>
+                    <span class="chip">Canon R5 / Nikon Z9</span>
                 </div>
-            </article>
+            </div>
 
-            <article class="project-card card-2">
-                <div class="card-header">
-                    <span class="card-year">07/2025</span>
-                    <span class="card-year">Nikon Z9</span>
-                </div>
-                <div class="card-content">
-                    <h2>Japan</h2>
-                    <p>Tokyo, Fuji Kawaguchiko, Kyoto and Osaka.</p>
-                    <a href="japan.html" class="btn-view">Explore</a>
-                </div>
-            </article>
-
-            <article class="project-card card-3">
-                <div class="card-header">
-                    <span class="card-year">08/2025</span>
-                    <span class="card-year">Mini Blog</span>
-                </div>
-                <div class="card-content">
-                    <h2>ChongQing</h2>
-                    <p>Yuzhong, Chongqing, China.</p>
-                    <a href="chongqing.html" class="btn-view">Explore</a>
-                </div>
-            </article>
-
-            <article class="project-card card-4">
-                <div class="card-header">
-                    <span class="card-year">12/2025</span>
-                    <span class="card-year">Mini Blog</span>
-                </div>
-                <div class="card-content">
-                    <h2>Lijiang</h2>
-                    <p>Yulong Snow Moutain.</p>
-                    <a href="yulong.html" class="btn-view">Explore</a>
-                </div>
-            </article>
-
-            <article class="project-card card-5">
-                <div class="card-header">
-                    <span class="card-year">∞</span>
-                    <span class="card-year">...</span>
-                </div>
-                <div class="card-content">
-                    <h2>William</h2>
-                    <p>I am Whatever It Takes.</p>
-                    <a href="about.html" class="btn-view">About</a>
-                </div>
-                <div class="archive-stub">
-                    <div class="stub-divider"></div>
-                    <div class="stub-body">
-                        <div class="stub-info">
-                            <span class="stub-tag">BEYOND THE FOLD</span>
-                            <p class="stub-text">More collections and past archives.</p>
-                        </div>
-                             <a href="#horizontal-trigger" 
-   class="stub-button" 
-   onclick="document.getElementById('horizontal-trigger').scrollIntoView({ behavior: 'smooth' }); return false;">
-    View 
-    <svg viewBox="0 0 24 24" class="stub-arrow"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
-</a>
+            <aside class="hero-aside stack">
+                <section class="glass-card hero-note">
+                    <div class="hero-note__intro">
+                        <p class="meta-kicker hero-note__kicker">Current edit</p>
+                        <p>
+                            Reframed as a cleaner body of work: less demo energy, more cinematic pacing,
+                            better spacing, and a structure that behaves well on mobile.
+                        </p>
                     </div>
+                    <div class="metric-grid hero-note__metrics">
+                        <article class="metric-card">
+                            <span>Journeys</span>
+                            <strong>05</strong>
+                            <p>Finished series now live.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Years</span>
+                            <strong>23-26</strong>
+                            <p>Ongoing personal archive.</p>
+                        </article>
+                        <article class="metric-card">
+                            <span>Next</span>
+                            <strong>06</strong>
+                            <p>Xinjiang and more in progress.</p>
+                        </article>
+                    </div>
+                </section>
+            </aside>
+        </section>
+
+        <hr class="soft-rule">
+
+        <section class="collections-section" id="collections">
+            <div class="section-head">
+                <div>
+                    <p class="section-kicker">Featured series</p>
+                    <h2 class="section-title">Explore The Blogs.</h2>
                 </div>
-            </article>
+                <p class="section-copy">
+                    Shots are all taken by William and may not be shared without consent.
+                </p>
+            </div>
+
+            <div class="collection-grid">
+                <article class="collection-card collection-card--wide">
+                    <div class="collection-visual">
+                        <img src="images/qinghai1.webp" alt="Grassland road in Qinghai">
+                    </div>
+                    <div class="collection-copy">
+                        <div class="collection-meta">
+                            <span>07 / 2024</span>
+                            <span>Canon R5</span>
+                        </div>
+                        <h3>Qinghai</h3>
+                        <p>Temple geometry, plateau weather, salt-lake glare, and long roads that slow everything down.</p>
+                        <a href="qinghai.html" class="cta-link">Browse</a>
+                    </div>
+                </article>
+
+                <article class="collection-card collection-card--narrow">
+                    <div class="collection-visual collection-visual--portrait">
+                        <img src="images/kyoto1.webp" alt="Senbon Torii in Kyoto">
+                    </div>
+                    <div class="collection-copy">
+                        <div class="collection-meta">
+                            <span>07 / 2025</span>
+                            <span>Nikon Z9</span>
+                        </div>
+                        <h3>Japan</h3>
+                        <p>Tokyo density, Kyoto ritual, and Fuji weather translated into a cleaner editorial story.</p>
+                        <a href="japan.html" class="cta-link">Browse</a>
+                    </div>
+                </article>
+
+                <article class="collection-card collection-card--narrow">
+                    <div class="collection-visual">
+                        <img src="images/cq5.webp" alt="Night city view in Chongqing">
+                    </div>
+                    <div class="collection-copy">
+                        <div class="collection-meta">
+                            <span>08 / 2025</span>
+                            <span>Nikon Z9</span>
+                        </div>
+                        <h3>Chongqing</h3>
+                        <p>Compressed light, hard contrast, and a city that feels like it was already color graded.</p>
+                        <a href="chongqing.html" class="cta-link">Browse</a>
+                    </div>
+                </article>
+
+                <article class="collection-card collection-card--wide">
+                    <div class="collection-visual">
+                        <img src="images/lijiang1.webp" alt="Blue water and mountains near Lijiang">
+                    </div>
+                    <div class="collection-copy">
+                        <div class="collection-meta">
+                            <span>12 / 2025</span>
+                            <span>Nikon Z9</span>
+                        </div>
+                        <h3>Lijiang</h3>
+                        <p>Thin air, colder color, and mountain light that asks for more restraint than spectacle.</p>
+                        <a href="yulong.html" class="cta-link">Browse</a>
+                    </div>
+                </article>
+
+                <article class="collection-card collection-card--profile">
+                    <div class="collection-visual collection-visual--square">
+                        <img src="images/me.webp" alt="Portrait of William">
+                    </div>
+                    <div class="collection-copy">
+                        <div class="collection-meta">
+                            <span>About the Artist</span>
+                            <span>Photography </span>
+                        </div>
+                        <h3>William</h3>
+                        <p>
+                            I am Whatever It Takes.
+                        </p>
+                        <a href="about.html" class="cta-link">Read about me</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section class="home-archive glass-card">
+            <div>
+                <p class="section-kicker">Beyond the fold</p>
+                <h2 class="section-title">Upcoming folders are already taking shape.</h2>
+                <p class="section-copy">
+                    Yiheyuan is being sorted, Xinjiang is waiting for summer 2026, and the archive page now works as a proper staging area instead of a dead end.
+                </p>
+            </div>
+            <a href="archive.html" class="cta-link">Browse the archive</a>
+        </section>
+
+        <footer class="page-footer">
+            <p>William's Photo Gallery V3.0 &copy;2023-2026 All Rights Reserved.</p>
+            <p> Rebuilt for clarity and mood.</p>
+        </footer>
+    </main>
 
-
-
-
-
-
-            
-        </div>
-    </div>
-
-
-<section class="horizontal-pivot" id="horizontal-trigger">
-    <div class="h-sticky-box">
-        <div class="h-track" id="h-track">
-            <div class="h-item">
-               <img src="images/yihe.webp" loading="lazy">
-                     <div class="h-overlay">
-        <div class="h-info">
-            <p class="h-tag">08/2025</p>
-            <h3>YiHeYuan</h3>
-            <span class="h-btn">Uploading...Come Back later</span>
-        </div>
-    </div>
-</div>
-
-
-            
-            <div class="h-item">
-    <img src="images/con1.webp" loading="lazy">
-    
-    <div class="h-overlay">
-        <div class="h-info">
-            <p class="h-tag">Stay Tuned Summer 2026</p>
-            <h3>XinJiang</h3>
-            <span class="h-btn">To be Continued</span>
-        </div>
-
-
-
-    </div>
-</div>
-    <div class="h-progress-container" id="h-progress-area">
-        <div class="h-scroll-hint" id="h-scroll-hint">
-        <span>SWIPE / SCROLL</span> <span class="arrow-jump">→</span>
-    </div>
-    
-    <div class="h-progress-track">
-        <div class="h-progress-bar" id="h-progress-bar"></div>
-    </div>
-</div>
- </div>
-    </div>
-</section>
-
-
-
-    <footer>
-        <p>V2.4(155) William's Photo Gallery. All Rights Reserved. &copy;2026</p>
-    </footer>
-
-    <script>
-        /**
-         * 1. 开屏揭幕逻辑
-         */
-        function revealGallery() {
-            // 只有首次访问才执行揭幕动画
-            if (document.documentElement.classList.contains('first-visit')) {
-                sessionStorage.setItem('introPlayed', 'true');
-                document.documentElement.classList.remove('first-visit');
-                
-                const overlay = document.getElementById('loading-overlay');
-                if (overlay) {
-                    overlay.style.opacity = '0';
-                    setTimeout(() => {
-                        overlay.remove(); // 物理删除，防止遮挡
-                    }, 1200);
-                }
-            }
-        }
-
-        window.addEventListener('load', revealGallery);
-        setTimeout(revealGallery, 3500); // 保底
-
-        /**
-         * 2. 核心滑动逻辑 (卡片激活 + 罗盘同步)
-         */
-        const cards = document.querySelectorAll('.project-card');
-        let ticking = false;
-
-        function updateActiveCard() {
-            const triggerLine = window.innerHeight * 0.83; 
-            let activeIndex = -1;
-
-            cards.forEach((card, i) => {
-                const rect = card.getBoundingClientRect();
-                if (rect.top < triggerLine) {
-                    activeIndex = i;
-                }
-            });
-
-            // 更新卡片状态
-            cards.forEach((card, index) => {
-                if (index === activeIndex) {
-                    card.classList.add('is-active');
-                } else {
-                    card.classList.remove('is-active');
-                }
-            });
-
-            // 更新罗盘状态
-            const bar = document.getElementById('compass-bar');
-            const steps = document.querySelectorAll('.step-item');
-            if (bar && activeIndex !== -1) {
-                bar.style.transform = `translateY(${activeIndex * 36}px)`;
-                steps.forEach((step, i) => {
-                    step.classList.toggle('is-active', i === activeIndex);
-                });
-            }
-        }
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(() => {
-                    updateActiveCard();
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        });
-
-        // 初始执行一次
-        updateActiveCard();
-
-        /**
-         * 3. 取景器光标阻尼逻辑
-         */
-        const dot = document.getElementById('cursor-dot');
-        const viewfinder = document.getElementById('cursor-viewfinder');
-        let mouseX = 0, mouseY = 0;
-        let dotX = 0, dotY = 0;
-        let vX = 0, vY = 0;
-
-        window.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            const target = e.target;
-            const isHover = target.closest('a') || target.closest('button') || target.closest('.project-card');
-            viewfinder.classList.toggle('is-hovering', !!isHover);
-        });
-
-        function animateCursor() {
-            dotX += (mouseX - dotX) * 0.2;
-            dotY += (mouseY - dotY) * 0.2;
-            dot.style.transform = `translate(${dotX}px, ${dotY}px)`;
-
-            vX += (mouseX - vX) * 0.1;
-            vY += (mouseY - vY) * 0.1;
-            viewfinder.style.transform = `translate(${vX}px, ${vY}px) translate(-50%, -50%)`;
-
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-    </script>
-    <script>
-const track = document.getElementById('h-track');
-const trigger = document.getElementById('horizontal-trigger');
-const progressBar = document.getElementById('h-progress-bar');
-const progressArea = document.getElementById('h-progress-area');
-const progressTrack = progressArea.querySelector('.h-progress-track');
-const scrollHint = document.getElementById('h-scroll-hint');
-const SYNC_EPSILON = 0.5;
-
-const horizontalState = {
-    isDraggingProgress: false,
-    activePointerId: null,
-    syncingFromPage: false,
-    syncingFromTrack: false,
-    pageRafId: 0,
-    lastProgressWidth: -1
-};
-
-const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-const needsSync = (current, next, epsilon = SYNC_EPSILON) => Math.abs(next - current) >= epsilon;
-const snapToDevicePixel = (value) => {
-    const dpr = window.devicePixelRatio || 1;
-    return Math.round(value * dpr) / dpr;
-};
-
-const scrollPageInstant = (top) => {
-    const root = document.documentElement;
-    const previousBehavior = root.style.scrollBehavior;
-
-    root.style.scrollBehavior = 'auto';
-    window.scrollTo(0, top);
-    root.style.scrollBehavior = previousBehavior;
-};
-
-const getMetrics = () => {
-    const maxTrackScroll = Math.max(0, track.scrollWidth - track.clientWidth);
-    const sectionSpan = Math.max(1, maxTrackScroll);
-    const sectionStart = trigger.getBoundingClientRect().top + window.scrollY;
-
-    return {
-        maxTrackScroll,
-        sectionSpan,
-        sectionStart
-    };
-};
-
-const syncProgress = (ratio = null) => {
-    const { maxTrackScroll } = getMetrics();
-    const safeRatio = clamp(ratio === null
-        ? (maxTrackScroll ? track.scrollLeft / maxTrackScroll : 0)
-        : ratio, 0, 1);
-    const progressWidth = progressTrack ? safeRatio * progressTrack.clientWidth : 0;
-
-    if (horizontalState.lastProgressWidth < 0 || needsSync(horizontalState.lastProgressWidth, progressWidth)) {
-        progressBar.style.width = `${safeRatio * 100}%`;
-        horizontalState.lastProgressWidth = progressWidth;
-    }
-
-    if (scrollHint) {
-        scrollHint.style.opacity = safeRatio > 0.06 ? '0' : '1';
-    }
-};
-
-const refreshHorizontalScene = () => {
-    const { sectionSpan } = getMetrics();
-    trigger.style.height = `${Math.ceil(window.innerHeight + sectionSpan)}px`;
-    horizontalState.lastProgressWidth = -1;
-    syncFromPage();
-};
-
-const getPageProgress = () => {
-    const { sectionSpan, sectionStart } = getMetrics();
-    return clamp((window.scrollY - sectionStart) / sectionSpan, 0, 1);
-};
-
-const jumpToProgress = (ratio) => {
-    const clampedRatio = clamp(ratio, 0, 1);
-    const { maxTrackScroll, sectionSpan, sectionStart } = getMetrics();
-    const nextLeft = snapToDevicePixel(clampedRatio * maxTrackScroll);
-    const nextTop = snapToDevicePixel(sectionStart + clampedRatio * sectionSpan);
-
-    if (needsSync(track.scrollLeft, nextLeft)) {
-        horizontalState.syncingFromTrack = true;
-        track.scrollLeft = nextLeft;
-    }
-
-    if (needsSync(window.scrollY, nextTop)) {
-        horizontalState.syncingFromTrack = true;
-        scrollPageInstant(nextTop);
-    }
-
-    syncProgress(clampedRatio);
-
-    requestAnimationFrame(() => {
-        horizontalState.syncingFromTrack = false;
-    });
-};
-
-const syncFromPage = () => {
-    if (horizontalState.isDraggingProgress || horizontalState.syncingFromTrack) {
-        return;
-    }
-
-    const { maxTrackScroll } = getMetrics();
-    const ratio = getPageProgress();
-    const nextLeft = snapToDevicePixel(ratio * maxTrackScroll);
-
-    if (!needsSync(track.scrollLeft, nextLeft)) {
-        syncProgress(ratio);
-        return;
-    }
-
-    horizontalState.syncingFromPage = true;
-    track.scrollLeft = nextLeft;
-    syncProgress(ratio);
-
-    requestAnimationFrame(() => {
-        horizontalState.syncingFromPage = false;
-    });
-};
-
-const requestPageSync = () => {
-    if (horizontalState.pageRafId) {
-        return;
-    }
-
-    horizontalState.pageRafId = window.requestAnimationFrame(() => {
-        horizontalState.pageRafId = 0;
-        syncFromPage();
-    });
-};
-
-const performProgressDrag = (clientX) => {
-    const rect = progressArea.getBoundingClientRect();
-    const ratio = clamp((clientX - rect.left) / rect.width, 0, 1);
-    jumpToProgress(ratio);
-};
-
-track.addEventListener('scroll', () => {
-    if (horizontalState.isDraggingProgress) {
-        return;
-    }
-
-    const { maxTrackScroll, sectionSpan, sectionStart } = getMetrics();
-    const ratio = maxTrackScroll ? track.scrollLeft / maxTrackScroll : 0;
-    const nextTop = snapToDevicePixel(sectionStart + ratio * sectionSpan);
-
-    syncProgress(ratio);
-
-    if (horizontalState.syncingFromPage || !needsSync(window.scrollY, nextTop)) {
-        return;
-    }
-
-    horizontalState.syncingFromTrack = true;
-    scrollPageInstant(nextTop);
-
-    requestAnimationFrame(() => {
-        horizontalState.syncingFromTrack = false;
-    });
-}, { passive: true });
-
-window.addEventListener('scroll', requestPageSync, { passive: true });
-window.addEventListener('resize', refreshHorizontalScene);
-window.addEventListener('load', refreshHorizontalScene);
-
-progressArea.addEventListener('pointerdown', (e) => {
-    horizontalState.isDraggingProgress = true;
-    horizontalState.activePointerId = e.pointerId;
-    performProgressDrag(e.clientX);
-});
-
-window.addEventListener('pointermove', (e) => {
-    if (!horizontalState.isDraggingProgress || e.pointerId !== horizontalState.activePointerId) {
-        return;
-    }
-
-    performProgressDrag(e.clientX);
-});
-
-const stopProgressDrag = (e) => {
-    if (horizontalState.activePointerId !== null && e.pointerId !== horizontalState.activePointerId) {
-        return;
-    }
-
-    horizontalState.isDraggingProgress = false;
-    horizontalState.activePointerId = null;
-};
-
-window.addEventListener('pointerup', stopProgressDrag);
-window.addEventListener('pointercancel', stopProgressDrag);
-
-refreshHorizontalScene();
-</script>
+    <script src="cursor.js"></script>
     <script src="transition.js"></script>
 </body>
 </html>

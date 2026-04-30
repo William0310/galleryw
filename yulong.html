@@ -3,126 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lijiang | Wphotographs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="yulong.css?v=1080">
+    <title>Lijiang | William's Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css?v=2003">
+    <link rel="stylesheet" href="series.css?v=2004">
+    <link rel="stylesheet" href="yulong.css?v=2001">
+    <link rel="stylesheet" href="cursor.css?v=2001">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="stylesheet" href="cursor.css">
-    
 </head>
-<body>
+<body class="series-page series-yulong">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
-    <nav class="ui-layer">
-        <a href="index.html" class="btn-back">
-<a href="index.html" class="btn-back">
-    <span class="back-arrow">←</span>
-    <span>BACK TO HOME</span>
-</a>
-       
-    </nav>
+    <main class="page-shell">
+        <header class="page-topbar">
+            <a href="index.html" class="back-link">← Back to gallery</a>
+            <nav class="topbar-links" aria-label="Series">
+                <a href="chongqing.html">Previous: Chongqing</a>
+                <a href="about.html">About</a>
+            </nav>
+        </header>
 
-    <div class="data-layer">
-        <div class="altitude-box">
-            <span class="label">27.1°N, 100.2°E</span>
-            <h2 id="alt-text">Blue Moon Valley</h2>
-        </div>
-        <div class="exif-box">
-            <span class="label">EXIF / Z9</span>
-            <p id="exif-text">24MM // F/8 // 1/400s</p>
-        </div>
-    </div>
-<div class="scroll-indicator" id="scroll-indicator">
-        <div class="indicator-text">SCROLL</div>
-        <div class="indicator-line">
-            <div class="line-progress"></div>
-        </div>
-    </div>
-    <main class="frozen-viewport">
-        
-        <div class="slide active" data-alt="Blue Moon Valley" data-exif="24MM // F/8 // 1/320s">
-            <div class="vignette"></div>
-            <img src="images/lijiang1.webp" alt="Ganhaizi" fetchpriority="high">
-        </div>
+        <section class="series-hero">
+            <div class="series-copy">
+                <p class="eyebrow">Lijiang / December 2025</p>
+                <h1 class="headline">Lijiang</h1>
+                <p class="lede">
+                    A colder chapter: mountain light, thinner air, slower color, and frames that work better when the page leaves them alone.
+                </p>
+                <div class="series-actions">
+                    <span class="chip">Blue Moon Valley</span>
+                    <span class="chip">Yulong Snow Mountain</span>
+                    <span class="chip">Nikon Z9</span>
+                </div>
+            </div>
 
-        <div class="slide" data-alt="Prayer Flag" data-exif="28MM // F/6.3 // 1/1600s">
-            <div class="vignette"></div>
-            <img src="images/lijiang3.webp" alt="Glacier Park" loading="lazy">
-        </div>
+            <aside class="glass-card hero-note">
+                <div>
+                    <p class="meta-kicker">Series intent</p>
+                    <p>
+                        The previous full-screen slide lock looked dramatic, but it boxed the viewer in. This cut keeps the atmosphere while making the sequence breathe.
+                    </p>
+                </div>
+                <div class="metric-grid">
+                    <article class="metric-card">
+                        <span>Frames</span>
+                        <strong>05</strong>
+                        <p>A shorter and more restrained edit.</p>
+                    </article>
+                    <article class="metric-card">
+                        <span>Altitude</span>
+                        <strong>4680m</strong>
+                        <p>Thin air and colder contrast.</p>
+                    </article>
+                </div>
+            </aside>
+        </section>
 
-        <div class="slide" data-alt="4680M" data-exif="44MM // F/6.3 // 1/1600s">
-            <div class="vignette"></div>
-            <img src="images/lijiang4.webp" alt="The Peak" loading="lazy">
-        </div>
+        <section class="story-grid" aria-label="Lijiang photo series">
+            <figure class="story-card span-7 landscape">
+                <img src="images/lijiang1.webp" alt="Blue Moon Valley in Lijiang">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Blue Moon Valley</h2>
+                        <span class="caption-index">01</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 24mm · f/8 · 1/320s</p>
+                    <p class="caption-copy">The opening frame is almost all atmosphere, which makes it a better invitation than a more dramatic close-up.</p>
+                </figcaption>
+            </figure>
 
-        <div class="slide" data-alt="MaoNiuPing." data-exif="120MM // F/4 // 1/4000s">
-            <div class="vignette"></div>
-            <img src="images/lijiang5.webp" alt="Cloud Sea" loading="lazy">
-        </div>
-         <div class="slide" data-alt="'Permanent Resident'" data-exif="END OF THE CHAPTER">
-            <div class="vignette"></div>
-            <img src="images/cow.webp" alt="Cloud Sea" loading="lazy">
-        </div>
+            <figure class="story-card span-5 landscape">
+                <img src="images/lijiang3.webp" alt="Prayer flags in Lijiang">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Prayer Flag</h2>
+                        <span class="caption-index">02</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 28mm · f/6.3 · 1/1600s</p>
+                    <p class="caption-copy">Placed second to tighten the sequence and bring color back into an otherwise cool tonal run.</p>
+                </figcaption>
+            </figure>
 
+            <figure class="story-card span-6 landscape">
+                <img src="images/lijiang4.webp" alt="High-elevation lookout in Lijiang">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">4680M</h2>
+                        <span class="caption-index">03</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 44mm · f/6.3 · 1/1600s</p>
+                    <p class="caption-copy">A cleaner, more graphic image that keeps the chapter from becoming only scenic softness.</p>
+                </figcaption>
+            </figure>
+
+            <figure class="story-card span-6 landscape">
+                <img src="images/lijiang5.webp" alt="Cloud layers over Maoniuping">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Maoniuping</h2>
+                        <span class="caption-index">04</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 120mm · f/4 · 1/4000s</p>
+                    <p class="caption-copy">A telephoto frame with enough tension to keep the final act from flattening out.</p>
+                </figcaption>
+            </figure>
+
+            <figure class="story-card span-12 landscape">
+                <img src="images/cow.webp" alt="Yak standing in the grasslands near Lijiang">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Permanent Resident</h2>
+                        <span class="caption-index">05</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · Closing frame</p>
+                    <p class="caption-copy">A gentler ending: local presence, open land, and enough humor to keep the chapter from ending too solemnly.</p>
+                </figcaption>
+            </figure>
+        </section>
+
+        <section class="series-outro glass-card">
+            <div>
+                <h2>Cold air, warmer sequencing.</h2>
+                <p>Lijiang keeps its atmosphere, but the page no longer traps the work inside a rigid slideshow.</p>
+            </div>
+            <a href="about.html" class="cta-link">Meet the photographer</a>
+        </section>
     </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const slides = document.querySelectorAll('.slide');
-            const altText = document.getElementById('alt-text');
-            const exifText = document.getElementById('exif-text');
-            
-            let current = 0;
-            let isAnimating = false; // 动画锁，防止用户狂滚鼠标
-
-            // 核心溶解切换函数
-            function goToSlide(index) {
-                if (isAnimating || index === current || index < 0 || index >= slides.length) return;
-                
-                isAnimating = true;
-
-                // 1. 拿掉当前照片的 active，它会开始模糊并消失
-                slides[current].classList.remove('active');
-                
-                // 2. 更新索引
-                current = index;
-                
-                // 3. 给下一张照片加上 active，它会从大雾中清晰地浮现
-                slides[current].classList.add('active');
-
-                // 4. 更新仪表盘文字 (加一点延迟，让文字和图像的浮现节奏一致)
-                setTimeout(() => {
-                    altText.innerText = slides[current].getAttribute('data-alt');
-                    exifText.innerText = slides[current].getAttribute('data-exif');
-                }, 400); // 400ms 后文字切换
-
-                // 5. 锁定 1.5 秒，这期间用户怎么滑都没用，强迫他们静静看完过渡
-                setTimeout(() => {
-                    isAnimating = false;
-                }, 1500); 
-            }
-
-            // --- 电脑端：监听鼠标滚轮 ---
-            window.addEventListener('wheel', (e) => {
-                if (e.deltaY > 10) goToSlide(current + 1); // 向下滚，海拔上升
-                if (e.deltaY < -10) goToSlide(current - 1); // 向上滚，海拔下降
-            });
-
-            // --- 手机端：监听手指滑动 ---
-            let touchStartY = 0;
-            window.addEventListener('touchstart', e => touchStartY = e.touches[0].clientY);
-            window.addEventListener('touchend', e => {
-                const touchEndY = e.changedTouches[0].clientY;
-                const delta = touchStartY - touchEndY;
-                
-                if (delta > 20) goToSlide(current + 1); // 向上划，看下一张
-                if (delta < -20) goToSlide(current - 1); // 向下划，看上一张
-            });
-        });
-    </script>
-    <div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-viewfinder" id="cursor-viewfinder"></div>
-
-<script src="transition.js"></script>
-<script src="cursor.js"></script>
+    <script src="cursor.js"></script>
+    <script src="transition.js"></script>
+    <script src="series-viewer.js"></script>
 </body>
 </html>

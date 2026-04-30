@@ -3,60 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Wphotographs</title>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400&family=Manrope:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="about.css?v=101">
-      <link rel="stylesheet" href="cursor.css">
+    <title>About | William's Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css?v=2003">
+    <link rel="stylesheet" href="about.css?v=2003">
+    <link rel="stylesheet" href="cursor.css?v=2001">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body>
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-viewfinder" id="cursor-viewfinder"></div>
-    <div class="noise-overlay"></div>
+<body class="about-page">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
-    <main class="coordinate-layout">
-        
-        <div class="corner top-left fade-in-1">
-            <h1 class="name-brand">WILLIAM.</h1>
-            <p class="sub-brand">Visuals & Code</p>
-        </div>
+    <main class="page-shell">
+        <header class="page-topbar">
+            <a href="index.html" class="back-link">← Back to gallery</a>
+            <nav class="topbar-links" aria-label="About">
+                <a href="archive.html">Archive</a>
+                <a href="qinghai.html">Start with Qinghai</a>
+            </nav>
+        </header>
 
-        <div class="center-title fade-in-2">
-            <span class="title-layer back">PHOTOGRAPHER</span>
-            <span class="title-layer front">CREATOR</span>
-        </div>
-<section class="manifesto-container fade-in-3">
-    <div class="manifesto-content">
-        <p class="manifesto-text">
-            Seeking order in the chaos. <br>
-            Capturing the tension between mechanical pureness and natural sublimity. <br> I am whatever it takes.
-        </p>
-        <span class="manifesto-label">PERSONAL MANIFESTO</span>
-    </div>
-</section>
-        <div class="corner bottom-left gear-list fade-in-3">
-            <div class="terminal-line">> INIT_GEAR_SYS...</div>
-            <div class="terminal-line">OPTICS  [ Nikon Z9 / Canon R5 / A7M IV ]</div>
-            <div class="terminal-line">LOGIC   [ HTML / CSS / Vanilla JS ]</div>
-            <div class="terminal-line">TYPE    [ Manrope / Playfair / JB Mono ]</div>
-            <div class="terminal-line">SYNERGY   [Gemini 3.0 Pro]</div>
-            <div class="terminal-line">STATUS  [ In the lab ] <span class="blink">_</span></div>
-        </div>
+        <section class="about-grid">
+            <figure class="frame portrait-panel">
+                <img src="images/me.webp" alt="Portrait of William">
+            </figure>
 
-        <div class="corner bottom-right entry-box fade-in-4">
-            <p class="geo-coord">39° 54.45' N<br>116° 23.83' E</p>
-            
-            <a href="index.html" class="enter-btn">
-                BACK
-                <span class="arrow">→</span>
-            </a>
-        </div>
+            <div class="about-copy stack">
+                <div>
+                    <p class="eyebrow">About the Artist</p>
+                    <h1 class="headline">William</h1>
+                </div>
+                <p class="lede">
+                    Building a photographic archive that feels calm, tactile, and slightly cinematic.
+                    The goal is not just to show where I went, but to show how each place changed the pace of seeing.
+                </p>
+                <p class="about-body">
+                    I like systems with restraint: strong image choices, clean spacing, and interactions that do not compete with the work.
+                    The gallery now reflects that better. It is still personal, still a little experimental, but much less interested in showing off code for its own sake.
+                </p>
 
+                <div class="detail-grid">
+                    <article class="detail-card">
+                        <span>Base</span>
+                        <p>Beijing, China; Pennsylvania, USA</p>
+                    </article>
+                    <article class="detail-card">
+                        <span>Cameras</span>
+                        <p>Nikon Z9, Canon R5, Sony A7M IV, Dji Mini 3Pro</p>
+                    </article>
+                    <article class="detail-card">
+                        <span>Build stack</span>
+                        <p>HTML, CSS, Vanilla JS / Synergy [Gemini & Chatgpt] </p>
+                    </article>
+                    <article class="detail-card">
+                        <span>Current focus</span>
+                        <p>Photography, layout systems, and cleaner visual storytelling</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="manifesto-grid">
+            <article class="glass-card manifesto-panel">
+                <p class="section-kicker">Manifesto</p>
+                <h2 class="section-title">Seeking order inside chaos.</h2>
+                <p class="section-copy">
+                    I am drawn to places where structure and atmosphere are pulling in opposite directions:
+                    temple corridors, mountain weather, city glass, long roads, and artificial light after midnight.
+                </p>
+            </article>
+
+            <article class="glass-card manifesto-panel">
+                <p class="section-kicker">Working rule</p>
+                <h2 class="section-title">I am whatever it takes.</h2>
+                <p class="section-copy">
+                    That line stays, but the design around it is now quieter. Better work deserves fewer distractions,
+                    fewer forced effects, and more confidence in spacing, sequence, and image choice.
+                </p>
+            </article>
+        </section>
+
+        <footer class="page-footer">
+            <p>William's Gallery</p>
+            <p>Visuals, code, and an archive still growing.</p>
+        </footer>
     </main>
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
-<script src="cursor.js"></script>
-<script src="transition.js"></script>
+    <script src="cursor.js"></script>
+    <script src="transition.js"></script>
 </body>
 </html>

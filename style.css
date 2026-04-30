@@ -1,901 +1,266 @@
-
-/* Welcome :) Mobile adaptive formatting technology @Dia  */
-
-
-:root {
-    --bg-color: #000000;       
-    --text-main: #f5f5f5;      
-    --text-muted: #c2c2c2;     
-    --card-bg-1: #0a0a0a;      
-    --card-bg-2: #242424;      
-    --card-bg-3: #2e2e2e;      
+.home-page {
+    background:
+        radial-gradient(circle at 82% 14%, rgba(213, 165, 106, 0.15), transparent 30%),
+        radial-gradient(circle at 12% 10%, rgba(86, 124, 160, 0.16), transparent 28%),
+        linear-gradient(180deg, #0d141c 0%, #091017 100%);
 }
 
-/* --- 顶级画廊 Loading 仪式感 --- */
-
-/* 加载期间锁死滚动条，防止盲摇 */
-body.is-loading {
-    overflow: hidden;
+.home-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 28px;
+    align-items: end;
+    min-height: calc(100vh - 170px);
+    padding: 26px 0 56px;
 }
 
-.loading-overlay {
-    position: fixed;
-    top: 0; 
-    left: 0; 
-    width: 100vw; 
-    height: 100vh;
-    background-color: #030305; /* 极其压抑深邃的黑 */
-    z-index: 9999; /* 保证它盖住网站的所有东西 */
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-    /* 核心灵魂：极其平滑的贝塞尔曲线滑出动画 */
-    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+.hero-copy {
+    display: grid;
+    gap: 22px;
 }
 
-/* 触发滑开状态 */
-.loading-overlay.slide-up {
-    transform: translateY(-100%);
-}
-
-.loading-text {
-    font-family: 'Manrope', sans-serif;
-    font-size: 1.5rem; /* 极致的克制 */
-    letter-spacing: 0.4em;
-    color: rgba(255, 255, 255, 0.4);
-    text-align: center;
-    line-height: 2.5;
-    /* 微弱的呼吸感，告诉用户网页没死机 */
-    animation: textPulse 2s infinite alternate ease-in-out;
-}
-
-/* 用 Playfair Display 增加一丝文学气质 */
-.loading-text .italic-sub {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    color: rgba(255, 255, 255, 0.7);
-    letter-spacing: 0.2em;
-}
-
-@keyframes textPulse {
-    0% { opacity: 0.5; }
-    100% { opacity: 1; }
-}
-
-
-
-
-
-
-
-h2 {
-
-    hyphens: auto;          
-    overflow-wrap: break-word;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-img {
-    display: block; 
-    width: 100%;
-    height: auto;
-}   
-
-body {
-    font-family: 'Manrope', sans-serif;
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    -webkit-font-smoothing: antialiased;
-     margin: 0;
-    padding: 0;
-}
-
-/* ---  --- */
-.container {
-    max-width: 1300px;
-    margin: 0 auto;
-    padding: 0 5%;
-}
-
-/* --- (Hero) --- */
-.hero {
-    min-height: 80vh;
+.hero-actions {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
 }
 
-.hero p.tag {
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-    margin-top: 1rem;
-    font-weight: 600;
+.hero-aside {
+    align-content: start;
 }
 
-.hero p.tag1 {
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.9rem;
-    margin-bottom: 0.0rem;
-    margin-top: 1rem;
-    font-weight: 600;
-    font-style: italic;
-}
-.hero h1 {
-    font-size: clamp(3rem, 6vw, 6rem); /* biggy font */
-    font-weight: 800;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-    max-width: 800px;
-    /* 核心：多层光晕叠加 */
-    text-shadow: 
-        0 0 10px rgba(255, 255, 255, 4), /* 核心柔化 */
-        0 0 30px rgba(255, 255, 255, 0.2),  /* 中层扩散 */
-        0 0 60px rgba(255, 255, 255, 0.1); /* 远端微光 */
-        
-    /* 配合平滑的过渡效果 */
-    transition: text-shadow 0.8s ease;
-}
-/* 定义呼吸动画 */
-@keyframes sloganGlow {
-    0%, 100% {
-        text-shadow: 
-            0 0 10px rgba(255, 255, 255, 0.15),
-            0 0 30px rgba(255, 255, 255, 0.1);
-    }
-    50% {
-        text-shadow: 
-            0 0 15px rgba(255, 255, 255, 0.62), /* 稍微变亮 */
-            0 0 45px rgba(255, 255, 255, 0.45),
-            0 0 70px rgba(255, 255, 255, 0.22);
-    }
-}
-
-/* 应用到 slogan 上 */
-.hero h1 {
-    animation: sloganGlow 5.2s infinite ease-in-out;
-}
-/* --- (The Stacking Cards) --- */
-.projects-stack {
-    padding-bottom: 20vh; 
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 80px; /* 滚动前卡片之间的间距 */
-}
-
-.project-card {
-    /* 核心 CSS 魔法：吸顶效果 */
-    position: sticky;
-    transition: filter 0.7s ease, box-shadow 0.7s ease, transform 1s ease;
-    filter: brightness(0.8);
-    height: 75vh;
-    border-radius: 32px;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border: 1.5px solid rgba(230, 230, 230, 0.1);
-    box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.6);
-    transform-origin: top center;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
-}
-
-.project-card.is-active { /* :active 是为了兼容手机端的手指点按 */
-    /* 🎯 亮度提升 20%，让底部的暗调照片和文字瞬间通透 */
-    filter: brightness(1.4); 
-    box-shadow: 0 0 45px rgba(255, 255, 255, 0.3);
-    transform: scale(1.025); /* 微微放大，推向用户 */
-     /* 确保亮起的卡片光晕不会被上面的卡片挡住 */
-}
-/* cards */
-.card-1 { 
-    
-    
-    top: 10vh; 
-    background-color: var(--card-bg-1); 
-    z-index: 1;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url('images/qinghai1.webp');
-    background-size:cover;
-    
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    background-clip:padding-box;
+.hero-note {
+    padding: 20px 22px;
     overflow: hidden;
 }
-.card-2 { 
-    top: calc(10vh + 30px); 
-    background-color: var(--card-bg-2); 
-    z-index: 2; 
-     background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url('images/japan1.webp');
-    background-size:cover;
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    background-clip:padding-box;
-    overflow: hidden;
-}
-.card-3 { 
-    top: calc(10vh + 60px); 
-    background-color: var(--card-bg-3); 
-    z-index: 3; 
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url('images/chongqing1.webp');
-     background-size:cover;
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    background-clip:padding-box;
-    overflow: hidden;
-}
-.card-4 { 
-    top: calc(10vh + 90px); 
-    background-color: var(--card-bg-3); 
-    z-index: 4; 
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url('images/lijiang1.webp');
-     background-size:cover;
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    background-clip:padding-box;
-    overflow: hidden;
-}
-.card-5 { 
-    top: calc(10vh + 120px); /*everycard+30px!!!!!!!!!!!!!!!!!*/
-    background-color: var(--card-bg-3); 
-    z-index: 5; 
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-    url('images/me.webp');
-     background-size:cover;
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    background-clip:padding-box;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-/* --- 全站胶片噪点 (Grain Overlay) --- */
-body::before {
-    content: "";
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw; height: 100vh;
-    /* 指向一张极细微的噪点图，或者用 SVG 滤镜生成 */
-    background: url('https://grainy-gradients.vercel.app/noise.svg');
-    opacity: 0.04; /* 极度克制，似有还无 */
-    pointer-events: none;
-    z-index: 99999;
-    mix-blend-mode: overlay;
+
+.hero-note__intro {
+    display: grid;
+    gap: 10px;
 }
 
-/* --- 卡片光学暗角 (Vignette) --- */
-.project-card::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: radial-gradient(circle at center, transparent 30%, rgba(3, 3, 5, 0.4) 100%);
-    pointer-events: none;
-    z-index: 2;
-    transition: opacity 0.8s ease;
-}
-
-/* 仅在卡片激活时，暗角微微加深，产生“聚焦”感 */
-.project-card.is-active::after {
-    opacity: 0.7;
-}
-/* --- innner cards --- */
-.card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.card-year {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-muted);
-}
-
- /* --- 视差图层配置 (修正版) --- */
-.project-card .card-content h2 {
-    will-change: transform, letter-spacing;
-    /* 🚨 删掉了 transform，绝不能让 CSS 干扰 JS 的高频滚动渲染 */
-    transition: letter-spacing 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                opacity 0.8s ease,
-                text-shadow 0.8s ease; 
-}
-
-.project-card.is-active .card-content h2 {
-    letter-spacing: 0em; 
-    opacity: 1;
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.2); 
-}
-
-.project-card .card-content p {
-    /* 🚨 同样删掉 transform 的 transition */
-    transition: opacity 0.8s ease;
-    opacity: 0.4;
-    will-change: transform;
-}
-
-.project-card.is-active .card-content p {
-    opacity: 0.8;
-}
-.card-content h2 {
-    font-size: 3rem;
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    margin-bottom: 0.5rem;
-}
-
-.card-content p {
-    font-size: 1.2rem;
-    color: var(--text-muted);
-    max-width: 500px;
-}
-
-
-.btn-view {
+.hero-note__kicker {
     display: inline-block;
-    margin-top: 2rem;
-    padding: 1rem 2rem;
-    border-radius: 50px;
-    background: #fff;
-    color: #000;
-    text-decoration: none;
-    font-weight: 600;
-    transition: transform 0.3s ease;
+    max-width: 100%;
+    margin-bottom: 2px;
+    overflow-wrap: anywhere;
+    letter-spacing: 0.2em;
+    line-height: 1.3;
 }
 
-.project-card:hover .btn-view {
-    transform: translateX(15px);
+.hero-note__metrics {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-footer {
-    text-align: center;
-    padding: 30px;
-    border-top: 2px solid #333;
-    color: var(--accent-color);
-    font-size: 14px;
+.hero-note .metric-card {
+    padding: 16px;
 }
 
-/* --- mobile --- */
-@media (max-width: 768px) {
-    .project-card .card-content h2 {
-        will-change: auto;
-        transition: opacity 0.45s ease, text-shadow 0.45s ease;
-        letter-spacing: -0.02em;
-    }
-
-    .project-card.is-active .card-content h2 {
-        letter-spacing: -0.02em;
-        text-shadow: 0 0 12px rgba(255, 255, 255, 0.16);
-    }
-
-    /* 1. 缩小卡片内边距：上下留 2rem，左右留 1.5rem，给文字释放横向空间 */
-    .project-card {
-        padding: 2rem 1.5rem; 
-    }
-
-    /* 2. 动态缩小卡片标题：使用 clamp 函数让字体在 2.5rem 到 3.5rem 之间丝滑缩放@Gemini */
-    .card-content h2 {
-        font-size: clamp(2.5rem, 12vw, 3.5rem); 
-        line-height: 1.1;
-        word-break: break-word; 
-    }
-
-    
-    .card-year {
-        font-size: 1rem;
-    }
-
-    /* 4. 首屏的 Hero 大字也跟着收缩一下，保持整体比例和谐 */
-    .hero h1 {
-        font-size: clamp(2.5rem, 10vw, 4rem);
-    }
-}
-/* --- Archive Stub Aesthetics --- */
-/* --- Archive Stub: The Hospitality Exit --- */
-/* style.css */
-
-/* 1. 确保父卡片允许内容溢出并作为定位基准 */
-/* style.css */
-
-/* 1. 确保父卡片允许内容溢出并作为定位基准 */
-.project-card.card-5 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    /* 假设你的主卡片圆角是 30px，这里需要一致 */
-    border-radius: 32px; 
-    overflow: hidden; /* 裁剪内容以符合圆角 */
+.hero-note .metric-card p {
+    font-size: 0.88rem;
 }
 
-/* 2. Archive Stub 的样式重构 */
-.archive-stub {
-    width: 100%;
-    height: 150px; /* 进一步压缩高度，确保它像一个小备注 */
-    background-color: #08080a; /* 比卡片稍浅或稍深一点，制造层次感 */
-    padding: 0 2rem 1.5rem 1.5rem;
-    box-sizing: border-box;
-    /* 💡 圆角设定：保持与主卡片底部一致 */
-    border-bottom-left-radius: 32px;
-    border-bottom-right-radius: 32px;
+.collections-section {
+    margin-top: 54px;
 }
 
-/* 3. 模拟机票虚线：不再使用 border-top，使用一个独立的 div 更有质感 */
-.stub-divider {
-    width: 100%;
-    height: 1px;
-    padding-top: 1rem;
-    margin-bottom: 1.5rem;
-    border-top: 1px dashed rgba(255, 255, 255, 0.15);
-}
-
-.stub-body {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-.stub-tag {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.6rem;
-    letter-spacing: 0.3em;
-    color: rgba(255, 255, 255, 0.3);
-}
-
-.stub-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1rem;
-    color: #888;
-    margin: 0.3rem 0 0 0;
-}
-
-.stub-button {
-    text-decoration: none;
-    color: #fff;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 0.2rem;
-    transition: all 0.3s ease;
-    
-}
-html {
-    scroll-behavior: smooth;
-}
-.stub-button:hover {
-    gap: 1rem;
-    border-bottom-color: #fff;
-}
-
-.stub-arrow {
-    width: 14px;
-    height: 14px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.5;
-}
-/* 移动端优化 */
-@media (max-width: 768px) {
-    .archive-stub {
-        height: 20vh;
-        margin-top: -5vh;
-    }
-    .stub-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 1.5rem;
-    }
-}
-
-/* --- 罗盘：侧边指示器 --- */
-.scroll-compass {
-    position: fixed;
-    right: 4rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 100;
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.compass-line-track {
-    width: 1px;
-    height: 180px;
-    background: rgba(255, 255, 255, 0.1);
-    position: relative;
-}
-
-.compass-active-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2px;
-    height: 36px; /* 180 / 5 */
-    background: #fff;
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-
-.compass-steps {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
     gap: 24px;
 }
 
-.step-item {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.65rem;
+.collection-card {
+    display: grid;
+    gap: 0;
+    overflow: hidden;
+    background: rgba(10, 16, 24, 0.76);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.collection-card--wide {
+    grid-column: span 7;
+}
+
+.collection-card--narrow {
+    grid-column: span 5;
+}
+
+.collection-card--profile {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+}
+
+.collection-visual {
+    min-height: 320px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.collection-visual img {
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+}
+
+.collection-visual--portrait {
+    min-height: 420px;
+}
+
+.collection-visual--square {
+    min-height: 100%;
+}
+
+.collection-copy {
+    display: grid;
+    gap: 16px;
+    padding: 24px;
+}
+
+.collection-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text-faint);
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.collection-copy h3 {
+    margin: 0;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2rem, 3vw, 3rem);
+    line-height: 0.95;
     font-weight: 600;
-    letter-spacing: 0.1em;
-    color: rgba(255, 255, 255, 0.2);
-    transition: color 0.4s ease;
 }
 
-.step-item.is-active {
-    color: #fff;
+.collection-copy p {
+    margin: 0;
+    color: var(--text-soft);
 }
 
-/* --- 光标：自定义取景器 --- */
-body {
-    cursor: none; /* 全局隐藏原生光标 */
-}
-/* 确保所有卡片里的文字区块具有纯粹的块级物理属性 */
-.project-card .card-content h2,
-.project-card .card-content p {
-    display: block;
-    margin: 0; /* 消除 margin 塌陷带来的干扰 */
+.collection-card:hover .collection-visual img {
+    transform: scale(1.03);
 }
 
-/* 根据你之前的排版，如果去掉 margin 让 p 贴得太近，可以用 padding 顶开 */
-.project-card .card-content p {
-    padding-top: 0.5rem; 
-}
-/* 所有的交互元素都要加这个类，或者在 JS 中全局处理 */
-a, button, .project-card {
-    cursor: none;
-}
-
-.cursor-dot {
-    width: 4px;
-    height: 4px;
-    background: #fff;
-    border-radius: 100%;
-    position: fixed;
-    top: 0; left: 0;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.cursor-viewfinder {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    position: fixed;
-    top: 2px; left: 2px;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    transition: width 0.3s ease, height 0.3s ease, border 0.3s ease;
-}
-
-/* 悬停状态下的取景器变大且合焦 */
-.cursor-viewfinder.is-hovering {
-    width: 55px;
-    height: 55px;
-    border: 2px solid rgba(255, 255, 255, 0.8);
-    background: rgba(146, 146, 146, 0.25);
-}
-
-/* 适配移动端：关闭自定义光标 */
-@media (max-width: 768px) {
-    body { cursor: auto; }
-    .cursor-dot, .cursor-viewfinder, .scroll-compass { display: none; }
-}
-
-
-
-@media (max-width: 768px) {
-    /* 将罗盘改造成底部的水平进度条 */
-    .scroll-compass {
-        right: 0; 
-        top: auto; 
-        bottom: 0; 
-        left: 0;
-        width: 100vw;
-        height: auto; /* 高度自适应 */
-        transform: none;
-        flex-direction: row;
-        justify-content: space-between;
-        /* 关键1：加入底部安全区适配，防止被 iPhone 小黑条挡住 */
-        padding: 1rem 10% calc(1rem + env(safe-area-inset-bottom)) 10%; 
-        /* 增加一层黑色渐变底色，确保数字在划过白色照片时依然清晰 */
-        background: linear-gradient(to top, rgba(3,3,5,0.95) 20%, transparent);
-        z-index: 100; /* 确保不被卡片盖住 */
-    }
-
-    .compass-line-track {
-        display: none; /* 砍掉垂直线 */
-    }
-
-    .compass-steps {
-        flex-direction: row; /* 数字横向展开 */
-        width: 100%;
-        justify-content: space-between;
-        gap: 0;
-    }
-
-    .step-item {
-        font-size: 0.65rem;
-        opacity: 0.4;
-        transition: all 0.3s ease;
-    }
-    
-    .step-item.is-active {
-        opacity: 1;
-        /* 手机端的高亮表现为文字变白，并稍微上浮 */
-        transform: translateY(-3px);
-    }
-
-    /* 手机端必须关闭自定义光标，防止误触和卡顿 */
-    .cursor-dot, .cursor-viewfinder {
-        display: none !important;
-    }
-    body {
-        cursor: auto !important;
-    }
-}
-
-/* 垂直区：确保高度足够让 5 张卡片叠完 */
-.vertical-wrap {
-    position: relative;
-    height: 400vh; /* 这里的倍数决定了 5 张卡片停留的总时长 */
-}
-
-/* 横向转轴区：作为新的一层出现 */
-.horizontal-pivot {
-    position: relative;
-    height: 200vh; /* 初始兜底高度，真实长度由 JS 按轨道宽度动态计算 */
-    background: #000;
-    z-index: 100; /* 确保它能盖在/推走前面的内容 */
-}
-
-.h-sticky-box {
-    position: sticky;
-    top: 0;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    display: flex;
+.home-archive {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
     align-items: center;
+    margin-top: 42px;
+    padding: 28px;
 }
 
-.h-track {
-    display: flex;
-    gap: 9.5vw;
-    padding: 0 12vw;
-    width: 100vw; /* 🎯 必须有固定宽度 */
-    
-    /* 🎯 保留轨道原生横滑，纵向则交给整页滚动 */
-    overflow-x: auto; 
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch; /* 保证手机端顺滑 */
-    scrollbar-width: none; /* Firefox 隐藏滚动条 */
-    overscroll-behavior-x: contain;
-    scroll-behavior: auto;
-    touch-action: pan-x pan-y;
-}
-
-.h-track::-webkit-scrollbar {
-    display: none;
-}
-
-/* --- 🎯 修复：横向卡片内容集成 --- */
-
-.h-item {
-    flex-shrink: 0;
-    width: 75vw; /* 电脑端宽度 */
-    height: 70vh;
-    position: relative; /* 必须为 relative，让内部文字绝对定位 */
-    overflow: hidden;
-    background: #000;
-    border-radius: 32px;
-    box-shadow: 0 0 45px rgba(255, 255, 255, 0.0);
-    filter: brightness(1.05); 
-    border: 2px solid rgba(207, 207, 207, 0.1);
-    background-repeat:no-repeat;
-    transform:translateZ(0);
-    background-clip:padding-box;
-}
-.h-item img {
-    width: 100%;
-    /* 🎯 关键 1：高度必须设为 100%，跟随卡片高度变化 */
-    height: 100%; 
-    
-    /* 🎯 关键 2：确保图片不被拉伸变形，而是裁切填充 */
-    object-fit: cover; 
-    
-    /* 消除图片底部的微小空隙（行内元素遗留问题） */
-    display: block; 
-}
-
-/* 遮罩层：从下往上的渐变，确保白字清晰 */
-.h-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-    display: flex;
-    align-items: flex-end; /* 文字靠底部对齐 */
-    padding: 4rem; /* 留出呼吸感边距 */
-    box-sizing: border-box;
-    
-}
-
-.h-info {
-    width: 100%;
-}
-
-/* 标签文字（类似卡片顶部的 25Q2） */
-.h-tag {
-    font-family: 'Manrope', sans-serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.3em;
-    color: rgba(255, 255, 255, 0.5);
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-}
-
-/* 核心标题：变大，使用 Playfair Display */
-.h-info h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.5rem, 4vw, 4.5rem); /* 响应式字体大小 */
-    font-weight: 400;
-    color: #fff;
-    margin-bottom: 2rem;
-    line-height: 1;
-}
-
-/* 伪按钮（装饰用或实际链接） */
-.h-btn {
-    font-size: 0.7rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 5px;
-    color: #fff;
-}
-
-/* 手机端适配：按照你的要求，卡片变窄，文字缩小 */
-@media (max-width: 768px) {
-    .h-item {
-        width: 130vw;
-        height: 75vh;
-        position: relative;
-        border-radius: 32px;
+@media (max-width: 960px) {
+    .home-hero,
+    .home-archive,
+    .collection-card--profile {
+        grid-template-columns: 1fr;
     }
 
-    .h-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
+    .collection-card--wide,
+    .collection-card--narrow,
+    .collection-card--profile {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 720px) {
+    .home-hero {
+        min-height: auto;
+        gap: 18px;
+        padding: 8px 0 34px;
+    }
+
+    .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
         width: 100%;
-        height: 100%;
-        padding: 2.5rem 1.5rem; /* 手机端边距调小点 */
-        display: flex;
-        align-items: flex-end;
-        background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, transparent 60%);
     }
-    .h-info h3 {
-        font-size: 2.2rem; /* 调整标题大小，确保不换行太多次 */
-        margin-bottom: 1rem;
-    }
-    .h-item img {
-        position: absolute;
-        top: 0;
-        left: 0;
+
+    .hero-actions .cta-link {
         width: 100%;
-        height: 100%;
-        object-fit: cover;
+        margin: 0;
+        min-height: 52px;
     }
 
-    .h-tag {
-        font-size: 0.6rem;
+    .hero-tags {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
     }
 
-    .h-progress-container {
-        bottom: 5vh;
+    .hero-tags .chip {
+        width: auto;
+        min-height: 52px;
+        padding: 8px 7px;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.68rem;
+        line-height: 1.25;
+        letter-spacing: 0.02em;
     }
-}
 
-/* 1. 进度条容器：增加点击区域，方便拖拽 */
-.h-progress-container {
-    position: absolute;
-    bottom: 4vh; /* 离底部更近，离卡片更远 */
-    left: 15vw;
-    width: 70vw;
-    height: 50px; /* 🎯 极大的感应热区，确保不会点歪 */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    z-index: 1000; /* 🎯 确保在最顶层，不被任何卡片残影遮挡 */
-    cursor: pointer;
-    touch-action: none; /* 🎯 关键：告诉浏览器这个区域禁止系统默认手势，交给 JS */
-}
+    .hero-note {
+        gap: 14px;
+        padding: 16px;
+    }
 
-.h-progress-track {
-    width: 100%;
-    height: 2px;
-    background: rgba(255, 255, 255, 0.1);
-    position: relative;
-    pointer-events: none; /* 让点击穿透到 container */
-}
+    .hero-note__intro {
+        gap: 8px;
+    }
 
-.h-progress-bar {
-    width: 0%;
-    height: 100%;
-    background: #fff;
-    position: absolute;
-}
+    .hero-note__intro p:last-child {
+        font-size: 0.94rem;
+        line-height: 1.55;
+    }
 
-.h-progress-bar::after {
-    content: '';
-    position: absolute;
-    right: -5px;
-    top: -4px;
-    width: 10px;
-    height: 10px;
-    background: #fff;
-    border-radius: 50%;
-    box-shadow: 0 0 15px #fff;
-}
+    .hero-note__kicker {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+    }
 
-/* 2. 引导小箭头：跳动动画 */
-.h-scroll-hint {
-    font-family: 'Manrope', sans-serif;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: #fff;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    transition: opacity 0.5s ease; /* 消失时的淡出效果 */
-}
+    .hero-note__metrics {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
 
-.arrow-jump {
-    margin-left: 8px;
-    display: inline-block;
-    animation: jump-right 1.2s infinite;
-}
+    .hero-note .metric-card {
+        padding: 12px 10px;
+    }
 
-@keyframes jump-right {
-    0%, 20%, 50%, 80%, 100% { transform: translateX(0); }
-    40% { transform: translateX(10px); }
-    60% { transform: translateX(5px); }
+    .hero-note .metric-card span {
+        margin-bottom: 6px;
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+    }
+
+    .hero-note .metric-card strong {
+        font-size: 1.5rem;
+        line-height: 0.92;
+    }
+
+    .hero-note .metric-card p {
+        display: none;
+    }
+
+    .collection-grid {
+        gap: 18px;
+    }
+
+    .collection-copy,
+    .home-archive {
+        padding: 22px;
+    }
+
+    .collection-meta {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

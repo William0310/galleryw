@@ -1,62 +1,74 @@
-/**
- * transition.js - Gallery W 全局平滑过场 (自带样式注入版)
- */
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. 动态注入 CSS (解决你没有全局 CSS 的痛点)
-    const style = document.createElement('style');
+document.addEventListener("DOMContentLoaded", () => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const duration = reducedMotion ? 0 : 420;
+
+    const style = document.createElement("style");
     style.textContent = `
         .page-transition-overlay {
-            position: fixed; top: 0; left: 0; 
-            width: 100vw; height: 100vh;
-            background-color: #030305;
-            z-index: 99990;
-            pointer-events: all;
-            opacity: 1;
-            transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        .page-transition-overlay.is-revealed {
-            opacity: 0;
+            position: fixed;
+            inset: 0;
+            background: #091017;
+            z-index: 9990;
             pointer-events: none;
+            opacity: 1;
+            transition: opacity ${duration}ms ease;
+        }
+
+        .page-transition-overlay.is-ready {
+            opacity: 0;
         }
     `;
     document.head.appendChild(style);
 
-    // 2. 创建纯黑物理幕布
-    const overlay = document.createElement('div');
-    overlay.className = 'page-transition-overlay';
+    const overlay = document.createElement("div");
+    overlay.className = "page-transition-overlay";
     document.body.appendChild(overlay);
 
-    // 3. 揭幕（稍微延迟，确保 CSS 生效）
     requestAnimationFrame(() => {
-        setTimeout(() => {
-            overlay.classList.add('is-revealed');
-        }, 50);
+        overlay.classList.add("is-ready");
     });
 
-    // 4. 拦截页面跳转
-    const links = document.querySelectorAll('a[href]');
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            const href = link.getAttribute('href');
-            
-            if (href && !href.startsWith('http') && !href.startsWith('#') && link.target !== '_blank') {
-                e.preventDefault(); 
-                
-                // 降下幕布
-                overlay.classList.remove('is-revealed');
-                
-                // 等待 800ms 幕布完全黑下来，再执行真实跳转
-                setTimeout(() => {
-                    window.location.href = href;
-                }, 600); 
+    const isInternalLink = (link) => {
+        const href = link.getAttribute("href");
+        if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
+            return false;
+        }
+
+        if (link.target === "_blank" || link.hasAttribute("download")) {
+            return false;
+        }
+
+        const url = new URL(link.href, window.location.href);
+        return url.origin === window.location.origin || url.protocol === "file:";
+    };
+
+    document.querySelectorAll("a[href]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            if (
+                event.defaultPrevented ||
+                event.button !== 0 ||
+                event.metaKey ||
+                event.ctrlKey ||
+                event.shiftKey ||
+                event.altKey ||
+                !isInternalLink(link)
+            ) {
+                return;
             }
+
+            event.preventDefault();
+            overlay.classList.remove("is-ready");
+
+            const destination = link.href;
+            window.setTimeout(() => {
+                window.location.href = destination;
+            }, duration);
         });
     });
 
-    // 5. iOS Safari 防回退黑屏
-    window.addEventListener('pageshow', (e) => {
-        if (e.persisted) {
-            overlay.classList.add('is-revealed');
+    window.addEventListener("pageshow", (event) => {
+        if (event.persisted) {
+            overlay.classList.add("is-ready");
         }
     });
 });

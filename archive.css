@@ -1,95 +1,43 @@
-/* --- 1. 基础设定 --- */
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #030305; /* 沿用主页极黑 */
-    color: #fff;
-    font-family: 'Manrope', sans-serif;
-    height: 100dvh;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.archive-page {
+    background:
+        radial-gradient(circle at 82% 12%, rgba(255, 224, 168, 0.14), transparent 26%),
+        radial-gradient(circle at 16% 8%, rgba(98, 128, 160, 0.14), transparent 24%),
+        linear-gradient(180deg, #0d131a 0%, #091016 100%);
 }
 
-/* noise @gemini */
-.noise-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 10;
-}
-/* back */
-.btn-back {
-    position: fixed;
-    top: 3rem;
-    left: 3rem;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    z-index: 20;
-    transition: color 0.3s ease;
-}
-.btn-back:hover { color: #fff; }
-
-/* --- 2. word stack --- */
-.archive-wrapper {
-    text-align: center;
-    z-index: 5;
+.archive-hero {
+    max-width: 760px;
+    margin-bottom: 34px;
 }
 
-.reveal-stack {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 24px;
 }
 
-/* Manrope  */
-.reveal-stack > * {
-    margin: 0;
-    letter-spacing: 0.5em;
-    font-weight: 300;
-    transition: all 1s ease;
+.archive-card {
+    grid-column: span 6;
+    padding: 28px;
 }
 
-/* --- 3. 亮度与权重的梯级消失 --- */
-
-
-.text-level-1 {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 2.3rem;
-    opacity: 1;
-    letter-spacing: 0.1em;
-    margin-bottom: 1rem;
+.archive-card--wide {
+    grid-column: 1 / -1;
 }
 
-
-.text-level-2 {
-    font-size: 1.4rem;
-    opacity: 0.7;
-    font-weight: 400;
-    letter-spacing: 0.8em;
+@media (max-width: 900px) {
+    .archive-card,
+    .archive-card--wide {
+        grid-column: 1 / -1;
+    }
 }
 
+@media (max-width: 720px) {
+    .archive-grid {
+        gap: 16px;
+    }
 
-.text-level-3 { font-size: 1.2rem; opacity: 0.6; filter: blur(0.5px); }
-.text-level-4 { font-size: 1.1rem; opacity: 0.50; filter: blur(1px); }
-.text-level-5 { font-size: 1.0rem; opacity: 0.40; filter: blur(1.3px); }
-.text-level-6 { font-size: 0.9rem; opacity: 0.32; filter: blur(1.8px); }
-.text-level-7 { font-size: 0.8rem; opacity: 0.2; filter: blur(2px); }
-.text-level-8 { font-size: 0.7rem; opacity: 0.1; filter: blur(2.4px); }
-.text-level-9 { font-size: 0.6rem; opacity: 0.05; filter: blur(2.9px); }
-
-
-@keyframes fadeInUp {
-    from { transform: translateY(20px); opacity: 0; }
-    to { transform: translateY(0); }
-}
-
-.reveal-stack {
-    animation: fadeInUp 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    .archive-card {
+        padding: 20px;
+    }
 }

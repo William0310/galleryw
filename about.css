@@ -1,224 +1,68 @@
-/* --- 1. 基础与重置 --- */
-html, body {
+.about-page {
+    background:
+        radial-gradient(circle at 78% 12%, rgba(213, 165, 106, 0.15), transparent 30%),
+        radial-gradient(circle at 16% 6%, rgba(132, 163, 191, 0.14), transparent 26%),
+        linear-gradient(180deg, #0d141b 0%, #091017 100%);
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
+    gap: 32px;
+    align-items: center;
+}
+
+.portrait-panel {
+    align-self: start;
+    aspect-ratio: 1850 / 2638;
     margin: 0;
-    padding: 0;
-
-    background-color: #050505; 
-    color: #fff;
-    font-family: 'Manrope', sans-serif;
-
-    width: 100vw;
-    height: 100dvh; 
-    overflow: hidden; 
-   
 }
 
-/* --- 2. noise @gemini --- */
-.noise-overlay {
-    position: fixed;
-    top: 0; left: 0; width: 100%; height: 100%;
-    /* 利用 base64 生成一个极淡的噪点图 */
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 10;
-}
-
-/* --- 3. beijing cordinate --- */
-.coordinate-layout {
-    position: relative;
-    width: 100%;
+.portrait-panel img {
     height: 100%;
-    padding: 2.5rem;
-    box-sizing: border-box;
+    object-fit: cover;
+    object-position: center 18%;
 }
 
-.corner {
-    position: absolute;
-    z-index: 5;
-}
-
-/* --- left -  will --- */
-.top-left { top: 2.5rem; left: 2.5rem; }
-
-.name-brand {
-    font-size: 1rem;
-    font-weight: 600;
-    letter-spacing: 0.3em;
+.about-body {
     margin: 0;
+    color: var(--text-soft);
 }
 
-.sub-brand {
-    font-size: 0.65rem;
-    color: #666;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 0.5rem;
+.manifesto-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin-top: 38px;
 }
 
-/* --- 4. bigwords --- */
-.center-title {
-    position: absolute;
-    top: 50%; left: 15%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    /* 防止巨型字体挡住四角的点击 */
-    pointer-events: none; 
-}
-/* --- manifes --- */
-.manifesto-container {
-    position: absolute;
-    left: 30%;
-    bottom: 80%; 
-    transform: translateX(-50%);
-    text-align: center;
-    width: 80%;
-    max-width: 600px;
+.manifesto-panel {
+    padding: 28px;
 }
 
-.manifesto-text {
-    font-family: 'Playfair Display', serif;
-    font-style: italic;
-    font-size: 1.2rem;
-    line-height: 1.6;
-    color: rgba(255, 255, 255, 0.8);
-    /* 核心效果：初始失焦 */
-    filter: blur(8px);
-    transition: filter 1.2s cubic-bezier(0.2, 0.8, 0.2, 1), color 1.2s ease;
-    cursor: none; 
-}
-
-/* 当鼠标悬停（合焦）时 */
-.manifesto-container:hover .manifesto-text {
-    filter: blur(0px);
-    color: #ffffff;
-}
-
-.manifesto-label {
-    display: block;
-    margin-top: 1.5rem;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.6rem;
-    letter-spacing: 0.4em;
-    color: rgba(255, 255, 255, 0.2);
-    transition: color 0.8s ease;
-}
-
-.manifesto-container:hover .manifesto-label {
-    color: rgba(255, 255, 255, 0.5);
-}
-
-/* 适配移动端：默认清晰，因为没有悬停交互@gemini */
-/* 针对手机端的优化 */
-@media (max-width: 768px) {
-    /* 💡 直接在手机端物理移除宣言区域 */
-    .manifesto-container {
-        display: none !important;
+@media (max-width: 900px) {
+    .about-grid,
+    .manifesto-grid {
+        grid-template-columns: 1fr;
     }
 
-    
-    .center-title {
-        transform: translate(-50%, -55%); 
+    .portrait-panel {
+        justify-self: center;
+        width: min(100%, 420px);
     }
 }
-.title-layer {
-    font-family: 'Playfair Display', serif;
-   
-    font-size: clamp(3rem, 12vw, 10rem); 
-    line-height: 0.75;
-    white-space: nowrap;
-}
 
-.title-layer.back {
-    color: transparent;
-    
-    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.15); 
-    transform: translateX(-5vw); 
-}
+@media (max-width: 720px) {
+    .about-grid,
+    .manifesto-grid {
+        gap: 18px;
+    }
 
-.title-layer.front {
-    color: #e0e0e0;
-    font-style: italic;
-    transform: translateX(5vw); 
-}
+    .portrait-panel {
+        width: min(100%, 420px);
+    }
 
-/* --- 5. 左下：极客感器材清单 --- */
-.bottom-left { bottom: 2.5rem; left: 2.5rem; }
-
-.gear-list {
-    font-family: 'JetBrains Mono', monospace; /* 引入等宽代码字体 */
-    font-size: 0.65rem;
-    color: #555;
-    line-height: 1.6;
-    transition: color 0.3s ease;
-}
-
-.gear-list:hover { color: #aaa; } /* 鼠标移上去隐约变亮 */
-
-.blink {
-    animation: blinker 1s linear infinite;
-    color: #fff;
-}
-@keyframes blinker { 50% { opacity: 0; } }
-
-/* --- 6. 右下：坐标与入口 --- */
-.bottom-right { 
-    bottom: 2.5rem; 
-    right: 2.5rem; 
-    text-align: right; 
-}
-
-.geo-coord {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    color: #555;
-    margin-bottom: 1.5rem;
-    letter-spacing: 0.1em;
-}
-
-.enter-btn {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    font-size: 0.8rem;
-    color: #fff;
-    text-decoration: none;
-    letter-spacing: 0.2em;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    padding-bottom: 0.3rem;
-    transition: all 0.3s ease;
-}
-
-.enter-btn:hover {
-    border-bottom: 1px solid #fff;
-    gap: 1rem; 
-}
-
-/* --- 7. 出场动画序列 --- */
-.fade-in-1 { animation: fadeIn 2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; opacity: 0; }
-.fade-in-2 { animation: fadeIn 2.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.3s forwards; opacity: 0; }
-.fade-in-3 { animation: fadeIn 2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.6s forwards; opacity: 0; }
-.fade-in-4 { animation: fadeIn 2s cubic-bezier(0.2, 0.8, 0.2, 1) 0.9s forwards; opacity: 0; }
-
-@keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(10px); }
-    100% { opacity: 1; transform: translateY(0); }
-}
-
-/* --- 8. 手机端响应式 --- */
-@media (max-width: 768px) {
-    .coordinate-layout { padding: 1.5rem; }
-    
-    .top-left { top: 1.5rem; left: 1.5rem; }
-    
-    /* 手机上中间的字改成上下堆叠，取消左右偏移，防止溢出屏幕 */
-    .title-layer.back { transform: translateX(0); margin-bottom: 0.5rem; }
-    .title-layer.front { transform: translateX(0); font-size: 15vw; }
-
-    /* 手机端布局压缩，把角落元素稍微集中 */
-    .bottom-left { bottom: 6rem; left: 1.5rem; }
-    .bottom-right { bottom: 1.5rem; right: 1.5rem; }
+    .manifesto-panel {
+        padding: 20px;
+    }
 }

@@ -3,85 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chongqing | Wphotographs</title>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="chongqing.css?v=1002">
-    <link rel="stylesheet" href="cursor.css">
+    <title>Chongqing | William's Gallery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css?v=2003">
+    <link rel="stylesheet" href="series.css?v=2004">
+    <link rel="stylesheet" href="chongqing.css?v=2001">
+    <link rel="stylesheet" href="cursor.css?v=2001">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body>
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-viewfinder" id="cursor-viewfinder"></div>
-    <a href="index.html" class="btn-back">
-    <span class="back-arrow">←</span>
-    <span>BACK TO HOME</span>
-</a>
+<body class="series-page series-chongqing">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
-    <div class="ambient-bg" id="ambient-bg"></div>
-    <div class="noise-overlay"></div>
+    <main class="page-shell">
+        <header class="page-topbar">
+            <a href="index.html" class="back-link">← Back to gallery</a>
+            <nav class="topbar-links" aria-label="Series">
+                <a href="japan.html">Previous: Japan</a>
+                <a href="yulong.html">Next: Lijiang</a>
+            </nav>
+        </header>
 
-    <header class="hero-fixed">
-        <h1 class="hero-title glow-text">CHONGQING</h1>
-        <p class="hero-subtitle"> </p>
-    </header>
-
-    <div class="scroll-proxy" id="scroll-proxy"></div>
-<div class="scroll-indicator" id="scroll-indicator">
-        <div class="indicator-text">SCROLL</div>
-        <div class="indicator-line">
-            <div class="line-progress"></div>
-        </div>
-    </div>
-    <main class="camera-viewport">
-        <div class="tunnel-scene" id="tunnel">
-            
-            <article class="tunnel-item is-portrait" style="--z: 0;" data-color="rgba(0, 240, 255, 0.2)">
-                <div class="image-wrapper red-neon">
-                    <img src="images/cq2.webp" alt="CQ 01">
+        <section class="series-hero">
+            <div class="series-copy">
+                <p class="eyebrow">Chongqing / August 2025</p>
+                <h1 class="headline">Chongqing</h1>
+                <p class="lede">
+                    Less a travel postcard, more a pressure system: vertical streets, electric haze,
+                    and surfaces that already look processed before the shutter even goes off.
+                </p>
+                <div class="series-actions">
+                    <span class="chip">Night density</span>
+                    <span class="chip">Nikon Z9</span>
+                    <span class="chip">Neon / concrete / fog</span>
                 </div>
-                <div class="meta"><span>01</span><p>Z9 / 24MM / F/4.0</p></div>
-            </article>
+            </div>
 
-            <article class="tunnel-item" style="--z: -2000;" data-color="rgba(0, 240, 255, 0.2)">
-                <div class="image-wrapper cyan-neon">
-                    <img src="images/chongqing1.webp" alt="CQ 02">
+            <aside class="glass-card hero-note">
+                <div>
+                    <p class="meta-kicker">Series intent</p>
+                    <p>
+                        The old 3D tunnel was visually loud but fragile. This version lets the frames create the drama instead of the page code doing it for them.
+                    </p>
                 </div>
-                <div class="meta"><span>02</span><p>Z9 / 24MM / F/4.0</p></div>
-            </article>
-
-            <article class="tunnel-item" style="--z: -4000;" data-color="rgba(184, 184, 184, 0.3)">
-                <div class="image-wrapper purple-neon">
-                    <img src="images/cq3.webp" alt="CQ 03">
+                <div class="metric-grid">
+                    <article class="metric-card">
+                        <span>Frames</span>
+                        <strong>06</strong>
+                        <p>All shot around one intense city mood.</p>
+                    </article>
+                    <article class="metric-card">
+                        <span>Palette</span>
+                        <strong>Neon</strong>
+                        <p>Cyan, silver, and red breakpoints.</p>
+                    </article>
                 </div>
-                <div class="meta"><span>03</span><p>Z9 / Pano-24MM / F/8.0</p></div>
-            </article>
+            </aside>
+        </section>
 
-            <article class="tunnel-item is-portrait" style="--z: -6000;" data-color="rgba(184, 184, 184, 0.3)">
-                <div class="image-wrapper purple-neon">
-                    <img src="images/cq4.webp" alt="CQ 04">
-                </div>
-                <div class="meta"><span>04</span><p>Z9 / 65MM / RED F/5.6</p></div>
-            </article>
+        <section class="story-grid" aria-label="Chongqing photo series">
+            <figure class="story-card span-4 portrait">
+                <img src="images/cq2.webp" alt="Portrait-format street scene in Chongqing">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Threshold</h2>
+                        <span class="caption-index">01</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 24mm · f/4</p>
+                    <p class="caption-copy">The first frame keeps the viewer close to the street before the sequence starts widening out.</p>
+                </figcaption>
+            </figure>
 
-            <article class="tunnel-item" style="--z: -8000;" data-color="rgba(0, 240, 255, 0.2)">
-                <div class="image-wrapper cyan-neon">
-                    <img src="images/cq5.webp" alt="CQ 05">
-                </div>
-                <div class="meta"><span>05</span><p>Z9 / Pano-24MM / F/4.0</p></div>
-            </article>
+            <figure class="story-card span-8 panorama">
+                <img src="images/chongqing1.webp" alt="Wide illuminated street in Chongqing">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Main Artery</h2>
+                        <span class="caption-index">02</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 24mm · f/4</p>
+                    <p class="caption-copy">A broader frame where the city starts to feel layered rather than simply bright.</p>
+                </figcaption>
+            </figure>
 
-            <article class="tunnel-item is-portrait" style="--z: -10000;" data-color="rgba(138, 43, 226, 0.2)">
-                <div class="image-wrapper purple-neon">
-                    <img src="images/cq6.webp" alt="CQ 06">
-                </div>
-                <div class="meta"><span>06</span><p>谢谢</p></div>
-            </article>
+            <figure class="story-card span-12 panorama">
+                <img src="images/cq3.webp" alt="Panoramic night skyline in Chongqing">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Compression Field</h2>
+                        <span class="caption-index">03</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · Panorama · 24mm · f/8</p>
+                    <p class="caption-copy">Used as the center of the sequence because it turns density into structure instead of visual noise.</p>
+                </figcaption>
+            </figure>
 
-        </div>
+            <figure class="story-card span-5 portrait">
+                <img src="images/cq4.webp" alt="Portrait-format red-lit scene in Chongqing">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Red Interval</h2>
+                        <span class="caption-index">04</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · 65mm · f/5.6</p>
+                    <p class="caption-copy">A narrower and darker note, dropped in here so the sequence keeps some tension.</p>
+                </figcaption>
+            </figure>
+
+            <figure class="story-card span-7 landscape">
+                <img src="images/cq5.webp" alt="Night bridge and skyline in Chongqing">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Bridge Glow</h2>
+                        <span class="caption-index">05</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9 · Panorama · 24mm · f/4</p>
+                    <p class="caption-copy">The most legible city frame in the set, where contrast and spacing finally open up.</p>
+                </figcaption>
+            </figure>
+
+            <figure class="story-card span-12 square">
+                <img src="images/cq6.webp" alt="Square final frame from Chongqing">
+                <figcaption>
+                    <div class="caption-head">
+                        <h2 class="caption-title">Afterimage</h2>
+                        <span class="caption-index">06</span>
+                    </div>
+                    <p class="caption-meta">Nikon Z9</p>
+                    <p class="caption-copy">A simple closing image, more like the last glow left on the eye after the city fades.</p>
+                </figcaption>
+            </figure>
+        </section>
+
+        <section class="series-outro glass-card">
+            <div>
+                <h2>Let the photographs carry the voltage.</h2>
+                <p>Chongqing keeps the edge, but the page no longer fights the viewer with overdesigned motion or forced perspective.</p>
+            </div>
+            <a href="yulong.html" class="cta-link">Continue to Lijiang</a>
+        </section>
     </main>
-<div class="cursor-dot" id="cursor-dot"></div>
-<div class="cursor-viewfinder" id="cursor-viewfinder"></div>
-    <script src="chongqing.js"></script><script src="cursor.js"></script>
+
+    <script src="cursor.js"></script>
     <script src="transition.js"></script>
+    <script src="series-viewer.js"></script>
 </body>
 </html>
