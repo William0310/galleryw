@@ -76,6 +76,42 @@
     scroll-margin-top: 110px;
 }
 
+.collection-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.desktop-collections-section .collection-card {
+    overflow: hidden;
+}
+
+.desktop-collections-section .collection-card.is-spotlit {
+    border-color: rgba(255, 255, 255, 0.32);
+    background: rgba(18, 27, 38, 0.84);
+    box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 0 34px rgba(255, 255, 255, 0.12),
+        var(--shadow-md);
+}
+
+.collection-card--wide {
+    grid-column: span 7;
+}
+
+.collection-card--narrow {
+    grid-column: span 5;
+}
+
+.collection-card--profile {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+}
+
+.desktop-collections-section .collection-meta {
+    justify-content: space-between;
+}
+
 .route-map {
     position: relative;
     display: grid;
@@ -229,28 +265,60 @@
 
 @media (min-width: 721px) {
     .route-stop--japan .route-stop__visual {
-        aspect-ratio: 1833 / 2750;
+        aspect-ratio: 1833 / 2440;
         min-height: 0;
     }
 
     .route-stop--japan .route-stop__visual img {
         height: 100%;
-        object-fit: contain;
+        object-fit: cover;
+        object-position: center 18%;
     }
 }
 
 @media (min-width: 961px) {
     .route-stop--qinghai .route-stop__content {
         height: 100%;
-        grid-template-rows: minmax(430px, 1fr) auto;
+        grid-template-rows: minmax(372px, 0.86fr) auto;
     }
 
     .route-stop--qinghai .route-stop__visual {
-        min-height: 430px;
+        min-height: 372px;
     }
 
     .route-stop--qinghai .route-stop__copy {
-        padding: clamp(28px, 3vw, 38px);
+        grid-template-rows: auto auto auto auto minmax(56px, 1fr);
+        gap: 22px;
+        padding: clamp(32px, 3.4vw, 46px);
+    }
+
+    .route-stop--qinghai .collection-copy h3 {
+        margin-bottom: 0.2rem;
+    }
+
+    .route-stop--qinghai .collection-copy p {
+        line-height: 1.72;
+    }
+
+    .route-stop--qinghai .route-tags {
+        gap: 10px;
+    }
+
+    .route-stop--qinghai .cta-link {
+        align-self: stretch;
+        min-height: 0;
+        height: 100%;
+        margin-top: 0;
+        padding: 0 20px;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media (min-width: 721px) {
+    .mobile-route-section,
+    .home-about-card {
+        display: none;
     }
 }
 
@@ -427,6 +495,10 @@
 }
 
 @media (max-width: 720px) {
+    .desktop-collections-section {
+        display: none;
+    }
+
     .home-hero {
         min-height: auto;
         gap: 28px;

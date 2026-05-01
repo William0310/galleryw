@@ -17,7 +17,7 @@
     --radius-lg: 24px;
     --radius-md: 18px;
     --radius-sm: 12px;
-    --max-width: 1200px;
+    --max-width: 1180px;
     --page-padding: clamp(20px, 3vw, 36px);
     --mobile-page-gutter: 18px;
 }
