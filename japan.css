@@ -1,9 +1,18 @@
 .series-japan {
     --page-accent: #f1b8a5;
-    --page-glow: rgba(238, 124, 87, 0.242);
+    
 }
 
 .series-japan .headline,
 .series-japan .caption-title {
     color: #fff4ef;
+}
+
+.series-japan{
+background:
+        radial-gradient(circle at 82% 14%, rgba(238, 124, 87, 0.242), transparent 30%),
+        radial-gradient(circle at 18% 30%, rgba(184, 184, 184, 0.174), transparent 28%),
+        radial-gradient(circle at 30% 55%, rgba(103, 63, 0, 0.478), transparent 28%),
+        radial-gradient(circle at 78% 82%, rgba(209, 209, 44, 0.179), transparent 28%),
+        linear-gradient(180deg, #0d141c 0%, #091017 100%);
 }

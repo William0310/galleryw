@@ -1,9 +1,19 @@
 .series-qinghai {
     --page-accent: #1cad71;
-    --page-glow: rgba(3, 106, 10, 0.115);
+   
+    
 }
 
 .series-qinghai .headline,
 .series-qinghai .caption-title {
     color: #f6f0e6;
+}
+
+.series-qinghai {
+    background:
+        radial-gradient(circle at 82% 14%, rgba(2, 116, 9, 0.115), transparent 30%),
+        radial-gradient(circle at 18% 20%, rgba(184, 184, 184, 0.174), transparent 28%),
+        radial-gradient(circle at 40% 60%, rgba(2, 102, 0, 0.305), transparent 28%),
+        radial-gradient(circle at 78% 82%, rgba(44, 190, 209, 0.222), transparent 28%),
+        linear-gradient(180deg, #0d141c 0%, #091017 100%);
 }

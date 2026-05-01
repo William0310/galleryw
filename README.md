@@ -31,10 +31,13 @@ V2.3
 
 V2.4
 
-Redesigned homepage
+-Redesigned homepage
 
 V3.0 
 -Rebuilt for clarity
+-added view full frame function
+-big performance upgrade since less JS is required.
 
 V3.1
--huge performance update, up to 100% faster without any comprimise
+
+-huge loading speed update, up to 100% faster without any comprimise
