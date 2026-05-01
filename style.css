@@ -103,11 +103,6 @@
     grid-column: span 5;
 }
 
-.collection-card--profile {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
-}
-
 .desktop-collections-section .collection-meta {
     justify-content: space-between;
 }
@@ -316,8 +311,7 @@
 }
 
 @media (min-width: 721px) {
-    .mobile-route-section,
-    .home-about-card {
+    .mobile-route-section {
         display: none;
     }
 }
@@ -466,8 +460,7 @@
 @media (max-width: 960px) {
     .home-hero,
     .home-archive,
-    .home-about-card,
-    .collection-card--profile {
+    .home-about-card {
         grid-template-columns: 1fr;
     }
 
