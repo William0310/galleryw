@@ -77,13 +77,15 @@
 .route-map {
     position: relative;
     display: grid;
-    gap: 38px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    gap: 24px;
     padding: 12px 0 18px;
 }
 
 .route-map::before {
     content: "";
     position: absolute;
+    display: none;
     top: 32px;
     bottom: 32px;
     left: 47px;
@@ -113,18 +115,25 @@
 
 .route-stop {
     position: relative;
-    grid-template-columns: 96px minmax(0, 1fr);
+    grid-column: span 6;
+    grid-template-columns: minmax(0, 1fr);
     align-items: stretch;
-    background: transparent;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
+}
+
+.route-stop--qinghai,
+.route-stop--lijiang {
+    grid-column: span 7;
+}
+
+.route-stop--japan,
+.route-stop--chongqing {
+    grid-column: span 5;
 }
 
 .route-marker {
     position: relative;
     z-index: 2;
-    display: grid;
+    display: none;
     align-content: center;
     justify-items: center;
     gap: 7px;
@@ -156,22 +165,22 @@
 
 .route-stop__content {
     display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(310px, 0.76fr);
-    min-height: 430px;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
     overflow: hidden;
-    background: rgba(10, 16, 24, 0.76);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-md);
+    background: transparent;
+    border: 0;
+    border-radius: inherit;
+    box-shadow: none;
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .route-stop--reverse .route-stop__visual {
-    order: 2;
+    order: initial;
 }
 
 .route-stop--reverse .route-stop__copy {
-    order: 1;
+    order: initial;
 }
 
 .collection-visual {
@@ -204,16 +213,43 @@
 }
 
 .route-stop__visual {
-    min-height: 430px;
+    min-height: 320px;
 }
 
 .route-stop--japan .route-stop__visual {
-    min-height: 520px;
+    min-height: 420px;
 }
 
 .route-stop--japan .route-stop__visual img {
     height: 110%;
     object-position: center;
+}
+
+@media (min-width: 721px) {
+    .route-stop--japan .route-stop__visual {
+        aspect-ratio: 1833 / 2750;
+        min-height: 0;
+    }
+
+    .route-stop--japan .route-stop__visual img {
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+@media (min-width: 961px) {
+    .route-stop--qinghai .route-stop__content {
+        height: 100%;
+        grid-template-rows: minmax(430px, 1fr) auto;
+    }
+
+    .route-stop--qinghai .route-stop__visual {
+        min-height: 430px;
+    }
+
+    .route-stop--qinghai .route-stop__copy {
+        padding: clamp(28px, 3vw, 38px);
+    }
 }
 
 .collection-copy {
@@ -225,7 +261,7 @@
 .collection-meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 12px;
     color: var(--text-faint);
     font-size: 0.78rem;
@@ -247,9 +283,9 @@
 }
 
 .route-stop__copy {
-    align-content: center;
+    align-content: start;
     gap: 18px;
-    padding: clamp(24px, 4vw, 42px);
+    padding: 24px;
 }
 
 .route-tags {
@@ -271,7 +307,7 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .collection-card:hover .route-stop__content {
+    .collection-card:hover {
         transform: scale(1.018);
         border-color: rgba(255, 255, 255, 0.34);
         background: rgba(18, 27, 38, 0.86);
@@ -281,8 +317,12 @@
             0 24px 64px rgba(0, 0, 0, 0.34);
     }
 
-    .collection-card:hover .route-stop__visual img {
+    .collection-card:hover .collection-visual img {
         transform: scale(1.045);
+    }
+
+    .route-stop--japan:hover .route-stop__visual img {
+        transform: none;
     }
 }
 
@@ -312,7 +352,7 @@
     display: grid;
     grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
     gap: 0;
-    margin-top: 24px;
+    margin-top: 42px;
     overflow: hidden;
 }
 
@@ -361,6 +401,18 @@
         grid-template-columns: 1fr;
     }
 
+    .route-map {
+        grid-template-columns: 1fr;
+    }
+
+    .route-stop,
+    .route-stop--qinghai,
+    .route-stop--japan,
+    .route-stop--chongqing,
+    .route-stop--lijiang {
+        grid-column: auto;
+    }
+
     .route-stop__content {
         grid-template-columns: 1fr;
         min-height: 0;
@@ -384,12 +436,14 @@
         flex-direction: column;
         min-height: calc(100svh - 132px);
         gap: 18px;
-        padding-top: clamp(64px, 14svh, 128px);
+        padding-top: 0;
     }
 
     .hero-intro {
         order: 1;
         gap: 18px;
+        margin-top: auto;
+        transform: translateY(8svh);
     }
 
     .home-page .headline {
@@ -474,6 +528,7 @@
     }
 
     .route-map::before {
+        display: block;
         top: 20px;
         bottom: 20px;
         left: 14px;
@@ -481,9 +536,14 @@
 
     .route-stop {
         grid-template-columns: 1fr;
+        overflow: visible;
+        background: transparent;
+        border: 0;
+        box-shadow: none;
     }
 
     .route-marker {
+        display: grid;
         position: absolute;
         top: 18px;
         left: -34px;
@@ -500,6 +560,13 @@
 
     .route-marker small {
         display: none;
+    }
+
+    .route-stop__content {
+        background: rgba(10, 16, 24, 0.76);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-md);
     }
 
     .route-stop__visual,
