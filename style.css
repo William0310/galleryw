@@ -74,16 +74,27 @@
     scroll-margin-top: 110px;
 }
 
-.collection-grid {
+.route-map {
+    position: relative;
     display: grid;
-    grid-template-columns: repeat(12, minmax(0, 1fr));
-    gap: 24px;
+    gap: 38px;
+    padding: 12px 0 18px;
+}
+
+.route-map::before {
+    content: "";
+    position: absolute;
+    top: 32px;
+    bottom: 32px;
+    left: 47px;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.2), rgba(213, 165, 106, 0.34), transparent);
 }
 
 .collection-card {
     display: grid;
     gap: 0;
-    overflow: hidden;
+    overflow: visible;
     background: rgba(10, 16, 24, 0.76);
     border: 1px solid var(--line);
     border-radius: var(--radius-xl);
@@ -91,7 +102,7 @@
     transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
 
-.collection-card.is-spotlit {
+.collection-card.is-spotlit .route-stop__content {
     border-color: rgba(255, 255, 255, 0.32);
     background: rgba(18, 27, 38, 0.84);
     box-shadow:
@@ -100,17 +111,67 @@
         var(--shadow-md);
 }
 
-.collection-card--wide {
-    grid-column: span 7;
+.route-stop {
+    position: relative;
+    grid-template-columns: 96px minmax(0, 1fr);
+    align-items: stretch;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
 }
 
-.collection-card--narrow {
-    grid-column: span 5;
+.route-marker {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 7px;
+    width: 74px;
+    height: 74px;
+    margin-top: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 999px;
+    background: rgba(8, 13, 19, 0.86);
+    box-shadow: 0 0 0 8px rgba(9, 16, 23, 0.74);
+    color: var(--text-main);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.collection-card--profile {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(240px, 320px) minmax(0, 1fr);
+.route-marker span {
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.55rem;
+    line-height: 0.9;
+}
+
+.route-marker small {
+    color: var(--accent);
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.route-stop__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(310px, 0.76fr);
+    min-height: 430px;
+    overflow: hidden;
+    background: rgba(10, 16, 24, 0.76);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.route-stop--reverse .route-stop__visual {
+    order: 2;
+}
+
+.route-stop--reverse .route-stop__copy {
+    order: 1;
 }
 
 .collection-visual {
@@ -140,6 +201,14 @@
 
 .collection-visual--square {
     min-height: 100%;
+}
+
+.route-stop__visual {
+    min-height: 430px;
+}
+
+.route-stop--japan .route-stop__visual {
+    min-height: 520px;
 }
 
 .collection-copy {
@@ -172,8 +241,32 @@
     color: var(--text-soft);
 }
 
+.route-stop__copy {
+    align-content: center;
+    gap: 18px;
+    padding: clamp(24px, 4vw, 42px);
+}
+
+.route-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.route-tags span {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-faint);
+    font-size: 0.74rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
 @media (hover: hover) and (pointer: fine) {
-    .collection-card:hover {
+    .collection-card:hover .route-stop__content {
         transform: scale(1.018);
         border-color: rgba(255, 255, 255, 0.34);
         background: rgba(18, 27, 38, 0.86);
@@ -183,13 +276,15 @@
             0 24px 64px rgba(0, 0, 0, 0.34);
     }
 
-    .collection-card:hover .collection-visual img {
+    .collection-card:hover .route-stop__visual img {
         transform: scale(1.045);
     }
 }
 
 @media (hover: none), (pointer: coarse) {
-    .collection-card.is-spotlit {
+    .collection-card.is-spotlit .route-stop__content {
+        border-color: rgba(255, 255, 255, 0.32);
+        background: rgba(18, 27, 38, 0.84);
         box-shadow:
             0 0 0 1px rgba(255, 255, 255, 0.14),
             0 0 30px rgba(255, 255, 255, 0.13),
@@ -215,10 +310,14 @@
         grid-template-columns: 1fr;
     }
 
-    .collection-card--wide,
-    .collection-card--narrow,
-    .collection-card--profile {
-        grid-column: 1 / -1;
+    .route-stop__content {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .route-stop--reverse .route-stop__visual,
+    .route-stop--reverse .route-stop__copy {
+        order: initial;
     }
 }
 
@@ -318,8 +417,52 @@
         line-height: 1.32;
     }
 
-    .collection-grid {
-        gap: 18px;
+    .route-map {
+        gap: 26px;
+        padding-left: 34px;
+    }
+
+    .route-map::before {
+        top: 20px;
+        bottom: 20px;
+        left: 14px;
+    }
+
+    .route-stop {
+        grid-template-columns: 1fr;
+    }
+
+    .route-marker {
+        position: absolute;
+        top: 18px;
+        left: -34px;
+        width: 44px;
+        height: 44px;
+        margin-top: 0;
+        gap: 2px;
+        box-shadow: 0 0 0 5px rgba(9, 16, 23, 0.78);
+    }
+
+    .route-marker span {
+        font-size: 1.05rem;
+    }
+
+    .route-marker small {
+        display: none;
+    }
+
+    .route-stop__visual,
+    .route-stop--japan .route-stop__visual {
+        min-height: 260px;
+    }
+
+    .route-stop__copy {
+        padding: 22px;
+    }
+
+    .route-tags span {
+        font-size: 0.66rem;
+        letter-spacing: 0.04em;
     }
 
     .collection-copy,
