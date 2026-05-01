@@ -2,6 +2,55 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollTrigger = document.querySelector("[data-scroll-step]");
     const homeStory = document.getElementById("home-story");
     const collections = document.getElementById("collections");
+    const collectionCards = Array.from(document.querySelectorAll(".collection-card"));
+    const canSpotlightCards = window.matchMedia("(hover: none), (pointer: coarse)").matches;
+
+    if (canSpotlightCards && collectionCards.length > 0) {
+        let ticking = false;
+
+        const syncSpotlight = () => {
+            ticking = false;
+
+            const viewportCenter = window.innerHeight / 2;
+            let activeCard = null;
+            let activeDistance = Number.POSITIVE_INFINITY;
+
+            collectionCards.forEach((card) => {
+                const rect = card.getBoundingClientRect();
+                const isVisible = rect.bottom > 0 && rect.top < window.innerHeight;
+
+                if (!isVisible) {
+                    card.classList.remove("is-spotlit");
+                    return;
+                }
+
+                const cardCenter = rect.top + rect.height / 2;
+                const distance = Math.abs(cardCenter - viewportCenter);
+
+                if (distance < activeDistance) {
+                    activeDistance = distance;
+                    activeCard = card;
+                }
+            });
+
+            collectionCards.forEach((card) => {
+                card.classList.toggle("is-spotlit", card === activeCard);
+            });
+        };
+
+        const requestSpotlightSync = () => {
+            if (ticking) {
+                return;
+            }
+
+            ticking = true;
+            window.requestAnimationFrame(syncSpotlight);
+        };
+
+        syncSpotlight();
+        window.addEventListener("scroll", requestSpotlightSync, { passive: true });
+        window.addEventListener("resize", requestSpotlightSync);
+    }
 
     if (!scrollTrigger) {
         return;
