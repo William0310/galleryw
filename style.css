@@ -303,9 +303,55 @@
     contain-intrinsic-size: 320px;
 }
 
+.home-about-card {
+    display: grid;
+    grid-template-columns: minmax(220px, 340px) minmax(0, 1fr);
+    gap: 0;
+    margin-top: 24px;
+    overflow: hidden;
+}
+
+.home-about-card__portrait {
+    display: block;
+    min-height: 360px;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.home-about-card__portrait img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+    transition: transform 0.45s ease;
+}
+
+.home-about-card__copy {
+    display: grid;
+    align-content: center;
+    gap: 16px;
+    padding: clamp(24px, 4vw, 42px);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .home-about-card:hover {
+        transform: scale(1.012);
+        border-color: rgba(255, 255, 255, 0.32);
+        background: rgba(18, 27, 38, 0.84);
+        box-shadow:
+            0 0 0 1px rgba(255, 255, 255, 0.12),
+            0 0 34px rgba(255, 255, 255, 0.12),
+            var(--shadow-md);
+    }
+
+    .home-about-card:hover .home-about-card__portrait img {
+        transform: scale(1.035);
+    }
+}
+
 @media (max-width: 960px) {
     .home-hero,
     .home-archive,
+    .home-about-card,
     .collection-card--profile {
         grid-template-columns: 1fr;
     }
@@ -466,8 +512,13 @@
     }
 
     .collection-copy,
-    .home-archive {
+    .home-archive,
+    .home-about-card__copy {
         padding: 22px;
+    }
+
+    .home-about-card__portrait {
+        min-height: 320px;
     }
 
     .collection-meta {
