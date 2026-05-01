@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (reducedMotion || !finePointer || window.innerWidth <= 768) {
+        return;
+    }
+
     const duration = reducedMotion ? 0 : 420;
 
     const style = document.createElement("style");

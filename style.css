@@ -68,6 +68,8 @@
 .collections-section {
     margin-top: 54px;
     scroll-margin-top: 110px;
+    content-visibility: auto;
+    contain-intrinsic-size: 1200px;
 }
 
 #home-story {
@@ -164,6 +166,8 @@
     align-items: center;
     margin-top: 42px;
     padding: 28px;
+    content-visibility: auto;
+    contain-intrinsic-size: 320px;
 }
 
 @media (max-width: 960px) {
