@@ -103,6 +103,20 @@
     grid-column: span 5;
 }
 
+.collection-card--full {
+    grid-column: 1 / -1;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+}
+
+.collection-card--full .collection-copy {
+    align-content: center;
+    padding: clamp(28px, 4vw, 48px);
+}
+
+.collection-visual--feature {
+    min-height: 420px;
+}
+
 .desktop-collections-section .collection-meta {
     justify-content: space-between;
 }
@@ -471,9 +485,14 @@
     .route-stop,
     .route-stop--qinghai,
     .route-stop--japan,
+    .route-stop--yiheyuan,
     .route-stop--chongqing,
     .route-stop--lijiang {
         grid-column: auto;
+    }
+
+    .collection-card--full {
+        grid-template-columns: 1fr;
     }
 
     .route-stop__content {
