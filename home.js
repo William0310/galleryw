@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const scrollTrigger = document.querySelector("[data-scroll-step]");
     const homeStory = document.getElementById("home-story");
     const collections = document.getElementById("collections");
+    const firstShowcase = document.querySelector(".showcase-panel");
     const collectionCards = Array.from(document.querySelectorAll(".collection-card"));
     const canSpotlightCards = window.matchMedia("(hover: none), (pointer: coarse)").matches;
 
@@ -68,12 +69,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let targetY = currentY + stepDistance;
 
-        if (isMobile && homeStory) {
+        if (collections) {
+            const targetNode = firstShowcase || collections;
+            const collectionsY = currentY + targetNode.getBoundingClientRect().top;
+            targetY = isMobile ? collectionsY : Math.min(targetY, collectionsY);
+        } else if (isMobile && homeStory) {
             targetY = Math.max(targetY, currentY + homeStory.getBoundingClientRect().top - topbarOffset);
-        }
-
-        if (!isMobile && collections) {
-            targetY = Math.min(targetY, currentY + collections.getBoundingClientRect().top - topbarOffset);
         }
 
         const maxY = document.documentElement.scrollHeight - window.innerHeight;

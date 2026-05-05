@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="theme.css?v=2014">
-    <link rel="stylesheet" href="style.css?v=2027">
+    <link rel="stylesheet" href="style.css?v=2036">
     <link rel="stylesheet" href="cursor.css?v=2008" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -78,11 +78,38 @@
             <aside class="hero-aside stack" id="home-story" aria-label="Current edit notes">
                 <section class="glass-card hero-note">
                     <div class="hero-note__intro">
-                        <p class="meta-kicker hero-note__kicker">Current edit</p>
+                        <p class="meta-kicker hero-note__kicker">Route monitor</p>
                         <p>
-                            
+                            plateau, shrine, imperial garden, vertical city, and mountain winter.
                         </p>
                     </div>
+                    <nav class="hero-monitor" aria-label="Featured collections quick index">
+                        <a href="#showcase-qinghai">
+                            <span>01</span>
+                            <strong>Qinghai</strong>
+                            <em>Plateau light</em>
+                        </a>
+                        <a href="#showcase-japan">
+                            <span>02</span>
+                            <strong>Japan</strong>
+                            <em>Shrine rhythm</em>
+                        </a>
+                        <a href="#showcase-yiheyuan">
+                            <span>03</span>
+                            <strong>Yiheyuan</strong>
+                            <em>Garden air</em>
+                        </a>
+                        <a href="#showcase-chongqing">
+                            <span>04</span>
+                            <strong>Chongqing</strong>
+                            <em>Neon density</em>
+                        </a>
+                        <a href="#showcase-lijiang">
+                            <span>05</span>
+                            <strong>Lijiang</strong>
+                            <em>Snow line</em>
+                        </a>
+                    </nav>
                     <div class="metric-grid hero-note__metrics">
                         <article class="metric-card">
                             <span>Journeys</span>
@@ -106,231 +133,141 @@
 
         <hr class="soft-rule">
 
-        <section class="collections-section desktop-collections-section" id="collections">
-            <div class="section-head">
+        <section class="collections-section showcase-section" id="collections" aria-label="Featured fullscreen collections">
+            <div class="section-head showcase-head">
                 <div>
                     <p class="section-kicker">Featured series</p>
-                    <h2 class="section-title">Explore The Collections.</h2>
+                    <h2 class="section-title">Five Rooms, Five Edits.</h2>
                 </div>
                 <p class="section-copy">
-
+                    Each collection gets its own screen now. Scroll slowly, then enter the full photo essay when the frame feels right.
                 </p>
             </div>
 
-            <div class="collection-grid">
-                <article class="collection-card collection-card--wide">
-                    <a href="qinghai.html" class="collection-visual" aria-label="Open Qinghai collection">
-                        <img src="images/qinghai1.webp" alt="Grassland road in Qinghai" width="3840" height="2284" loading="lazy" decoding="async">
+            <div class="showcase-stack">
+                <article class="collection-card showcase-panel showcase-panel--qinghai" id="showcase-qinghai">
+                    <a href="qinghai.html" class="showcase-panel__image" aria-label="Open Qinghai collection">
+                        <picture>
+                            <source media="(max-width: 820px)" srcset="images/ta1.webp">
+                            <img src="images/qinghai1.webp" alt="Grassland road in Qinghai" width="2850" height="1695" loading="lazy" decoding="async">
+                        </picture>
                     </a>
-                    <div class="collection-copy">
-                        <div class="collection-meta">
+                    <div class="showcase-hud">
+                        <div class="showcase-hud__top">
+                            <span>01 / 05</span>
                             <span>07 / 2024</span>
-                            <span>Canon R5 / Dji Mini 3Pro</span>
                         </div>
+                        <p class="showcase-kicker">Qinghai / Canon R5 + DJI Mini 3 Pro</p>
                         <h3>Qinghai</h3>
-                        <p>"Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows. It is a land where the earth breathes in colors so vivid they seem painted by the gods themselves."</p>
-                        <a href="qinghai.html" class="cta-link">Browse</a>
+                        <p>Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows.</p>
+                        <div class="showcase-tags" aria-label="Qinghai locations">
+                            <span>Ta'er Temple</span>
+                            <span>Chaka</span>
+                            <span>Qunjia</span>
+                        </div>
+                        <a href="qinghai.html" class="cta-link">Browse Qinghai</a>
                     </div>
+                    <p class="showcase-watermark" aria-hidden="true">QH</p>
                 </article>
 
-                <article class="collection-card collection-card--narrow">
-                    <a href="japan.html" class="collection-visual collection-visual--portrait" aria-label="Open Japan collection">
-                        <img src="images/kyoto1.webp" alt="Senbon Torii in Kyoto" width="1833" height="2750" loading="lazy" decoding="async">
+                <article class="collection-card showcase-panel showcase-panel--japan" id="showcase-japan">
+                    <a href="japan.html" class="showcase-panel__image" aria-label="Open Japan collection">
+                        <picture>
+                            <source media="(max-width: 820px)" srcset="images/kyoto1.webp">
+                            <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
+                        </picture>
                     </a>
-                    <div class="collection-copy">
-                        <div class="collection-meta">
+                    <div class="showcase-hud">
+                        <div class="showcase-hud__top">
+                            <span>02 / 05</span>
                             <span>07 / 2025</span>
-                            <span>Nikon Z9</span>
                         </div>
+                        <p class="showcase-kicker">Japan / Nikon Z9</p>
                         <h3>Japan</h3>
-                        <p>A timeless harmony of ancient tradition and futuristic elegance.</p>
-                        <a href="japan.html" class="cta-link">Browse</a>
+                        <p>A timeless harmony of ancient tradition and futuristic elegance, moving from Kyoto quietness to Tokyo density and Fuji air.</p>
+                        <div class="showcase-tags" aria-label="Japan locations">
+                            <span>Tokyo</span>
+                            <span>Kyoto</span>
+                            <span>Mt. Fuji</span>
+                        </div>
+                        <a href="japan.html" class="cta-link">Browse Japan</a>
                     </div>
+                    <p class="showcase-watermark" aria-hidden="true">JP</p>
                 </article>
 
-                <article class="collection-card collection-card--full">
-                    <a href="yiheyuan.html" class="collection-visual collection-visual--feature" aria-label="Open Yiheyuan collection">
-                        <img src="images/yih3.webp" alt="Yiheyuan scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
+                <article class="collection-card showcase-panel showcase-panel--yiheyuan" id="showcase-yiheyuan">
+                    <a href="yiheyuan.html" class="showcase-panel__image" aria-label="Open Yiheyuan collection">
+                        <picture>
+                            <source media="(max-width: 820px)" srcset="images/yih1.webp">
+                            <img src="images/yih3.webp" alt="Yiheyuan scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
+                        </picture>
                     </a>
-                    <div class="collection-copy">
-                        <div class="collection-meta">
+                    <div class="showcase-hud">
+                        <div class="showcase-hud__top">
+                            <span>03 / 05</span>
                             <span>08 / 2025</span>
-                            <span>Nikon Z9</span>
                         </div>
+                        <p class="showcase-kicker">Yiheyuan / Beijing</p>
                         <h3>Yiheyuan</h3>
                         <p>Beijing's Summer Palace: lake air, imperial garden lines, and the slower rhythm of a city landmark after the crowd begins to thin.</p>
-                        <a href="yiheyuan.html" class="cta-link">Browse</a>
-                    </div>
-                </article>
-
-                <article class="collection-card collection-card--narrow">
-                    <a href="chongqing.html" class="collection-visual" aria-label="Open Chongqing collection">
-                        <img src="images/cq5.webp" alt="Night city view in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
-                    </a>
-                    <div class="collection-copy">
-                        <div class="collection-meta">
-                            <span>08 / 2025</span>
-                            <span>Nikon Z9</span>
+                        <div class="showcase-tags" aria-label="Yiheyuan locations">
+                            <span>Summer Palace</span>
+                            <span>Kunming Lake</span>
+                            <span>Beijing</span>
                         </div>
-                        <h3>Chongqing</h3>
-                        <p>A vertical "Cyberpunk" masterpiece where neon-lit mountains and dual rivers weave together in a breathtaking display of urban energy.</p>
-                        <a href="chongqing.html" class="cta-link">Browse</a>
+                        <a href="yiheyuan.html" class="cta-link">Browse Yiheyuan</a>
                     </div>
+                    <p class="showcase-watermark" aria-hidden="true">BJ</p>
                 </article>
 
-                <article class="collection-card collection-card--wide">
-                    <a href="yulong.html" class="collection-visual" aria-label="Open Lijiang collection">
-                        <img src="images/lijiang1.webp" alt="Blue water and mountains near Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
-                    </a>
-                    <div class="collection-copy">
-                        <div class="collection-meta">
-                            <span>12 / 2025</span>
-                            <span>Nikon Z9</span>
-                        </div>
-                        <h3>Lijiang</h3>
-                        <p>A majestic, silver-clad guardian rising from the clouds, where eternal snows meet the emerald valleys of Yunnan in a display of divine serenity.</p>
-                        <a href="yulong.html" class="cta-link">Browse</a>
-                    </div>
-                </article>
-
-            </div>
-        </section>
-
-        <section class="collections-section route-section mobile-route-section" id="collections-mobile">
-            <div class="section-head">
-                <div>
-                    <p class="section-kicker"></p>
-                    <h2 class="section-title">Explore The Collections.</h2>
-                </div>
-                <p class="section-copy">
-                    
-                </p>
-            </div>
-
-            <div class="route-map" aria-label="Travel collections route">
-                <article class="collection-card route-stop route-stop--qinghai">
-                    <div class="route-marker" aria-hidden="true">
-                        <span>01</span>
-                        <small>07 / 2024</small>
-                    </div>
-                    <div class="route-stop__content">
-                        <a href="qinghai.html" class="collection-visual route-stop__visual" aria-label="Open Qinghai collection">
-                            <img src="images/qinghai1.webp" alt="Grassland road in Qinghai" width="3840" height="2284" loading="lazy" decoding="async">
-                        </a>
-                        <div class="collection-copy route-stop__copy">
-                            <div class="collection-meta">
-                                <span>Canon R5 / DJI Mini 3 Pro</span>
-                            </div>
-                            <h3>Qinghai</h3>
-                            <p>Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows. It is a land where the earth breathes in colors so vivid they seem painted by the gods themselves.</p>
-                            <div class="route-tags" aria-label="Qinghai locations">
-                                <span>Ta'er Temple</span>
-                                <span>Chaka</span>
-                                <span>Qunjia</span>
-                            </div>
-                            <a href="qinghai.html" class="cta-link">Explore Qinghai</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="collection-card route-stop route-stop--japan route-stop--reverse">
-                    <div class="route-marker" aria-hidden="true">
-                        <span>02</span>
-                        <small>07 / 2025</small>
-                    </div>
-                    <div class="route-stop__content">
-                        <a href="japan.html" class="collection-visual collection-visual--portrait route-stop__visual" aria-label="Open Japan collection">
-                            <img src="images/kyoto1.webp" alt="Senbon Torii in Kyoto" width="1833" height="2750" loading="lazy" decoding="async">
-                        </a>
-                        <div class="collection-copy route-stop__copy">
-                            <div class="collection-meta">
-                                <span>Nikon Z9</span>
-                            </div>
-                            <h3>Japan</h3>
-                            <p>Japan is a captivating blend of timeless tradition and neon modernity.</p>
-                            <div class="route-tags" aria-label="Japan locations">
-                                <span>Tokyo</span>
-                                <span>Kyoto</span>
-                                <span>Mt. Fuji</span>
-                            </div>
-                            <a href="japan.html" class="cta-link">Explore Japan</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="collection-card route-stop route-stop--yiheyuan">
-                    <div class="route-marker" aria-hidden="true">
-                        <span>03</span>
-                        <small>Summer / 2025</small>
-                    </div>
-                    <div class="route-stop__content">
-                        <a href="yiheyuan.html" class="collection-visual route-stop__visual" aria-label="Open Yiheyuan collection">
-                            <img src="images/yih3.webp" alt="Yiheyuan scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
-                        </a>
-                        <div class="collection-copy route-stop__copy">
-                            <div class="collection-meta">
-                                <span>Yiheyuan / Beijing</span>
-                            </div>
-                            <h3>Yiheyuan</h3>
-                            <p>Beijing's Summer Palace in a quieter six-frame edit: lake air, imperial garden lines, and the slower rhythm of a city landmark after the crowd begins to thin.</p>
-                            <div class="route-tags" aria-label="Yiheyuan locations">
-                                <span>Summer Palace</span>
-                                <span>Kunming Lake</span>
-                                <span>Beijing</span>
-                            </div>
-                            <a href="yiheyuan.html" class="cta-link">Explore Yiheyuan</a>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="collection-card route-stop route-stop--chongqing">
-                    <div class="route-marker" aria-hidden="true">
-                        <span>04</span>
-                        <small>08 / 2025</small>
-                    </div>
-                    <div class="route-stop__content">
-                        <a href="chongqing.html" class="collection-visual route-stop__visual" aria-label="Open Chongqing collection">
+                <article class="collection-card showcase-panel showcase-panel--chongqing" id="showcase-chongqing">
+                    <a href="chongqing.html" class="showcase-panel__image" aria-label="Open Chongqing collection">
+                        <picture>
+                            <source media="(max-width: 820px)" srcset="images/cq2.webp">
                             <img src="images/cq5.webp" alt="Night city view in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
-                        </a>
-                        <div class="collection-copy route-stop__copy">
-                            <div class="collection-meta">
-                                <span>Nikon Z9</span>
-                            </div>
-                            <h3>Chongqing</h3>
-                            <p>A vertical "Cyberpunk" masterpiece where neon-lit mountains and dual rivers weave together in a breathtaking display of urban energy.</p>
-                            <div class="route-tags" aria-label="Chongqing themes">
-                                <span>Neon</span>
-                                <span>Concrete</span>
-                                <span>Night density</span>
-                            </div>
-                            <a href="chongqing.html" class="cta-link">Explore Chongqing</a>
+                        </picture>
+                    </a>
+                    <div class="showcase-hud">
+                        <div class="showcase-hud__top">
+                            <span>04 / 05</span>
+                            <span>08 / 2025</span>
                         </div>
+                        <p class="showcase-kicker">Chongqing / Nikon Z9</p>
+                        <h3>Chongqing</h3>
+                        <p>A vertical cyberpunk field note where neon mountains, bridges, concrete layers, and river reflections stack into one city mood.</p>
+                        <div class="showcase-tags" aria-label="Chongqing themes">
+                            <span>Neon</span>
+                            <span>Concrete</span>
+                            <span>Night density</span>
+                        </div>
+                        <a href="chongqing.html" class="cta-link">Browse Chongqing</a>
                     </div>
+                    <p class="showcase-watermark" aria-hidden="true">CQ</p>
                 </article>
 
-                <article class="collection-card route-stop route-stop--lijiang route-stop--reverse">
-                    <div class="route-marker" aria-hidden="true">
-                        <span>05</span>
-                        <small>12 / 2025</small>
-                    </div>
-                    <div class="route-stop__content">
-                        <a href="yulong.html" class="collection-visual route-stop__visual" aria-label="Open Lijiang collection">
+                <article class="collection-card showcase-panel showcase-panel--lijiang" id="showcase-lijiang">
+                    <a href="yulong.html" class="showcase-panel__image" aria-label="Open Lijiang collection">
+                        <picture>
+                            <source media="(max-width: 820px)" srcset="images/lij1.webp">
                             <img src="images/lijiang1.webp" alt="Blue water and mountains near Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
-                        </a>
-                        <div class="collection-copy route-stop__copy">
-                            <div class="collection-meta">
-                                <span>Nikon Z9</span>
-                            </div>
-                            <h3>Lijiang</h3>
-                            <p>A majestic, silver-clad guardian rising from the clouds, where eternal snows meet the emerald valleys of Yunnan in a display of divine serenity.</p>
-                            <div class="route-tags" aria-label="Lijiang locations">
-                                <span>Blue Moon Valley</span>
-                                <span>Yulong Snow Mountain</span>
-                                <span>Winter color</span>
-                            </div>
-                            <a href="yulong.html" class="cta-link">Explore Lijiang</a>
+                        </picture>
+                    </a>
+                    <div class="showcase-hud">
+                        <div class="showcase-hud__top">
+                            <span>05 / 05</span>
+                            <span>12 / 2025</span>
                         </div>
+                        <p class="showcase-kicker">Lijiang / Nikon Z9</p>
+                        <h3>Lijiang</h3>
+                        <p>A silver mountain chapter where cold air, blue water, yak meadows, and winter color slow the archive down.</p>
+                        <div class="showcase-tags" aria-label="Lijiang locations">
+                            <span>Blue Moon Valley</span>
+                            <span>Yulong Snow Mountain</span>
+                            <span>Winter color</span>
+                        </div>
+                        <a href="yulong.html" class="cta-link">Browse Lijiang</a>
                     </div>
+                    <p class="showcase-watermark" aria-hidden="true">LJ</p>
                 </article>
             </div>
         </section>
@@ -361,13 +298,13 @@
         </section>
 
         <footer class="page-footer">
-            <p>William's Photo Gallery V3.2(215) &copy;2023-2026 All Rights Reserved.</p>
+            <p>William's Photo Gallery V4.0(220) &copy;2023-2026 All Rights Reserved.</p>
             <p>Photography by William unless noted. Do not download or share without permission.</p>
         </footer>
     </main>
 
     <script src="cursor.js"></script>
-    <script src="home.js?v=2002"></script>
+    <script src="home.js?v=2003"></script>
     <script src="transition.js?v=2001"></script>
 </body>
 </html>
