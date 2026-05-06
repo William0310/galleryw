@@ -33,171 +33,127 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="theme.css?v=2014">
-    <link rel="stylesheet" href="style.css?v=2043">
+    <link rel="stylesheet" href="style.css?v=2050">
     <link rel="stylesheet" href="cursor.css?v=2008" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body class="home-page home-page--deck">
+<body class="home-page home-page--editorial">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
     <main class="page-shell home-shell">
         <header class="page-topbar">
-            <div class="brand-mark">
-                <strong> William's Gallery</strong>
-            </div>
+            <a href="index.html" class="brand-mark" aria-label="William's Photo Gallery home">
+                <strong>William's Gallery</strong>
+                <span>Travel Photography</span>
+            </a>
             <nav class="topbar-links topbar-links--home" aria-label="Primary">
-                <a href="archive.html">Upcoming</a>
+                <a href="#collections" data-scroll-start>Work</a>
+                <a href="about.html">About</a>
             </nav>
         </header>
 
-        <section class="home-welcome" aria-label="Welcome">
-            <div class="home-welcome__copy">
-                <p class="eyebrow">Online gallery / 2023-2026</p>
-                <h1 class="headline">Frames Of Mind.</h1>
-                <p class="lede">Please Browse with a computer when possible.</p>
-            </div>
-            <a href="#collections" class="cta-link home-welcome__scroll" data-scroll-start>View Collections</a>
-        </section>
+        <section class="home-hero" aria-label="William's Photo Gallery">
+            <picture class="home-hero__media">
+                <source media="(max-width: 720px)" srcset="images/ta1.webp">
+                <img src="images/qinghai1.webp" alt="Grassland road and mountains in Qinghai" width="2850" height="1695" fetchpriority="high" decoding="async">
+            </picture>
+            <div class="home-hero__shade" aria-hidden="true"></div>
 
-        <section class="deck-section" id="collections" aria-label="Featured collection deck">
-            <div class="deck-section__intro">
-                <p class="section-kicker">Featured series</p>
-                <h2 class="section-title">View Collections.</h2>
-                <p class="section-copy"></p>
-            </div>
+            <div class="home-hero__inner">
+                <div class="home-hero__copy">
+                    <p class="eyebrow">Volume one / 2023-2026</p>
+                    <h1 class="home-hero__title">William's Photo Gallery</h1>
+                    <p class="home-hero__lede">
+                        Travel photographs edited slowly, with more attention to mood, spacing, and sequence than volume.
+                    </p>
+                    <div class="home-hero__actions">
+                        <a href="#collections" class="cta-link" data-scroll-start>Enter the collection</a>
+                    </div>
+                </div>
 
-            <div class="deck-stack">
-                <section class="deck-item" id="showcase-qinghai">
-                    <article class="deck-card" style="--card-index: 1;" data-deck-card>
-                        <a href="qinghai.html" class="deck-card__media" aria-label="Open Qinghai collection">
-                            <picture>
-                                <source media="(max-width: 820px)" srcset="images/ta1.webp">
-                                <img src="images/qinghai1.webp" alt="Grassland road in Qinghai" width="2850" height="1695" fetchpriority="high" decoding="async">
-                            </picture>
-                        </a>
-                        <div class="deck-card__body">
-                            <div class="deck-card__meta">
-                                <span>01 / 05</span>
-                                <span>07 / 2024</span>
-                            </div>
-                            <p class="meta-kicker">Qinghai / Canon R5 + DJI Mini 3 Pro</p>
-                            <h3>Qinghai</h3>
-                            <p>Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows.</p>
-                            <a href="qinghai.html" class="cta-link">Explore Qinghai</a>
-                        </div>
-                    </article>
-                </section>
-
-                <section class="deck-item" id="showcase-japan">
-                    <article class="deck-card" style="--card-index: 2;" data-deck-card>
-                        <a href="japan.html" class="deck-card__media" aria-label="Open Japan collection">
-                            <picture>
-                                <source media="(max-width: 820px)" srcset="images/kyoto1.webp">
-                                <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
-                            </picture>
-                        </a>
-                        <div class="deck-card__body">
-                            <div class="deck-card__meta">
-                                <span>02 / 05</span>
-                                <span>07 / 2025</span>
-                            </div>
-                            <p class="meta-kicker">Japan / Nikon Z9</p>
-                            <h3>Japan</h3>
-                            <p>A timeless harmony of ancient tradition and futuristic elegance, moving from Kyoto quietness to Tokyo density and Fuji air.</p>
-                            <a href="japan.html" class="cta-link">Explore Japan</a>
-                        </div>
-                    </article>
-                </section>
-
-                <section class="deck-item" id="showcase-yiheyuan">
-                    <article class="deck-card" style="--card-index: 3;" data-deck-card>
-                        <a href="yiheyuan.html" class="deck-card__media" aria-label="Open Yiheyuan collection">
-                            <picture>
-                                <source media="(max-width: 820px)" srcset="images/yih1.webp">
-                                <img src="images/yih3.webp" alt="Yiheyuan scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
-                            </picture>
-                        </a>
-                        <div class="deck-card__body">
-                            <div class="deck-card__meta">
-                                <span>03 / 05</span>
-                                <span>08 / 2025</span>
-                            </div>
-                            <p class="meta-kicker">Yiheyuan / Beijing</p>
-                            <h3>Yiheyuan</h3>
-                            <p>Beijing's Summer Palace: lake air, imperial garden lines, and the slower rhythm of a city landmark after the crowd begins to thin.</p>
-                            <a href="yiheyuan.html" class="cta-link">Explore Yiheyuan</a>
-                        </div>
-                    </article>
-                </section>
-
-                <section class="deck-item" id="showcase-chongqing">
-                    <article class="deck-card" style="--card-index: 4;" data-deck-card>
-                        <a href="chongqing.html" class="deck-card__media" aria-label="Open Chongqing collection">
-                            <picture>
-                                <source media="(max-width: 820px)" srcset="images/cq2.webp">
-                                <img src="images/cq5.webp" alt="Night city view in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
-                            </picture>
-                        </a>
-                        <div class="deck-card__body">
-                            <div class="deck-card__meta">
-                                <span>04 / 05</span>
-                                <span>08 / 2025</span>
-                            </div>
-                            <p class="meta-kicker">Chongqing / Nikon Z9</p>
-                            <h3>Chongqing</h3>
-                            <p>A vertical cyberpunk field note where neon mountains, bridges, concrete layers, and river reflections stack into one city mood.</p>
-                            <a href="chongqing.html" class="cta-link">Explore Chongqing</a>
-                        </div>
-                    </article>
-                </section>
-
-                <section class="deck-item" id="showcase-lijiang">
-                    <article class="deck-card" style="--card-index: 5;" data-deck-card>
-                        <a href="yulong.html" class="deck-card__media" aria-label="Open Lijiang collection">
-                            <picture>
-                                <source media="(max-width: 820px)" srcset="images/lij1.webp">
-                                <img src="images/lijiang1.webp" alt="Blue water and mountains near Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
-                            </picture>
-                        </a>
-                        <div class="deck-card__body">
-                            <div class="deck-card__meta">
-                                <span>05 / 05</span>
-                                <span>12 / 2025</span>
-                            </div>
-                            <p class="meta-kicker">Lijiang / Nikon Z9</p>
-                            <h3>Lijiang</h3>
-                            <p>A silver mountain chapter where cold air, blue water, yak meadows, and winter color slow the archive down.</p>
-                            <a href="yulong.html" class="cta-link">Explore Lijiang</a>
-                        </div>
-                    </article>
-                </section>
+                <p class="home-hero__aside">Five finished chapters across China and Japan.</p>
             </div>
         </section>
 
-        <section class="home-about-card">
-            <a href="about.html" class="home-about-card__portrait" aria-label="Read about William">
-                <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" loading="lazy" decoding="async">
-            </a>
-            <div class="home-about-card__copy glass-card">
-                <p class="section-kicker">About the artist</p>
-                <h2 class="section-title">William</h2>
-                <p class="section-copy">
-                    Read information about this website, my motivation, and my equipments. This Website is still under construction, any feedback is appreciated.
-                </p>
-                <a href="about.html" class="cta-link">Read about William</a>
+        <section class="home-section home-collections" id="collections" aria-label="Featured photo collections">
+            <div class="home-section__head">
+                <div>
+                    <p class="section-kicker">Selected chapters</p>
+                    <h2 class="section-title">Five destinations, given room to breathe.</h2>
+                </div>
+            </div>
+
+            <div class="collection-list">
+                <a href="qinghai.html" class="collection-panel collection-panel--qinghai">
+                    <div class="collection-panel__copy">
+                        <p class="meta-kicker">01 / Qinghai / July 2024</p>
+                        <h3>Qinghai</h3>
+                        <p>Plateau light, temple red, salt-lake white.</p>
+                        <span class="collection-panel__action">Enter chapter</span>
+                    </div>
+                    <figure class="collection-panel__media">
+                        <img src="images/pano2.webp" alt="Panorama of Qinghai Lake" width="4814" height="1750" loading="lazy" decoding="async">
+                    </figure>
+                </a>
+
+                <a href="japan.html" class="collection-panel collection-panel--reverse collection-panel--japan">
+                    <div class="collection-panel__copy">
+                        <p class="meta-kicker">02 / Japan / July 2025</p>
+                        <h3>Japan</h3>
+                        <p>Torii silhouettes, city density, and temple stillness.</p>
+                        <span class="collection-panel__action">Enter chapter</span>
+                    </div>
+                    <figure class="collection-panel__media">
+                        <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
+                    </figure>
+                </a>
+
+                <a href="yiheyuan.html" class="collection-panel collection-panel--yiheyuan">
+                    <div class="collection-panel__copy">
+                        <p class="meta-kicker">03 / Yiheyuan / Beijing</p>
+                        <h3>Yiheyuan</h3>
+                        <p>Imperial lines, lake air, and measured quiet.</p>
+                        <span class="collection-panel__action">Enter chapter</span>
+                    </div>
+                    <figure class="collection-panel__media">
+                        <img src="images/yih3.webp" alt="Yiheyuan landscape scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
+                    </figure>
+                </a>
+
+                <a href="chongqing.html" class="collection-panel collection-panel--reverse collection-panel--chongqing">
+                    <div class="collection-panel__copy">
+                        <p class="meta-kicker">04 / Chongqing / August 2025</p>
+                        <h3>Chongqing</h3>
+                        <p>Neon compression, bridge glow, and vertical noise.</p>
+                        <span class="collection-panel__action">Enter chapter</span>
+                    </div>
+                    <figure class="collection-panel__media">
+                        <img src="images/cq5.webp" alt="Night bridge and skyline in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
+                    </figure>
+                </a>
+
+                <a href="yulong.html" class="collection-panel collection-panel--lijiang">
+                    <div class="collection-panel__copy">
+                        <p class="meta-kicker">05 / Lijiang / December 2025</p>
+                        <h3>Lijiang</h3>
+                        <p>Blue water, snow lines, and thin cold air.</p>
+                        <span class="collection-panel__action">Enter chapter</span>
+                    </div>
+                    <figure class="collection-panel__media">
+                        <img src="images/lijiang1.webp" alt="Blue Moon Valley in Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
+                    </figure>
+                </a>
             </div>
         </section>
 
-        <section class="home-archive glass-card">
-            <div>
-                <p class="section-kicker">Beyond the fold</p>
-                <h2 class="section-title">Upcoming folders are already taking shape.</h2>
-                <p class="section-copy">
-                    Xinjiang is waiting for summer 2026. More folders will move here when they are ready for editing.
-                </p>
-            </div>
-            <a href="archive.html" class="cta-link">Browse Future Travels</a>
+        <section class="home-signature" aria-label="About William">
+            <p class="section-kicker">About</p>
+            <h2 class="section-title">William</h2>
+            <p class="home-signature__copy">
+                A personal archive of travel photography, built one considered chapter at a time.
+            </p>
+            <a href="about.html" class="cta-link cta-link--quiet">Read profile</a>
         </section>
 
         <footer class="page-footer">
@@ -207,7 +163,7 @@
     </main>
 
     <script src="cursor.js"></script>
-    <script src="home.js?v=2009"></script>
+    <script src="home.js?v=2010"></script>
     <script src="transition.js?v=2001"></script>
 </body>
 </html>
