@@ -109,27 +109,31 @@ html {
 }
 
 .deck-stack {
+    --deck-top: clamp(78px, 10svh, 104px);
+    --deck-height: clamp(540px, 68svh, 680px);
     position: relative;
     width: min(740px, 100%);
+    height: calc(var(--deck-height) + 280svh);
     margin: 0 auto;
-    padding-top: clamp(10px, 2vw, 24px);
+    padding-top: 0;
     perspective: 1800px;
 }
 
 .deck-item {
-    --deck-top: clamp(78px, 10svh, 104px);
-    --deck-height: clamp(540px, 68svh, 680px);
-    position: relative;
-    min-height: calc(var(--deck-height) + 40svh);
+    position: sticky;
+    top: var(--deck-top);
+    height: var(--deck-height);
+    min-height: 0;
     perspective: inherit;
+    pointer-events: none;
 }
 
 .deck-item + .deck-item {
-    margin-top: calc(var(--deck-height) * -0.6);
+    margin-top: calc(var(--deck-height) * -1);
 }
 
 .deck-item:last-child {
-    min-height: calc(var(--deck-height) + 36svh);
+    min-height: 0;
 }
 
 .deck-card {
@@ -140,9 +144,10 @@ html {
     --deck-brightness: 1;
     --deck-saturation: 1;
     --deck-blur: 0px;
+    --deck-opacity: 1;
     --deck-radius: clamp(24px, 2.4vw, 32px);
-    position: sticky;
-    top: var(--deck-top);
+    position: absolute;
+    inset: 0;
     z-index: var(--card-index);
     display: grid;
     grid-template-rows: minmax(0, 1fr) auto;
@@ -150,7 +155,7 @@ html {
     align-items: stretch;
     width: 100%;
     margin: 0 auto;
-    height: var(--deck-height);
+    height: 100%;
     padding: clamp(14px, 1.6vw, 18px);
     overflow: hidden;
     isolation: isolate;
@@ -163,6 +168,8 @@ html {
         0 30px 80px rgba(0, 0, 0, 0.36),
         0 1px 0 rgba(7, 16, 24, 0.08);
     filter: brightness(var(--deck-brightness)) saturate(var(--deck-saturation)) blur(var(--deck-blur));
+    opacity: var(--deck-opacity);
+    pointer-events: none;
     transform:
         perspective(1600px)
         translate3d(0, var(--deck-y), var(--deck-z))
@@ -172,8 +179,8 @@ html {
     will-change: transform, filter;
 }
 
-.deck-card.is-covered {
-    pointer-events: none;
+.deck-card.is-active {
+    pointer-events: auto;
 }
 
 .deck-card__media {
@@ -408,18 +415,9 @@ html {
         text-align: left;
     }
 
-    .deck-item {
+    .deck-stack {
         --deck-top: max(92px, calc(env(safe-area-inset-top) + 82px));
         --deck-height: clamp(480px, 68svh, 590px);
-        min-height: calc(var(--deck-height) + 38svh);
-    }
-
-    .deck-item + .deck-item {
-        margin-top: calc(var(--deck-height) * -0.58);
-    }
-
-    .deck-item:last-child {
-        min-height: calc(var(--deck-height) + 36svh);
     }
 
     .deck-card {
@@ -525,7 +523,23 @@ html {
 }
 
 @media (prefers-reduced-motion: reduce) {
+    .deck-stack {
+        height: auto !important;
+    }
+
+    .deck-item {
+        position: relative;
+        top: auto;
+        height: var(--deck-height);
+        margin: 0 0 24px !important;
+        pointer-events: auto;
+    }
+
     .deck-card {
+        position: relative;
+        inset: auto;
+        opacity: 1 !important;
+        pointer-events: auto;
         transition: none;
         transform: none !important;
         filter: none !important;
