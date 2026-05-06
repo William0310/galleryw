@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo F - Atlas Zoom</title>
+    <link rel="stylesheet" href="demo.css">
+  </head>
+  <body class="atlas-zoom-page">
+    <header class="demo-topbar">
+      <a class="demo-brand" href="index.html">Demo F / Atlas Zoom</a>
+      <nav class="demo-nav">
+        <a href="viewfinder.html">Back to E</a>
+        <a href="../index.html">Current site</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="demo-shell intro">
+        <p class="section-label">Concept</p>
+        <h1>Nodes expand into rooms.</h1>
+        <p>
+          This is the interaction you described: a floating atlas node grows into a near full-screen collection detail,
+          then shrinks back before the next node takes over. No images yet; gray areas mark cover surfaces.
+        </p>
+      </section>
+
+      <section class="atlas-zoom-demo" aria-label="Atlas zoom interaction demo">
+        <div class="atlas-stage" aria-hidden="true">
+          <article class="atlas-zoom-node" data-node="0">
+            <div class="atlas-zoom-cover"></div>
+            <div class="atlas-zoom-hud">
+              <div>
+                <p class="section-label">01 / Plateau Route</p>
+                <h2>Qinghai</h2>
+                <p>When progress approaches the middle of this scroll section, this node becomes the active collection detail.</p>
+              </div>
+              <span class="atlas-zoom-cta">Explore Qinghai</span>
+            </div>
+            <div class="atlas-zoom-label">Qinghai</div>
+          </article>
+
+          <article class="atlas-zoom-node" data-node="1">
+            <div class="atlas-zoom-cover"></div>
+            <div class="atlas-zoom-hud">
+              <div>
+                <p class="section-label">02 / Kyoto to Fuji</p>
+                <h2>Japan</h2>
+                <p>The node returns to the atlas scale after its scroll section passes, then the next node expands.</p>
+              </div>
+              <span class="atlas-zoom-cta">Explore Japan</span>
+            </div>
+            <div class="atlas-zoom-label">Japan</div>
+          </article>
+
+          <article class="atlas-zoom-node" data-node="2">
+            <div class="atlas-zoom-cover"></div>
+            <div class="atlas-zoom-hud">
+              <div>
+                <p class="section-label">03 / Imperial Garden</p>
+                <h2>Yiheyuan</h2>
+                <p>In production this cover area would use one responsive image per collection, not the whole gallery.</p>
+              </div>
+              <span class="atlas-zoom-cta">Explore Yiheyuan</span>
+            </div>
+            <div class="atlas-zoom-label">Yiheyuan</div>
+          </article>
+
+          <article class="atlas-zoom-node" data-node="3">
+            <div class="atlas-zoom-cover"></div>
+            <div class="atlas-zoom-hud">
+              <div>
+                <p class="section-label">04 / Vertical City</p>
+                <h2>Chongqing</h2>
+                <p>The expensive part is not this demo logic; it is refining the motion so it feels intentional on every device.</p>
+              </div>
+              <span class="atlas-zoom-cta">Explore Chongqing</span>
+            </div>
+            <div class="atlas-zoom-label">Chongqing</div>
+          </article>
+
+          <article class="atlas-zoom-node" data-node="4">
+            <div class="atlas-zoom-cover"></div>
+            <div class="atlas-zoom-hud">
+              <div>
+                <p class="section-label">05 / Mountain Winter</p>
+                <h2>Lijiang</h2>
+                <p>Mobile can keep the same idea, but node positions become more vertical and less map-like.</p>
+              </div>
+              <span class="atlas-zoom-cta">Explore Lijiang</span>
+            </div>
+            <div class="atlas-zoom-label">Lijiang</div>
+          </article>
+        </div>
+
+        <div class="atlas-zoom-progress" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <div class="atlas-scroll-track" aria-label="Scroll trigger sections">
+          <section class="atlas-scroll-step" data-step="0"></section>
+          <section class="atlas-scroll-step" data-step="1"></section>
+          <section class="atlas-scroll-step" data-step="2"></section>
+          <section class="atlas-scroll-step" data-step="3"></section>
+          <section class="atlas-scroll-step" data-step="4"></section>
+        </div>
+      </section>
+
+      <section class="demo-shell intro">
+        <p class="section-label">End state</p>
+        <h1>Then return to normal page content.</h1>
+        <p>
+          Footer, about section, or archive links would live after the atlas sequence. This checks whether the long scroll
+          feels acceptable before committing this pattern to the real homepage.
+        </p>
+      </section>
+    </main>
+
+    <script src="atlas-zoom.js"></script>
+  </body>
+</html>

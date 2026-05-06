@@ -33,84 +33,122 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="theme.css?v=2014">
-    <link rel="stylesheet" href="style.css?v=2036">
+    <link rel="stylesheet" href="style.css?v=2040">
     <link rel="stylesheet" href="cursor.css?v=2008" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body class="home-page">
+<body class="home-page home-page--viewfinder">
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
-    <main class="page-shell">
+    <main class="page-shell home-shell">
         <header class="page-topbar">
             <div class="brand-mark">
                 <strong> William's Gallery</strong>
-           
             </div>
             <nav class="topbar-links topbar-links--home" aria-label="Primary">
                 <a href="archive.html">Upcoming</a>
-                
             </nav>
         </header>
 
-        <section class="home-hero">
-            <div class="hero-copy">
-                <div class="hero-intro">
-                    <p class="eyebrow">Online gallery / 2023-2026</p>
-                    <h1 class="headline">Frames Of Mind.</h1>
-                    <p class="lede">
-                    
-                        Please Browse with a computer when possible.
-                        
-                    </p>
-                </div>
-                <div class="series-actions hero-actions">
-                    <a href="#home-story" class="cta-link" data-scroll-step>ENTER THE COLLECTIONS</a>
-                    <a href="about.html" class="cta-link cta-link--muted">About</a>
-                </div>
-                <div class="chip-row hero-tags">
-                    <span class="chip">#5 featured journeys</span>
-                    <span class="chip">#Qinghai to Beijing</span>
-                    <span class="chip">#Canon R5 / Nikon Z9</span>
-                </div>
+        <section class="mobile-welcome" aria-label="Welcome">
+            <div class="mobile-welcome__copy">
+                <p class="eyebrow">Online gallery / 2023-2026</p>
+                <h1 class="headline">Frames Of Mind.</h1>
+                <p class="lede">Please Browse with a computer when possible.</p>
             </div>
+            <a href="#collections" class="cta-link mobile-welcome__scroll">Explore the Collections</a>
+        </section>
 
-            <aside class="hero-aside stack" id="home-story" aria-label="Current edit notes">
-                <section class="glass-card hero-note">
-                    <div class="hero-note__intro">
-                        <p class="meta-kicker hero-note__kicker">Route monitor</p>
-                        <p>
-                            plateau, shrine, imperial garden, vertical city, and mountain winter.
-                        </p>
+        <section class="viewfinder-sequence" id="collections" aria-label="Featured collections viewfinder">
+            <div class="viewfinder-stage">
+                <section class="viewfinder-screen" aria-label="Active collection preview">
+                    <div class="viewfinder-frame" data-viewfinder-frame>
+                        <picture class="viewfinder-picture">
+                            <source data-vf-source media="(max-width: 820px)" srcset="images/ta1.webp">
+                            <img data-vf-image class="viewfinder-image" src="images/qinghai1.webp" alt="Grassland road in Qinghai" width="2850" height="1695" fetchpriority="high" decoding="async">
+                        </picture>
+
+                        <div class="viewfinder-vignette" aria-hidden="true"></div>
+                        <div class="viewfinder-grid" aria-hidden="true"></div>
+                        <div class="viewfinder-focus" aria-hidden="true">
+                            <span></span>
+                        </div>
+                        <div class="viewfinder-corners" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="viewfinder-data viewfinder-data--top" aria-hidden="true">
+                            <span data-vf-count>01 / 05</span>
+                            <span data-vf-camera>Canon R5 + DJI Mini 3 Pro</span>
+                            <span data-vf-date>07 / 2024</span>
+                        </div>
+                        <div class="viewfinder-data viewfinder-data--bottom" aria-hidden="true">
+                            <span>AF-C</span>
+                            <span>FRAME LOCK</span>
+                            <span>SCROLL TO FOCUS</span>
+                        </div>
+                        <div class="viewfinder-title-plate" aria-hidden="true">
+                            <p>Online gallery / 2023-2026</p>
+                            <strong>Frames Of Mind.</strong>
+                        </div>
                     </div>
-                    <nav class="hero-monitor" aria-label="Featured collections quick index">
-                        <a href="#showcase-qinghai">
+                </section>
+
+                <aside class="viewfinder-console" aria-label="Collection information">
+                    <div class="viewfinder-brand-block">
+                        <p class="eyebrow">Online gallery / 2023-2026</p>
+                        <h1 class="headline">Frames Of Mind.</h1>
+                        <p class="lede">Please Browse with a computer when possible.</p>
+                    </div>
+
+                    <section class="viewfinder-active-card glass-card" aria-live="polite">
+                        <div class="viewfinder-active-card__meta">
+                            <span data-vf-count-text>01 / 05</span>
+                            <span data-vf-date-text>07 / 2024</span>
+                        </div>
+                        <p class="meta-kicker" data-vf-kicker>Qinghai / Canon R5 + DJI Mini 3 Pro</p>
+                        <h2 data-vf-title>Qinghai</h2>
+                        <p data-vf-description>Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows.</p>
+                        <div class="viewfinder-tags" data-vf-tags aria-label="Current collection tags">
+                            <span>Ta'er Temple</span>
+                            <span>Chaka</span>
+                            <span>Qunjia</span>
+                        </div>
+                        <a href="qinghai.html" class="cta-link" data-vf-link>Explore Qinghai</a>
+                    </section>
+
+                    <nav class="viewfinder-route" aria-label="Featured collections route">
+                        <a href="#showcase-qinghai" class="is-active" data-viewfinder-jump="0">
                             <span>01</span>
                             <strong>Qinghai</strong>
                             <em>Plateau light</em>
                         </a>
-                        <a href="#showcase-japan">
+                        <a href="#showcase-japan" data-viewfinder-jump="1">
                             <span>02</span>
                             <strong>Japan</strong>
                             <em>Shrine rhythm</em>
                         </a>
-                        <a href="#showcase-yiheyuan">
+                        <a href="#showcase-yiheyuan" data-viewfinder-jump="2">
                             <span>03</span>
                             <strong>Yiheyuan</strong>
                             <em>Garden air</em>
                         </a>
-                        <a href="#showcase-chongqing">
+                        <a href="#showcase-chongqing" data-viewfinder-jump="3">
                             <span>04</span>
                             <strong>Chongqing</strong>
                             <em>Neon density</em>
                         </a>
-                        <a href="#showcase-lijiang">
+                        <a href="#showcase-lijiang" data-viewfinder-jump="4">
                             <span>05</span>
                             <strong>Lijiang</strong>
                             <em>Snow line</em>
                         </a>
                     </nav>
-                    <div class="metric-grid hero-note__metrics">
+
+                    <div class="metric-grid viewfinder-metrics">
                         <article class="metric-card">
                             <span>Journeys</span>
                             <strong>05</strong>
@@ -127,156 +165,37 @@
                             <p>Xinjiang and more in progress.</p>
                         </article>
                     </div>
+                </aside>
+            </div>
+
+            <div class="viewfinder-scroll-track" aria-label="Collection scroll timeline">
+                <section class="viewfinder-step" id="showcase-qinghai" data-viewfinder-step data-index="0" data-title="Qinghai" data-count="01 / 05" data-date="07 / 2024" data-camera="Canon R5 + DJI Mini 3 Pro" data-kicker="Qinghai / Canon R5 + DJI Mini 3 Pro" data-description="Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows." data-tags="Ta'er Temple|Chaka|Qunjia" data-link="qinghai.html" data-action="Explore Qinghai" data-desktop-src="images/qinghai1.webp" data-mobile-src="images/ta1.webp" data-alt="Grassland road in Qinghai" data-desktop-position="center 50%" data-mobile-position="center 43%">
+                    <span class="visually-hidden">Qinghai collection scroll trigger</span>
                 </section>
-            </aside>
-        </section>
 
-        <hr class="soft-rule">
+                <section class="viewfinder-step" id="showcase-japan" data-viewfinder-step data-index="1" data-title="Japan" data-count="02 / 05" data-date="07 / 2025" data-camera="Nikon Z9" data-kicker="Japan / Nikon Z9" data-description="A timeless harmony of ancient tradition and futuristic elegance, moving from Kyoto quietness to Tokyo density and Fuji air." data-tags="Tokyo|Kyoto|Mt. Fuji" data-link="japan.html" data-action="Explore Japan" data-desktop-src="images/fuji1.webp" data-mobile-src="images/kyoto1.webp" data-alt="Mt. Fuji framed by a torii gate" data-desktop-position="center 50%" data-mobile-position="center 42%">
+                    <span class="visually-hidden">Japan collection scroll trigger</span>
+                </section>
 
-        <section class="collections-section showcase-section" id="collections" aria-label="Featured fullscreen collections">
-            <div class="section-head showcase-head">
-                <div>
-                    <p class="section-kicker">Featured series</p>
-                    <h2 class="section-title">Explore the Collections.</h2>
-                </div>
-                <p class="section-copy">
-                   New: The Japan Album now has 5 more photos being added! May/5/2026.
-                </p>
-            </div>
+                <section class="viewfinder-step" id="showcase-yiheyuan" data-viewfinder-step data-index="2" data-title="Yiheyuan" data-count="03 / 05" data-date="08 / 2025" data-camera="Beijing" data-kicker="Yiheyuan / Beijing" data-description="Beijing's Summer Palace: lake air, imperial garden lines, and the slower rhythm of a city landmark after the crowd begins to thin." data-tags="Summer Palace|Kunming Lake|Beijing" data-link="yiheyuan.html" data-action="Explore Yiheyuan" data-desktop-src="images/yih3.webp" data-mobile-src="images/yih1.webp" data-alt="Yiheyuan scene in Beijing" data-desktop-position="center 52%" data-mobile-position="center 45%">
+                    <span class="visually-hidden">Yiheyuan collection scroll trigger</span>
+                </section>
 
-            <div class="showcase-stack">
-                <article class="collection-card showcase-panel showcase-panel--qinghai" id="showcase-qinghai">
-                    <a href="qinghai.html" class="showcase-panel__image" aria-label="Open Qinghai collection">
-                        <picture>
-                            <source media="(max-width: 820px)" srcset="images/ta1.webp">
-                            <img src="images/qinghai1.webp" alt="Grassland road in Qinghai" width="2850" height="1695" loading="lazy" decoding="async">
-                        </picture>
-                    </a>
-                    <div class="showcase-hud">
-                        <div class="showcase-hud__top">
-                            <span>01 / 05</span>
-                            <span>07 / 2024</span>
-                        </div>
-                        <p class="showcase-kicker">Qinghai / Canon R5 + DJI Mini 3 Pro</p>
-                        <h3>Qinghai</h3>
-                        <p>Qinghai is a celestial masterpiece where the turquoise pulse of the high plateau meets the silent majesty of eternal snows.</p>
-                        <div class="showcase-tags" aria-label="Qinghai locations">
-                            <span>Ta'er Temple</span>
-                            <span>Chaka</span>
-                            <span>Qunjia</span>
-                        </div>
-                        <a href="qinghai.html" class="cta-link">Browse Qinghai</a>
-                    </div>
-                    <p class="showcase-watermark" aria-hidden="true">QH</p>
-                </article>
+                <section class="viewfinder-step" id="showcase-chongqing" data-viewfinder-step data-index="3" data-title="Chongqing" data-count="04 / 05" data-date="08 / 2025" data-camera="Nikon Z9" data-kicker="Chongqing / Nikon Z9" data-description="A vertical cyberpunk field note where neon mountains, bridges, concrete layers, and river reflections stack into one city mood." data-tags="Neon|Concrete|Night density" data-link="chongqing.html" data-action="Explore Chongqing" data-desktop-src="images/cq5.webp" data-mobile-src="images/cq2.webp" data-alt="Night city view in Chongqing" data-desktop-position="center 56%" data-mobile-position="center 44%">
+                    <span class="visually-hidden">Chongqing collection scroll trigger</span>
+                </section>
 
-                <article class="collection-card showcase-panel showcase-panel--japan" id="showcase-japan">
-                    <a href="japan.html" class="showcase-panel__image" aria-label="Open Japan collection">
-                        <picture>
-                            <source media="(max-width: 820px)" srcset="images/kyoto1.webp">
-                            <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
-                        </picture>
-                    </a>
-                    <div class="showcase-hud">
-                        <div class="showcase-hud__top">
-                            <span>02 / 05</span>
-                            <span>07 / 2025</span>
-                        </div>
-                        <p class="showcase-kicker">Japan / Nikon Z9</p>
-                        <h3>Japan</h3>
-                        <p>A timeless harmony of ancient tradition and futuristic elegance, moving from Kyoto quietness to Tokyo density and Fuji air.</p>
-                        <div class="showcase-tags" aria-label="Japan locations">
-                            <span>Tokyo</span>
-                            <span>Kyoto</span>
-                            <span>Mt. Fuji</span>
-                        </div>
-                        <a href="japan.html" class="cta-link">Browse Japan</a>
-                    </div>
-                    <p class="showcase-watermark" aria-hidden="true">JP</p>
-                </article>
-
-                <article class="collection-card showcase-panel showcase-panel--yiheyuan" id="showcase-yiheyuan">
-                    <a href="yiheyuan.html" class="showcase-panel__image" aria-label="Open Yiheyuan collection">
-                        <picture>
-                            <source media="(max-width: 820px)" srcset="images/yih1.webp">
-                            <img src="images/yih3.webp" alt="Yiheyuan scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
-                        </picture>
-                    </a>
-                    <div class="showcase-hud">
-                        <div class="showcase-hud__top">
-                            <span>03 / 05</span>
-                            <span>08 / 2025</span>
-                        </div>
-                        <p class="showcase-kicker">Yiheyuan / Beijing</p>
-                        <h3>Yiheyuan</h3>
-                        <p>Beijing's Summer Palace: lake air, imperial garden lines, and the slower rhythm of a city landmark after the crowd begins to thin.</p>
-                        <div class="showcase-tags" aria-label="Yiheyuan locations">
-                            <span>Summer Palace</span>
-                            <span>Kunming Lake</span>
-                            <span>Beijing</span>
-                        </div>
-                        <a href="yiheyuan.html" class="cta-link">Browse Yiheyuan</a>
-                    </div>
-                    <p class="showcase-watermark" aria-hidden="true">BJ</p>
-                </article>
-
-                <article class="collection-card showcase-panel showcase-panel--chongqing" id="showcase-chongqing">
-                    <a href="chongqing.html" class="showcase-panel__image" aria-label="Open Chongqing collection">
-                        <picture>
-                            <source media="(max-width: 820px)" srcset="images/cq2.webp">
-                            <img src="images/cq5.webp" alt="Night city view in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
-                        </picture>
-                    </a>
-                    <div class="showcase-hud">
-                        <div class="showcase-hud__top">
-                            <span>04 / 05</span>
-                            <span>08 / 2025</span>
-                        </div>
-                        <p class="showcase-kicker">Chongqing / Nikon Z9</p>
-                        <h3>Chongqing</h3>
-                        <p>A vertical cyberpunk field note where neon mountains, bridges, concrete layers, and river reflections stack into one city mood.</p>
-                        <div class="showcase-tags" aria-label="Chongqing themes">
-                            <span>Neon</span>
-                            <span>Concrete</span>
-                            <span>Night density</span>
-                        </div>
-                        <a href="chongqing.html" class="cta-link">Browse Chongqing</a>
-                    </div>
-                    <p class="showcase-watermark" aria-hidden="true">CQ</p>
-                </article>
-
-                <article class="collection-card showcase-panel showcase-panel--lijiang" id="showcase-lijiang">
-                    <a href="yulong.html" class="showcase-panel__image" aria-label="Open Lijiang collection">
-                        <picture>
-                            <source media="(max-width: 820px)" srcset="images/lij1.webp">
-                            <img src="images/lijiang1.webp" alt="Blue water and mountains near Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
-                        </picture>
-                    </a>
-                    <div class="showcase-hud">
-                        <div class="showcase-hud__top">
-                            <span>05 / 05</span>
-                            <span>12 / 2025</span>
-                        </div>
-                        <p class="showcase-kicker">Lijiang / Nikon Z9</p>
-                        <h3>Lijiang</h3>
-                        <p>A silver mountain chapter where cold air, blue water, yak meadows, and winter color slow the archive down.</p>
-                        <div class="showcase-tags" aria-label="Lijiang locations">
-                            <span>Blue Moon Valley</span>
-                            <span>Yulong Snow Mountain</span>
-                            <span>Winter color</span>
-                        </div>
-                        <a href="yulong.html" class="cta-link">Browse Lijiang</a>
-                    </div>
-                    <p class="showcase-watermark" aria-hidden="true">LJ</p>
-                </article>
+                <section class="viewfinder-step" id="showcase-lijiang" data-viewfinder-step data-index="4" data-title="Lijiang" data-count="05 / 05" data-date="12 / 2025" data-camera="Nikon Z9" data-kicker="Lijiang / Nikon Z9" data-description="A silver mountain chapter where cold air, blue water, yak meadows, and winter color slow the archive down." data-tags="Blue Moon Valley|Yulong Snow Mountain|Winter color" data-link="yulong.html" data-action="Explore Lijiang" data-desktop-src="images/lijiang1.webp" data-mobile-src="images/lij1.webp" data-alt="Blue water and mountains near Lijiang" data-desktop-position="center 42%" data-mobile-position="center 44%">
+                    <span class="visually-hidden">Lijiang collection scroll trigger</span>
+                </section>
             </div>
         </section>
 
-        <section class="home-about-card collection-card">
+        <section class="home-about-card">
             <a href="about.html" class="home-about-card__portrait" aria-label="Read about William">
                 <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" loading="lazy" decoding="async">
             </a>
-            <div class="home-about-card__copy">
+            <div class="home-about-card__copy glass-card">
                 <p class="section-kicker">About the artist</p>
                 <h2 class="section-title">William</h2>
                 <p class="section-copy">
@@ -304,7 +223,7 @@
     </main>
 
     <script src="cursor.js"></script>
-    <script src="home.js?v=2003"></script>
+    <script src="home.js?v=2004"></script>
     <script src="transition.js?v=2001"></script>
 </body>
 </html>
