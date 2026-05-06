@@ -1,149 +1,67 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const steps = Array.from(document.querySelectorAll("[data-viewfinder-step]"));
-    const routeLinks = Array.from(document.querySelectorAll("[data-viewfinder-jump]"));
-    const frame = document.querySelector("[data-viewfinder-frame]");
-    const source = document.querySelector("[data-vf-source]");
-    const image = document.querySelector("[data-vf-image]");
-    const activeLink = document.querySelector("[data-vf-link]");
-    const activeFields = {
-        title: document.querySelector("[data-vf-title]"),
-        kicker: document.querySelector("[data-vf-kicker]"),
-        description: document.querySelector("[data-vf-description]"),
-        count: document.querySelector("[data-vf-count]"),
-        countText: document.querySelector("[data-vf-count-text]"),
-        date: document.querySelector("[data-vf-date]"),
-        dateText: document.querySelector("[data-vf-date-text]"),
-        camera: document.querySelector("[data-vf-camera]"),
-        tags: document.querySelector("[data-vf-tags]")
-    };
+    const cards = Array.from(document.querySelectorAll("[data-deck-card]"));
+    const items = cards.map((card) => card.closest(".deck-item")).filter(Boolean);
+    const scrollStart = document.querySelector("[data-scroll-start]");
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (!steps.length || !frame || !source || !image) {
+    if (!cards.length || !items.length) {
         return;
     }
 
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const mobileMedia = window.matchMedia("(max-width: 820px)");
-    let activeIndex = 0;
     let ticking = false;
-    let swapTimer = null;
 
-    const selectedImageFor = (step) => {
-        if (!step) {
-            return "";
-        }
+    const clamp = (value, min = 0, max = 1) => Math.min(Math.max(value, min), max);
 
-        return mobileMedia.matches
-            ? step.dataset.mobileSrc || step.dataset.desktopSrc || ""
-            : step.dataset.desktopSrc || step.dataset.mobileSrc || "";
+    const ease = (value) => value * value * (3 - 2 * value);
+
+    const setDeckVars = (card, covered, entry) => {
+        const coveredEase = ease(covered);
+        const entryEase = ease(entry);
+        const scale = 0.966 + entryEase * 0.034 - coveredEase * 0.072;
+        const y = (1 - entryEase) * 96 - coveredEase * 34;
+        const z = coveredEase * -150;
+        const rotate = (1 - entryEase) * 2.8 - coveredEase * 4.2;
+        const brightness = 0.92 + entryEase * 0.08 - coveredEase * 0.18;
+        const saturation = 0.94 + entryEase * 0.06 - coveredEase * 0.12;
+        const blur = coveredEase * 0.48;
+
+        card.style.setProperty("--deck-scale", scale.toFixed(3));
+        card.style.setProperty("--deck-y", `${y.toFixed(1)}px`);
+        card.style.setProperty("--deck-z", `${z.toFixed(1)}px`);
+        card.style.setProperty("--deck-rotate", `${rotate.toFixed(2)}deg`);
+        card.style.setProperty("--deck-brightness", brightness.toFixed(3));
+        card.style.setProperty("--deck-saturation", saturation.toFixed(3));
+        card.style.setProperty("--deck-blur", `${blur.toFixed(2)}px`);
+        card.classList.toggle("is-covered", covered > 0.48);
     };
 
-    const preloadNearby = (index) => {
-        [index + 1, index - 1].forEach((nearbyIndex) => {
-            const step = steps[nearbyIndex];
-            const src = selectedImageFor(step);
-
-            if (!src) {
-                return;
-            }
-
-            const preloadImage = new Image();
-            preloadImage.decoding = "async";
-            preloadImage.src = src;
-        });
-    };
-
-    const renderTags = (tagsValue = "") => {
-        if (!activeFields.tags) {
-            return;
-        }
-
-        activeFields.tags.textContent = "";
-
-        tagsValue.split("|").filter(Boolean).forEach((tag) => {
-            const tagNode = document.createElement("span");
-            tagNode.textContent = tag;
-            activeFields.tags.append(tagNode);
-        });
-    };
-
-    const setText = (node, value) => {
-        if (node && typeof value === "string") {
-            node.textContent = value;
-        }
-    };
-
-    const setActive = (index) => {
-        const step = steps[index];
-
-        if (!step || index === activeIndex) {
-            return;
-        }
-
-        activeIndex = index;
-        const desktopSrc = step.dataset.desktopSrc || "";
-        const mobileSrc = step.dataset.mobileSrc || desktopSrc;
-        const objectPosition = mobileMedia.matches
-            ? step.dataset.mobilePosition || step.dataset.desktopPosition || "center"
-            : step.dataset.desktopPosition || step.dataset.mobilePosition || "center";
-
-        frame.classList.add("is-swapping");
-        window.clearTimeout(swapTimer);
-        swapTimer = window.setTimeout(() => {
-            frame.classList.remove("is-swapping");
-        }, reducedMotion ? 0 : 260);
-
-        source.srcset = mobileSrc;
-        image.src = desktopSrc;
-        image.alt = step.dataset.alt || `${step.dataset.title || "Collection"} cover image`;
-        image.style.setProperty("--vf-object-position", objectPosition);
-
-        setText(activeFields.title, step.dataset.title || "");
-        setText(activeFields.kicker, step.dataset.kicker || "");
-        setText(activeFields.description, step.dataset.description || "");
-        setText(activeFields.count, step.dataset.count || "");
-        setText(activeFields.countText, step.dataset.count || "");
-        setText(activeFields.date, step.dataset.date || "");
-        setText(activeFields.dateText, step.dataset.date || "");
-        setText(activeFields.camera, step.dataset.camera || "");
-        renderTags(step.dataset.tags || "");
-
-        if (activeLink) {
-            activeLink.href = step.dataset.link || "#";
-            activeLink.textContent = step.dataset.action || "Explore";
-        }
-
-        routeLinks.forEach((link) => {
-            link.classList.toggle("is-active", Number(link.dataset.viewfinderJump) === index);
-        });
-
-        preloadNearby(index);
-    };
-
-    const syncActiveStep = () => {
+    const syncDeck = () => {
         ticking = false;
 
-        const viewportCenter = window.innerHeight / 2;
-        let nextIndex = activeIndex;
-        let closestDistance = Number.POSITIVE_INFINITY;
+        if (reducedMotion) {
+            return;
+        }
 
-        steps.forEach((step, index) => {
-            const rect = step.getBoundingClientRect();
-            const isNearViewport = rect.bottom > -window.innerHeight && rect.top < window.innerHeight * 2;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-            if (!isNearViewport) {
-                return;
+        cards.forEach((card, index) => {
+            const nextItem = items[index + 1];
+            const itemRect = items[index].getBoundingClientRect();
+            let covered = 0;
+
+            if (nextItem) {
+                const nextRect = nextItem.getBoundingClientRect();
+                const coverStart = viewportHeight * 0.92;
+                const coverEnd = viewportHeight * 0.22;
+                covered = clamp((coverStart - nextRect.top) / (coverStart - coverEnd));
             }
 
-            const stepCenter = rect.top + rect.height / 2;
-            const distance = Math.abs(stepCenter - viewportCenter);
+            const entryStart = viewportHeight * 1.08;
+            const entryEnd = viewportHeight * 0.36;
+            const entry = clamp((entryStart - itemRect.top) / (entryStart - entryEnd));
 
-            if (distance < closestDistance) {
-                closestDistance = distance;
-                nextIndex = index;
-            }
+            setDeckVars(card, covered, entry);
         });
-
-        setActive(nextIndex);
     };
 
     const requestSync = () => {
@@ -152,42 +70,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         ticking = true;
-        window.requestAnimationFrame(syncActiveStep);
+        window.requestAnimationFrame(syncDeck);
     };
 
-    routeLinks.forEach((link) => {
-        link.addEventListener("click", (event) => {
+    if (scrollStart) {
+        scrollStart.addEventListener("click", (event) => {
             event.preventDefault();
 
-            const index = Number(link.dataset.viewfinderJump);
-            const step = steps[index];
+            const deck = document.getElementById("collections");
 
-            if (!step) {
+            if (!deck) {
                 return;
             }
 
-            const stepRect = step.getBoundingClientRect();
-            const targetY = window.scrollY + stepRect.top + (stepRect.height / 2) - (window.innerHeight / 2);
-
-            setActive(index);
             window.scrollTo({
-                top: targetY,
+                top: Math.max(0, window.scrollY + deck.getBoundingClientRect().top),
                 behavior: reducedMotion ? "auto" : "smooth"
             });
         });
-    });
+    }
 
-    activeIndex = -1;
-    setActive(0);
-    syncActiveStep();
-    preloadNearby(0);
-
+    syncDeck();
     window.addEventListener("scroll", requestSync, { passive: true });
     window.addEventListener("resize", requestSync);
-    mobileMedia.addEventListener?.("change", () => {
-        const visibleIndex = routeLinks.findIndex((link) => link.classList.contains("is-active"));
-        activeIndex = -1;
-        setActive(visibleIndex >= 0 ? visibleIndex : 0);
-        requestSync();
-    });
 });
