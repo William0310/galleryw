@@ -33,7 +33,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="theme.css?v=2014">
-    <link rel="stylesheet" href="style.css?v=2050">
+    <link rel="stylesheet" href="style.css?v=2054">
     <link rel="stylesheet" href="cursor.css?v=2008" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -53,107 +53,256 @@
             </nav>
         </header>
 
-        <section class="home-hero" aria-label="William's Photo Gallery">
-            <picture class="home-hero__media">
-                <source media="(max-width: 720px)" srcset="images/ta1.webp">
-                <img src="images/qinghai1.webp" alt="Grassland road and mountains in Qinghai" width="2850" height="1695" fetchpriority="high" decoding="async">
-            </picture>
-            <div class="home-hero__shade" aria-hidden="true"></div>
+        <section class="home-showcase" aria-labelledby="home-showcase-title">
+            <header class="showcase-intro">
+                <p class="eyebrow">Volume one / 2024-2025</p>
+                <h1 class="home-showcase__title" id="home-showcase-title">Frames of Mind.</h1>
+                <p class="home-showcase__lede">
+                    William's Pbhoto Gallery.
+                </p>
+            </header>
 
-            <div class="home-hero__inner">
-                <div class="home-hero__copy">
-                    <p class="eyebrow">Volume one / 2023-2026</p>
-                    <h1 class="home-hero__title">William's Photo Gallery</h1>
-                    <p class="home-hero__lede">
-                      
-                    </p>
-                    <div class="home-hero__actions">
-                        <a href="#collections" class="cta-link" data-scroll-start>Enter the collection</a>
+            <div class="desktop-showcase" data-desktop-showcase aria-label="Desktop featured chapters">
+                <div class="desktop-showcase__layout">
+                    <div class="desktop-showcase__rail">
+                        <article class="desktop-series is-active" data-desktop-item data-index="0">
+                            <p class="desktop-series__index">01</p>
+                            <h2 class="desktop-series__title">Qinghai</h2>
+                            <div class="desktop-series__details">
+                                <p class="desktop-series__meta">July 2024 / Plateau route</p>
+                                <p class="desktop-series__description">Plateau light, temple red, and salt-lake white stretched into a high-altitude road film.</p>
+                                <a href="qinghai.html" class="cta-link">Enter chapter</a>
+                            </div>
+                        </article>
+
+                        <article class="desktop-series" data-desktop-item data-index="1">
+                            <p class="desktop-series__index">02</p>
+                            <h2 class="desktop-series__title">Japan</h2>
+                            <div class="desktop-series__details">
+                                <p class="desktop-series__meta">July 2025 / Kyoto to Fuji</p>
+                                <p class="desktop-series__description">Torii silhouettes, city density, and temple stillness arranged like a slow sequence of postcards.</p>
+                                <a href="japan.html" class="cta-link">Enter chapter</a>
+                            </div>
+                        </article>
+
+                        <article class="desktop-series" data-desktop-item data-index="2">
+                            <p class="desktop-series__index">03</p>
+                            <h2 class="desktop-series__title">Yiheyuan</h2>
+                            <div class="desktop-series__details">
+                                <p class="desktop-series__meta">Beijing / Garden study</p>
+                                <p class="desktop-series__description">Imperial lines, lake air, and measured quiet translated into a restrained architectural chapter.</p>
+                                <a href="yiheyuan.html" class="cta-link">Enter chapter</a>
+                            </div>
+                        </article>
+
+                        <article class="desktop-series" data-desktop-item data-index="3">
+                            <p class="desktop-series__index">04</p>
+                            <h2 class="desktop-series__title">Chongqing</h2>
+                            <div class="desktop-series__details">
+                                <p class="desktop-series__meta">August 2025 / Vertical night</p>
+                                <p class="desktop-series__description">Neon compression, bridge glow, and stacked elevation pushed into a denser urban frame.</p>
+                                <a href="chongqing.html" class="cta-link">Enter chapter</a>
+                            </div>
+                        </article>
+
+                        <article class="desktop-series" data-desktop-item data-index="4">
+                            <p class="desktop-series__index">05</p>
+                            <h2 class="desktop-series__title">Lijiang</h2>
+                            <div class="desktop-series__details">
+                                <p class="desktop-series__meta">December 2025 / Snow line</p>
+                                <p class="desktop-series__description">Blue water, snow lines, and thin cold air held in a final chapter built around clarity and altitude.</p>
+                                <a href="yulong.html" class="cta-link">Enter chapter</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="desktop-showcase__visual-column">
+                        <div class="desktop-visual-stack">
+                            <a href="qinghai.html" class="desktop-visual desktop-visual--qinghai is-active" data-desktop-visual data-index="0">
+                                <div class="desktop-visual__frame">
+                                    <div class="desktop-visual__chrome">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <p>Qinghai / July 2024</p>
+                                    </div>
+                                    <figure class="desktop-visual__media">
+                                        <img src="images/pano2.webp" alt="Panorama of Qinghai Lake" width="4814" height="1750" fetchpriority="high" decoding="async">
+                                    </figure>
+                                </div>
+                            </a>
+
+                            <a href="japan.html" class="desktop-visual desktop-visual--japan" data-desktop-visual data-index="1">
+                                <div class="desktop-visual__frame">
+                                    <div class="desktop-visual__chrome">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <p>Japan / July 2025</p>
+                                    </div>
+                                    <figure class="desktop-visual__media">
+                                        <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
+                                    </figure>
+                                </div>
+                            </a>
+
+                            <a href="yiheyuan.html" class="desktop-visual desktop-visual--yiheyuan" data-desktop-visual data-index="2">
+                                <div class="desktop-visual__frame">
+                                    <div class="desktop-visual__chrome">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <p>Yiheyuan / Beijing</p>
+                                    </div>
+                                    <figure class="desktop-visual__media">
+                                        <img src="images/yih3.webp" alt="Yiheyuan landscape scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
+                                    </figure>
+                                </div>
+                            </a>
+
+                            <a href="chongqing.html" class="desktop-visual desktop-visual--chongqing" data-desktop-visual data-index="3">
+                                <div class="desktop-visual__frame">
+                                    <div class="desktop-visual__chrome">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <p>Chongqing / August 2025</p>
+                                    </div>
+                                    <figure class="desktop-visual__media">
+                                        <img src="images/cq5.webp" alt="Night bridge and skyline in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
+                                    </figure>
+                                </div>
+                            </a>
+
+                            <a href="yulong.html" class="desktop-visual desktop-visual--lijiang" data-desktop-visual data-index="4">
+                                <div class="desktop-visual__frame">
+                                    <div class="desktop-visual__chrome">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                        <p>Lijiang / December 2025</p>
+                                    </div>
+                                    <figure class="desktop-visual__media">
+                                        <img src="images/lijiang1.webp" alt="Blue Moon Valley in Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
+                                    </figure>
+                                </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <p class="home-hero__aside">Five finished chapters across China and Japan.</p>
+            <div class="mobile-showcase" data-mobile-showcase aria-label="Mobile featured chapter carousel">
+                <div class="mobile-showcase__track" data-mobile-track tabindex="0">
+                    <a href="qinghai.html" class="mobile-slide mobile-slide--qinghai is-active" data-mobile-slide data-index="0" data-hud-index="01" data-hud-meta="July 2024 / Plateau route" data-hud-title="Qinghai" data-hud-description="Plateau light, temple red, and salt-lake white stretched into a high-altitude road film.">
+                        <div class="mobile-slide__frame">
+                            <div class="mobile-slide__chrome">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p>Qinghai / July 2024</p>
+                            </div>
+                            <figure class="mobile-slide__media">
+                                <img src="images/pano2.webp" alt="Panorama of Qinghai Lake" width="4814" height="1750" fetchpriority="high" decoding="async">
+                            </figure>
+                        </div>
+                    </a>
+
+                    <a href="japan.html" class="mobile-slide mobile-slide--japan" data-mobile-slide data-index="1" data-hud-index="02" data-hud-meta="July 2025 / Kyoto to Fuji" data-hud-title="Japan" data-hud-description="Torii silhouettes, city density, and temple stillness arranged like a slow sequence of postcards.">
+                        <div class="mobile-slide__frame">
+                            <div class="mobile-slide__chrome">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p>Japan / July 2025</p>
+                            </div>
+                            <figure class="mobile-slide__media">
+                                <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </a>
+
+                    <a href="yiheyuan.html" class="mobile-slide mobile-slide--yiheyuan" data-mobile-slide data-index="2" data-hud-index="03" data-hud-meta="Beijing / Garden study" data-hud-title="Yiheyuan" data-hud-description="Imperial lines, lake air, and measured quiet translated into a restrained architectural chapter.">
+                        <div class="mobile-slide__frame">
+                            <div class="mobile-slide__chrome">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p>Yiheyuan / Beijing</p>
+                            </div>
+                            <figure class="mobile-slide__media">
+                                <img src="images/yih3.webp" alt="Yiheyuan landscape scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </a>
+
+                    <a href="chongqing.html" class="mobile-slide mobile-slide--chongqing" data-mobile-slide data-index="3" data-hud-index="04" data-hud-meta="August 2025 / Vertical night" data-hud-title="Chongqing" data-hud-description="Neon compression, bridge glow, and stacked elevation pushed into a denser urban frame.">
+                        <div class="mobile-slide__frame">
+                            <div class="mobile-slide__chrome">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p>Chongqing / August 2025</p>
+                            </div>
+                            <figure class="mobile-slide__media">
+                                <img src="images/cq5.webp" alt="Night bridge and skyline in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </a>
+
+                    <a href="yulong.html" class="mobile-slide mobile-slide--lijiang" data-mobile-slide data-index="4" data-hud-index="05" data-hud-meta="December 2025 / Snow line" data-hud-title="Lijiang" data-hud-description="Blue water, snow lines, and thin cold air held in a final chapter built around clarity and altitude.">
+                        <div class="mobile-slide__frame">
+                            <div class="mobile-slide__chrome">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <p>Lijiang / December 2025</p>
+                            </div>
+                            <figure class="mobile-slide__media">
+                                <img src="images/lijiang1.webp" alt="Blue Moon Valley in Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
+                            </figure>
+                        </div>
+                    </a>
+                </div>
+
+                <aside class="mobile-hud" aria-label="Mobile chapter HUD">
+                    <p class="mobile-hud__index" data-mobile-hud-index>01</p>
+                    <div class="mobile-hud__body">
+                        <p class="mobile-hud__meta" data-mobile-hud-meta>July 2024 / Plateau route</p>
+                        <h2 class="mobile-hud__title" data-mobile-hud-title>Qinghai</h2>
+                        <p class="mobile-hud__description" data-mobile-hud-description>Plateau light, temple red, and salt-lake white stretched into a high-altitude road film.</p>
+                    </div>
+                    <a href="qinghai.html" class="mobile-hud__link" data-mobile-hud-link>Enter chapter</a>
+                </aside>
             </div>
         </section>
 
-        <section class="home-section home-collections" id="collections" aria-label="Featured photo collections">
-            <div class="home-section__head">
-                <div>
-                    <p class="section-kicker">Selected chapters</p>
-                    <h2 class="section-title">Explore the Collection.</h2>
+        <section class="home-notes" aria-label="Additional homepage cards">
+            <a href="about.html" class="home-note-card home-note-card--about">
+                <figure class="home-note-card__media">
+                    <img src="images/me.webp" alt="Portrait of William" width="1600" height="2000" loading="lazy" decoding="async">
+                </figure>
+                <div class="home-note-card__copy">
+                    <p class="home-note-card__kicker">About</p>
+                    <h2 class="home-note-card__title">About me and this Gallery.</h2>
+                    <p class="home-note-card__text">Based between Beijing and Pennsylvania, building this gallery with Nikon, Canon, Sony, and a DJI Mini 3 Pro.</p>
+                    <span class="home-note-card__action">Read profile</span>
                 </div>
-            </div>
+            </a>
 
-            <div class="collection-list">
-                <a href="qinghai.html" class="collection-panel collection-panel--qinghai">
-                    <div class="collection-panel__copy">
-                        <p class="meta-kicker">01 / Qinghai / July 2024</p>
-                        <h3>Qinghai</h3>
-                        <p>Plateau light, temple red, salt-lake white.</p>
-                        <span class="collection-panel__action">Enter chapter</span>
+            <a href="archive.html" class="home-note-card home-note-card--future">
+                <div class="home-note-card__copy">
+                    <p class="home-note-card__kicker">Future travels</p>
+                    <h2 class="home-note-card__title">More collections are on the way.</h2>
+                    <p class="home-note-card__text">Stay tuned Summer 2026 for more edits.</p>
+                    <div class="home-note-card__chips" aria-hidden="true">
+                        <span>Xinjiang</span>
+                        <span>Summer 2026</span>
+                        <span>Fieldwork ahead</span>
                     </div>
-                    <figure class="collection-panel__media">
-                        <img src="images/pano2.webp" alt="Panorama of Qinghai Lake" width="4814" height="1750" loading="lazy" decoding="async">
-                    </figure>
-                </a>
-
-                <a href="japan.html" class="collection-panel collection-panel--reverse collection-panel--japan">
-                    <div class="collection-panel__copy">
-                        <p class="meta-kicker">02 / Japan / July 2025</p>
-                        <h3>Japan</h3>
-                        <p>Torii silhouettes, city density, and temple stillness.</p>
-                        <span class="collection-panel__action">Enter chapter</span>
-                    </div>
-                    <figure class="collection-panel__media">
-                        <img src="images/fuji1.webp" alt="Mt. Fuji framed by a torii gate" width="2750" height="1833" loading="lazy" decoding="async">
-                    </figure>
-                </a>
-
-                <a href="yiheyuan.html" class="collection-panel collection-panel--yiheyuan">
-                    <div class="collection-panel__copy">
-                        <p class="meta-kicker">03 / Yiheyuan / Beijing</p>
-                        <h3>Yiheyuan</h3>
-                        <p>Imperial lines, lake air, and measured quiet.</p>
-                        <span class="collection-panel__action">Enter chapter</span>
-                    </div>
-                    <figure class="collection-panel__media">
-                        <img src="images/yih3.webp" alt="Yiheyuan landscape scene in Beijing" width="2750" height="1833" loading="lazy" decoding="async">
-                    </figure>
-                </a>
-
-                <a href="chongqing.html" class="collection-panel collection-panel--reverse collection-panel--chongqing">
-                    <div class="collection-panel__copy">
-                        <p class="meta-kicker">04 / Chongqing / August 2025</p>
-                        <h3>Chongqing</h3>
-                        <p>Neon compression, bridge glow, and vertical noise.</p>
-                        <span class="collection-panel__action">Enter chapter</span>
-                    </div>
-                    <figure class="collection-panel__media">
-                        <img src="images/cq5.webp" alt="Night bridge and skyline in Chongqing" width="3200" height="1506" loading="lazy" decoding="async">
-                    </figure>
-                </a>
-
-                <a href="yulong.html" class="collection-panel collection-panel--lijiang">
-                    <div class="collection-panel__copy">
-                        <p class="meta-kicker">05 / Lijiang / December 2025</p>
-                        <h3>Lijiang</h3>
-                        <p>Blue water, snow lines, and thin cold air.</p>
-                        <span class="collection-panel__action">Enter chapter</span>
-                    </div>
-                    <figure class="collection-panel__media">
-                        <img src="images/lijiang1.webp" alt="Blue Moon Valley in Lijiang" width="2650" height="1555" loading="lazy" decoding="async">
-                    </figure>
-                </a>
-            </div>
-        </section>
-
-        <section class="home-signature" aria-label="About William">
-            <p class="section-kicker">About</p>
-            <h2 class="section-title">William</h2>
-            <p class="home-signature__copy">
-                A personal archive of travel photography.
-            </p>
-            <a href="about.html" class="cta-link cta-link--quiet">Read profile</a>
+                    <span class="home-note-card__action">Open archive</span>
+                </div>
+            </a>
         </section>
 
         <footer class="page-footer">
@@ -163,7 +312,7 @@
     </main>
 
     <script src="cursor.js"></script>
-    <script src="home.js?v=2010"></script>
+    <script src="home.js?v=2013"></script>
     <script src="transition.js?v=2001"></script>
 </body>
 </html>
