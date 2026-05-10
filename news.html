@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Center | William's Photo Gallery</title>
+    <meta name="description" content="News, release notes, and update announcements for William's Photo Gallery.">
+    <link rel="canonical" href="https://wphotographs.com/news.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="William's Photo Gallery">
+    <meta property="og:title" content="News Center | William's Photo Gallery">
+    <meta property="og:description" content="News, release notes, and update announcements for William's Photo Gallery.">
+    <meta property="og:url" content="https://wphotographs.com/news.html">
+    <meta property="og:image" content="https://wphotographs.com/images/qinghai1.webp">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="News Center | William's Photo Gallery">
+    <meta name="twitter:description" content="News, release notes, and update announcements for William's Photo Gallery.">
+    <meta name="twitter:image" content="https://wphotographs.com/images/qinghai1.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="theme.css?v=3000">
+    <link rel="stylesheet" href="news.css?v=3000">
+    <link rel="stylesheet" href="cursor.css?v=3000" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+</head>
+<body class="news-page">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
+
+    <main class="page-shell">
+        <header class="page-topbar">
+            <a href="index.html" class="back-link">Home</a>
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="topbar-links" id="site-nav" aria-label="News">
+                <a href="index.html#collections">Collections</a>
+                <a href="news.html" class="news-link" data-news-link>News</a>
+                <a href="archive.html">Archive</a>
+                <a href="about.html">About</a>
+            </nav>
+        </header>
+
+        <section class="news-hero" aria-labelledby="news-title">
+            <p class="eyebrow">News Center</p>
+            <h1 class="headline" id="news-title">Updates worth noticing.</h1>
+            <p class="lede">
+                New photo releases, site changes, and useful feature notes for William's Photo Gallery.
+            </p>
+        </section>
+
+        <section class="news-list" aria-label="News posts">
+            <article class="news-item news-item--featured">
+                <div class="news-item__date">
+                    <span>May 10</span>
+                    <strong>2026</strong>
+                </div>
+                <div class="news-item__body">
+                    <p class="section-kicker">Release note</p>
+                    <h2 class="section-title">Gallery V4 redesign is live.</h2>
+                    <p class="section-copy">
+                        The site now uses a quieter editorial layout, a dedicated homepage carousel, cleaner vector controls, mobile navigation, and a more consistent photo essay grid across the collection pages.
+                    </p>
+                    <div class="news-tags" aria-label="Release topics">
+                        <span>Homepage</span>
+                        <span>Mobile nav</span>
+                        <span>Photo viewer</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="news-item">
+                <div class="news-item__date">
+                    <span>May 10</span>
+                    <strong>2026</strong>
+                </div>
+                <div class="news-item__body">
+                    <p class="section-kicker">New page</p>
+                    <h2 class="section-title">News Center added.</h2>
+                    <p class="section-copy">
+                        Future photo drops and site feature notes will be collected here instead of being buried inside the homepage or archive copy.
+                    </p>
+                </div>
+            </article>
+        </section>
+
+        <footer class="page-footer">
+            <p>News Center</p>
+            <p>Release notes and gallery updates.</p>
+        </footer>
+    </main>
+
+    <script src="cursor.js"></script>
+    <script src="nav.js?v=3000"></script>
+    <script src="transition.js?v=3000"></script>
+</body>
+</html>

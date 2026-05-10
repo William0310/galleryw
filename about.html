@@ -31,8 +31,14 @@
     <main class="page-shell">
         <header class="page-topbar">
             <a href="index.html" class="back-link">Home</a>
-            <nav class="topbar-links" aria-label="About">
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="topbar-links" id="site-nav" aria-label="About">
                 <a href="qinghai.html">Collections</a>
+                <a href="news.html" class="news-link" data-news-link>News</a>
                 <a href="archive.html">Archive</a>
             </nav>
         </header>
@@ -104,6 +110,7 @@
     </main>
 
     <script src="cursor.js"></script>
+    <script src="nav.js?v=3000"></script>
     <script src="transition.js?v=3000"></script>
 </body>
 </html>

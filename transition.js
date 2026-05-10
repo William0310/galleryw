@@ -1,41 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
-    if (reducedMotion || !finePointer || window.innerWidth <= 768) {
+    if (reducedMotion) {
         return;
     }
 
-    const duration = reducedMotion ? 0 : 420;
-
-    const style = document.createElement("style");
-    style.textContent = `
-        .page-transition-overlay {
-            position: fixed;
-            inset: 0;
-            background: #091017;
-            z-index: 9990;
-            pointer-events: none;
-            opacity: 1;
-            transition: opacity ${duration}ms ease;
-        }
-
-        .page-transition-overlay.is-ready {
-            opacity: 0;
-        }
-    `;
-    document.head.appendChild(style);
-
+    const duration = 520;
     const overlay = document.createElement("div");
     overlay.className = "page-transition-overlay";
+    overlay.setAttribute("aria-hidden", "true");
     document.body.appendChild(overlay);
+    document.body.classList.add("is-transitioning");
 
-    requestAnimationFrame(() => {
+    const revealPage = () => {
         overlay.classList.add("is-ready");
+        overlay.classList.remove("is-leaving");
+        window.setTimeout(() => {
+            document.body.classList.remove("is-transitioning");
+        }, 680);
+    };
+
+    window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(revealPage);
     });
 
     const isInternalLink = (link) => {
         const href = link.getAttribute("href");
+
         if (!href || href.startsWith("#") || href.startsWith("mailto:") || href.startsWith("tel:")) {
             return false;
         }
@@ -45,6 +36,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const url = new URL(link.href, window.location.href);
+
+        if (url.href === window.location.href) {
+            return false;
+        }
+
         return url.origin === window.location.origin || url.protocol === "file:";
     };
 
@@ -63,7 +59,9 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             event.preventDefault();
+            document.body.classList.add("is-transitioning");
             overlay.classList.remove("is-ready");
+            overlay.classList.add("is-leaving");
 
             const destination = link.href;
             window.setTimeout(() => {
@@ -72,9 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    window.addEventListener("pageshow", (event) => {
-        if (event.persisted) {
-            overlay.classList.add("is-ready");
-        }
+    window.addEventListener("pageshow", () => {
+        revealPage();
     });
 });

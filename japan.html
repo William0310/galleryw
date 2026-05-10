@@ -32,8 +32,14 @@
     <main class="page-shell">
         <header class="page-topbar">
             <a href="index.html" class="back-link">Back</a>
-            <nav class="topbar-links" aria-label="Series">
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="topbar-links" id="site-nav" aria-label="Series">
                 <a href="qinghai.html">Previous: Qinghai</a>
+                <a href="news.html" class="news-link" data-news-link>News</a>
                 <a href="yiheyuan.html">Next: Yiheyuan</a>
             </nav>
         </header>
@@ -244,6 +250,7 @@ Rurikoin Temple is a serene sanctuary in Kyoto renowned for its stunning "ruri-n
     </main>
 
     <script src="cursor.js"></script>
+    <script src="nav.js?v=3000"></script>
     <script src="transition.js?v=3000"></script>
     <script src="series-viewer.js"></script>
 </body>

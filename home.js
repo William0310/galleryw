@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const scrollKey = "galleryw.home.scrollY";
     const stage = document.querySelector("[data-hero-stage]");
     const frames = Array.from(document.querySelectorAll("[data-hero-frame]"));
     const dotsContainer = document.querySelector("[data-hero-dots]");
@@ -14,6 +15,36 @@ document.addEventListener("DOMContentLoaded", () => {
     let timer = 0;
     let userPaused = false;
     let stageVisible = true;
+    let scrollTicking = false;
+
+    const saveScrollPosition = () => {
+        try {
+            window.sessionStorage.setItem(scrollKey, String(Math.max(0, Math.round(window.scrollY))));
+        } catch {
+            return;
+        }
+    };
+
+    const restoreScrollPosition = () => {
+        if (window.location.hash) {
+            return;
+        }
+
+        let storedPosition = 0;
+
+        try {
+            storedPosition = Number.parseInt(window.sessionStorage.getItem(scrollKey) || "0", 10);
+        } catch {
+            return;
+        }
+
+        if (!Number.isFinite(storedPosition) || storedPosition <= 0) {
+            return;
+        }
+
+        const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+        window.scrollTo(0, Math.min(storedPosition, maxScroll));
+    };
 
     const stopAuto = () => {
         window.clearTimeout(timer);
@@ -88,12 +119,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
+            saveScrollPosition();
             stopAuto();
             return;
         }
 
         startAuto();
     });
+
+    window.addEventListener("scroll", () => {
+        if (scrollTicking) {
+            return;
+        }
+
+        scrollTicking = true;
+        window.requestAnimationFrame(() => {
+            scrollTicking = false;
+            saveScrollPosition();
+        });
+    }, { passive: true });
+
+    window.addEventListener("pagehide", saveScrollPosition);
 
     if ("IntersectionObserver" in window) {
         const observer = new IntersectionObserver((items) => {
@@ -106,4 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sync();
     startAuto();
+    window.requestAnimationFrame(restoreScrollPosition);
+    window.addEventListener("load", restoreScrollPosition, { once: true });
 });

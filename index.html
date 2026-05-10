@@ -47,8 +47,14 @@
                 <strong>William's Gallery</strong>
                 <span>Travel photography archive</span>
             </a>
-            <nav class="topbar-links topbar-links--home" aria-label="Primary">
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="topbar-links topbar-links--home" id="site-nav" aria-label="Primary">
                 <a href="#collections">Collections</a>
+                <a href="news.html" class="news-link" data-news-link>News</a>
                 <a href="archive.html">Archive</a>
                 <a href="about.html">About</a>
             </nav>
@@ -62,7 +68,7 @@
                     A quiet travel archive built around mountains, temple corridors, city density, and the moments between destinations.
                 </p>
                 <div class="hero-actions">
-                    <a href="#collections" class="cta-link">Enter the index</a>
+                    <a href="#collections" class="cta-link cta-link--down">Enter the index</a>
                     <a href="about.html" class="cta-link cta-link--muted">About William</a>
                 </div>
                 <dl class="hero-stats" aria-label="Gallery summary">
@@ -219,6 +225,7 @@
     </main>
 
     <script src="cursor.js"></script>
+    <script src="nav.js?v=3000"></script>
     <script src="home.js?v=3000"></script>
     <script src="transition.js?v=3000"></script>
 </body>
