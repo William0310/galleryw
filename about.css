@@ -1,14 +1,7 @@
-.about-page {
-    background:
-        radial-gradient(circle at 78% 12%, rgba(213, 165, 106, 0.15), transparent 30%),
-        radial-gradient(circle at 16% 6%, rgba(132, 163, 191, 0.14), transparent 26%),
-        linear-gradient(180deg, #0d141b 0%, #091017 100%);
-}
-
 .about-grid {
     display: grid;
-    grid-template-columns: minmax(280px, 380px) minmax(0, 1fr);
-    gap: 32px;
+    grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
+    gap: 46px;
     align-items: center;
 }
 
@@ -26,18 +19,31 @@
 
 .about-body {
     margin: 0;
-    color: var(--text-soft);
+    max-width: 66ch;
+    color: var(--paper-soft);
+}
+
+.about-copy .detail-grid {
+    margin-top: 8px;
 }
 
 .manifesto-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-    margin-top: 38px;
+    gap: 28px;
+    margin-top: 56px;
+    padding-top: 34px;
+    border-top: 1px solid var(--line);
 }
 
 .manifesto-panel {
-    padding: 28px;
+    display: grid;
+    gap: 12px;
+}
+
+.manifesto-panel .section-title {
+    max-width: 15ch;
+    font-size: 2.65rem;
 }
 
 @media (max-width: 900px) {
@@ -47,22 +53,17 @@
     }
 
     .portrait-panel {
-        justify-self: center;
         width: min(100%, 420px);
     }
 }
 
 @media (max-width: 720px) {
-    .about-grid,
+    .about-grid {
+        gap: 24px;
+    }
+
     .manifesto-grid {
-        gap: 18px;
-    }
-
-    .portrait-panel {
-        width: min(100%, 420px);
-    }
-
-    .manifesto-panel {
-        padding: 20px;
+        gap: 24px;
+        margin-top: 38px;
     }
 }

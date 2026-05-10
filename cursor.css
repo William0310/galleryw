@@ -4,7 +4,7 @@
     button,
     .chip,
     .cta-link,
-    .collection-card,
+    .collection-entry,
     .story-card {
         cursor: none !important;
     }

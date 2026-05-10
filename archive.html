@@ -19,9 +19,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="theme.css?v=2013">
-    <link rel="stylesheet" href="archive.css?v=2003">
-    <link rel="stylesheet" href="cursor.css?v=2008" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
+    <link rel="stylesheet" href="theme.css?v=3000">
+    <link rel="stylesheet" href="archive.css?v=3000">
+    <link rel="stylesheet" href="cursor.css?v=3000" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="archive-page">
@@ -30,51 +30,56 @@
 
     <main class="page-shell">
         <header class="page-topbar">
-            <a href="index.html" class="back-link">← Back</a>
+            <a href="index.html" class="back-link">← Home</a>
             <nav class="topbar-links" aria-label="Archive">
-                <a href="about.html">About</a>
                 <a href="qinghai.html">Collections</a>
+                <a href="about.html">About</a>
             </nav>
         </header>
 
-        <section class="archive-hero stack">
-            <div>
-                <p class="eyebrow">In progress</p>
-                <h1 class="headline">More collections are on the way.</h1>
-            </div>
+        <section class="archive-hero" aria-labelledby="archive-title">
+            <p class="eyebrow">Archive</p>
+            <h1 class="headline" id="archive-title">Unfinished chapters stay visible but quiet.</h1>
             <p class="lede">
-                This page now works as a proper holding area for unfinished edits.
+                This page is the staging table for planned trips, unfinished edits, and folders that are not ready for the main gallery.
             </p>
         </section>
 
-        <section class="archive-grid">
-            <article class="glass-card archive-card">
+        <section class="archive-grid" aria-label="Archive status">
+            <article class="archive-card">
                 <p class="section-kicker">Planned</p>
                 <h2 class="section-title">Xinjiang</h2>
                 <p class="section-copy">
-                   </p>
-                <div class="chip-row">
-                    <span class="chip">Summer 2026</span>
-                    <span class="chip">Fieldwork ahead</span>
-                </div>
+                    Summer 2026 fieldwork is penciled in. The edit will stay here until it has enough shape to become a finished series.
+                </p>
             </article>
 
-            <article class="glass-card archive-card archive-card--wide">
-                <p class="section-kicker">Rule of thumb</p>
-                <h2 class="section-title">Nothing enters the gallery half-finished.</h2>
+            <article class="archive-card">
+                <p class="section-kicker">Recently added</p>
+                <h2 class="section-title">Yiheyuan</h2>
                 <p class="section-copy">
-                         </p>
-                <a href="index.html" class="cta-link">Return to the live collections</a>
+                    The Summer Palace chapter has moved into the live gallery as a compact Beijing sequence.
+                </p>
+                <a href="yiheyuan.html" class="cta-link cta-link--muted">Open Yiheyuan</a>
+            </article>
+
+            <article class="archive-card archive-card--wide">
+                <p class="section-kicker">Live index</p>
+                <h2 class="section-title">Finished work belongs in the collection sequence.</h2>
+                <p class="section-copy">
+                    Qinghai, Japan, Yiheyuan, Chongqing, and Lijiang are the current public chapters.
+                </p>
+                <a href="index.html#collections" class="cta-link">Return to the gallery</a>
             </article>
         </section>
 
         <footer class="page-footer">
             <p>Archive staging area</p>
-            <p>Visible, calm, and ready for future chapters.</p>
+            <p>Future chapters are tracked here until they are ready.</p>
         </footer>
     </main>
 
     <script src="cursor.js"></script>
-    <script src="transition.js?v=2001"></script>
+    <script src="transition.js?v=3000"></script>
 </body>
 </html>

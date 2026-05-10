@@ -1,259 +1,109 @@
 document.addEventListener("DOMContentLoaded", () => {
+    const stage = document.querySelector("[data-hero-stage]");
+    const frames = Array.from(document.querySelectorAll("[data-hero-frame]"));
+    const dotsContainer = document.querySelector("[data-hero-dots]");
+    const progress = document.querySelector("[data-hero-progress]");
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const mobileMedia = window.matchMedia("(max-width: 980px)");
 
-    const desktopItems = Array.from(document.querySelectorAll("[data-desktop-item]"));
-    const desktopVisuals = Array.from(document.querySelectorAll("[data-desktop-visual]"));
-    const mobileTrack = document.querySelector("[data-mobile-track]");
-    const mobileSlides = Array.from(document.querySelectorAll("[data-mobile-slide]"));
-    const mobileHud = {
-        index: document.querySelector("[data-mobile-hud-index]"),
-        meta: document.querySelector("[data-mobile-hud-meta]"),
-        title: document.querySelector("[data-mobile-hud-title]"),
-        description: document.querySelector("[data-mobile-hud-description]"),
-        link: document.querySelector("[data-mobile-hud-link]")
-    };
-
-    const isMobileLayout = () => mobileMedia.matches;
-
-    if (desktopItems.length && desktopItems.length === desktopVisuals.length) {
-        let desktopActiveIndex = 0;
-        let desktopTicking = false;
-
-        const syncDesktopState = (index) => {
-            desktopActiveIndex = index;
-
-            desktopItems.forEach((item, itemIndex) => {
-                item.classList.toggle("is-active", itemIndex === desktopActiveIndex);
-            });
-
-            desktopVisuals.forEach((visual, visualIndex) => {
-                visual.classList.toggle("is-active", visualIndex === desktopActiveIndex);
-            });
-        };
-
-        const updateDesktopActive = () => {
-            desktopTicking = false;
-
-            if (isMobileLayout()) {
-                return;
-            }
-
-            let nextIndex = desktopActiveIndex;
-            let nearestDistance = Number.POSITIVE_INFINITY;
-            const viewportTarget = window.innerHeight * 0.48;
-
-            desktopVisuals.forEach((visual, index) => {
-                const rect = visual.getBoundingClientRect();
-                const center = rect.top + (rect.height / 2);
-                const distance = Math.abs(center - viewportTarget);
-
-                if (distance < nearestDistance) {
-                    nearestDistance = distance;
-                    nextIndex = index;
-                }
-            });
-
-            if (nextIndex !== desktopActiveIndex) {
-                syncDesktopState(nextIndex);
-            }
-        };
-
-        const requestDesktopUpdate = () => {
-            if (desktopTicking) {
-                return;
-            }
-
-            desktopTicking = true;
-            window.requestAnimationFrame(updateDesktopActive);
-        };
-
-        window.addEventListener("scroll", requestDesktopUpdate, { passive: true });
-        window.addEventListener("resize", requestDesktopUpdate);
-        mobileMedia.addEventListener("change", requestDesktopUpdate);
-        syncDesktopState(0);
-        requestDesktopUpdate();
-    }
-
-    if (!mobileTrack || !mobileSlides.length) {
+    if (!stage || !frames.length || !dotsContainer || !progress) {
         return;
     }
 
-    let mobileActiveIndex = 0;
-    let autoAdvanceTimer = 0;
-    let scrollDebounce = 0;
-    let resizeDebounce = 0;
-    let userInteracting = false;
+    const autoDelay = 2200;
+    let activeIndex = Math.max(0, frames.findIndex((frame) => frame.classList.contains("is-active")));
+    let timer = 0;
+    let userPaused = false;
+    let stageVisible = true;
 
-    const normalizeMobileIndex = (index) => {
-        const total = mobileSlides.length;
-        return ((index % total) + total) % total;
+    const stopAuto = () => {
+        window.clearTimeout(timer);
+        timer = 0;
+        progress.style.transitionDuration = "0ms";
+        progress.style.width = "0%";
     };
 
-    const clearAutoAdvance = () => {
-        window.clearTimeout(autoAdvanceTimer);
-        autoAdvanceTimer = 0;
-    };
+    const animateProgress = () => {
+        progress.style.transitionDuration = "0ms";
+        progress.style.width = "0%";
 
-    const getCenteredMobileIndex = () => {
-        const viewportCenter = mobileTrack.scrollLeft + (mobileTrack.clientWidth / 2);
-        let nearestIndex = mobileActiveIndex;
-        let nearestDistance = Number.POSITIVE_INFINITY;
-
-        mobileSlides.forEach((slide, index) => {
-            const slideCenter = slide.offsetLeft + (slide.clientWidth / 2);
-            const distance = Math.abs(slideCenter - viewportCenter);
-
-            if (distance < nearestDistance) {
-                nearestDistance = distance;
-                nearestIndex = index;
-            }
-        });
-
-        return nearestIndex;
-    };
-
-    const syncMobileHud = (slide) => {
-        if (!slide || !mobileHud.index || !mobileHud.meta || !mobileHud.title || !mobileHud.description || !mobileHud.link) {
-            return;
-        }
-
-        mobileHud.index.textContent = slide.dataset.hudIndex || "";
-        mobileHud.meta.textContent = slide.dataset.hudMeta || "";
-        mobileHud.title.textContent = slide.dataset.hudTitle || "";
-        mobileHud.description.textContent = slide.dataset.hudDescription || "";
-        mobileHud.link.href = slide.getAttribute("href") || "#";
-    };
-
-    const syncMobileState = (index) => {
-        mobileActiveIndex = normalizeMobileIndex(index);
-
-        mobileSlides.forEach((slide, slideIndex) => {
-            slide.classList.toggle("is-active", slideIndex === mobileActiveIndex);
-        });
-
-        syncMobileHud(mobileSlides[mobileActiveIndex]);
-    };
-
-    const scrollMobileToIndex = (index, behavior = reducedMotion ? "auto" : "smooth") => {
-        const slide = mobileSlides[normalizeMobileIndex(index)];
-        const left = slide.offsetLeft - ((mobileTrack.clientWidth - slide.clientWidth) / 2);
-
-        mobileTrack.scrollTo({
-            left,
-            behavior
+        window.requestAnimationFrame(() => {
+            window.requestAnimationFrame(() => {
+                progress.style.transitionDuration = `${autoDelay}ms`;
+                progress.style.width = "100%";
+            });
         });
     };
 
-    const goToMobileIndex = (index, behavior = reducedMotion ? "auto" : "smooth") => {
-        const nextIndex = normalizeMobileIndex(index);
-        syncMobileState(nextIndex);
-        scrollMobileToIndex(nextIndex, behavior);
+    const sync = () => {
+        frames.forEach((frame, index) => {
+            frame.classList.toggle("is-active", index === activeIndex);
+        });
+
+        dotsContainer.querySelectorAll("button").forEach((dot, index) => {
+            dot.classList.toggle("is-active", index === activeIndex);
+            dot.setAttribute("aria-pressed", index === activeIndex ? "true" : "false");
+        });
     };
 
-    const scheduleAutoAdvance = () => {
-        clearAutoAdvance();
+    const startAuto = () => {
+        stopAuto();
 
-        if (reducedMotion || document.hidden || !isMobileLayout()) {
+        if (reducedMotion || userPaused || document.hidden || !stageVisible) {
             return;
         }
 
-        autoAdvanceTimer = window.setTimeout(() => {
-            goToMobileIndex(mobileActiveIndex + 1);
-            scheduleAutoAdvance();
-        }, 10000);
+        animateProgress();
+        timer = window.setTimeout(() => {
+            activeIndex = (activeIndex + 1) % frames.length;
+            sync();
+            startAuto();
+        }, autoDelay);
     };
 
-    const finishInteraction = () => {
-        if (!userInteracting) {
-            return;
-        }
-
-        userInteracting = false;
-        syncMobileState(getCenteredMobileIndex());
-        scheduleAutoAdvance();
+    const goTo = (index) => {
+        activeIndex = (index + frames.length) % frames.length;
+        sync();
+        startAuto();
     };
 
-    mobileTrack.addEventListener("scroll", () => {
-        const centeredIndex = getCenteredMobileIndex();
-
-        if (centeredIndex !== mobileActiveIndex) {
-            syncMobileState(centeredIndex);
-        }
-
-        window.clearTimeout(scrollDebounce);
-        scrollDebounce = window.setTimeout(() => {
-            if (!userInteracting) {
-                scheduleAutoAdvance();
-            }
-        }, 160);
-    }, { passive: true });
-
-    mobileTrack.addEventListener("pointerdown", () => {
-        userInteracting = true;
-        clearAutoAdvance();
+    frames.forEach((frame, index) => {
+        const label = frame.querySelector("figcaption")?.textContent?.trim() || `Highlight ${index + 1}`;
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.setAttribute("aria-label", `Show ${label}`);
+        dot.setAttribute("aria-pressed", "false");
+        dot.addEventListener("click", () => goTo(index));
+        dotsContainer.appendChild(dot);
     });
 
-    window.addEventListener("pointerup", finishInteraction);
-    window.addEventListener("pointercancel", finishInteraction);
-
-    mobileTrack.addEventListener("mouseenter", clearAutoAdvance);
-    mobileTrack.addEventListener("mouseleave", () => {
-        if (!userInteracting) {
-            scheduleAutoAdvance();
-        }
+    stage.addEventListener("pointerenter", () => {
+        userPaused = true;
+        stopAuto();
     });
 
-    mobileTrack.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") {
-            return;
-        }
-
-        event.preventDefault();
-        clearAutoAdvance();
-        goToMobileIndex(mobileActiveIndex + (event.key === "ArrowRight" ? 1 : -1));
-        scheduleAutoAdvance();
+    stage.addEventListener("pointerleave", () => {
+        userPaused = false;
+        startAuto();
     });
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
-            clearAutoAdvance();
+            stopAuto();
             return;
         }
 
-        scheduleAutoAdvance();
+        startAuto();
     });
 
-    window.addEventListener("resize", () => {
-        window.clearTimeout(resizeDebounce);
-        resizeDebounce = window.setTimeout(() => {
-            syncMobileState(mobileActiveIndex);
+    if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((items) => {
+            stageVisible = items.some((item) => item.isIntersecting);
+            startAuto();
+        }, { threshold: 0.2 });
 
-            if (isMobileLayout()) {
-                scrollMobileToIndex(mobileActiveIndex, "auto");
-            } else {
-                clearAutoAdvance();
-            }
-        }, 140);
-    });
+        observer.observe(stage);
+    }
 
-    mobileMedia.addEventListener("change", () => {
-        if (isMobileLayout()) {
-            syncMobileState(mobileActiveIndex);
-            scrollMobileToIndex(mobileActiveIndex, "auto");
-            scheduleAutoAdvance();
-            return;
-        }
-
-        clearAutoAdvance();
-    });
-
-    window.requestAnimationFrame(() => {
-        syncMobileState(0);
-
-        if (isMobileLayout()) {
-            scrollMobileToIndex(0, "auto");
-            scheduleAutoAdvance();
-        }
-    });
+    sync();
+    startAuto();
 });

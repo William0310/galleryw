@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const hint = document.createElement("span");
         hint.className = "story-card__hint";
-        hint.textContent = "View full frame";
+        hint.setAttribute("aria-hidden", "true");
 
         const displayImage = img.cloneNode(true);
         media.appendChild(displayImage);

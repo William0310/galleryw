@@ -1,14 +1,5 @@
 .series-yiheyuan {
-    --page-accent: #d9b56f;
-    --page-glow: rgba(217, 181, 111, 0.18);
-    background:
-        radial-gradient(circle at 82% 14%, rgba(217, 181, 111, 0.2), transparent 30%),
-        radial-gradient(circle at 16% 20%, rgba(78, 128, 105, 0.18), transparent 28%),
-        radial-gradient(circle at 72% 82%, rgba(118, 68, 44, 0.22), transparent 28%),
-        linear-gradient(180deg, #0d141c 0%, #091017 100%);
-}
-
-.series-yiheyuan .headline,
-.series-yiheyuan .caption-title {
-    color: #fff2dc;
+    --page-accent: #d4ae68;
+    --series-cover: url("images/yih3.webp");
+    --series-cover-position: center 42%;
 }

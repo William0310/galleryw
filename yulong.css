@@ -1,9 +1,5 @@
 .series-yulong {
-    --page-accent: #8dc5db;
-    --page-glow: rgba(81, 192, 235, 0.16);
-}
-
-.series-yulong .headline,
-.series-yulong .caption-title {
-    color: #edf7fb;
+    --page-accent: #9fc8d8;
+    --series-cover: url("images/lijiang1.webp");
+    --series-cover-position: center 48%;
 }

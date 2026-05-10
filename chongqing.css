@@ -1,13 +1,5 @@
 .series-chongqing {
-    --page-accent: #7ce4ff;
-    --page-glow: rgba(124, 228, 255, 0.18);
-    background:
-        radial-gradient(circle at 82% 12%, rgba(124, 228, 255, 0.16), transparent 28%),
-        radial-gradient(circle at 14% 10%, rgba(255, 92, 92, 0.14), transparent 24%),
-        linear-gradient(180deg, #0a0f15 0%, #070b10 100%);
-}
-
-.series-chongqing .headline,
-.series-chongqing .caption-title {
-    color: #effcff;
+    --page-accent: #78d8ef;
+    --series-cover: url("images/cq5.webp");
+    --series-cover-position: center 54%;
 }

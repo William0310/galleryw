@@ -19,9 +19,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="theme.css?v=2013">
-    <link rel="stylesheet" href="about.css?v=2003">
-    <link rel="stylesheet" href="cursor.css?v=2008" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
+    <link rel="stylesheet" href="theme.css?v=3000">
+    <link rel="stylesheet" href="about.css?v=3000">
+    <link rel="stylesheet" href="cursor.css?v=3000" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
 <body class="about-page">
@@ -30,70 +30,69 @@
 
     <main class="page-shell">
         <header class="page-topbar">
-            <a href="index.html" class="back-link">← Back</a>
+            <a href="index.html" class="back-link">← Home</a>
             <nav class="topbar-links" aria-label="About">
-                <a href="archive.html">Upcoming</a>
                 <a href="qinghai.html">Collections</a>
+                <a href="archive.html">Archive</a>
             </nav>
         </header>
 
-        <section class="about-grid">
+        <section class="about-grid" aria-labelledby="about-title">
             <figure class="frame portrait-panel">
-                <img src="images/me.webp" alt="Portrait of William" decoding="async" fetchpriority="high">
+                <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" decoding="async" fetchpriority="high">
             </figure>
 
             <div class="about-copy stack">
                 <div>
-                    <p class="eyebrow">About the Artist</p>
-                    <h1 class="headline">William</h1>
+                    <p class="eyebrow">About the artist</p>
+                    <h1 class="headline" id="about-title">William</h1>
                 </div>
                 <p class="lede">
-                    
+                    I build this gallery as a personal archive for travel photography, field notes, and visual experiments.
                 </p>
                 <p class="about-body">
-                       </p>
+                    The work is drawn toward places where order and atmosphere push against each other: mountain weather, temple corridors, night skylines, old gardens, and long roads. The website is intentionally simple so the photographs can hold the page.
+                </p>
 
                 <div class="detail-grid">
                     <article class="detail-card">
                         <span>Base</span>
-                        <p>Beijing, China; Pennsylvania, USA</p>
+                        <p>Beijing, China / Pennsylvania, USA</p>
                     </article>
                     <article class="detail-card">
                         <span>Cameras</span>
-                        <p>Nikon Z9, Canon R5, Sony A7M IV, Dji Mini 3Pro</p>
+                        <p>Nikon Z9, Canon R5, Sony A7M IV, DJI Mini 3 Pro</p>
                     </article>
                     <article class="detail-card">
-                        <span>Build stack</span>
-                        <p>HTML, CSS, Vanilla JS / Synergy [Gemini & Chatgpt] </p>
+                        <span>Site</span>
+                        <p>Static HTML, CSS, and vanilla JavaScript</p>
                     </article>
                     <article class="detail-card">
-                        <span>Fonts</span>
-                        <p>Manrope, Cormorant Garamond, PingFang SC, Hiragino Sans GB, Noto Sans SC, Georgia, serif, sans-serif </p>
+                        <span>Focus</span>
+                        <p>Photography, coding, travel, and driving</p>
                     </article>
                     <article class="detail-card">
-                        <span>Current focus</span>
-                        <p>Photography, Coding, Driving</p>
+                        <span>Fonts Applied</span>
+                        <p>Manrope, PingFang SC, Hiragino Sans GB, Noto Sans SC, Arial, sans-serif, Cormorant Garamond, Georgia, serif</p>
                     </article>
+                    
                 </div>
             </div>
         </section>
 
-        <section class="manifesto-grid">
-            <article class="glass-card manifesto-panel">
+        <section class="manifesto-grid" aria-label="Working notes">
+            <article class="manifesto-panel">
                 <p class="section-kicker">Manifesto</p>
-                <h2 class="section-title">Seeking order inside chaos.</h2>
-                <p class="section-copy">
-                    I am drawn to places where structure and atmosphere are pulling in opposite directions:
-                    temple corridors, mountain weather, city glass, long roads, and artificial light after midnight.
-                </p>
-            </article>
-
-            <article class="glass-card manifesto-panel">
-                <p class="section-kicker">Working rule</p>
                 <h2 class="section-title">I am whatever it takes.</h2>
                 <p class="section-copy">
-                    我不惜一切代价。私は、いかなる手段も辞さない。Je suis tout ce qu'il faut. Soy lo que sea necesario. Ich bin, was immer nötig ist.Sono tutto ciò che serve. Я — всё, что потребуется. 나는 무엇이든 될 준비가 되어 있다.
-                    
+                    Chasing the light that has traveled millions of years, just to kiss the earth for a second.
+            </article>
+
+            <article class="manifesto-panel">
+                <p class="section-kicker">Reminder</p>
+                <h2 class="section-title">Do Not Download Or Share Without Permission.</h2>
+                <p class="section-copy">
+                    Photography by William unless otherwise noted. Please do not download, repost, or use these images without asking first.
                 </p>
             </article>
         </section>
@@ -105,6 +104,6 @@
     </main>
 
     <script src="cursor.js"></script>
-    <script src="transition.js?v=2001"></script>
+    <script src="transition.js?v=3000"></script>
 </body>
 </html>

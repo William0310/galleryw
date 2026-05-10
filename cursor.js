@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let ringY = pointerY;
     let visible = false;
 
-    const hoverSelector = "a, button, .chip, .cta-link, .collection-card, .story-card";
+    const hoverSelector = "a, button, .chip, .cta-link, .collection-entry, .story-card";
 
     const reveal = () => {
         if (visible) {
