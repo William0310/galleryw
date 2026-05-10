@@ -137,6 +137,21 @@ button {
     transition: color 0.24s ease, border-color 0.24s ease, transform 0.24s ease;
 }
 
+.back-link::before,
+.cta-link::after {
+    content: "";
+    display: inline-block;
+    width: 0.72em;
+    height: 0.72em;
+    border-top: 1.8px solid currentColor;
+    border-right: 1.8px solid currentColor;
+    transform: rotate(-135deg);
+}
+
+.back-link::before {
+    margin-right: 8px;
+}
+
 .topbar-links a:hover,
 .back-link:hover,
 .nav-link:hover,
@@ -222,9 +237,8 @@ button {
 }
 
 .cta-link::after {
-    content: "↗";
     margin-left: 10px;
-    font-size: 0.86rem;
+    transform: rotate(-45deg);
 }
 
 .cta-link--muted {
@@ -233,7 +247,7 @@ button {
 }
 
 .cta-link--muted::after {
-    content: "→";
+    transform: rotate(45deg);
 }
 
 .cta-link:hover {

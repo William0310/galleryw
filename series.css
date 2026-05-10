@@ -176,10 +176,17 @@
     pointer-events: none;
 }
 
-.story-card__hint::before {
-    content: "+";
-    font-size: 1.2rem;
-    line-height: 1;
+.story-card__hint::before,
+.story-card__hint::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 1.8px;
+    background: currentColor;
+}
+
+.story-card__hint::after {
+    transform: rotate(90deg);
 }
 
 .story-card.landscape > img,
@@ -354,6 +361,7 @@ body.viewer-open {
 
 .series-viewer__nav,
 .series-viewer__close {
+    position: relative;
     display: inline-grid;
     place-items: center;
     width: 44px;
@@ -377,6 +385,56 @@ body.viewer-open {
     opacity: 0.28;
     cursor: default;
     transform: none;
+}
+
+.series-viewer__nav::before,
+.series-viewer__nav::after,
+.series-viewer__close::before,
+.series-viewer__close::after {
+    content: "";
+    display: block;
+    background: currentColor;
+}
+
+.series-viewer__nav::before {
+    width: 16px;
+    height: 1.8px;
+}
+
+.series-viewer__nav::after {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-top: 1.8px solid currentColor;
+    border-right: 1.8px solid currentColor;
+    background: transparent;
+}
+
+.series-viewer__nav--prev::after {
+    transform: translateX(-5px) rotate(-135deg);
+}
+
+.series-viewer__nav--next::after {
+    transform: translateX(5px) rotate(45deg);
+}
+
+.series-viewer__close {
+    position: relative;
+}
+
+.series-viewer__close::before,
+.series-viewer__close::after {
+    position: absolute;
+    width: 14px;
+    height: 1.8px;
+}
+
+.series-viewer__close::before {
+    transform: rotate(45deg);
+}
+
+.series-viewer__close::after {
+    transform: rotate(-45deg);
 }
 
 .series-viewer__frame {

@@ -255,6 +255,9 @@
 }
 
 .collection-entry__link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
     justify-self: start;
     width: max-content;
     border-bottom: 1px solid var(--paper);
@@ -265,7 +268,13 @@
 }
 
 .collection-entry__link::after {
-    content: " →";
+    content: "";
+    display: inline-block;
+    width: 0.62em;
+    height: 0.62em;
+    border-top: 1.8px solid currentColor;
+    border-right: 1.8px solid currentColor;
+    transform: rotate(45deg);
 }
 
 .home-about-band {

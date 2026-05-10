@@ -65,12 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
     overlay.innerHTML = `
         <div class="series-viewer__backdrop" data-viewer-close></div>
         <div class="series-viewer__dialog" role="dialog" aria-modal="true" aria-label="${seriesTitle} image viewer" tabindex="-1">
-            <button type="button" class="series-viewer__nav" data-viewer-prev aria-label="Previous image">←</button>
+            <button type="button" class="series-viewer__nav series-viewer__nav--prev" data-viewer-prev aria-label="Previous image"></button>
             <figure class="series-viewer__panel">
                 <div class="series-viewer__toolbar">
                     <p class="series-viewer__counter" data-viewer-counter></p>
                     <div class="series-viewer__nav-group">
-                        <button type="button" class="series-viewer__close" data-viewer-close aria-label="Close viewer">×</button>
+                        <button type="button" class="series-viewer__close" data-viewer-close aria-label="Close viewer"></button>
                     </div>
                 </div>
                 <div class="series-viewer__frame">
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p class="series-viewer__description" data-viewer-description></p>
                 </figcaption>
             </figure>
-            <button type="button" class="series-viewer__nav" data-viewer-next aria-label="Next image">→</button>
+            <button type="button" class="series-viewer__nav series-viewer__nav--next" data-viewer-next aria-label="Next image"></button>
         </div>
     `;
 
