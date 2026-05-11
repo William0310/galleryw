@@ -2,12 +2,13 @@
     --accent: #d0a15f;
     background:
         radial-gradient(circle at 82% 14%, rgba(130, 88, 73, 0.2), transparent 100%),
+        radial-gradient(circle at 10% 14%, rgba(84, 77, 48, 0.2), transparent 100%),
         radial-gradient(circle at 18% 30%, rgba(80, 70, 48, 0.2), transparent 28%),
         radial-gradient(circle at 30% 55%, rgba(103, 63, 0, 0.2), transparent 28%),
         radial-gradient(circle at 78% 82%, rgba(161, 117, 21, 0.2), transparent 28%),
         linear-gradient(90deg, rgba(244, 239, 229, 0.045) 1px, transparent 1px),
         linear-gradient(180deg, #11100d 0%, #17150f 52%, #0e0d0a 100%);
-    background-size: auto, auto, auto, auto, 96px 100%, 100% 100%;
+    background-size: auto, auto, auto, auto, auto,96px 100%, 100% 100%;
     background-attachment: fixed, fixed, fixed, fixed, scroll, scroll;
     overflow-x: hidden;
 }
@@ -467,8 +468,13 @@
 
 @media (max-width: 560px) {
     .home-hero {
-        gap: 24px;
+        gap: 28px;
         padding-top: 8px;
+    }
+
+    .hero-copy {
+        gap: 26px;
+        padding-bottom: 0;
     }
 
     .hero-stats {
@@ -478,11 +484,14 @@
     .hero-actions {
         display: grid;
         grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 0;
     }
 
     .hero-stage {
-        min-height: 250px;
-        height: 31svh;
+        order: -1;
+        min-height: 270px;
+        height: 34svh;
     }
 
     .hero-frame figcaption {
