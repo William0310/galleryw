@@ -2,4 +2,14 @@
     --page-accent: #e8a08d;
     --series-cover: url("images/temple1.webp");
     --series-cover-position: center 42%;
+    background:
+        radial-gradient(circle at 82% 14%, rgba(238, 124, 87, 0.242), transparent 30%),
+        radial-gradient(circle at 18% 30%, rgba(184, 184, 184, 0.174), transparent 28%),
+        radial-gradient(circle at 30% 55%, rgba(103, 63, 0, 0.478), transparent 28%),
+        radial-gradient(circle at 78% 82%, rgba(209, 180, 92, 0.18), transparent 28%),
+        linear-gradient(90deg, rgba(244, 239, 229, 0.045) 1px, transparent 1px),
+        linear-gradient(180deg, #11100d 0%, #17150f 52%, #0e0d0a 100%);
+    background-size: auto, auto, auto, auto, 96px 100%, 100% 100%;
+
+    overflow-x: hidden; 
 }

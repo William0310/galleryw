@@ -1,5 +1,15 @@
 .home-page {
     --accent: #d0a15f;
+    background:
+        radial-gradient(circle at 82% 14%, rgba(130, 88, 73, 0.2), transparent 100%),
+        radial-gradient(circle at 18% 30%, rgba(80, 70, 48, 0.2), transparent 28%),
+        radial-gradient(circle at 30% 55%, rgba(103, 63, 0, 0.2), transparent 28%),
+        radial-gradient(circle at 78% 82%, rgba(161, 117, 21, 0.2), transparent 28%),
+        linear-gradient(90deg, rgba(244, 239, 229, 0.045) 1px, transparent 1px),
+        linear-gradient(180deg, #11100d 0%, #17150f 52%, #0e0d0a 100%);
+    background-size: auto, auto, auto, auto, 96px 100%, 100% 100%;
+    background-attachment: fixed, fixed, fixed, fixed, scroll, scroll;
+    overflow-x: hidden;
 }
 
 .home-hero {
@@ -58,7 +68,9 @@
     border: 1px solid var(--line);
     border-radius: var(--radius);
     background: #090806;
-    box-shadow: var(--shadow);
+    box-shadow:
+        0 0 80px rgba(198, 137, 64, 0.1),
+        0 32px 90px rgba(0, 0, 0, 0.48);
 }
 
 .hero-frame {
@@ -402,6 +414,7 @@
         border: 1px solid var(--line);
         border-radius: var(--radius);
         background: rgba(17, 16, 13, 0.58);
+        box-shadow: 0 22px 58px rgba(0, 0, 0, 0.28);
         opacity: 1;
         transform: none;
         scroll-snap-align: center;
