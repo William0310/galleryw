@@ -378,10 +378,12 @@
     }
 
     .collection-board {
+        --mobile-card-width: clamp(280px, 78vw, 360px);
         display: flex;
         gap: 14px;
         overflow-x: auto;
-        padding: 2px var(--gutter) 18px;
+        padding: 2px 0 18px;
+        scroll-padding-inline: calc((100vw - var(--mobile-card-width)) / 2);
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
     }
@@ -392,7 +394,7 @@
 
     .collection-entry,
     .collection-entry:last-child {
-        flex: 0 0 min(86vw, 410px);
+        flex: 0 0 var(--mobile-card-width);
         grid-template-columns: 1fr;
         gap: 14px;
         align-content: start;
@@ -403,6 +405,14 @@
         opacity: 1;
         transform: none;
         scroll-snap-align: center;
+    }
+
+    .collection-entry:first-child {
+        margin-left: calc((100vw - var(--mobile-card-width)) / 2);
+    }
+
+    .collection-entry:last-child {
+        margin-right: calc((100vw - var(--mobile-card-width)) / 2);
     }
 
     .collection-entry__number {
