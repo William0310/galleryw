@@ -378,7 +378,7 @@
     }
 
     .collection-board {
-        --mobile-card-width: clamp(280px, 78vw, 360px);
+        --mobile-card-width: clamp(280px, 87vw, 360px);
         display: flex;
         gap: 14px;
         overflow-x: auto;
