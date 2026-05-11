@@ -331,12 +331,12 @@ button {
 }
 
 .glass-card {
-    border: 1px solid var(--line);
+    border: 0.8px solid var(--line);
     border-radius: var(--radius);
-    background: var(--panel);
+    background: rgba(255, 255, 255, 0);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .cta-link {
