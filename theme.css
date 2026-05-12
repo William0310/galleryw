@@ -143,8 +143,8 @@ button {
     padding: 0 max(var(--gutter), calc((100vw - var(--max-width)) / 2));
     border-bottom: 1px solid var(--line);
     background: rgba(37, 37, 37, 0.087);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
 .brand-mark {
