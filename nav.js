@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nav = document.getElementById("site-nav");
     const newsLinks = Array.from(document.querySelectorAll("[data-news-link]"));
     const themeToggles = Array.from(document.querySelectorAll("[data-theme-toggle]"));
+    const themeChoices = Array.from(document.querySelectorAll("[data-theme-choice]"));
     const isNewsPage = document.body.classList.contains("news-page");
 
     const getSeenVersion = () => {
@@ -56,17 +57,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const syncThemeToggles = () => {
         const isLight = getTheme() === "light";
+        const nextLabel = isLight ? "Dark mode" : "Light mode";
+        const nextAria = isLight ? "Switch to dark mode" : "Switch to light mode";
+        const translate = (value) => window.gallerywI18n ? window.gallerywI18n.t(value) : value;
 
         themeToggles.forEach((button) => {
             const label = button.querySelector("[data-theme-toggle-label]");
 
+            button.setAttribute("data-i18n-dynamic", "");
             button.setAttribute("aria-pressed", String(isLight));
-            button.setAttribute("aria-label", isLight ? "Switch to dark mode" : "Switch to light mode");
+            button.setAttribute("aria-label", translate(nextAria));
 
             if (label) {
-                label.textContent = isLight ? "Dark mode" : "Light mode";
+                label.setAttribute("data-i18n-dynamic", "");
+                label.textContent = translate(nextLabel);
             }
         });
+
+        themeChoices.forEach((button) => {
+            const isActive = button.dataset.themeChoice === getTheme();
+
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+        });
+
     };
 
     const setTheme = (theme) => {
@@ -86,7 +100,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    themeChoices.forEach((button) => {
+        button.addEventListener("click", () => {
+            setTheme(button.dataset.themeChoice === "light" ? "light" : "dark");
+        });
+    });
+
     syncThemeToggles();
+
+    window.addEventListener("storage", (event) => {
+        if (event.key === themeStorageKey) {
+            const storedTheme = event.newValue === "light" ? "light" : "dark";
+
+            if (storedTheme === "light") {
+                document.documentElement.dataset.theme = "light";
+            } else {
+                document.documentElement.removeAttribute("data-theme");
+            }
+
+            syncThemeToggles();
+        }
+    });
+
+    window.addEventListener("galleryw:languagechange", syncThemeToggles);
 
     if (!topbar || !toggle || !nav) {
         return;

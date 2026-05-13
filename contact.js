@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const submit = form.querySelector("[data-contact-submit]");
     const status = form.querySelector("[data-contact-status]");
 
+    const translate = (message) => window.gallerywI18n ? window.gallerywI18n.t(message) : message;
+
     const setState = (state, message) => {
         form.classList.toggle("is-sending", state === "sending");
         form.classList.toggle("is-success", state === "success");
@@ -18,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         if (status) {
-            status.textContent = message;
+            status.textContent = translate(message);
         }
     };
 

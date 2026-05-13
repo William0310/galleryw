@@ -30,7 +30,7 @@
         width: 34px;
         height: 34px;
         border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.32);
+        border: 1px solid rgba(132, 132, 132, 0.32);
         background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(2px);
         -webkit-backdrop-filter: blur(3px);
@@ -44,7 +44,7 @@
     .cursor-viewfinder.is-hovering {
         width: 52px;
         height: 52px;
-        border-color: rgba(255, 255, 255, 0.78);
+        border-color: rgba(136, 136, 136, 0.78);
         background: rgba(255, 255, 255, 0.1);
     }
 }
