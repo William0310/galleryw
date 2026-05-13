@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const latestNewsVersion = "2026-05-13-v1";
+    const latestNewsVersion = "2026-05-13-v2";
     const storageKey = "galleryw.news.seenVersion";
     const themeStorageKey = "galleryw.theme";
     const topbar = document.querySelector(".page-topbar");

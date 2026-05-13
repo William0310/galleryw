@@ -21,7 +21,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <script src="theme-init.js?v=3000"></script>
     <link rel="stylesheet" href="theme.css?v=3303">
-    <link rel="stylesheet" href="about.css?v=3010">
+    <link rel="stylesheet" href="about.css?v=3011">
     <link rel="stylesheet" href="cursor.css?v=3001" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -44,6 +44,7 @@
                 <a href="index.html#collections">Collections</a>
                 <a href="news.html" class="news-link" data-news-link>News</a>
                 <a href="archive.html">More Photos</a>
+                <a href="#contact">Contact</a>
             </nav>
         </header>
 
@@ -85,6 +86,10 @@
                         <span>Fonts Applied</span>
                         <p>Manrope, PingFang SC, Hiragino Sans GB, Noto Sans SC, Arial, sans-serif, Cormorant Garamond, Georgia, serif</p>
                     </article>
+                    <article class="detail-card">
+                        <span>Contact</span>
+                        <p>support.wphoto@gmail.com or use the <a href="#contact">contact form</a>.</p>
+                    </article>
                     
                 </div>
             </div>
@@ -107,6 +112,41 @@
             </article>
         </section>
 
+        <section class="about-contact" id="contact" aria-labelledby="contact-title">
+            <div class="about-contact__copy">
+                <p class="section-kicker">Contact</p>
+                <h2 class="section-title" id="contact-title">Send a note.</h2>
+                <p class="section-copy">
+                    For photo permission requests, site feedback, collaboration notes, or useful feature ideas, leave a message here. Please make sure your contact info is correct or sent me an Email straight away at [support.wphoto@gmail.com].
+                </p>
+            </div>
+
+            <form class="contact-form glass-card" action="https://formspree.io/f/xzdowldb" method="POST" data-contact-form>
+                <input type="hidden" name="_subject" value="New message from William's Photo Gallery">
+                <input class="contact-form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <label class="contact-field">
+                    <span>Name*</span>
+                    <input type="text" name="name" autocomplete="name" maxlength="80" required>
+                </label>
+
+                <label class="contact-field">
+                    <span>Contact info*</span>
+                    <input type="text" name="contact_info" autocomplete="email" maxlength="160" placeholder="Email, social handle, or phone" required>
+                </label>
+
+                <label class="contact-field">
+                    <span>Notes*</span>
+                    <textarea name="notes" rows="7" minlength="10" maxlength="1600" required></textarea>
+                </label>
+
+                <div class="contact-form__footer">
+                    <button class="cta-link" type="submit" data-contact-submit>Send message</button>
+                    <p class="contact-form__status" role="status" aria-live="polite" data-contact-status></p>
+                </div>
+            </form>
+        </section>
+
         <footer class="page-footer">
             <p>William's Gallery</p>
             <p>Visuals, code, and a gallery still growing.</p>
@@ -115,6 +155,7 @@
 
     <script src="cursor.js"></script>
     <script src="nav.js?v=3301"></script>
+    <script src="contact.js?v=3000"></script>
     <script src="transition.js?v=3000"></script>
 </body>
 </html>
