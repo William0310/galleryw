@@ -9,10 +9,14 @@
         radial-gradient(circle at 30% 70%, rgba(0, 26, 103, 0.251), transparent 28%),
 
 
-        linear-gradient(90deg, rgba(244, 239, 229, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
 
 
 
-        linear-gradient(180deg, #11100d 0%, #17150f 52%, #0e0d0a 100%);
+        linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-mid) 52%, var(--page-bg-end) 100%);
     background-size: auto, auto, auto, auto, 96px 100%, 100% 100%; 
+}
+
+html[data-theme="light"] .series-chongqing {
+    --page-accent: #1f758d;
 }

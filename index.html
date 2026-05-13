@@ -32,8 +32,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="theme.css?v=3002">
-    <link rel="stylesheet" href="style.css?v=3009">
+    <script src="theme-init.js?v=3000"></script>
+    <link rel="stylesheet" href="theme.css?v=3302">
+    <link rel="stylesheet" href="style.css?v=3010">
     <link rel="stylesheet" href="cursor.css?v=3001" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -53,9 +54,9 @@
                 <span></span>
             </button>
             <nav class="topbar-links topbar-links--home" id="site-nav" aria-label="Primary">
-                <a href="#collections">Collections</a>
+       
                 <a href="news.html" class="news-link" data-news-link>News</a>
-                <a href="archive.html">Archive</a>
+                <a href="archive.html">More Photos</a>
                 <a href="about.html">About</a>
             </nav>
         </header>
@@ -69,7 +70,9 @@
                 </p>
                 <div class="hero-actions">
                     <a href="#collections" class="cta-link cta-link--down">Enter the index</a>
-                    <a href="about.html" class="cta-link cta-link--muted">About William</a>
+                    <button class="cta-link cta-link--muted cta-link--theme" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
+                        <span data-theme-toggle-label>Light mode</span>
+                    </button>
                 </div>
                 <dl class="hero-stats" aria-label="Gallery summary">
                     <div>
@@ -209,12 +212,12 @@
         <section class="home-archive-band">
             <div>
                 <p class="section-kicker">Next folders</p>
-                <h2 class="section-title">Future edits are staged, not rushed.</h2>
+                <h2 class="section-title">More Photos, and Futures Plans.</h2>
             </div>
             <p class="section-copy">
-                Xinjiang is planned for 2026. The archive page keeps unfinished folders visible without letting them dilute the finished sequence.
+                Xinjiang is planned for 2026. More interesting collections can be found here.
             </p>
-            <a href="archive.html" class="cta-link">Open archive</a>
+            <a href="archive.html" class="cta-link">View</a>
         </section>
 
         <footer class="page-footer">
@@ -224,7 +227,7 @@
     </main>
 
     <script src="cursor.js"></script>
-    <script src="nav.js?v=3000"></script>
+    <script src="nav.js?v=3301"></script>
     <script src="home.js?v=3000"></script>
     <script src="transition.js?v=3000"></script>
 </body>

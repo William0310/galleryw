@@ -20,7 +20,7 @@
     padding: 20px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: rgba(17, 16, 13, 0.56);
+    background: var(--panel);
 }
 
 .archive-card--wide {
