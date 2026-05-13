@@ -1,0 +1,18 @@
+.series-iphone {
+    --page-accent: #83d2d2;
+    --series-cover: url("images/iphone7.webp");
+    --series-cover-position: center 58%;
+    background:
+        radial-gradient(circle at 82% 14%, rgba(0, 194, 199, 0.2), transparent 30%),
+        radial-gradient(circle at 18% 26%, rgba(250, 183, 105, 0.2), transparent 28%),
+        radial-gradient(circle at 34% 58%, rgba(24, 95, 143, 0.28), transparent 30%),
+        radial-gradient(circle at 78% 82%, rgba(242, 154, 73, 0.18), transparent 28%),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-mid) 52%, var(--page-bg-end) 100%);
+    background-size: auto, auto, auto, auto, 96px 100%, 100% 100%;
+    overflow-x: hidden;
+}
+
+html[data-theme="light"] .series-iphone {
+    --page-accent: #2b7e83;
+}

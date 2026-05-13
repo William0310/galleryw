@@ -20,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
     <script src="theme-init.js?v=3000"></script>
-    <link rel="stylesheet" href="theme.css?v=3302">
+    <link rel="stylesheet" href="theme.css?v=3303">
     <link rel="stylesheet" href="news.css?v=3001">
     <link rel="stylesheet" href="cursor.css?v=3001" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
@@ -32,6 +32,9 @@
     <main class="page-shell">
         <header class="page-topbar">
             <a href="index.html" class="back-link">Home</a>
+            <button class="topbar-theme-toggle" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
+                <span class="visually-hidden" data-theme-toggle-label>Light mode</span>
+            </button>
             <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
                 <span></span>
                 <span></span>
@@ -40,7 +43,7 @@
             <nav class="topbar-links" id="site-nav" aria-label="News">
                 <a href="index.html#collections">Collections</a>
                 <a href="news.html" class="news-link" data-news-link>News</a>
-                <a href="archive.html">Archive</a>
+                <a href="archive.html">More Photos</a>
                 <a href="about.html">About</a>
             </nav>
         </header>
@@ -52,6 +55,19 @@
                 New photo releases, site changes, and useful feature notes for William's Photo Gallery.
             </p>
         </section>
+
+            <article class="news-item">
+                <div class="news-item__date">
+                    <span>May 13</span>
+                    <strong>2026</strong>
+                </div>
+                <div class="news-item__body">
+                    <p class="section-kicker">Content Update</p>
+                    <h2 class="section-title">New Album: Shot on iPhone</h2>
+                    <p class="section-copy">
+                       Explore astonishing photos take straigh out of your everyday object: An iPhone.
+                </div>
+            </article>
          <article class="news-item">
                 <div class="news-item__date">
                     <span>May 13</span>
