@@ -403,7 +403,8 @@ html[data-theme="light"] .home-page {
         display: flex;
         gap: 14px;
         overflow-x: auto;
-        padding: 2px 0 18px;
+        margin: -12px 0 -54px;
+        padding: 12px 0 72px;
         scroll-padding-inline: calc((100vw - var(--mobile-card-width)) / 2);
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
