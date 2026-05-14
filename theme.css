@@ -174,7 +174,7 @@ button {
     top: 0;
     z-index: 80;
     display: grid;
-    grid-template-columns: auto auto minmax(0, 1fr);
+    grid-template-columns: auto auto auto minmax(0, 1fr);
     align-items: center;
     gap: 16px;
     min-height: var(--topbar-height);
@@ -218,7 +218,8 @@ button {
     gap: 18px;
 }
 
-.topbar-theme-toggle {
+.topbar-theme-toggle,
+.topbar-settings-link {
     appearance: none;
     position: relative;
     display: inline-grid;
@@ -231,6 +232,7 @@ button {
     border-radius: var(--radius);
     background: transparent;
     color: var(--paper);
+    text-decoration: none;
     cursor: pointer;
     transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
 }
@@ -250,8 +252,24 @@ html[data-theme="light"] .topbar-theme-toggle::before {
     transform: scale(0.84);
 }
 
+.topbar-settings-link::before {
+    content: "";
+    width: 18px;
+    height: 18px;
+    background: currentColor;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.67 4.14a2.34 2.34 0 0 1 4.66 0 2.34 2.34 0 0 0 3.32 1.91 2.34 2.34 0 0 1 2.33 4.04 2.34 2.34 0 0 0 0 3.82 2.34 2.34 0 0 1-2.33 4.04 2.34 2.34 0 0 0-3.32 1.91 2.34 2.34 0 0 1-4.66 0 2.34 2.34 0 0 0-3.32-1.91 2.34 2.34 0 0 1-2.33-4.04 2.34 2.34 0 0 0 0-3.82 2.34 2.34 0 0 1 2.33-4.04 2.34 2.34 0 0 0 3.32-1.91Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9.67 4.14a2.34 2.34 0 0 1 4.66 0 2.34 2.34 0 0 0 3.32 1.91 2.34 2.34 0 0 1 2.33 4.04 2.34 2.34 0 0 0 0 3.82 2.34 2.34 0 0 1-2.33 4.04 2.34 2.34 0 0 0-3.32 1.91 2.34 2.34 0 0 1-4.66 0 2.34 2.34 0 0 0-3.32-1.91 2.34 2.34 0 0 1-2.33-4.04 2.34 2.34 0 0 0 0-3.82 2.34 2.34 0 0 1 2.33-4.04 2.34 2.34 0 0 0 3.32-1.91Z'/%3E%3Ccircle cx='12' cy='12' r='3'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.topbar-settings-link.is-active {
+    border-color: var(--line-strong);
+    background: var(--frame-bg);
+}
+
 .topbar-theme-toggle:hover,
-.topbar-theme-toggle:focus-visible {
+.topbar-theme-toggle:focus-visible,
+.topbar-settings-link:hover,
+.topbar-settings-link:focus-visible {
     transform: translateY(-1px);
     border-color: var(--line-strong);
     background: var(--frame-bg);
@@ -625,7 +643,7 @@ html[data-theme="light"] .cta-link--theme::before {
     }
 
     .page-topbar {
-        grid-template-columns: minmax(0, 1fr) auto auto;
+        grid-template-columns: minmax(0, 1fr) auto auto auto;
         gap: 10px;
         margin: -16px 0 24px calc(50% - 50vw);
     }
