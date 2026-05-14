@@ -1,16 +1,15 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const grid = document.querySelector(".story-grid");
-
-    if (!grid) {
-        return;
-    }
-
-    const seriesTitle = document.querySelector(".headline")?.textContent?.trim() || "Gallery";
-    const figures = Array.from(grid.querySelectorAll(".story-card"));
+    const figures = Array.from(document.querySelectorAll(".story-card"));
 
     if (figures.length === 0) {
         return;
     }
+
+    const seriesTitle = document.querySelector(".headline")?.textContent?.trim() || "Gallery";
+    const getSortIndex = (counter, fallback) => {
+        const match = counter.match(/\d+/);
+        return match ? Number(match[0]) : fallback + 1;
+    };
 
     const items = figures.map((figure, index) => {
         const img = figure.querySelector("img");
@@ -49,11 +48,15 @@ document.addEventListener("DOMContentLoaded", () => {
             meta,
             description,
             counter,
+            domIndex: index,
+            sortIndex: getSortIndex(counter, index),
             src: displayImage.currentSrc || displayImage.src,
             alt: displayImage.alt || title,
             trigger: button
         };
-    }).filter(Boolean);
+    }).filter(Boolean)
+        .sort((a, b) => a.sortIndex - b.sortIndex || a.domIndex - b.domIndex)
+        .map((item, index) => ({ ...item, index }));
 
     if (items.length === 0) {
         return;
