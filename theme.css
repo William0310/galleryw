@@ -174,7 +174,7 @@ button {
     top: 0;
     z-index: 80;
     display: grid;
-    grid-template-columns: auto auto auto minmax(0, 1fr);
+    grid-template-columns: auto auto minmax(0, 1fr);
     align-items: center;
     gap: 16px;
     min-height: var(--topbar-height);
@@ -190,6 +190,7 @@ button {
 .brand-mark {
     display: grid;
     gap: 2px;
+    min-width: 0;
     color: inherit;
     text-decoration: none;
 }
@@ -201,13 +202,19 @@ button {
 }
 
 .brand-mark strong {
+    overflow: hidden;
     font-size: 0.95rem;
     font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .brand-mark span {
+    overflow: hidden;
     color: var(--paper-faint);
     font-size: 0.78rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .topbar-links {
@@ -218,7 +225,6 @@ button {
     gap: 18px;
 }
 
-.topbar-theme-toggle,
 .topbar-settings-link {
     appearance: none;
     position: relative;
@@ -237,21 +243,6 @@ button {
     transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
 }
 
-.topbar-theme-toggle::before {
-    content: "";
-    width: 14px;
-    height: 14px;
-    border: 1.8px solid currentColor;
-    border-radius: 50%;
-    box-shadow: inset -5px -2px 0 currentColor;
-    transition: box-shadow 0.24s ease, transform 0.24s ease;
-}
-
-html[data-theme="light"] .topbar-theme-toggle::before {
-    box-shadow: inset 0 0 0 5px currentColor;
-    transform: scale(0.84);
-}
-
 .topbar-settings-link::before {
     content: "";
     width: 18px;
@@ -266,8 +257,6 @@ html[data-theme="light"] .topbar-theme-toggle::before {
     background: var(--frame-bg);
 }
 
-.topbar-theme-toggle:hover,
-.topbar-theme-toggle:focus-visible,
 .topbar-settings-link:hover,
 .topbar-settings-link:focus-visible {
     transform: translateY(-1px);
@@ -643,7 +632,7 @@ html[data-theme="light"] .cta-link--theme::before {
     }
 
     .page-topbar {
-        grid-template-columns: minmax(0, 1fr) auto auto auto;
+        grid-template-columns: minmax(0, 1fr) auto auto;
         gap: 10px;
         margin: -16px 0 24px calc(50% - 50vw);
     }
