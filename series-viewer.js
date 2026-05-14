@@ -100,6 +100,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let activeIndex = 0;
     let lastTrigger = null;
+    let loadToken = 0;
+    const preloadCache = new Map();
+
+    image.loading = "eager";
+    image.decoding = "async";
+    image.fetchPriority = "high";
+
+    const preloadImage = (item, priority = "low") => {
+        if (!item || preloadCache.has(item.src)) {
+            return;
+        }
+
+        const preload = new Image();
+        preload.decoding = "async";
+        preload.fetchPriority = priority;
+        preload.src = item.src;
+        preloadCache.set(item.src, preload);
+    };
+
+    const scheduleIdle = (callback) => {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(callback, { timeout: 1200 });
+            return;
+        }
+
+        window.setTimeout(callback, 180);
+    };
+
+    const preloadAround = (index) => {
+        scheduleIdle(() => {
+            preloadImage(items[index - 1]);
+            preloadImage(items[index + 1]);
+        });
+    };
 
     const syncNav = () => {
         prevButton.disabled = activeIndex === 0;
@@ -114,13 +148,37 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         activeIndex = index;
-        image.src = item.src;
+        loadToken += 1;
+        const currentToken = loadToken;
+
+        image.classList.add("is-loading");
+        image.fetchPriority = "high";
         image.alt = item.alt;
+
+        image.onload = () => {
+            if (currentToken === loadToken) {
+                image.classList.remove("is-loading");
+            }
+        };
+
+        image.onerror = () => {
+            if (currentToken === loadToken) {
+                image.classList.remove("is-loading");
+            }
+        };
+
+        if (image.src !== item.src) {
+            image.src = item.src;
+        } else {
+            image.classList.remove("is-loading");
+        }
+
         titleNode.textContent = item.title;
         metaNode.textContent = item.meta || `${seriesTitle} / ${item.counter}`;
         descriptionNode.textContent = item.description;
         counterNode.textContent = `${seriesTitle} / ${index + 1} of ${items.length}`;
         syncNav();
+        preloadAround(index);
     };
 
     const open = (index, trigger) => {
