@@ -35,6 +35,12 @@ document.addEventListener("DOMContentLoaded", () => {
         hint.className = "story-card__hint";
         hint.setAttribute("aria-hidden", "true");
 
+        const hintIcon = document.createElement("span");
+        hintIcon.className = "story-card__hint-icon";
+        const hintText = document.createElement("span");
+        hintText.textContent = "View Full Frame";
+        hint.append(hintIcon, hintText);
+
         const displayImage = img.cloneNode(true);
         media.appendChild(displayImage);
         media.appendChild(hint);

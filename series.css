@@ -177,29 +177,48 @@
     right: 14px;
     bottom: 14px;
     z-index: 1;
-    display: inline-grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 34px;
+    padding: 8px 11px;
     border: 1px solid rgba(244, 239, 229, 0.36);
     border-radius: var(--radius);
     background: rgba(17, 16, 13, 0.54);
     color: var(--paper);
-    font-size: 0;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1;
+    text-transform: uppercase;
     pointer-events: none;
+    text-shadow: 0 1px 12px rgba(0, 0, 0, 0.34);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.story-card__hint::before,
-.story-card__hint::after {
+.story-card__hint-icon {
+    position: relative;
+    width: 12px;
+    height: 12px;
+    flex: 0 0 12px;
+}
+
+.story-card__hint-icon::before,
+.story-card__hint-icon::after {
     content: "";
     position: absolute;
+    left: 50%;
+    top: 50%;
     width: 12px;
     height: 1.8px;
+    border-radius: 999px;
     background: currentColor;
+    transform: translate(-50%, -50%);
 }
 
-.story-card__hint::after {
-    transform: rotate(90deg);
+.story-card__hint-icon::after {
+    transform: translate(-50%, -50%) rotate(90deg);
 }
 
 .story-card.landscape > img,

@@ -321,6 +321,17 @@ html[data-theme="light"] .home-page {
     transform: rotate(45deg);
 }
 
+@media (min-width: 821px) {
+    .collection-entry:nth-child(even) .collection-entry__visual {
+        grid-column: 3;
+    }
+
+    .collection-entry:nth-child(even) .collection-entry__copy {
+        grid-column: 2;
+        grid-row: 1;
+    }
+}
+
 .home-about-band {
     display: grid;
     grid-template-columns: minmax(200px, 340px) minmax(0, 1fr);
