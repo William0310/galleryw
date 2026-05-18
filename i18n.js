@@ -1181,7 +1181,20 @@
             "Collection \"Yiheyuan\" Featuring 7 Photos were added as a new album. Archive now will also host future travel plans, side collections, and experiments.": "La colección “Yiheyuan”, con 7 fotos, fue añadida como nuevo álbum. Archive también alojará futuros planes de viaje, colecciones laterales y experimentos.",
             "YiHeYuan - 7 Photos": "YiHeYuan - 7 fotos",
             "[Archive] is now [more photos]": "[Archive] ahora es [more photos]",
-            "Added Achive section to prepear for future collection push.": "Se añadió la sección Archive para preparar futuras publicaciones de colecciones."
+            "Added Achive section to prepear for future collection push.": "Se añadió la sección Archive para preparar futuras publicaciones de colecciones.",
+            "UI improvement": "Mejora de interfaz",
+            "V4 redesign is live.": "El rediseño V4 ya está disponible.",
+            "Homepage": "Página de inicio",
+            "Mobile nav": "Navegación móvil",
+            "Photo viewer": "Visor de fotos",
+            "News Center added.": "Centro de noticias añadido.",
+            "New Collection Added.": "Nueva colección añadida.",
+            "Release Note": "Nota de versión",
+            "Performance Improvement": "Mejora de rendimiento",
+            "V3.0 redesign is live.": "El rediseño V3.0 ya está disponible.",
+            "Nav Bar": "Barra de navegación",
+            "Rebuilt from scratch": "Reconstruido desde cero",
+            "New Cursor": "Nuevo cursor"
         },
         fr: {
             "#Ta'er Temple": "#Temple Ta'er",
@@ -1326,7 +1339,20 @@
             "Collection \"Yiheyuan\" Featuring 7 Photos were added as a new album. Archive now will also host future travel plans, side collections, and experiments.": "La collection « Yiheyuan », avec 7 photos, a été ajoutée comme nouvel album. Archive accueillera aussi les futurs projets de voyage, les collections annexes et les expériences.",
             "YiHeYuan - 7 Photos": "YiHeYuan - 7 photos",
             "[Archive] is now [more photos]": "[Archive] devient [more photos]",
-            "Added Achive section to prepear for future collection push.": "La section Archive a été ajoutée pour préparer les futures publications de collections."
+            "Added Achive section to prepear for future collection push.": "La section Archive a été ajoutée pour préparer les futures publications de collections.",
+            "UI improvement": "Amélioration de l’interface",
+            "V4 redesign is live.": "La refonte V4 est en ligne.",
+            "Homepage": "Accueil",
+            "Mobile nav": "Navigation mobile",
+            "Photo viewer": "Visionneuse photo",
+            "News Center added.": "Centre d’actualités ajouté.",
+            "New Collection Added.": "Nouvelle collection ajoutée.",
+            "Release Note": "Note de version",
+            "Performance Improvement": "Amélioration des performances",
+            "V3.0 redesign is live.": "La refonte V3.0 est en ligne.",
+            "Nav Bar": "Barre de navigation",
+            "Rebuilt from scratch": "Reconstruit de zéro",
+            "New Cursor": "Nouveau curseur"
         },
         ja: {
             "#Ta'er Temple": "#Ta'er Temple",
@@ -1471,7 +1497,20 @@
             "Collection \"Yiheyuan\" Featuring 7 Photos were added as a new album. Archive now will also host future travel plans, side collections, and experiments.": "7枚の写真を含む「Yiheyuan」コレクションを新アルバムとして追加しました。Archiveには今後の旅行計画、サイドコレクション、実験的な内容も置きます。",
             "YiHeYuan - 7 Photos": "YiHeYuan - 7枚",
             "[Archive] is now [more photos]": "[Archive] は [more photos] になりました",
-            "Added Achive section to prepear for future collection push.": "今後のコレクション公開に備えてArchiveセクションを追加しました。"
+            "Added Achive section to prepear for future collection push.": "今後のコレクション公開に備えてArchiveセクションを追加しました。",
+            "UI improvement": "UI改善",
+            "V4 redesign is live.": "V4リデザインを公開しました。",
+            "Homepage": "ホームページ",
+            "Mobile nav": "モバイルナビ",
+            "Photo viewer": "写真ビューア",
+            "News Center added.": "ニュースセンターを追加しました。",
+            "New Collection Added.": "新しいコレクションを追加しました。",
+            "Release Note": "リリースノート",
+            "Performance Improvement": "パフォーマンス改善",
+            "V3.0 redesign is live.": "V3.0リデザインを公開しました。",
+            "Nav Bar": "ナビゲーションバー",
+            "Rebuilt from scratch": "ゼロから再構築",
+            "New Cursor": "新しいカーソル"
         }
     };
 
