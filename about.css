@@ -46,6 +46,49 @@
     font-size: 2.65rem;
 }
 
+.other-project {
+    display: grid;
+    grid-template-columns: minmax(0, 0.58fr) minmax(420px, 0.92fr);
+    gap: 34px;
+    align-items: center;
+    margin-top: 58px;
+    padding-top: 36px;
+    border-top: 1px solid var(--line);
+}
+
+.other-project__copy {
+    display: grid;
+    gap: 14px;
+    align-content: center;
+}
+
+.other-project__copy .cta-link {
+    justify-self: start;
+}
+
+.other-project__preview {
+    display: block;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: var(--frame-bg);
+    color: inherit;
+    text-decoration: none;
+    box-shadow: var(--shadow);
+}
+
+.other-project__preview img {
+    aspect-ratio: 3436 / 2044;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.other-project__preview:hover img,
+.other-project__preview:focus-visible img {
+    transform: scale(1.025);
+}
+
 .about-contact {
     display: grid;
     grid-template-columns: minmax(0, 0.65fr) minmax(360px, 0.78fr);
@@ -150,6 +193,7 @@
 @media (max-width: 900px) {
     .about-grid,
     .manifesto-grid,
+    .other-project,
     .about-contact {
         grid-template-columns: 1fr;
     }
@@ -165,6 +209,11 @@
     }
 
     .manifesto-grid {
+        gap: 24px;
+        margin-top: 38px;
+    }
+
+    .other-project {
         gap: 24px;
         margin-top: 38px;
     }
