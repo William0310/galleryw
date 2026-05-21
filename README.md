@@ -41,3 +41,7 @@ V3.0
 V3.1
 
 -huge loading speed update, up to 100% faster without any comprimise
+
+V3.2+
+
+Check "News" page to see future updates.
