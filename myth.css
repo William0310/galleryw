@@ -52,6 +52,7 @@ a {
     border-radius: 999px;
     background: rgba(0, 0, 0, 0.28);
     color: rgba(242, 238, 230, 0.76);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.36), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
 }

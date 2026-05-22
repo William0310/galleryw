@@ -193,6 +193,7 @@
     text-transform: uppercase;
     pointer-events: none;
     text-shadow: 0 1px 12px rgba(0, 0, 0, 0.34);
+    box-shadow: var(--button-shadow);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
 }
@@ -406,7 +407,8 @@ body.viewer-open {
     background: rgba(244, 239, 229, 0.06);
     color: var(--paper);
     cursor: pointer;
-    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, opacity 0.24s ease;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, opacity 0.24s ease, box-shadow 0.24s ease;
 }
 
 .series-viewer__nav:hover,
@@ -414,6 +416,7 @@ body.viewer-open {
     transform: translateY(-1px);
     border-color: rgba(244, 239, 229, 0.52);
     background: rgba(244, 239, 229, 0.12);
+    box-shadow: var(--button-shadow-hover);
 }
 
 .series-viewer__nav:disabled {

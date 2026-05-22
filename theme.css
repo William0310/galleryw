@@ -12,6 +12,16 @@
     --panel-solid: #191812;
     --radius: 6px;
     --shadow: 0 26px 70px rgba(0, 0, 0, 0.38);
+    --button-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.38),
+        0 4px 10px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(244, 239, 229, 0.035),
+        0 1px 0 rgba(244, 239, 229, 0.08) inset;
+    --button-shadow-hover:
+        0 20px 42px rgba(0, 0, 0, 0.46),
+        0 7px 16px rgba(0, 0, 0, 0.32),
+        0 0 0 1px rgba(244, 239, 229, 0.055),
+        0 1px 0 rgba(244, 239, 229, 0.12) inset;
     --grid-line: rgba(244, 239, 229, 0.045);
     --page-bg-start: #11100d;
     --page-bg-mid: #17150f;
@@ -41,6 +51,16 @@ html[data-theme="light"] {
     --panel: rgba(255, 252, 246, 0.72);
     --panel-solid: #efe5d7;
     --shadow: 0 24px 64px rgba(76, 54, 24, 0.16);
+    --button-shadow:
+        0 12px 26px rgba(76, 54, 24, 0.16),
+        0 3px 9px rgba(76, 54, 24, 0.1),
+        0 0 0 1px rgba(80, 56, 26, 0.035),
+        0 1px 0 rgba(255, 255, 255, 0.58) inset;
+    --button-shadow-hover:
+        0 18px 36px rgba(76, 54, 24, 0.2),
+        0 5px 14px rgba(76, 54, 24, 0.13),
+        0 0 0 1px rgba(80, 56, 26, 0.05),
+        0 1px 0 rgba(255, 255, 255, 0.68) inset;
     --grid-line: rgba(40, 31, 20, 0.055);
     --page-bg-start: #f4efe5;
     --page-bg-mid: #efe5d7;
@@ -240,7 +260,8 @@ button {
     color: var(--paper);
     text-decoration: none;
     cursor: pointer;
-    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
 }
 
 .topbar-settings-link::before {
@@ -262,6 +283,7 @@ button {
     transform: translateY(-1px);
     border-color: var(--line-strong);
     background: var(--frame-bg);
+    box-shadow: var(--button-shadow-hover);
 }
 
 .nav-toggle {
@@ -275,6 +297,8 @@ button {
     background: transparent;
     color: var(--paper);
     cursor: pointer;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
 }
 
 .nav-toggle span {
@@ -439,7 +463,8 @@ button {
     font-size: 0.92rem;
     font-weight: 800;
     text-decoration: none;
-    transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease, box-shadow 0.24s ease;
 }
 
 .cta-link::after {
@@ -488,6 +513,7 @@ html[data-theme="light"] .cta-link--theme::before {
     transform: translateY(-2px);
     background: transparent;
     color: var(--paper);
+    box-shadow: var(--button-shadow-hover);
 }
 
 .cta-link--muted:hover {
@@ -644,6 +670,14 @@ html[data-theme="light"] .cta-link--theme::before {
     .nav-toggle {
         display: grid;
         align-content: center;
+    }
+
+    .nav-toggle:hover,
+    .nav-toggle:focus-visible {
+        transform: translateY(-1px);
+        border-color: var(--line-strong);
+        background: var(--frame-bg);
+        box-shadow: var(--button-shadow-hover);
     }
 
     .topbar-links {

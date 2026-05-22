@@ -182,13 +182,15 @@ html[data-theme="light"] .home-page {
     border-radius: 50%;
     background: transparent;
     cursor: pointer;
-    transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease;
+    box-shadow: var(--button-shadow);
+    transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .hero-carousel__dots button.is-active {
     background: var(--paper);
     border-color: var(--paper);
     transform: scale(1.2);
+    box-shadow: var(--button-shadow-hover);
 }
 
 .collections-section {
@@ -242,6 +244,11 @@ html[data-theme="light"] .home-page {
     background: var(--frame-bg);
     color: inherit;
     text-decoration: none;
+    box-shadow:
+        0 22px 56px rgba(0, 0, 0, 0.34),
+        0 6px 18px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(244, 239, 229, 0.035);
+    transition: box-shadow 0.32s ease, transform 0.32s ease;
 }
 
 .collection-entry__visual--portrait {
@@ -271,6 +278,30 @@ html[data-theme="light"] .home-page {
 .collection-entry:hover .collection-entry__visual img,
 .collection-entry:focus-within .collection-entry__visual img {
     transform: scale(1.035);
+}
+
+.collection-entry:hover .collection-entry__visual,
+.collection-entry:focus-within .collection-entry__visual {
+    transform: translateY(-2px);
+    box-shadow:
+        0 30px 72px rgba(0, 0, 0, 0.42),
+        0 10px 24px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(244, 239, 229, 0.055);
+}
+
+html[data-theme="light"] .collection-entry__visual {
+    box-shadow:
+        0 20px 48px rgba(76, 54, 24, 0.16),
+        0 6px 16px rgba(76, 54, 24, 0.1),
+        0 0 0 1px rgba(80, 56, 26, 0.035);
+}
+
+html[data-theme="light"] .collection-entry:hover .collection-entry__visual,
+html[data-theme="light"] .collection-entry:focus-within .collection-entry__visual {
+    box-shadow:
+        0 28px 62px rgba(76, 54, 24, 0.2),
+        0 10px 22px rgba(76, 54, 24, 0.13),
+        0 0 0 1px rgba(80, 56, 26, 0.05);
 }
 
 .collection-entry__copy {
@@ -467,6 +498,7 @@ html[data-theme="light"] .home-page {
     .collection-entry__visual {
         aspect-ratio: 4 / 5;
         border-radius: var(--radius) var(--radius) 0 0;
+        box-shadow: none;
     }
 
     .collection-entry__copy {
