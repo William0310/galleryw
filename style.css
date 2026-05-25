@@ -43,6 +43,15 @@ html[data-theme="light"] .home-page {
     padding-bottom: 12px;
 }
 
+.home-hero .lede {
+    max-width: 38ch;
+    color: var(--paper);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.45rem, 2.15vw, 2rem);
+    font-style: italic;
+    line-height: 1.18;
+}
+
 .hero-actions {
     display: flex;
     flex-wrap: wrap;

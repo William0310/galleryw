@@ -1,8 +1,8 @@
-# GalleryW
+# The Silver Halide
 
-This is an alternate version of the classic Galleryw.net, which will expire in 2027.
+The Silver Halide is an archival photography project by William, built as a static online gallery for travel photo essays, smaller image studies, and visual experiments.
 
-This Website is powered by github, written by William & Google Gemini
+This website is powered by GitHub Pages and written by William.
 
 Change Log V2.0 Beta
 

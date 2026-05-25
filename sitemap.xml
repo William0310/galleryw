@@ -2,57 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://wphotographs.com/</loc>
-        <lastmod>2026-05-11</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>1.0</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/qinghai.html</loc>
-        <lastmod>2026-05-09</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/japan.html</loc>
-        <lastmod>2026-05-11</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/yiheyuan.html</loc>
-        <lastmod>2026-05-05</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/chongqing.html</loc>
-        <lastmod>2026-05-05</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/yulong.html</loc>
-        <lastmod>2026-05-10</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/about.html</loc>
-        <lastmod>2026-05-01</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/news.html</loc>
-        <lastmod>2026-05-13</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/settings.html</loc>
-        <lastmod>2026-05-13</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.5</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/iphone.html</loc>
-        <lastmod>2026-05-13</lastmod>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.6</priority>
     </url>
     <url>
         <loc>https://wphotographs.com/archive.html</loc>
-        <lastmod>2026-05-13</lastmod>
+        <lastmod>2026-05-25</lastmod>
+        <priority>0.5</priority>
+    </url>
+    <url>
+        <loc>https://wphotographs.com/myth.html</loc>
+        <lastmod>2026-05-25</lastmod>
         <priority>0.5</priority>
     </url>
 </urlset>
