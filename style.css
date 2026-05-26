@@ -1,6 +1,6 @@
 .home-page {
     --accent: #d0a15f;
-    --home-display-font: "Fraunces", Georgia, serif;
+    --home-display-font: "Playfair Display", Georgia, serif;
     background: var(--page-bg-start);
     overflow-x: hidden;
 }
