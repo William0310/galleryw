@@ -1,6 +1,10 @@
 .home-page {
     --accent: #d0a15f;
     --home-display-font: "Playfair Display", Georgia, serif;
+    --hero-title-font: "BBH Bartle", "Google Sans", "Google Sans Display", "Google Sans Text", var(--home-display-font);
+    --collections-title-font: "Cormorant SC", var(--home-display-font);
+    --collections-card-title-font: "Manrope", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", Arial, sans-serif;
+    --collections-stat-font: "Google Sans Flex", "Google Sans", "Google Sans Display", "Google Sans Text", "Manrope", Arial, sans-serif;
     --hero-overlap: clamp(64px, 10vw, 132px);
     background: var(--page-bg-start);
     overflow-x: hidden;
@@ -13,7 +17,6 @@ html[data-theme="light"] .home-page {
 .home-page .headline,
 .home-page .section-title,
 .home-hero__meta dd,
-.collection-entry__copy h3,
 .collection-preview__title,
 .collection-preview__stats dd,
 .home-about-band__card .section-title {
@@ -149,9 +152,14 @@ html[data-theme="light"] .home-page {
 }
 
 .home-hero .headline {
+    font-family: var(--hero-title-font);
     max-width: 7ch;
-    font-size: clamp(3.8rem, 10vw, 6.5rem);
-    line-height: 0.92;
+    font-size: clamp(2rem, 6.2vw, 4rem);
+    line-height: 0.94;
+}
+
+.collections-section .section-title {
+    font-family: var(--collections-title-font);
 }
 
 .home-hero .lede {
@@ -210,8 +218,8 @@ html[data-theme="light"] .home-page {
     border-top: 1px solid rgba(244, 239, 229, 0.12);
     border-top-left-radius: clamp(30px, 4vw, 52px);
     border-top-right-radius: clamp(30px, 4vw, 52px);
-    backdrop-filter: blur(3px) saturate(140%);
-    -webkit-backdrop-filter: blur(3px) saturate(140%);
+    backdrop-filter: blur(5px) saturate(140%);
+    -webkit-backdrop-filter: blur(5px) saturate(140%);
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.62) 18%, rgba(0, 0, 0, 0.78) 100%);
     box-shadow:
@@ -373,6 +381,7 @@ html[data-theme="light"] .home-page {
 .collection-entry__copy h3 {
     margin: 0;
     max-width: 9ch;
+    font-family: var(--collections-card-title-font);
     font-size: clamp(1.7rem, 3.3vw, 2.65rem);
     line-height: 0.95;
     font-weight: 600;
@@ -409,6 +418,7 @@ html[data-theme="light"] .home-page {
 .collection-entry__stats dd {
     margin: 0;
     color: var(--paper);
+    font-family: var(--collections-stat-font);
     font-size: 1.5rem;
     line-height: 0.92;
     font-weight: 600;
@@ -1055,7 +1065,7 @@ html[data-theme="light"] .home-about-band__detail strong {
     }
 
     .home-hero .headline {
-        font-size: clamp(3.2rem, 12vw, 4.8rem);
+        font-size: clamp(2rem, 8.2vw, 3rem);
     }
 
     .home-hero__meta dd {
