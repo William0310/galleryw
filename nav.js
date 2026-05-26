@@ -59,18 +59,17 @@ document.addEventListener("DOMContentLoaded", () => {
         const isLight = getTheme() === "light";
         const nextLabel = isLight ? "Dark mode" : "Light mode";
         const nextAria = isLight ? "Switch to dark mode" : "Switch to light mode";
-        const translate = (value) => window.gallerywI18n ? window.gallerywI18n.t(value) : value;
 
         themeToggles.forEach((button) => {
             const label = button.querySelector("[data-theme-toggle-label]");
 
             button.setAttribute("data-i18n-dynamic", "");
             button.setAttribute("aria-pressed", String(isLight));
-            button.setAttribute("aria-label", translate(nextAria));
+            button.setAttribute("aria-label", nextAria);
 
             if (label) {
                 label.setAttribute("data-i18n-dynamic", "");
-                label.textContent = translate(nextLabel);
+                label.textContent = nextLabel;
             }
         });
 
@@ -121,8 +120,6 @@ document.addEventListener("DOMContentLoaded", () => {
             syncThemeToggles();
         }
     });
-
-    window.addEventListener("galleryw:languagechange", syncThemeToggles);
 
     if (!topbar || !toggle || !nav) {
         return;
