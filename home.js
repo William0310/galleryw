@@ -1,21 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
     const scrollKey = "galleryw.home.scrollY";
-    const stage = document.querySelector("[data-hero-stage]");
-    const frames = Array.from(document.querySelectorAll("[data-hero-frame]"));
-    const dotsContainer = document.querySelector("[data-hero-dots]");
-    const progress = document.querySelector("[data-hero-progress]");
+    const board = document.querySelector("[data-collection-board]");
+    const collectionsById = window.gallerywCollectionsById || {};
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (!stage || !frames.length || !dotsContainer || !progress) {
-        return;
-    }
-
-    const autoDelay = 2200;
-    let activeIndex = Math.max(0, frames.findIndex((frame) => frame.classList.contains("is-active")));
-    let timer = 0;
-    let userPaused = false;
-    let stageVisible = true;
     let scrollTicking = false;
+    let activeSource = null;
+    let previewState = "closed";
+    let previewMotionToken = 0;
 
     const saveScrollPosition = () => {
         try {
@@ -46,85 +37,278 @@ document.addEventListener("DOMContentLoaded", () => {
         window.scrollTo(0, Math.min(storedPosition, maxScroll));
     };
 
-    const stopAuto = () => {
-        window.clearTimeout(timer);
-        timer = 0;
-        progress.style.transitionDuration = "0ms";
-        progress.style.width = "0%";
+    const createElement = (tag, className, text) => {
+        const element = document.createElement(tag);
+
+        if (className) {
+            element.className = className;
+        }
+
+        if (typeof text === "string") {
+            element.textContent = text;
+        }
+
+        return element;
     };
 
-    const animateProgress = () => {
-        progress.style.transitionDuration = "0ms";
-        progress.style.width = "0%";
-
-        window.requestAnimationFrame(() => {
-            window.requestAnimationFrame(() => {
-                progress.style.transitionDuration = `${autoDelay}ms`;
-                progress.style.width = "100%";
-            });
-        });
+    const createTicketHole = (side) => {
+        const hole = createElement("span", `ticket-hole ticket-hole--${side}`);
+        hole.setAttribute("aria-hidden", "true");
+        return hole;
     };
 
-    const sync = () => {
-        frames.forEach((frame, index) => {
-            frame.classList.toggle("is-active", index === activeIndex);
-        });
+    const preview = (() => {
+        if (!board || Object.keys(collectionsById).length === 0) {
+            return null;
+        }
 
-        dotsContainer.querySelectorAll("button").forEach((dot, index) => {
-            dot.classList.toggle("is-active", index === activeIndex);
-            dot.setAttribute("aria-pressed", index === activeIndex ? "true" : "false");
-        });
-    };
+        const root = createElement("section", "collection-preview");
+        const backdrop = createElement("button", "collection-preview__backdrop");
+        const viewport = createElement("div", "collection-preview__viewport");
+        const card = createElement("article", "collection-preview__card");
+        const handle = createElement("span", "collection-preview__handle");
+        const media = createElement("div", "collection-preview__media");
+        const image = document.createElement("img");
+        const body = createElement("div", "collection-preview__body");
+        const eyebrow = createElement("p", "collection-preview__eyebrow");
+        const title = createElement("h2", "collection-preview__title");
+        const description = createElement("p", "collection-preview__description");
+        const chapters = createElement("div", "collection-preview__chapters");
+        const footer = createElement("div", "collection-preview__footer");
+        const stats = createElement("dl", "collection-preview__stats");
+        const yearStat = createElement("div", "collection-preview__stat");
+        const cutsStat = createElement("div", "collection-preview__stat");
+        const framesStat = createElement("div", "collection-preview__stat");
+        const open = createElement("a", "cta-link collection-preview__open", "Open full collection");
 
-    const startAuto = () => {
-        stopAuto();
+        root.id = "collection-preview";
+        root.hidden = true;
+        root.setAttribute("aria-hidden", "true");
+        backdrop.type = "button";
+        backdrop.setAttribute("aria-label", "Close preview");
+        backdrop.dataset.previewClose = "true";
 
-        if (reducedMotion || userPaused || document.hidden || !stageVisible) {
+        handle.setAttribute("aria-hidden", "true");
+
+        card.setAttribute("role", "dialog");
+        card.setAttribute("aria-modal", "true");
+        card.setAttribute("aria-labelledby", "collection-preview-title");
+        card.tabIndex = -1;
+
+        image.decoding = "async";
+        image.loading = "eager";
+
+        yearStat.append(createElement("dt", "", "year"), createElement("dd"));
+        cutsStat.append(createElement("dt", "", "cuts"), createElement("dd"));
+        framesStat.append(createElement("dt", "", "frames"), createElement("dd"));
+        stats.append(yearStat, cutsStat, framesStat);
+
+        footer.append(stats, open);
+        body.append(eyebrow, title, description, chapters, footer);
+        media.appendChild(image);
+        card.append(
+            createTicketHole("left"),
+            createTicketHole("right"),
+            handle,
+            media,
+            body
+        );
+        viewport.appendChild(card);
+        root.append(backdrop, viewport);
+        document.body.appendChild(root);
+
+        return {
+            root,
+            backdrop,
+            viewport,
+            card,
+            image,
+            body,
+            eyebrow,
+            title,
+            description,
+            chapters,
+            open,
+            yearValue: yearStat.querySelector("dd"),
+            cutsValue: cutsStat.querySelector("dd"),
+            framesValue: framesStat.querySelector("dd")
+        };
+    })();
+
+    const populatePreview = (collection) => {
+        if (!preview) {
             return;
         }
 
-        animateProgress();
-        timer = window.setTimeout(() => {
-            activeIndex = (activeIndex + 1) % frames.length;
-            sync();
-            startAuto();
-        }, autoDelay);
+        preview.root.dataset.collectionId = collection.id;
+        preview.card.style.setProperty("--preview-accent", collection.accent);
+        preview.card.style.setProperty("--preview-surface", collection.surface);
+        preview.card.style.setProperty("--preview-gradient", collection.gradient);
+        preview.card.style.setProperty("--preview-light-surface", collection.lightSurface || collection.surface);
+        preview.card.style.setProperty("--preview-light-gradient", collection.lightGradient || collection.gradient);
+        preview.image.src = collection.image.src;
+        preview.image.alt = collection.image.alt;
+        preview.image.style.objectPosition = collection.image.position || "center";
+        preview.eyebrow.textContent = `${collection.number} / ${collection.homeKicker}`;
+        preview.title.textContent = collection.title;
+        preview.title.id = "collection-preview-title";
+        preview.description.textContent = collection.previewText || collection.homeSummary;
+        preview.yearValue.textContent = collection.year;
+        preview.cutsValue.textContent = String(collection.chapters.length).padStart(2, "0");
+        preview.framesValue.textContent = collection.frames;
+        preview.open.href = collection.href;
+        preview.open.textContent = collection.id === "more" ? "Open more photos" : "Open full collection";
+        preview.chapters.replaceChildren(
+            ...collection.chapters.map((chapter) => createElement("span", "collection-preview__chapter", chapter.title))
+        );
     };
 
-    const goTo = (index) => {
-        activeIndex = (index + frames.length) % frames.length;
-        sync();
-        startAuto();
+    const clearActiveSource = () => {
+        activeSource = null;
     };
 
-    frames.forEach((frame, index) => {
-        const label = frame.querySelector("figcaption")?.textContent?.trim() || `Highlight ${index + 1}`;
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Show ${label}`);
-        dot.setAttribute("aria-pressed", "false");
-        dot.addEventListener("click", () => goTo(index));
-        dotsContainer.appendChild(dot);
-    });
+    const waitForMotion = (element, propertyName, fallbackMs) => {
+        if (reducedMotion || fallbackMs <= 0) {
+            return Promise.resolve();
+        }
 
-    stage.addEventListener("pointerenter", () => {
-        userPaused = true;
-        stopAuto();
-    });
+        return new Promise((resolve) => {
+            let done = false;
 
-    stage.addEventListener("pointerleave", () => {
-        userPaused = false;
-        startAuto();
-    });
+            const finish = () => {
+                if (done) {
+                    return;
+                }
+
+                done = true;
+                element.removeEventListener("transitionend", onTransitionEnd);
+                window.clearTimeout(fallbackId);
+                resolve();
+            };
+
+            const onTransitionEnd = (event) => {
+                if (event.target === element && event.propertyName === propertyName) {
+                    finish();
+                }
+            };
+
+            const fallbackId = window.setTimeout(finish, fallbackMs);
+            element.addEventListener("transitionend", onTransitionEnd);
+        });
+    };
+
+    const finalizePreviewClose = (restoreFocus = true) => {
+        if (!preview) {
+            return;
+        }
+
+        preview.root.classList.remove("is-open");
+        preview.root.hidden = true;
+        preview.root.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("preview-open");
+
+        if (restoreFocus) {
+            activeSource?.focus();
+        }
+
+        clearActiveSource();
+        previewState = "closed";
+    };
+
+    const openPreview = async (collectionId, source) => {
+        if (!preview) {
+            return;
+        }
+
+        const collection = collectionsById[collectionId];
+
+        if (!collection) {
+            return;
+        }
+
+        activeSource = source;
+        populatePreview(collection);
+
+        if (previewState === "open") {
+            preview.card.focus();
+            return;
+        }
+
+        previewMotionToken += 1;
+        const motionToken = previewMotionToken;
+
+        previewState = "opening";
+        preview.root.hidden = false;
+        preview.root.setAttribute("aria-hidden", "false");
+        document.body.classList.add("preview-open");
+        preview.root.classList.remove("is-open");
+        preview.root.getBoundingClientRect();
+        preview.root.classList.add("is-open");
+
+        await waitForMotion(preview.card, "transform", 460);
+
+        if (previewMotionToken !== motionToken) {
+            return;
+        }
+
+        preview.card.focus();
+        previewState = "open";
+    };
+
+    const closePreview = async () => {
+        if (!preview || previewState === "closed" || previewState === "closing") {
+            return;
+        }
+
+        previewMotionToken += 1;
+        const motionToken = previewMotionToken;
+
+        previewState = "closing";
+        preview.root.classList.remove("is-open");
+
+        await waitForMotion(preview.card, "transform", 360);
+
+        if (previewMotionToken !== motionToken) {
+            return;
+        }
+
+        finalizePreviewClose();
+    };
+
+    if (preview) {
+        board.addEventListener("click", (event) => {
+            const trigger = event.target.closest("[data-collection-trigger]");
+
+            if (!trigger) {
+                return;
+            }
+
+            openPreview(trigger.dataset.collectionTrigger || "", trigger);
+        });
+
+        preview.card.addEventListener("click", (event) => {
+            event.stopPropagation();
+        });
+
+        preview.backdrop.addEventListener("click", () => {
+            closePreview();
+        });
+
+        preview.root.addEventListener("click", () => {
+            closePreview();
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && previewState !== "closed") {
+                closePreview();
+            }
+        });
+    }
 
     document.addEventListener("visibilitychange", () => {
         if (document.hidden) {
             saveScrollPosition();
-            stopAuto();
-            return;
         }
-
-        startAuto();
     });
 
     window.addEventListener("scroll", () => {
@@ -140,18 +324,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }, { passive: true });
 
     window.addEventListener("pagehide", saveScrollPosition);
-
-    if ("IntersectionObserver" in window) {
-        const observer = new IntersectionObserver((items) => {
-            stageVisible = items.some((item) => item.isIntersecting);
-            startAuto();
-        }, { threshold: 0.2 });
-
-        observer.observe(stage);
-    }
-
-    sync();
-    startAuto();
     window.requestAnimationFrame(restoreScrollPosition);
     window.addEventListener("load", restoreScrollPosition, { once: true });
 });

@@ -9,23 +9,23 @@
 .series-hero {
     --paper: #f4efe5;
     --paper-soft: rgba(244, 239, 229, 0.74);
-    --paper-faint: rgba(244, 239, 229, 0.48);
+    --paper-faint: rgba(244, 239, 229, 0.5);
     --line: rgba(244, 239, 229, 0.18);
-    --line-strong: rgba(244, 239, 229, 0.34);
     position: relative;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 420px);
-    gap: 34px;
     align-items: end;
-    min-height: 590px;
+    min-height: min(860px, calc(100svh - 118px));
     overflow: hidden;
-    margin-bottom: 36px;
-    padding: 44px;
+    margin-bottom: 28px;
+    padding: clamp(22px, 4vw, 44px);
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: 40px;
     background: #191812;
     color: var(--paper);
-    box-shadow: var(--shadow);
+    isolation: isolate;
+    box-shadow:
+        0 38px 96px rgba(0, 0, 0, 0.48),
+        0 12px 30px rgba(0, 0, 0, 0.28);
 }
 
 .series-hero::before,
@@ -41,18 +41,19 @@
     background-image: var(--series-cover);
     background-position: var(--series-cover-position);
     background-size: cover;
-    filter: saturate(0.92) contrast(1.04);
+    filter: saturate(0.98) contrast(1.04);
+    transform: scale(1.015);
 }
 
 .series-hero::after {
     z-index: 1;
     background:
-        linear-gradient(90deg, rgba(17, 16, 13, 0.92), rgba(17, 16, 13, 0.55) 48%, rgba(17, 16, 13, 0.2)),
-        linear-gradient(180deg, transparent, rgba(17, 16, 13, 0.78));
+        linear-gradient(180deg, rgba(17, 16, 13, 0.12) 12%, rgba(17, 16, 13, 0.28) 38%, rgba(17, 16, 13, 0.88) 100%),
+        linear-gradient(115deg, rgba(17, 16, 13, 0.76) 8%, rgba(17, 16, 13, 0.26) 44%, rgba(17, 16, 13, 0.12) 72%);
 }
 
 .series-copy,
-.series-hero .hero-note {
+.series-ticket-footer {
     position: relative;
     z-index: 2;
 }
@@ -60,38 +61,273 @@
 .series-copy {
     display: grid;
     gap: 18px;
-    max-width: 760px;
+    max-width: min(640px, 100%);
 }
 
 .series-copy .eyebrow {
     color: var(--page-accent);
 }
 
+.series-copy .headline {
+    max-width: 8ch;
+    font-size: clamp(4rem, 9vw, 7.8rem);
+}
+
 .series-copy .lede {
-    max-width: 54ch;
+    max-width: 34ch;
+    color: rgba(244, 239, 229, 0.86);
+    font-size: clamp(1rem, 1.7vw, 1.16rem);
+}
+
+.series-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.series-actions .chip {
+    border-color: rgba(244, 239, 229, 0.18);
+    background: rgba(15, 15, 14, 0.28);
+    color: rgba(244, 239, 229, 0.82);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 .series-page .hero-note {
+    display: none;
+}
+
+.series-ticket-footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 18px;
+    margin-top: 8px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(244, 239, 229, 0.18);
+}
+
+.series-ticket-link {
+    background: rgba(15, 15, 14, 0.24);
+    color: var(--paper);
+    border-color: rgba(244, 239, 229, 0.26);
+}
+
+.series-ticket-link:hover {
+    background: rgba(244, 239, 229, 0.12);
+}
+
+.series-ticket-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 0;
+    min-width: min(100%, 340px);
+}
+
+.series-ticket-stats div {
+    min-width: 0;
+}
+
+.series-ticket-stats dt {
+    margin: 0 0 6px;
+    color: rgba(244, 239, 229, 0.6);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: lowercase;
+}
+
+.series-ticket-stats dd {
+    margin: 0;
+    color: var(--paper);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.9rem);
+    font-weight: 600;
+    line-height: 0.88;
+}
+
+.series-chapter-rail {
     display: grid;
     gap: 18px;
-    align-self: end;
-    padding: 20px;
-    border-color: rgba(244, 239, 229, 0.26);
-    background: rgba(244, 239, 229, 0.07);
+    margin: 4px 0 34px;
+}
+
+.series-chapter-intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(240px, 0.44fr);
+    gap: 20px;
+    align-items: end;
+}
+
+.series-chapter-intro .section-title {
+    margin-top: 6px;
+}
+
+.series-chapter-intro .section-copy {
+    max-width: 30ch;
+    justify-self: end;
+    text-align: right;
+}
+
+.series-chapter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.series-chapter-card {
+    position: relative;
+    display: grid;
+    min-height: 320px;
+    padding: 18px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 32px;
+    background: rgba(17, 16, 13, 0.72);
+    color: inherit;
+    text-decoration: none;
+    isolation: isolate;
     box-shadow:
-        inset 0 1px 0 rgba(244, 239, 229, 0.18),
-        0 24px 72px rgba(0, 0, 0, 0.32);
-    backdrop-filter: blur(10px) saturate(1.14) ;
-    -webkit-backdrop-filter: blur(10px) saturate(1.14);
+        0 28px 72px rgba(0, 0, 0, 0.34),
+        0 10px 22px rgba(0, 0, 0, 0.2);
+    transition: transform 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
 }
 
-.series-page .hero-note p {
+.series-chapter-card::before,
+.series-chapter-card::after {
+    content: "";
+    position: absolute;
+    top: 58%;
+    z-index: 2;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--page-bg-mid);
+    transform: translateY(-50%);
+    box-shadow: inset 0 0 0 1px rgba(244, 239, 229, 0.08);
+    pointer-events: none;
+}
+
+.series-chapter-card::before {
+    left: -9px;
+}
+
+.series-chapter-card::after {
+    right: -9px;
+}
+
+.series-chapter-card__media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.series-chapter-card__media img {
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.6s ease, filter 0.3s ease;
+}
+
+.series-chapter-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(10, 10, 9, 0.12) 10%, rgba(10, 10, 9, 0.42) 44%, rgba(10, 10, 9, 0.9) 100%),
+        radial-gradient(circle at 16% 16%, color-mix(in srgb, var(--chapter-accent) 44%, transparent), transparent 34%);
+    pointer-events: none;
+}
+
+.series-chapter-card__copy {
+    position: relative;
+    z-index: 1;
+    align-self: end;
+    display: grid;
+    gap: 8px;
+    padding-top: 134px;
+}
+
+.series-chapter-card__eyebrow {
     margin: 0;
-    color: var(--paper-soft);
+    color: rgba(244, 239, 229, 0.68);
+    font-size: 0.76rem;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
-.series-page .hero-note .metric-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+.series-chapter-card h3 {
+    margin: 0;
+    max-width: 10ch;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 2.05rem;
+    line-height: 0.94;
+    font-weight: 600;
+}
+
+.series-chapter-card__description {
+    margin: 0;
+    max-width: 26ch;
+    color: rgba(244, 239, 229, 0.82);
+    font-size: 0.92rem;
+    line-height: 1.42;
+}
+
+.series-chapter-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: rgba(244, 239, 229, 0.72);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.series-chapter-card:hover,
+.series-chapter-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--line-strong);
+    box-shadow:
+        0 34px 84px rgba(0, 0, 0, 0.42),
+        0 14px 28px rgba(0, 0, 0, 0.24);
+}
+
+.series-chapter-card:hover .series-chapter-card__media img,
+.series-chapter-card:focus-visible .series-chapter-card__media img {
+    transform: scale(1.05);
+    filter: saturate(1.04);
+}
+
+.series-chapter-sections {
+    display: grid;
+    gap: 30px;
+}
+
+.series-chapter-section {
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+}
+
+.series-chapter-head {
+    display: grid;
+    grid-template-columns: minmax(0, 0.72fr) minmax(240px, 0.42fr);
+    gap: 22px;
+    align-items: end;
+    margin-bottom: 18px;
+}
+
+.series-chapter-head .section-title {
+    margin-top: 6px;
+    font-size: 2.55rem;
+}
+
+.chapter-grid {
+    gap: 16px;
 }
 
 .story-grid {
@@ -108,7 +344,7 @@
     margin: 0;
     overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: 28px;
     background: var(--panel);
     transition: transform 0.28s ease, border-color 0.28s ease, opacity 0.28s ease;
 }
@@ -183,7 +419,7 @@
     min-height: 34px;
     padding: 8px 11px;
     border: 1px solid rgba(244, 239, 229, 0.36);
-    border-radius: var(--radius);
+    border-radius: 999px;
     background: rgba(17, 16, 13, 0.54);
     color: var(--paper);
     font-size: 0.68rem;
@@ -246,7 +482,7 @@
     display: grid;
     align-content: start;
     gap: 10px;
-    padding: 16px;
+    padding: 18px;
 }
 
 .caption-head {
@@ -299,7 +535,7 @@
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 24px;
     align-items: end;
-    margin-top: 32px;
+    margin-top: 36px;
     padding: 26px 0 0;
     border-top: 1px solid var(--line);
     background: transparent;
@@ -403,7 +639,7 @@ body.viewer-open {
     width: 44px;
     height: 44px;
     border: 1px solid rgba(244, 239, 229, 0.24);
-    border-radius: var(--radius);
+    border-radius: 999px;
     background: rgba(244, 239, 229, 0.06);
     color: var(--paper);
     cursor: pointer;
@@ -456,10 +692,6 @@ body.viewer-open {
     transform: translateX(5px) rotate(45deg);
 }
 
-.series-viewer__close {
-    position: relative;
-}
-
 .series-viewer__close::before,
 .series-viewer__close::after {
     position: absolute;
@@ -487,7 +719,7 @@ body.viewer-open {
     max-width: min(calc(100vw - 172px), 1280px);
     max-height: calc(100vh - 230px);
     height: auto;
-    border-radius: var(--radius);
+    border-radius: 22px;
     object-fit: contain;
     box-shadow: 0 36px 86px rgba(0, 0, 0, 0.44);
     opacity: 1;
@@ -531,15 +763,19 @@ body.viewer-open {
 
 @media (max-width: 980px) {
     .series-hero {
-        grid-template-columns: 1fr;
-        min-height: 540px;
-        padding: 30px;
+        min-height: 74svh;
+        border-radius: 30px;
+        padding: 26px;
     }
 
-    .series-hero::after {
-        background:
-            linear-gradient(180deg, rgba(17, 16, 13, 0.42), rgba(17, 16, 13, 0.9)),
-            linear-gradient(90deg, rgba(17, 16, 13, 0.64), rgba(17, 16, 13, 0.2));
+    .series-chapter-intro,
+    .series-chapter-head {
+        grid-template-columns: 1fr;
+    }
+
+    .series-chapter-intro .section-copy {
+        justify-self: start;
+        text-align: left;
     }
 
     .story-card,
@@ -562,21 +798,72 @@ body.viewer-open {
 
 @media (max-width: 720px) {
     .series-hero {
-        min-height: 500px;
-        padding: 20px;
-        margin-bottom: 18px;
+        min-height: 68svh;
+        padding: 18px;
+        margin-bottom: 20px;
+        border-radius: 24px;
     }
 
-    .series-page .hero-note {
-        padding: 16px;
+    .series-copy {
+        gap: 14px;
     }
 
-    .series-page .hero-note .metric-grid {
-        grid-template-columns: 1fr;
+    .series-copy .headline {
+        font-size: clamp(3.1rem, 14vw, 5rem);
+    }
+
+    .series-actions {
+        gap: 8px;
+    }
+
+    .series-actions .chip {
+        min-height: 34px;
+        font-size: 0.74rem;
+    }
+
+    .series-ticket-footer {
+        gap: 14px;
+        padding-top: 14px;
+    }
+
+    .series-ticket-stats {
+        gap: 12px;
+        min-width: 100%;
+    }
+
+    .series-ticket-stats dd {
+        font-size: 1.8rem;
+    }
+
+    .series-chapter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .series-chapter-card {
+        min-height: 250px;
+        padding: 14px;
+        border-radius: 24px;
+    }
+
+    .series-chapter-card__copy {
+        padding-top: 96px;
+    }
+
+    .series-chapter-card h3 {
+        font-size: 1.6rem;
+    }
+
+    .series-chapter-card__description {
+        font-size: 0.84rem;
     }
 
     .story-grid {
         gap: 12px;
+    }
+
+    .story-card {
+        border-radius: 22px;
     }
 
     .story-card figcaption {
@@ -628,5 +915,27 @@ body.viewer-open {
 
     .series-viewer__meta {
         text-align: left;
+    }
+}
+
+@media (max-width: 560px) {
+    .series-ticket-stats dt {
+        font-size: 0.66rem;
+    }
+
+    .series-ticket-stats dd {
+        font-size: 1.54rem;
+    }
+
+    .series-chapter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .series-chapter-card {
+        min-height: 220px;
+    }
+
+    .series-chapter-card__description {
+        max-width: none;
     }
 }

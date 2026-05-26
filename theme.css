@@ -1,77 +1,61 @@
 :root {
-    --ink: #11100d;
-    --ink-2: #181711;
-    --paper: #f4efe5;
-    --paper-soft: rgba(244, 239, 229, 0.74);
-    --paper-faint: rgba(244, 239, 229, 0.48);
-    --line: rgba(244, 239, 229, 0.16);
-    --line-strong: rgba(244, 239, 229, 0.34);
-    --accent: #c89458;
-    --accent-ink: #20150c;
-    --panel: rgba(17, 16, 13, 0.78);
-    --panel-solid: #191812;
-    --radius: 6px;
-    --shadow: 0 26px 70px rgba(0, 0, 0, 0.38);
-    --button-shadow:
-        0 14px 30px rgba(0, 0, 0, 0.38),
-        0 4px 10px rgba(0, 0, 0, 0.28),
-        0 0 0 1px rgba(244, 239, 229, 0.035),
-        0 1px 0 rgba(244, 239, 229, 0.08) inset;
-    --button-shadow-hover:
-        0 20px 42px rgba(0, 0, 0, 0.46),
-        0 7px 16px rgba(0, 0, 0, 0.32),
-        0 0 0 1px rgba(244, 239, 229, 0.055),
-        0 1px 0 rgba(244, 239, 229, 0.12) inset;
-    --grid-line: rgba(244, 239, 229, 0.045);
-    --page-bg-start: #11100d;
-    --page-bg-mid: #17150f;
-    --page-bg-end: #0e0d0a;
-    --topbar-bg: rgba(37, 37, 37, 0.087);
+    --ink: #000000;
+    --ink-2: #0c0c0c;
+    --paper: #ffffff;
+    --paper-soft: rgba(255, 255, 255, 0.72);
+    --paper-faint: rgba(255, 255, 255, 0.48);
+    --line: rgba(255, 255, 255, 0.14);
+    --line-strong: rgba(255, 255, 255, 0.28);
+    --accent: #99683c;
+    --accent-ink: #ffffff;
+    --panel: rgba(0, 0, 0, 0.78);
+    --panel-solid: #080808;
+    --radius: 22px;
+    --shadow: 0 24px 60px rgba(0, 0, 0, 0.24);
+    --button-shadow: none;
+    --button-shadow-hover: none;
+    --grid-line: rgba(255, 255, 255, 0.045);
+    --page-bg-start: #000000;
+    --page-bg-mid: #000000;
+    --page-bg-end: #000000;
+    --topbar-bg: rgba(0, 0, 0, 0.62);
     --transition-dot-shadow:
-        -32px 0 0 rgba(244, 239, 229, 0.28),
-        32px 0 0 rgba(244, 239, 229, 0.28);
-    --unread-ring: rgba(17, 16, 13, 0.92);
-    --glass-bg: rgba(255, 255, 255, 0);
-    --frame-bg: rgba(244, 239, 229, 0.04);
+        -32px 0 0 rgba(255, 255, 255, 0.24),
+        32px 0 0 rgba(255, 255, 255, 0.24);
+    --unread-ring: rgba(0, 0, 0, 0.92);
+    --glass-bg: rgba(255, 255, 255, 0.02);
+    --frame-bg: rgba(255, 255, 255, 0.05);
     --max-width: 1440px;
     --gutter: clamp(18px, 4vw, 56px);
     --topbar-height: 70px;
 }
 
 html[data-theme="light"] {
-    --ink: #f4efe5;
-    --ink-2: #ece2d3;
+    --ink: #ffffff;
+    --ink-2: #f7f7f7;
     --paper: #000000;
-    --paper-soft: rgba(23, 18, 13, 0.72);
-    --paper-faint: rgba(23, 18, 13, 0.46);
-    --line: rgba(55, 41, 25, 0.16);
-    --line-strong: rgba(55, 41, 25, 0.34);
-    --accent: #9c6a37;
-    --accent-ink: #f8f1e6;
-    --panel: rgba(255, 252, 246, 0.72);
-    --panel-solid: #efe5d7;
-    --shadow: 0 24px 64px rgba(76, 54, 24, 0.16);
-    --button-shadow:
-        0 12px 26px rgba(76, 54, 24, 0.16),
-        0 3px 9px rgba(76, 54, 24, 0.1),
-        0 0 0 1px rgba(80, 56, 26, 0.035),
-        0 1px 0 rgba(255, 255, 255, 0.58) inset;
-    --button-shadow-hover:
-        0 18px 36px rgba(76, 54, 24, 0.2),
-        0 5px 14px rgba(76, 54, 24, 0.13),
-        0 0 0 1px rgba(80, 56, 26, 0.05),
-        0 1px 0 rgba(255, 255, 255, 0.68) inset;
-    --grid-line: rgba(40, 31, 20, 0.055);
-    --page-bg-start: #f4efe5;
-    --page-bg-mid: #efe5d7;
-    --page-bg-end: #fbf7ef;
-    --topbar-bg: rgba(248, 243, 234, 0.25);
+    --paper-soft: rgba(0, 0, 0, 0.72);
+    --paper-faint: rgba(0, 0, 0, 0.46);
+    --line: rgba(0, 0, 0, 0.14);
+    --line-strong: rgba(0, 0, 0, 0.24);
+    --accent: #99683c;
+    --accent-ink: #ffffff;
+    --panel: rgba(255, 255, 255, 0.82);
+    --panel-solid: #ffffff;
+    --shadow: 0 18px 42px rgba(0, 0, 0, 0.08);
+    --button-shadow: none;
+    --button-shadow-hover: none;
+    --grid-line: rgba(0, 0, 0, 0.06);
+    --page-bg-start: #ffffff;
+    --page-bg-mid: #ffffff;
+    --page-bg-end: #ffffff;
+    --topbar-bg: rgba(255, 255, 255, 0.82);
     --transition-dot-shadow:
-        -32px 0 0 rgba(23, 18, 13, 0.22),
-        32px 0 0 rgba(23, 18, 13, 0.22);
-    --unread-ring: rgba(248, 243, 234, 0.94);
-    --glass-bg: rgba(255, 252, 246, 0.3);
-    --frame-bg: rgba(23, 18, 13, 0.045);
+        -32px 0 0 rgba(0, 0, 0, 0.18),
+        32px 0 0 rgba(0, 0, 0, 0.18);
+    --unread-ring: rgba(255, 255, 255, 0.96);
+    --glass-bg: rgba(255, 255, 255, 0.58);
+    --frame-bg: rgba(0, 0, 0, 0.04);
 }
 
 *,
@@ -93,10 +77,7 @@ html[data-theme="light"] {
 body {
     margin: 0;
     min-height: 100vh;
-    background:
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-        linear-gradient(180deg, var(--page-bg-start) 0%, var(--page-bg-mid) 52%, var(--page-bg-end) 100%);
-    background-size: 96px 100%, 100% 100%;
+    background: var(--page-bg-start);
     color: var(--paper);
     font-family: "Manrope", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", Arial, sans-serif;
     line-height: 1.55;
@@ -114,10 +95,7 @@ body.is-transitioning {
     z-index: 9990;
     display: grid;
     place-items: center;
-    background:
-        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-        var(--page-bg-start);
-    background-size: 96px 100%, 100% 100%;
+    background: var(--page-bg-start);
     color: var(--paper);
     opacity: 1;
     pointer-events: none;
@@ -203,20 +181,33 @@ button {
     padding: 0 max(var(--gutter), calc((100vw - var(--max-width)) / 2));
     border-bottom: 1px solid var(--line);
     background: var(--topbar-bg);
-    backdrop-filter: blur(7px);
-    -webkit-backdrop-filter: blur(7px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .brand-mark {
     position: relative;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
+    justify-content: flex-start;
+    width: auto;
+    height: auto;
+    min-height: 48px;
+    max-width: min(48vw, 360px);
     min-width: 0;
     color: inherit;
     text-decoration: none;
+}
+
+.brand-mark p {
+    margin: 0;
+    color: var(--paper);
+    font-family: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    font-size: clamp(1.05rem, 1.2vw, 1.34rem);
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
 }
 
 .brand-mark__logo {
@@ -268,17 +259,17 @@ button {
     display: inline-grid;
     place-items: center;
     justify-self: end;
-    width: 42px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: 18px;
     background: transparent;
     color: var(--paper);
     text-decoration: none;
     cursor: pointer;
-    box-shadow: var(--button-shadow);
-    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+    box-shadow: none;
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
 }
 
 .topbar-settings-link::before {
@@ -300,22 +291,21 @@ button {
     transform: translateY(-1px);
     border-color: var(--line-strong);
     background: var(--frame-bg);
-    box-shadow: var(--button-shadow-hover);
 }
 
 .nav-toggle {
     display: none;
     position: relative;
-    width: 42px;
-    height: 38px;
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 1px solid var(--line);
-    border-radius: var(--radius);
+    border-radius: 18px;
     background: transparent;
     color: var(--paper);
     cursor: pointer;
-    box-shadow: var(--button-shadow);
-    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease;
+    box-shadow: none;
+    transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease;
 }
 
 .nav-toggle span {
@@ -471,17 +461,17 @@ button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 44px;
-    padding: 0 16px;
+    min-height: 52px;
+    padding: 0 20px;
     border: 1px solid var(--paper);
-    border-radius: var(--radius);
+    border-radius: 999px;
     background: var(--paper);
     color: var(--ink);
     font-size: 0.92rem;
     font-weight: 800;
     text-decoration: none;
-    box-shadow: var(--button-shadow);
-    transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease, box-shadow 0.24s ease;
+    box-shadow: none;
+    transition: transform 0.24s ease, background 0.24s ease, border-color 0.24s ease, color 0.24s ease, opacity 0.24s ease;
 }
 
 .cta-link::after {
@@ -492,6 +482,7 @@ button {
 .cta-link--muted {
     background: transparent;
     color: var(--paper);
+    border-color: var(--line-strong);
 }
 
 .cta-link--muted::after {
@@ -528,14 +519,16 @@ html[data-theme="light"] .cta-link--theme::before {
 
 .cta-link:hover {
     transform: translateY(-2px);
-    background: transparent;
-    color: var(--paper);
-    box-shadow: var(--button-shadow-hover);
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--paper);
+    opacity: 0.92;
 }
 
 .cta-link--muted:hover {
     background: var(--paper);
     color: var(--ink);
+    opacity: 1;
 }
 
 .chip-row,
@@ -665,10 +658,6 @@ html[data-theme="light"] .cta-link--theme::before {
         --topbar-height: 62px;
     }
 
-    body {
-        background-size: 64px 100%, 100% 100%;
-    }
-
     .page-shell {
         width: calc(100% - (var(--gutter) * 2));
         padding: 16px 0 48px;
@@ -681,13 +670,20 @@ html[data-theme="light"] .cta-link--theme::before {
     }
 
     .brand-mark {
-        width: 42px;
-        height: 42px;
+        width: auto;
+        height: auto;
+        min-height: 42px;
+        max-width: min(58vw, 220px);
     }
 
     .brand-mark__logo {
         width: 62px;
         height: 62px;
+    }
+
+    .brand-mark p {
+        font-size: 0.98rem;
+        line-height: 0.98;
     }
 
     .brand-mark span {
