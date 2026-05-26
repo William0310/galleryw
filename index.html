@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet">
     <script src="theme-init.js?v=3000"></script>
     <link rel="stylesheet" href="theme.css?v=3312">
-    <link rel="stylesheet" href="style.css?v=3310">
+    <link rel="stylesheet" href="style.css?v=3312">
     <link rel="stylesheet" href="cursor.css?v=3001" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
@@ -103,44 +103,47 @@
             </div>
         </section>
 
-        <section class="collections-section" id="collections" aria-labelledby="collections-title">
-            <div class="section-head section-head--compact">
-                <div>
-                    <p class="section-kicker">Selected series</p>
-                    <h2 class="section-title" id="collections-title">Explore the collections.</h2>
-                </div>
-                <p class="section-copy"></p>
-            </div>
-            <div class="collection-board" data-collection-board></div>
-        </section>
+        <div class="home-flow">
+            <section class="collections-section" id="collections" aria-labelledby="collections-title">
+                <div class="collections-section__inner">
+                    <div class="section-head section-head--compact">
+                        <div>
+                            <p class="section-kicker">Selected series</p>
+                            <h2 class="section-title" id="collections-title">Explore the collections.</h2>
+                        </div>
+                        <p class="section-copy"></p>
+                    </div>
+                    <div class="collection-board" data-collection-board></div>
+                    <section class="home-about-band" aria-labelledby="home-about-title">
+                        <a href="about.html" class="home-about-band__portrait" aria-label="Read about William">
+                            <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" loading="lazy" decoding="async">
+                        </a>
+                        <div class="home-about-band__card">
+                            <span class="ticket-hole ticket-hole--left" aria-hidden="true"></span>
+                            <span class="ticket-hole ticket-hole--right" aria-hidden="true"></span>
+                            <p class="section-kicker">About the artist</p>
+                            <h2 class="section-title" id="home-about-title">William</h2>
+                            <p class="home-about-band__lede">
+                                I build this gallery as a personal archive for travel photography, field notes, and visual experiments.
+                            </p>
+                            <p class="section-copy">
+                                
+                            </p>
+                         
+                            <div class="home-about-band__actions">
+                                <a href="about.html" class="cta-link">Read the note</a>
+                                <a href="about.html#contact" class="cta-link cta-link--muted">Contact</a>
+                            </div>
+                        </div>
+                    </section>
 
-        <section class="home-about-band" aria-labelledby="home-about-title">
-            <a href="about.html" class="home-about-band__portrait" aria-label="Read about William">
-                <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" loading="lazy" decoding="async">
-            </a>
-            <div class="home-about-band__card">
-                <span class="ticket-hole ticket-hole--left" aria-hidden="true"></span>
-                <span class="ticket-hole ticket-hole--right" aria-hidden="true"></span>
-                <p class="section-kicker">About the artist</p>
-                <h2 class="section-title" id="home-about-title">William</h2>
-                <p class="home-about-band__lede">
-                    I build this gallery as a personal archive for travel photography, field notes, and visual experiments.
-                </p>
-                <p class="section-copy">
-                    
-                </p>
-             
-                <div class="home-about-band__actions">
-                    <a href="about.html" class="cta-link">Read the note</a>
-                    <a href="about.html#contact" class="cta-link cta-link--muted">Contact</a>
+                    <footer class="page-footer">
+                        <p>&copy; 2023-2026 WPHOTOGRAPHS. All Rights Reserved.</p>
+                        <p>The Silver Halide V5 · Photography by William unless noted. Please do not download or share.</p>
+                    </footer>
                 </div>
-            </div>
-        </section>
-
-        <footer class="page-footer">
-            <p>&copy; 2023-2026 WPHOTOGRAPHS. All Rights Reserved.</p>
-            <p>The Silver Halide V5 · Photography by William unless noted. Please do not download or share.</p>
-        </footer>
+            </section>
+        </div>
     </main>
 
     <script src="cursor.js"></script>

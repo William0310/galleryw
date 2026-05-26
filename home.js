@@ -283,7 +283,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 return;
             }
 
-            openPreview(trigger.dataset.collectionTrigger || "", trigger);
+            const collectionId = trigger.dataset.collectionTrigger || "";
+            openPreview(collectionId, trigger);
         });
 
         preview.card.addEventListener("click", (event) => {
