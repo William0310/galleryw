@@ -116,8 +116,8 @@ html[data-theme="light"] .home-page {
 .home-hero__mini {
     align-self: start;
     justify-self: end;
-    width: min(100%, 240px);
-    padding: 14px 16px;
+  
+   
     border: 1px solid rgba(244, 239, 229, 0.18);
     border-radius: 24px;
     background: rgba(14, 14, 13, 0.28);
