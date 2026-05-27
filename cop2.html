@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component 2 | William's Photo Gallery</title>
+    <meta name="description" content="Component 2 layout with two side-by-side text cards and one large text card.">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <style>
+        :root {
+            color-scheme: dark;
+            --ink: #0b0b09;
+            --ink-2: #15120e;
+            --paper: #f4eee3;
+            --muted: rgba(244, 238, 227, 0.68);
+            --faint: rgba(244, 238, 227, 0.44);
+            --line: rgba(244, 238, 227, 0.16);
+            --panel: rgba(24, 21, 16, 0.88);
+            --radius: 8px;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html {
+            min-height: 100%;
+            background: var(--ink);
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                linear-gradient(90deg, rgba(244, 238, 227, 0.045) 1px, transparent 1px),
+                linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 54%, #080807 100%);
+            background-size: 88px 100%, 100% 100%;
+            color: var(--paper);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.55;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .cop2-page {
+            width: min(1320px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 22px 0 56px;
+        }
+
+        .cop2-topbar {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            min-height: 64px;
+            margin: 0 -20px 34px;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--line);
+            background: rgba(11, 11, 9, 0.62);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .cop2-back {
+            display: inline-flex;
+            align-items: center;
+            min-height: 36px;
+            padding: 0 13px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: rgba(244, 238, 227, 0.055);
+            color: rgba(244, 238, 227, 0.82);
+            font-size: 0.84rem;
+            font-weight: 750;
+            text-decoration: none;
+        }
+
+        .cop2-back::before {
+            content: "";
+            display: inline-block;
+            width: 0.58em;
+            height: 0.58em;
+            margin-right: 8px;
+            border-left: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg);
+        }
+
+        .cop2-label {
+            margin: 0;
+            color: var(--faint);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .cop2-layout {
+            display: grid;
+            gap: 18px;
+        }
+
+        .cop2-split {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 18px;
+            min-height: 52vh;
+        }
+
+        .cop2-card {
+            display: grid;
+            align-content: start;
+            gap: 18px;
+            min-height: 360px;
+            padding: clamp(22px, 3vw, 36px);
+            border: 1px solid var(--line);
+            border-radius: var(--radius);
+            background: var(--panel);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
+        }
+
+        .cop2-card--large {
+            min-height: 42vh;
+        }
+
+        .cop2-card p,
+        .cop2-card h1,
+        .cop2-card h2 {
+            margin: 0;
+        }
+
+        .cop2-kicker {
+            color: var(--faint);
+            font-size: 0.72rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
+
+        .cop2-card h1,
+        .cop2-card h2 {
+            max-width: 14ch;
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 500;
+            line-height: 1.04;
+        }
+
+        .cop2-card h1 {
+            font-size: clamp(2.4rem, 5vw, 4.6rem);
+        }
+
+        .cop2-card h2 {
+            font-size: clamp(2rem, 3vw, 3rem);
+        }
+
+        .cop2-placeholder {
+            max-width: 62ch;
+            color: var(--muted);
+            font-size: clamp(1rem, 1.5vw, 1.16rem);
+        }
+
+        @media (max-width: 780px) {
+            .cop2-page {
+                width: min(100% - 24px, 560px);
+                padding-top: 12px;
+            }
+
+            .cop2-topbar {
+                min-height: 58px;
+                margin: 0 0 24px;
+                padding: 0;
+            }
+
+            .cop2-label {
+                display: none;
+            }
+
+            .cop2-split {
+                grid-template-columns: 1fr;
+                min-height: 0;
+            }
+
+            .cop2-card,
+            .cop2-card--large {
+                min-height: 320px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="cop2-page">
+        <header class="cop2-topbar">
+            <a class="cop2-back" href="myth.html">Myth</a>
+            <p class="cop2-label">Component 2</p>
+        </header>
+
+        <section class="cop2-layout" aria-label="Component 2 text cards">
+            <div class="cop2-split">
+                <article class="cop2-card">
+                    <p class="cop2-kicker">1500</p>
+                    <h2>Original Ending</h2>
+                    <p class="cop2-placeholder">
+                        Replace this area with your first block of writing. This card occupies the left half of the screen on desktop.
+                    </p>
+                </article>
+
+                <article class="cop2-card">
+                    <p class="cop2-kicker">2026</p>
+                    <h2>My Ending</h2>
+                    <p class="cop2-placeholder">
+                        Replace this area with your second block of writing. This card occupies the right half of the screen on desktop.
+                    </p>
+                </article>
+            </div>
+
+            <article class="cop2-card cop2-card--large">
+                <p class="cop2-kicker">The Full Epilouge by me.</p>
+                <h1>The Full Essay</h1>
+                <p class="cop2-placeholder">
+                
+	…After the master and his three disciples obtained the Buddhist Scriptures, they returned to the Heavenly Kingdom to meet Tathagata, the supreme Buddha of the world. The four wise adventurers presented the scriptures to Tathagata with the utmost sincerity and respect. After overcoming the eighty-one tribulations, the group of four has gained a complete rebirth and built an unbreakable relationship with each other. 
+Tathagata was surprised and pleased with the performance of the four wise adventurers when he looked down from the sky. He said to the team: “The long journey has reached its fruition, through the eighty-one trials, the veil of illusion has been retracted from your eyes and heart. You now have perceived the true nature of life and the void. You have now found the merit of humility towards all beings of this vast world. I shall grant you status and respect.” Wukong stepped forward and responded with his usual playful voice: “So, Great Buddha, I thank you for your compliment. After smashing eighty-one trials and saving this monk from countless monsters. I want you to know that I seek the most prestigious prize. Wouldn’t you agree?” After hearing Wukong, Pigsy stepped forward and asked: “Oink, every time Wukong went to battle with the monsters, Oink, I was next to Monk Tang to protect him. If I weren’t on the journey, Monk Tang would have been captured, Oink, many times. I used to be Marshal Tianpeng. I have great leadership. Oink, I should be promoted and respected by more believers than other members.” Monk Tang then stepped forward with a preaching voice: “Pigsy, Wukong, please be respectful towards Tathagata; he shall not be influenced by your statement, you shall keep your words to yourself.” “Shush, Tang, all this time you use your preaching voice on me. All this time, you have been holding us back; you always use tight spells to manipulate me. You are weak because you have no power to help the team battle monsters; you are timid; every time you get captured by monsters, all you do is scream; and you get to play the good guy and ask me not to punish monsters that harm you. If anything could have gone better on this journey, I wish you had never been a part of it. You should not get rewarded for anything, and you should grow up.” Wukong interrupted. Friar Sand halted Wukong with a serious voice: “Wukong, do not be so disrespectful to Monk.” Soon, their complaint developed into a fight. The fight of reputation, greed, hatred, and violence. After overcoming so many ordeals and bonding with each other with trust and agreement, the unbreakable bond is weaker than it ever has been. The four pilgrims went into a battle just like the way Wukong ruined the Heavenly Kingdom five hundred years ago. All the intricate furniture and decoration made of jade and gold are fractured into pieces. History repeats itself. Wukong has learned no respect, Pigsy has not learned how to let go of greed, Monk Tang is still arrogant and two-faced, and Friar Sand still lacks the skill of solving problems. 
+At the same time, Tathagata does not seem surprised by the four wise pilgrims’ response; he sits on his Throne with his eyes closed, the serene atmosphere around him in stark contrast to the rest of the Kingdom. This is the eighty-second hidden final challenge Tathagata set for the team. Even if the group of four has overcome the most challenging ordeals in the world, they will not overcome the greed and flaws within themselves, and to break an undefeatable team like them takes less than a few sentences. After their battle went on for five hundred years, Tathagata opened his eyes. With a grand sweep of his arm, all the scattered jade fragments float in the air; he then puts his hands together, and all the fractures coalesce, mending back to its original form. “The Jueney has yet to begin, return to Chang’an”. Tathagata announced with a serene voice. And all of a sudden the four wise men found themselves in Chang’an, where a long journey of eighty-one ordeal awaits them.
+
+                </p>
+            </article>
+        </section>
+    </main>
+</body>
+</html>
