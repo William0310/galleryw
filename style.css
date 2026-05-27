@@ -3,7 +3,7 @@
     --home-display-font: "Playfair Display", Georgia, serif;
     --hero-title-font: "BBH Bartle", "Google Sans", "Google Sans Display", "Google Sans Text", var(--home-display-font);
     --collections-title-font: "Cormorant SC", var(--home-display-font);
-    --collections-card-title-font: "Manrope", "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", Arial, sans-serif;
+    --collections-card-title-font: "Cormorant SC", var(--home-display-font);
     --collections-stat-font: "Google Sans Flex", "Google Sans", "Google Sans Display", "Google Sans Text", "Manrope", Arial, sans-serif;
     --hero-overlap: clamp(64px, 10vw, 132px);
     background: var(--page-bg-start);
@@ -17,8 +17,6 @@ html[data-theme="light"] .home-page {
 .home-page .headline,
 .home-page .section-title,
 .home-hero__meta dd,
-.collection-preview__title,
-.collection-preview__stats dd,
 .home-about-band__card .section-title {
     font-family: var(--home-display-font);
 }
@@ -607,6 +605,7 @@ body.preview-open {
 .collection-preview__title {
     margin: 0;
     max-width: 8ch;
+    font-family: var(--collections-card-title-font);
     font-size: clamp(3rem, 8vw, 5.2rem);
     line-height: 0.92;
     font-weight: 600;
@@ -671,6 +670,7 @@ body.preview-open {
 .collection-preview__stats dd {
     margin: 0;
     color: var(--paper);
+    font-family: var(--collections-stat-font);
     font-size: clamp(1.4rem, 3.6vw, 2rem);
     line-height: 0.92;
     font-weight: 600;
