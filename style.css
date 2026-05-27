@@ -370,7 +370,7 @@ html[data-theme="light"] .home-page {
 
 .collection-entry__eyebrow {
     margin: 0;
-    color: rgba(244, 239, 229, 0.72);
+    color: #d0a15f;
     font-size: 0.78rem;
     font-weight: 700;
     letter-spacing: 0.03em;
@@ -595,7 +595,7 @@ body.preview-open {
 
 .collection-preview__eyebrow {
     margin: 0;
-    color: rgba(244, 239, 229, 0.7);
+    color: #d0a15f;
     font-size: 0.78rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -860,12 +860,16 @@ html[data-theme="light"] .home-hero__mini-label,
 html[data-theme="light"] .home-hero .lede,
 html[data-theme="light"] .home-about-band__lede,
 html[data-theme="light"] .home-about-band__card .section-copy,
-html[data-theme="light"] .collection-preview__eyebrow,
 html[data-theme="light"] .collection-preview__description,
 html[data-theme="light"] .collection-preview__chapter,
 html[data-theme="light"] .collection-entry__description,
 html[data-theme="light"] .collection-entry__eyebrow {
     color: rgba(0, 0, 0, 0.68);
+}
+
+html[data-theme="light"] .collection-preview__eyebrow,
+html[data-theme="light"] .collection-entry__eyebrow {
+    color: #d0a15f;
 }
 
 html[data-theme="light"] .home-hero__meta,

@@ -5,6 +5,8 @@
             number: "01",
             href: "qinghai.html",
             title: "Qinghai",
+            cardMeta: "EOS R5 + Dji Mini 3Pro",
+            previewMeta: "EOS R5 + Dji Mini 3Pro",
             homeKicker: "Plateau",
             homeSummary: "Temple red, road light, and salt-lake white.",
             previewText: "A first full travel edit: temple red, salt-lake white, plateau wind, and long highway moments where the landscape sets the pace.",
@@ -55,6 +57,8 @@
             number: "02",
             href: "japan.html",
             title: "Japan",
+            cardMeta: "Nikon Z9",
+            previewMeta: "Nikon Z9",
             homeKicker: "Island",
             homeSummary: "Kyoto repetition, Tokyo neon, and Fuji air.",
             previewText: "Tokyo, Kyoto, Fujikawaguchiko, and the in-between moments where structure, weather, and quiet repetition begin to line up.",
@@ -105,6 +109,8 @@
             number: "03",
             href: "yiheyuan.html",
             title: "Yiheyuan",
+            cardMeta: "Nikon Z9",
+            previewMeta: "Nikon Z9",
             homeKicker: "Garden",
             homeSummary: "Stone, water, lake haze, and imperial symmetry.",
             previewText: "A Beijing edit from the Summer Palace: water, stone, garden structure, and the slower pace of an old imperial landscape inside a modern city.",
@@ -148,6 +154,8 @@
             number: "04",
             href: "chongqing.html",
             title: "Chongqing",
+            cardMeta: "Nikon Z9",
+            previewMeta: "Nikon Z9",
             homeKicker: "City",
             homeSummary: "Stacked roads, river light, and neon compression.",
             previewText: "A city of vertical turns, stacked roads, river reflections, and night light dense enough to confuse the map.",
@@ -191,6 +199,8 @@
             number: "05",
             href: "yulong.html",
             title: "Lijiang",
+            cardMeta: "Nikon Z9",
+            previewMeta: "Nikon Z9",
             homeKicker: "Mountain",
             homeSummary: "Bright glacial water, altitude air, and yak meadow quiet.",
             previewText: "Cold air, bright water, mountain shadow, and a short winter edit around Jade Dragon Snow Mountain.",
@@ -241,6 +251,8 @@
             number: "06",
             href: "archive.html",
             title: "More Works",
+            cardMeta: "More",
+            previewMeta: "More",
             homeKicker: "♾️",
             homeSummary: "iPhone frames, smaller studies, and what is still forming.",
             previewText: "Smaller edits, camera studies, and future fieldwork live here before they become full chapters.",
@@ -391,7 +403,7 @@
         );
 
         copy.append(
-            createElement("p", "collection-entry__eyebrow", `${collection.title} / ${collection.year}`),
+            createElement("p", "collection-entry__eyebrow", collection.cardMeta || "[Add card meta]"),
             createElement("h3", "", collection.title),
             createElement("p", "collection-entry__description", collection.homeSummary)
         );

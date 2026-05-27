@@ -211,7 +211,7 @@ button {
 .brand-mark p {
     margin: 0;
     color: var(--paper);
-    font-family: "Fraunces", "Cormorant Garamond", Georgia, serif;
+    font-family: "BBH Bartle", "Google Sans", "Google Sans Display", "Google Sans Text", "Fraunces", "Cormorant Garamond", Georgia, serif;
     font-size: clamp(1.05rem, 1.2vw, 1.34rem);
     line-height: 1;
     font-weight: 600;
