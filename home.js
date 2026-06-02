@@ -394,22 +394,22 @@ document.addEventListener("DOMContentLoaded", () => {
             mutations.forEach(m => {
                 m.addedNodes.forEach(node => {
                     if (node.nodeType !== 1) return;
-                    // The entry itself
+                    // The entry itself — apply reveal + tilt to .collection-entry,
+                    // NOT to .collection-entry__shell (which has overflow:hidden).
+                    // Tilt on the shell would break border-radius clipping during
+                    // 3D perspective transforms.
                     if (node.classList && node.classList.contains("collection-entry")) {
                         node.classList.add("home-reveal");
                         revealIO.observe(node);
-                        // Attach tilt to the shell inside
-                        const shell = node.querySelector(".collection-entry__shell");
-                        if (shell) attachTilt(shell);
+                        attachTilt(node); // entry has no overflow:hidden — safe
                     }
-                    // Nested entries (shouldn't happen but be safe)
+                    // Safety: nested entries
                     node.querySelectorAll && node.querySelectorAll(".collection-entry").forEach(entry => {
                         if (!entry.classList.contains("home-reveal")) {
                             entry.classList.add("home-reveal");
                             revealIO.observe(entry);
                         }
-                        const shell = entry.querySelector(".collection-entry__shell");
-                        if (shell && !shell.dataset.tilt) attachTilt(shell);
+                        if (!entry.dataset.tilt) attachTilt(entry);
                     });
                 });
             });
@@ -430,18 +430,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
             const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
             card.style.transform = `perspective(900px) rotateX(${-dy * MAX}deg) rotateY(${dx * MAX}deg) translateY(-4px)`;
-            card.style.transition = "transform 0.08s linear, border-color 0.32s ease, box-shadow 0.32s ease, opacity 0.28s ease";
+            card.style.transition = "transform 0.08s linear, box-shadow 0.32s ease";
         });
 
         card.addEventListener("mouseleave", () => {
             card.style.transform = "";
-            card.style.transition = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease, box-shadow 0.32s ease, opacity 0.28s ease";
+            card.style.transition = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.32s ease";
         });
     };
 
-    // Also attach tilt to the about portrait card
-    const aboutPortrait = document.querySelector(".home-about-band__portrait");
-    if (aboutPortrait) attachTilt(aboutPortrait);
-    const aboutCard = document.querySelector(".home-about-band__card");
-    if (aboutCard) attachTilt(aboutCard);
+    // Note: .home-about-band__portrait and __card both have overflow:hidden,
+    // so we skip tilt on those to avoid the border-radius clipping bug.
 })();

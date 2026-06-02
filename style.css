@@ -264,6 +264,12 @@ html[data-theme="light"] .home-page {
 .collection-entry {
     min-width: 0;
     aspect-ratio: var(--card-ratio, 5 / 7);
+    /* box-shadow lives here so clip-path on the shell doesn't swallow it */
+    border-radius: 36px;
+    box-shadow:
+        0 20px 48px rgba(0, 0, 0, 0.22),
+        0 8px 20px rgba(0, 0, 0, 0.14);
+    transition: box-shadow 0.32s ease;
 }
 
 .collection-entry__shell {
@@ -273,7 +279,11 @@ html[data-theme="light"] .home-page {
     width: 100%;
     height: 100%;
     padding: 16px;
-    overflow: hidden;
+    /* clip-path replaces overflow:hidden + border-radius for clipping.
+       Unlike overflow:hidden, clip-path works correctly even when an
+       ancestor has a 3D perspective transform applied (no border-radius
+       failure during card tilt). */
+    clip-path: inset(0 round 36px);
     border: 1px solid rgba(244, 239, 229, 0.14);
     border-radius: 36px;
     background: var(--card-surface, rgba(10, 10, 10, 0.88));
@@ -281,10 +291,7 @@ html[data-theme="light"] .home-page {
     text-align: left;
     cursor: pointer;
     isolation: isolate;
-    box-shadow:
-        0 20px 48px rgba(0, 0, 0, 0.22),
-        0 8px 20px rgba(0, 0, 0, 0.14);
-    transition: transform 0.32s ease, border-color 0.32s ease, box-shadow 0.32s ease, opacity 0.28s ease;
+    transition: transform 0.32s ease, border-color 0.32s ease, opacity 0.28s ease;
 }
 
 .collection-entry__shell::before {
@@ -422,13 +429,17 @@ html[data-theme="light"] .home-page {
     font-weight: 600;
 }
 
+.collection-entry:hover,
+.collection-entry:focus-within {
+    box-shadow:
+        0 28px 66px rgba(0, 0, 0, 0.28),
+        0 12px 24px rgba(0, 0, 0, 0.18);
+}
+
 .collection-entry__shell:hover,
 .collection-entry__shell:focus-visible {
     transform: translateY(-4px);
     border-color: rgba(244, 239, 229, 0.28);
-    box-shadow:
-        0 28px 66px rgba(0, 0, 0, 0.28),
-        0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
 .collection-entry__shell:hover .collection-entry__visual img,
@@ -809,13 +820,30 @@ body.preview-open {
 }
 
 html[data-theme="light"] .home-hero__card,
-html[data-theme="light"] .collection-entry__shell,
 html[data-theme="light"] .collection-preview__card,
 html[data-theme="light"] .home-about-band__card {
     border-color: rgba(0, 0, 0, 0.12);
     box-shadow:
         0 16px 36px rgba(0, 0, 0, 0.08),
         0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+/* Collection entry: shell border only; shadow lives on .collection-entry */
+html[data-theme="light"] .collection-entry__shell {
+    border-color: rgba(0, 0, 0, 0.12);
+}
+
+html[data-theme="light"] .collection-entry {
+    box-shadow:
+        0 16px 36px rgba(0, 0, 0, 0.08),
+        0 6px 16px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="light"] .collection-entry:hover,
+html[data-theme="light"] .collection-entry:focus-within {
+    box-shadow:
+        0 22px 48px rgba(0, 0, 0, 0.11),
+        0 8px 20px rgba(0, 0, 0, 0.07);
 }
 
 html[data-theme="light"] .home-hero__card {
@@ -1090,9 +1118,14 @@ html[data-theme="light"] .home-about-band__detail strong {
         gap: 14px;
     }
 
+    .collection-entry {
+        border-radius: 28px;
+    }
+
     .collection-entry__shell {
         padding: 14px;
         border-radius: 28px;
+        clip-path: inset(0 round 28px);
     }
 
     .collection-entry__top {

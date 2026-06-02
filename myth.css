@@ -182,24 +182,48 @@
     margin-bottom: 0;
 }
 
+/* ─── Tilt wrappers ─────────────────────────────────────────
+   Grid placement + box-shadow + 3D transform all live here.
+   The actual .myth-card inside keeps overflow:hidden intact —
+   never apply rotateX/Y directly to an overflow:hidden element
+   or the browser stops clipping children to border-radius.     */
+.myth-tilt-wrap {
+    /* display:block — card defines its own height, wrapper follows */
+    position: relative;
+    border-radius: 32px;  /* match card so box-shadow follows the shape */
+    box-shadow:
+        0 28px 72px rgba(0, 0, 0, 0.36),
+        0 10px 22px rgba(0, 0, 0, 0.2);
+    will-change: transform;
+    transition:
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.32s ease;
+    /* Ensure child card fills wrapper width */
+    font-size: 0; /* collapse any inline-gap */
+}
+
+.myth-tilt-wrap--feature { grid-column: span 7; }
+.myth-tilt-wrap--tall    { grid-column: span 5; }
+.myth-tilt-wrap--wide    { grid-column: 1 / -1; }
+
+.myth-tilt-wrap:hover {
+    box-shadow:
+        0 38px 90px rgba(0, 0, 0, 0.46),
+        0 14px 30px rgba(0, 0, 0, 0.26);
+}
+
 /* ─── Cards ───────────────────────────────────────────────── */
 .myth-card {
     position: relative;
     display: grid;
-    overflow: hidden;
-    min-height: 420px;
+    overflow: hidden;     /* safe — no 3D transform on this element */
+    width: 100%;          /* fill wrapper width */
+    min-height: 420px;    /* fallback; specific variants override below */
+    font-size: 1rem;      /* reset font-size from wrapper's 0 */
     border: 1px solid var(--line);
     border-radius: 32px;
     background: var(--panel, rgba(0,0,0,0.78));
-    box-shadow:
-        0 28px 72px rgba(0, 0, 0, 0.36),
-        0 10px 22px rgba(0, 0, 0, 0.2);
-    transform-style: preserve-3d;
-    transition:
-        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
-        border-color 0.28s ease,
-        box-shadow 0.32s ease;
-    will-change: transform;
+    transition: border-color 0.28s ease;
 }
 
 /* Card shimmer highlight */
@@ -218,9 +242,6 @@
 
 .myth-card:hover {
     border-color: var(--line-strong, rgba(255,255,255,0.28));
-    box-shadow:
-        0 38px 90px rgba(0, 0, 0, 0.46),
-        0 14px 30px rgba(0, 0, 0, 0.26);
 }
 
 .myth-card:hover::after {
@@ -230,21 +251,18 @@
 }
 
 .myth-card--feature {
-    grid-column: span 7;
     min-height: 680px;
     grid-template-rows: minmax(0, 1fr) auto;
 }
 
 .myth-card--tall {
-    grid-column: span 5;
     min-height: 680px;
     grid-template-rows: minmax(0, 1fr) auto;
 }
 
 .myth-card--wide {
-    grid-column: 1 / -1;
-    grid-template-columns: minmax(0, 0.58fr) minmax(300px, 0.42fr);
     min-height: 360px;
+    grid-template-columns: minmax(0, 0.58fr) minmax(300px, 0.42fr);
 }
 
 /* ticket-hole decorations matching site style */
@@ -436,14 +454,22 @@
         border-radius: 30px;
     }
 
+    /* Wrappers collapse to full width */
+    .myth-tilt-wrap,
+    .myth-tilt-wrap--feature,
+    .myth-tilt-wrap--tall,
+    .myth-tilt-wrap--wide {
+        grid-column: 1 / -1;
+        min-height: 0;
+    }
+
+    /* Cards reflow to single column */
     .myth-card,
     .myth-card--feature,
     .myth-card--tall,
     .myth-card--wide {
-        grid-column: 1 / -1;
         grid-template-columns: 1fr;
         grid-template-rows: minmax(280px, 1fr) auto;
-        min-height: 0;
     }
 
     .myth-card--wide .myth-card__copy {
@@ -457,6 +483,10 @@
         border-radius: 24px;
         padding: 18px;
         min-height: 68svh;
+    }
+
+    .myth-tilt-wrap {
+        border-radius: 24px;
     }
 
     .myth-card,
@@ -483,8 +513,8 @@
         transition: none;
     }
 
-    .myth-card {
-        transition: border-color 0.2s ease;
+    .myth-tilt-wrap {
+        transition: box-shadow 0.2s ease;
     }
 
     .myth-card__media img,
