@@ -328,3 +328,120 @@ document.addEventListener("DOMContentLoaded", () => {
     window.requestAnimationFrame(restoreScrollPosition);
     window.addEventListener("load", restoreScrollPosition, { once: true });
 });
+
+/* ─────────────────────────────────────────────────────────────
+   Home page interactions
+   · Scroll progress bar
+   · Hero parallax
+   · Scroll reveal (static + dynamically generated cards)
+   · 3D card tilt (desktop pointer devices only)
+───────────────────────────────────────────────────────────── */
+(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // ── Scroll progress bar ──────────────────────────────────
+    const bar = document.getElementById("home-progress");
+    const updateProgress = () => {
+        if (!bar) return;
+        const total = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = total > 0 ? (window.scrollY / total * 100) + "%" : "0%";
+    };
+
+    // ── Hero parallax ────────────────────────────────────────
+    const hero = document.querySelector(".home-hero");
+    const updateParallax = () => {
+        if (!hero || reducedMotion) return;
+        const rect = hero.getBoundingClientRect();
+        if (rect.bottom < 0) return;
+        // shift background subtly as hero scrolls away
+        const progress = Math.max(0, -rect.top / Math.max(rect.height, 1));
+        const shift = progress * 36; // max 36 px
+        document.documentElement.style.setProperty("--hero-parallax-y", shift + "px");
+    };
+
+    // ── Combined scroll handler ──────────────────────────────
+    let scrollTicking2 = false;
+    const onScroll = () => {
+        if (scrollTicking2) return;
+        scrollTicking2 = true;
+        window.requestAnimationFrame(() => {
+            scrollTicking2 = false;
+            updateProgress();
+            updateParallax();
+        });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    updateProgress();
+    updateParallax();
+
+    // ── Scroll reveal ────────────────────────────────────────
+    const revealIO = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                e.target.classList.add("is-visible");
+                revealIO.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.07 });
+
+    // Observe static reveal targets immediately
+    document.querySelectorAll(".home-reveal").forEach(el => revealIO.observe(el));
+
+    // Observe collection cards as they are injected by collections.js
+    const boardEl = document.querySelector("[data-collection-board]");
+    if (boardEl) {
+        const mutObs = new MutationObserver((mutations) => {
+            mutations.forEach(m => {
+                m.addedNodes.forEach(node => {
+                    if (node.nodeType !== 1) return;
+                    // The entry itself
+                    if (node.classList && node.classList.contains("collection-entry")) {
+                        node.classList.add("home-reveal");
+                        revealIO.observe(node);
+                        // Attach tilt to the shell inside
+                        const shell = node.querySelector(".collection-entry__shell");
+                        if (shell) attachTilt(shell);
+                    }
+                    // Nested entries (shouldn't happen but be safe)
+                    node.querySelectorAll && node.querySelectorAll(".collection-entry").forEach(entry => {
+                        if (!entry.classList.contains("home-reveal")) {
+                            entry.classList.add("home-reveal");
+                            revealIO.observe(entry);
+                        }
+                        const shell = entry.querySelector(".collection-entry__shell");
+                        if (shell && !shell.dataset.tilt) attachTilt(shell);
+                    });
+                });
+            });
+        });
+        mutObs.observe(boardEl, { childList: true });
+    }
+
+    // ── 3D card tilt ─────────────────────────────────────────
+    const isFine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    const attachTilt = (card) => {
+        if (!isFine || reducedMotion || card.dataset.tilt) return;
+        card.dataset.tilt = "1";
+        const MAX = 5; // max degrees
+
+        card.addEventListener("mousemove", (e) => {
+            const rect = card.getBoundingClientRect();
+            const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+            const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+            card.style.transform = `perspective(900px) rotateX(${-dy * MAX}deg) rotateY(${dx * MAX}deg) translateY(-4px)`;
+            card.style.transition = "transform 0.08s linear, border-color 0.32s ease, box-shadow 0.32s ease, opacity 0.28s ease";
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "";
+            card.style.transition = "transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.32s ease, box-shadow 0.32s ease, opacity 0.28s ease";
+        });
+    };
+
+    // Also attach tilt to the about portrait card
+    const aboutPortrait = document.querySelector(".home-about-band__portrait");
+    if (aboutPortrait) attachTilt(aboutPortrait);
+    const aboutCard = document.querySelector(".home-about-band__card");
+    if (aboutCard) attachTilt(aboutCard);
+})();

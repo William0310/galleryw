@@ -4,69 +4,196 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Myth | The Silver Halide</title>
-    <meta name="description" content="A horizontal scroll presentation of Myth, an ultra-wide visual study by William.">
-    <link rel="preload" as="image" href="images/jpg-1_01.jpg" type="image/jpeg" fetchpriority="high">
-    <link rel="stylesheet" href="myth.css?v=1005">
+    <meta name="description" content="A visual study of Journey to the West — modern adaptation, epilogue, and mythological connections by William.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="theme-init.js?v=3001"></script>
+    <link rel="stylesheet" href="theme.css?v=3317">
+    <link rel="stylesheet" href="myth.css?v=1007">
+    <link rel="stylesheet" href="cursor.css?v=3002" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
 </head>
-<body>
-    <main class="myth-page" aria-labelledby="myth-title">
-        <header class="myth-topbar">
-            <a class="myth-back" href="archive.html">More Photos</a>
-            <p class="myth-label">English Project</p>
+<body class="series-page myth-page-root">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
+
+    <!-- Scroll progress bar -->
+    <div class="myth-progress" id="myth-progress" aria-hidden="true"></div>
+
+    <main class="page-shell">
+        <header class="page-topbar">
+            <a href="archive.html" class="back-link">More Photos</a>
+            <button class="topbar-settings-link" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
+                <span class="visually-hidden" data-theme-toggle-label>Light mode</span>
+            </button>
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="topbar-links" id="site-nav" aria-label="Primary">
+                <a href="news.html" class="news-link" data-news-link>News</a>
+                <a href="archive.html">More Photos</a>
+                <a href="about.html">About</a>
+                <a href="about.html#contact">Contact</a>
+            </nav>
         </header>
 
-        <section class="myth-intro">
-            <p class="myth-kicker">Myth</p>
-            <h1 id="myth-title">Journey To West Presentation.</h1>
-            <p>
-                Explore some cultural significance and art behind the classic Myth - Journey To West(JTW)
-            </p>
+        <!-- Hero -->
+        <section class="myth-hero myth-reveal" id="myth-hero" aria-labelledby="myth-title">
+            <div class="myth-hero__bg" id="myth-hero-bg" aria-hidden="true"></div>
+            <div class="myth-hero__img-wrap" aria-hidden="true">
+                <img src="images/jpg-1_01.jpg" alt="" width="1200" height="800" fetchpriority="high" decoding="async">
+            </div>
+            <div class="myth-hero__overlay" aria-hidden="true"></div>
+            <div class="myth-hero__copy">
+                <p class="myth-hero__eyebrow">English Project &nbsp;·&nbsp; Journey To West</p>
+                <h1 class="myth-hero__title" id="myth-title">Myth</h1>
+                <p class="myth-hero__lede">
+                    Explore the cultural significance and art behind the classic myth — Journey To West.
+                </p>
+                <div class="myth-hero__chips">
+                    <span class="myth-hero__chip">3 Sections</span>
+                    <span class="myth-hero__chip">Research · Story · Art</span>
+                </div>
+            </div>
         </section>
 
-        <section class="myth-bento" aria-label="Myth image and text cards">
-            <!-- Replace each image src, alt text, heading, and paragraph here as the Myth edit develops. -->
-            <article class="myth-card myth-card--feature">
+        <!-- Bento cards -->
+        <div class="myth-section-head myth-reveal">
+            <p class="myth-section-kicker">The Project</p>
+            <h2 class="myth-section-title">Three ways into the myth.</h2>
+        </div>
+
+        <section class="myth-bento" aria-label="Myth project sections">
+
+            <article class="myth-card myth-card--feature myth-reveal" data-tilt>
                 <figure class="myth-card__media">
-                    <img src="images/jpg-1_01.jpg" alt="Myth study fragment with layered warm tones" width="750" height="1772" fetchpriority="high" decoding="async">
+                    <img src="images/jpg-1_01.jpg" alt="Layered illustration depicting the Journey to West landscape" width="750" height="1772" loading="lazy" decoding="async">
                 </figure>
                 <div class="myth-card__copy">
-                    <p>Section 01</p>
+                    <p class="myth-card__copy-label">Section 01</p>
                     <h2>Modern Adaptation</h2>
                     <span>
-                        A research essay on how JTW is connected and adapted to the Modern World.
+                        A research essay on how JTW is connected and adapted to the modern world.
                     </span>
                 </div>
             </article>
 
-            <article class="myth-card myth-card--tall">
+            <article class="myth-card myth-card--tall myth-reveal" data-tilt>
                 <figure class="myth-card__media">
-                    <img src="images/cover2.png" alt="Vertical Myth study detail with dark contrast" width="750" height="1772" loading="lazy" decoding="async">
+                    <img src="images/cover2.png" alt="Epilogue cover — dark contrast vertical composition" width="750" height="1772" loading="lazy" decoding="async">
                 </figure>
                 <div class="myth-card__copy">
-                    <p>Section 02</p>
-                    <h2>An Epilouge</h2>
+                    <p class="myth-card__copy-label">Section 02</p>
+                    <h2>An Epilogue</h2>
                     <span>
-                       A three pages short story that reorganize the ending of the story to leave a cliffhanger.
+                        A three-page short story that reorganises the ending to leave a cliffhanger.
                     </span>
                     <a class="myth-card__button" href="cop2.html">Open epilogue cards</a>
                 </div>
             </article>
 
-            <article class="myth-card myth-card--wide">
+            <article class="myth-card myth-card--wide myth-reveal" data-tilt>
                 <figure class="myth-card__media">
-                    <img src="images/cover1.png" alt="Myth study fragment with a cinematic vertical crop" width="750" height="1772" loading="lazy" decoding="async">
+                    <img src="images/cover1.png" alt="Cinematic horizontal composition of mythological characters" width="750" height="1772" loading="lazy" decoding="async">
                 </figure>
                 <div class="myth-card__copy">
-                    <p>Section 03</p>
+                    <p class="myth-card__copy-label">Section 03</p>
                     <h2>Connections</h2>
                     <span>
-                        Dipiction of Different characters that existed or connected to other Chinese Myths and cultures.
+                        Depictions of characters connected to other Chinese myths and cultures.
                     </span>
                     <a class="myth-card__button" href="cop3.html">Open horizontal track</a>
                 </div>
             </article>
+
         </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2023-2026 WPHOTOGRAPHS. All Rights Reserved.</p>
+            <p>The Silver Halide V5 · Photography by William unless noted. Please do not download or share.</p>
+        </footer>
     </main>
+
+    <script src="cursor.js"></script>
+    <script src="nav.js?v=3302"></script>
+    <script src="transition.js?v=3000"></script>
+    <script>
+    (() => {
+        // ── Scroll progress bar ──────────────────────────────
+        const bar = document.getElementById('myth-progress');
+        const updateProgress = () => {
+            const scrolled = window.scrollY;
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            bar.style.width = total > 0 ? (scrolled / total * 100) + '%' : '0%';
+        };
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+
+        // ── Scroll reveal (IntersectionObserver) ────────────
+        const reveals = document.querySelectorAll('.myth-reveal');
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) {
+                    e.target.classList.add('is-visible');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.08 });
+        reveals.forEach(el => io.observe(el));
+
+        // ── Hero image load animation ────────────────────────
+        const hero = document.getElementById('myth-hero');
+        const heroImg = hero?.querySelector('img');
+        if (heroImg) {
+            if (heroImg.complete) {
+                hero.classList.add('is-loaded');
+            } else {
+                heroImg.addEventListener('load', () => hero.classList.add('is-loaded'));
+            }
+        }
+
+        // ── Hero parallax on scroll ──────────────────────────
+        const heroBg = document.getElementById('myth-hero-bg');
+        const heroEl = document.getElementById('myth-hero');
+        const heroImgWrap = heroEl?.querySelector('.myth-hero__img-wrap img');
+        const onScroll = () => {
+            if (!heroEl) return;
+            const rect = heroEl.getBoundingClientRect();
+            if (rect.bottom < 0 || rect.top > window.innerHeight) return;
+            const progress = -rect.top / rect.height;
+            const shift = progress * 28;
+            if (heroImgWrap) heroImgWrap.style.transform = `scale(1.04) translateY(${shift}px)`;
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // ── 3D card tilt on mousemove ────────────────────────
+        const isFine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+        if (isFine) {
+            document.querySelectorAll('[data-tilt]').forEach(card => {
+                const MAX = 6; // max degrees
+
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const cx = rect.left + rect.width / 2;
+                    const cy = rect.top + rect.height / 2;
+                    const dx = (e.clientX - cx) / (rect.width / 2);
+                    const dy = (e.clientY - cy) / (rect.height / 2);
+                    const rotX = -dy * MAX;
+                    const rotY = dx * MAX;
+                    card.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateY(-4px)`;
+                    card.style.transition = 'transform 0.08s linear, border-color 0.28s ease, box-shadow 0.32s ease';
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = '';
+                    card.style.transition = 'transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.28s ease, box-shadow 0.32s ease';
+                });
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

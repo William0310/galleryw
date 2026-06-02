@@ -1,0 +1,17 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "galleryw",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3000", "."],
+      "port": 3000
+    },
+    {
+      "name": "whitehouse-clone",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-p", "3001", "whitehouse-clone"],
+      "port": 3001
+    }
+  ]
+}

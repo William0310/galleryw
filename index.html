@@ -43,6 +43,9 @@
     <div class="cursor-dot" id="cursor-dot"></div>
     <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
 
+    <!-- Scroll progress bar -->
+    <div class="home-progress" id="home-progress" aria-hidden="true"></div>
+
     <main class="page-shell">
         <header class="page-topbar">
             <a class="brand-mark" href="index.html" aria-label="The Silver Halide home">
@@ -107,7 +110,7 @@
         <div class="home-flow">
             <section class="collections-section" id="collections" aria-labelledby="collections-title">
                 <div class="collections-section__inner">
-                    <div class="section-head section-head--compact">
+                    <div class="section-head section-head--compact home-reveal">
                         <div>
                             <p class="section-kicker">Selected series</p>
                             <h2 class="section-title" id="collections-title">Explore the collections.</h2>
@@ -115,7 +118,7 @@
                         <p class="section-copy"></p>
                     </div>
                     <div class="collection-board" data-collection-board></div>
-                    <section class="home-about-band" aria-labelledby="home-about-title">
+                    <section class="home-about-band home-reveal" aria-labelledby="home-about-title">
                         <a href="about.html" class="home-about-band__portrait" aria-label="Read about William">
                             <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" loading="lazy" decoding="async">
                         </a>
@@ -138,7 +141,7 @@
                         </div>
                     </section>
 
-                    <footer class="page-footer">
+                    <footer class="page-footer home-reveal">
                         <p>&copy; 2023-2026 WPHOTOGRAPHS. All Rights Reserved.</p>
                         <p>The Silver Halide V5 · Photography by William unless noted. Please do not download or share.</p>
                     </footer>

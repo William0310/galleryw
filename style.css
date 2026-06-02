@@ -1236,3 +1236,76 @@ html[data-theme="light"] .home-about-band__detail strong {
         gap: 8px;
     }
 }
+
+/* ─── Scroll progress bar ─────────────────────────────────── */
+.home-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(90deg, #c08642, #d0a15f, #8fa188);
+    border-radius: 0 2px 2px 0;
+    transition: width 0.08s linear;
+    pointer-events: none;
+}
+
+/* ─── Hero parallax CSS variable hook ────────────────────────
+   JS sets --hero-parallax-y on documentElement               */
+.home-hero__card::before {
+    transform: scale(1.06) translateY(var(--hero-parallax-y, 0px));
+}
+
+/* ─── Scroll reveal ───────────────────────────────────────── */
+.home-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.64s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.64s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.home-reveal.is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Collection cards: stagger via nth-child */
+.collection-entry.home-reveal:nth-child(2) { transition-delay: 0.07s; }
+.collection-entry.home-reveal:nth-child(3) { transition-delay: 0.14s; }
+.collection-entry.home-reveal:nth-child(4) { transition-delay: 0.21s; }
+.collection-entry.home-reveal:nth-child(5) { transition-delay: 0.28s; }
+.collection-entry.home-reveal:nth-child(6) { transition-delay: 0.35s; }
+
+/* ─── CTA button arrow animation ─────────────────────────── */
+.cta-link::after {
+    transition:
+        transform 0.24s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.24s ease;
+}
+
+.cta-link:not(.cta-link--muted):not(.cta-link--down):not(.cta-link--theme):hover::after {
+    transform: rotate(-45deg) translate(3px, -3px);
+}
+
+.cta-link--muted:hover::after {
+    transform: rotate(45deg) translate(2px, 2px);
+}
+
+/* ─── About band portrait reveal ──────────────────────────── */
+.home-about-band.home-reveal {
+    transition-delay: 0.06s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .home-progress { transition: none; }
+    .home-reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .home-hero__card::before {
+        transform: scale(1.06);
+    }
+}
