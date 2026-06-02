@@ -265,18 +265,6 @@
     grid-template-columns: minmax(0, 0.58fr) minmax(300px, 0.42fr);
 }
 
-/* ticket-hole decorations matching site style */
-.myth-card--feature::before,
-.myth-card--tall::before {
-    content: "";
-    position: absolute;
-    bottom: calc(var(--copy-height, 180px) + 1px);
-    left: 0;
-    right: 0;
-    z-index: 2;
-    border-top: 1px dashed rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-}
 
 /* ─── Card media ──────────────────────────────────────────── */
 .myth-card__media {
@@ -521,4 +509,93 @@
     .myth-hero__bg {
         transition: none;
     }
+}
+
+/* ─── Light mode overrides ────────────────────────────────── */
+html[data-theme="light"] .myth-tilt-wrap {
+    box-shadow:
+        0 12px 36px rgba(0, 0, 0, 0.1),
+        0 4px 14px rgba(0, 0, 0, 0.07);
+}
+
+html[data-theme="light"] .myth-tilt-wrap:hover {
+    box-shadow:
+        0 20px 52px rgba(0, 0, 0, 0.14),
+        0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+/* Card base */
+html[data-theme="light"] .myth-card {
+    background: #f7f4ef;
+}
+
+html[data-theme="light"] .myth-card::after {
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.9) inset,
+        0 0 0 1px rgba(0, 0, 0, 0.08) inset;
+}
+
+html[data-theme="light"] .myth-card:hover::after {
+    box-shadow:
+        0 1px 0 rgba(255, 255, 255, 1) inset,
+        0 0 0 1px rgba(0, 0, 0, 0.12) inset;
+}
+
+/* Media: lighter background + brighter image */
+html[data-theme="light"] .myth-card__media {
+    background: #e8e2d8;
+}
+
+html[data-theme="light"] .myth-card__media img {
+    opacity: 1;
+    filter: saturate(0.95) contrast(1.02) brightness(1.04);
+}
+
+/* Overlay gradient flips to white-to-transparent */
+html[data-theme="light"] .myth-card__media::after {
+    background: linear-gradient(180deg, transparent, rgba(247, 244, 239, 0.55));
+}
+
+/* Copy area: warm white background with dark text */
+html[data-theme="light"] .myth-card__copy {
+    background:
+        linear-gradient(180deg, rgba(247, 244, 239, 0) 0%, rgba(247, 244, 239, 0.95) 100%),
+        rgba(247, 244, 239, 0.9);
+}
+
+html[data-theme="light"] .myth-card--wide .myth-card__copy {
+    background: rgba(247, 244, 239, 0.97);
+    border-left-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Labels */
+html[data-theme="light"] .myth-card--feature .myth-card__copy-label {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="light"] .myth-card--tall .myth-card__copy-label {
+    color: rgba(80, 105, 74, 0.9);
+}
+
+html[data-theme="light"] .myth-card--wide .myth-card__copy-label {
+    color: rgba(148, 88, 22, 0.9);
+}
+
+/* Body text */
+html[data-theme="light"] .myth-card__copy span {
+    color: rgba(30, 26, 20, 0.72);
+}
+
+/* Button: dark on light */
+html[data-theme="light"] .myth-card__button {
+    border-color: rgba(0, 0, 0, 0.18);
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.82);
+}
+
+html[data-theme="light"] .myth-card__button:hover,
+html[data-theme="light"] .myth-card__button:focus-visible {
+    border-color: rgba(0, 0, 0, 0.32);
+    background: rgba(0, 0, 0, 0.1);
+    color: #000;
 }

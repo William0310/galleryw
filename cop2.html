@@ -3,236 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Component 2 | William's Photo Gallery</title>
-    <meta name="description" content="Component 2 layout with two side-by-side text cards and one large text card.">
+    <title>An Epilogue | The Silver Halide</title>
+    <meta name="description" content="An Epilogue — a short story reimagining the ending of Journey to the West, by William.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="theme-init.js?v=3001"></script>
+    <link rel="stylesheet" href="theme.css?v=3317">
+    <link rel="stylesheet" href="cop2.css?v=1001">
+    <link rel="stylesheet" href="cursor.css?v=3002" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <style>
-        :root {
-            color-scheme: dark;
-            --ink: #0b0b09;
-            --ink-2: #15120e;
-            --paper: #f4eee3;
-            --muted: rgba(244, 238, 227, 0.68);
-            --faint: rgba(244, 238, 227, 0.44);
-            --line: rgba(244, 238, 227, 0.16);
-            --panel: rgba(24, 21, 16, 0.88);
-            --radius: 8px;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            min-height: 100%;
-            background: var(--ink);
-        }
-
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background:
-                linear-gradient(90deg, rgba(244, 238, 227, 0.045) 1px, transparent 1px),
-                linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 54%, #080807 100%);
-            background-size: 88px 100%, 100% 100%;
-            color: var(--paper);
-            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            line-height: 1.55;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        .cop2-page {
-            width: min(1320px, calc(100% - 40px));
-            margin: 0 auto;
-            padding: 22px 0 56px;
-        }
-
-        .cop2-topbar {
-            position: sticky;
-            top: 0;
-            z-index: 20;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            min-height: 64px;
-            margin: 0 -20px 34px;
-            padding: 0 20px;
-            border-bottom: 1px solid var(--line);
-            background: rgba(11, 11, 9, 0.62);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .cop2-back {
-            display: inline-flex;
-            align-items: center;
-            min-height: 36px;
-            padding: 0 13px;
-            border: 1px solid var(--line);
-            border-radius: 999px;
-            background: rgba(244, 238, 227, 0.055);
-            color: rgba(244, 238, 227, 0.82);
-            font-size: 0.84rem;
-            font-weight: 750;
-            text-decoration: none;
-        }
-
-        .cop2-back::before {
-            content: "";
-            display: inline-block;
-            width: 0.58em;
-            height: 0.58em;
-            margin-right: 8px;
-            border-left: 1.5px solid currentColor;
-            border-bottom: 1.5px solid currentColor;
-            transform: rotate(45deg);
-        }
-
-        .cop2-label {
-            margin: 0;
-            color: var(--faint);
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .cop2-layout {
-            display: grid;
-            gap: 18px;
-        }
-
-        .cop2-split {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 18px;
-            min-height: 52vh;
-        }
-
-        .cop2-card {
-            display: grid;
-            align-content: start;
-            gap: 18px;
-            min-height: 360px;
-            padding: clamp(22px, 3vw, 36px);
-            border: 1px solid var(--line);
-            border-radius: var(--radius);
-            background: var(--panel);
-            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34);
-        }
-
-        .cop2-card--large {
-            min-height: 42vh;
-        }
-
-        .cop2-card p,
-        .cop2-card h1,
-        .cop2-card h2 {
-            margin: 0;
-        }
-
-        .cop2-kicker {
-            color: var(--faint);
-            font-size: 0.72rem;
-            font-weight: 800;
-            text-transform: uppercase;
-        }
-
-        .cop2-card h1,
-        .cop2-card h2 {
-            max-width: 14ch;
-            font-family: Georgia, "Times New Roman", serif;
-            font-weight: 500;
-            line-height: 1.04;
-        }
-
-        .cop2-card h1 {
-            font-size: clamp(2.4rem, 5vw, 4.6rem);
-        }
-
-        .cop2-card h2 {
-            font-size: clamp(2rem, 3vw, 3rem);
-        }
-
-        .cop2-placeholder {
-            max-width: 62ch;
-            color: var(--muted);
-            font-size: clamp(1rem, 1.5vw, 1.16rem);
-        }
-
-        @media (max-width: 780px) {
-            .cop2-page {
-                width: min(100% - 24px, 560px);
-                padding-top: 12px;
-            }
-
-            .cop2-topbar {
-                min-height: 58px;
-                margin: 0 0 24px;
-                padding: 0;
-            }
-
-            .cop2-label {
-                display: none;
-            }
-
-            .cop2-split {
-                grid-template-columns: 1fr;
-                min-height: 0;
-            }
-
-            .cop2-card,
-            .cop2-card--large {
-                min-height: 320px;
-            }
-        }
-    </style>
 </head>
-<body>
-    <main class="cop2-page">
-        <header class="cop2-topbar">
-            <a class="cop2-back" href="myth.html">Myth</a>
-            <p class="cop2-label">Component 2</p>
+<body class="series-page cop2-root">
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
+
+    <main class="page-shell">
+        <header class="page-topbar">
+            <a href="myth.html" class="back-link">Myth</a>
+            <button class="topbar-settings-link" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
+                <span class="visually-hidden" data-theme-toggle-label>Light mode</span>
+            </button>
+            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="topbar-links" id="site-nav" aria-label="Primary">
+                <a href="news.html" class="news-link" data-news-link>News</a>
+                <a href="archive.html">More Photos</a>
+                <a href="about.html">About</a>
+                <a href="about.html#contact">Contact</a>
+            </nav>
         </header>
 
-        <section class="cop2-layout" aria-label="Component 2 text cards">
+        <!-- Page intro -->
+        <div class="cop2-intro">
+            <p class="cop2-eyebrow">English Project &nbsp;·&nbsp; Journey To West</p>
+            <h1 class="cop2-title">An Epilogue</h1>
+            <p class="cop2-lede">A three-page short story reimagining the ending — leaving a cliffhanger.</p>
+        </div>
+
+        <!-- Cards -->
+        <section class="cop2-layout" aria-label="Epilogue cards">
+
+            <!-- Two comparison cards -->
             <div class="cop2-split">
-                <article class="cop2-card">
-                    <p class="cop2-kicker">1500</p>
-                    <h2>Original Ending</h2>
-                    <p class="cop2-placeholder">
-                        After the four protagnoist encountered a totel of eighty-one ordreals, they retrived the sacred scripture, brought it back to the heavenly kingdom and handed it to Tathagata(A very respected figure in Buddhism) Tathagata approved their effort and gave them status and authority.
-                    </p>
-                </article>
 
                 <article class="cop2-card">
-                    <p class="cop2-kicker">2026</p>
-                    <h2>My Ending</h2>
-                    <p class="cop2-placeholder">
-                        After the four disciples overcame the eighty-one challenges, they retrived the scared scripture, brought it back just like the original story. But the four diciples went into a fight about who deserves the most athority and rewards, 
-                    </p>
+                    <header class="cop2-card__head">
+                        <p class="cop2-card__eyebrow">Original — 1500</p>
+                        <h2 class="cop2-card__title">The Original Ending</h2>
+                    </header>
+                    <ul class="cop2-list">
+                        <li>
+                            <strong>Mission Accomplished</strong>
+                            After enduring exactly eighty-one ordeals, the four protagonists successfully retrieve the sacred scriptures.
+                        </li>
+                        <li>
+                            <strong>The Return</strong>
+                            They return to the Heavenly Kingdom and present the scriptures to Tathagata Buddha with utmost sincerity and respect.
+                        </li>
+                        <li>
+                            <strong>A Happy Ending</strong>
+                            Tathagata approves of their dedication and rewards them with spiritual status, divine authority, and titles — Sun Wukong becomes the "Victorious Fighting Buddha" — ending the story in absolute harmony and fulfilment.
+                        </li>
+                    </ul>
                 </article>
+
+                <article class="cop2-card cop2-card--alt">
+                    <header class="cop2-card__head">
+                        <p class="cop2-card__eyebrow">My Version — 2026</p>
+                        <h2 class="cop2-card__title">My Ending</h2>
+                    </header>
+                    <ul class="cop2-list">
+                        <li>
+                            <strong>The Nature of Greed Revealed</strong>
+                            The disciples return with the scriptures just as in the original. But during the reward ceremony, they immediately fall into a fierce argument over who deserves the most authority.
+                        </li>
+                        <li>
+                            <strong>Is the Bond Unbreakable?</strong>
+                            The deep, brotherly bond forged over years of shared hardship instantly shatters in the face of greed, arrogance, and ambition.
+                        </li>
+                        <li>
+                            <strong>The Plot Twist</strong>
+                            Tathagata reveals that the ceremony was actually the hidden 82nd ordeal — a test of the heart. They have failed badly. As punishment, he strips them of all rewards and sends them back to earth to begin the eighty-one challenges all over again.
+                        </li>
+                    </ul>
+                </article>
+
             </div>
 
-            <article class="cop2-card cop2-card--large">
-                <p class="cop2-kicker">The Full Epilouge by me.</p>
-                <h1>The Full Essay</h1>
-                <p class="cop2-placeholder">
-                
-	…After the master and his three disciples obtained the Buddhist Scriptures, they returned to the Heavenly Kingdom to meet Tathagata, the supreme Buddha of the world. The four wise adventurers presented the scriptures to Tathagata with the utmost sincerity and respect. After overcoming the eighty-one tribulations, the group of four has gained a complete rebirth and built an unbreakable relationship with each other. 
-Tathagata was surprised and pleased with the performance of the four wise adventurers when he looked down from the sky. He said to the team: “The long journey has reached its fruition, through the eighty-one trials, the veil of illusion has been retracted from your eyes and heart. You now have perceived the true nature of life and the void. You have now found the merit of humility towards all beings of this vast world. I shall grant you status and respect.” Wukong stepped forward and responded with his usual playful voice: “So, Great Buddha, I thank you for your compliment. After smashing eighty-one trials and saving this monk from countless monsters. I want you to know that I seek the most prestigious prize. Wouldn’t you agree?” After hearing Wukong, Pigsy stepped forward and asked: “Oink, every time Wukong went to battle with the monsters, Oink, I was next to Monk Tang to protect him. If I weren’t on the journey, Monk Tang would have been captured, Oink, many times. I used to be Marshal Tianpeng. I have great leadership. Oink, I should be promoted and respected by more believers than other members.” Monk Tang then stepped forward with a preaching voice: “Pigsy, Wukong, please be respectful towards Tathagata; he shall not be influenced by your statement, you shall keep your words to yourself.” “Shush, Tang, all this time you use your preaching voice on me. All this time, you have been holding us back; you always use tight spells to manipulate me. You are weak because you have no power to help the team battle monsters; you are timid; every time you get captured by monsters, all you do is scream; and you get to play the good guy and ask me not to punish monsters that harm you. If anything could have gone better on this journey, I wish you had never been a part of it. You should not get rewarded for anything, and you should grow up.” Wukong interrupted. Friar Sand halted Wukong with a serious voice: “Wukong, do not be so disrespectful to Monk.” Soon, their complaint developed into a fight. The fight of reputation, greed, hatred, and violence. After overcoming so many ordeals and bonding with each other with trust and agreement, the unbreakable bond is weaker than it ever has been. The four pilgrims went into a battle just like the way Wukong ruined the Heavenly Kingdom five hundred years ago. All the intricate furniture and decoration made of jade and gold are fractured into pieces. History repeats itself. Wukong has learned no respect, Pigsy has not learned how to let go of greed, Monk Tang is still arrogant and two-faced, and Friar Sand still lacks the skill of solving problems. 
-At the same time, Tathagata does not seem surprised by the four wise pilgrims’ response; he sits on his Throne with his eyes closed, the serene atmosphere around him in stark contrast to the rest of the Kingdom. This is the eighty-second hidden final challenge Tathagata set for the team. Even if the group of four has overcome the most challenging ordeals in the world, they will not overcome the greed and flaws within themselves, and to break an undefeatable team like them takes less than a few sentences. After their battle went on for five hundred years, Tathagata opened his eyes. With a grand sweep of his arm, all the scattered jade fragments float in the air; he then puts his hands together, and all the fractures coalesce, mending back to its original form. “The Jueney has yet to begin, return to Chang’an”. Tathagata announced with a serene voice. And all of a sudden the four wise men found themselves in Chang’an, where a long journey of eighty-one ordeal awaits them.
+            <!-- Comparison table -->
+            <div class="cop2-card cop2-table-card" role="region" aria-label="Comparison table">
+                <header class="cop2-card__head">
+                    <p class="cop2-card__eyebrow">Side by Side</p>
+                    <h2 class="cop2-card__title">A Quick Comparison</h2>
+                </header>
+                <div class="cop2-table-wrap">
+                    <table class="cop2-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Dimension</th>
+                                <th scope="col">The Original Ending</th>
+                                <th scope="col">Your Adapted Ending</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="cop2-table__dim">The Nature of the Story</td>
+                                <td>It is an external quest. Surviving the predetermined hardships qualifies characters for the salvation.</td>
+                                <td>It is more of an internal battle. Surviving external monsters is just the prerequisite; resisting internal temptation is the real odreal.</td>
+                            </tr>
+                            <tr>
+                                <td class="cop2-table__dim">The Team Of Four</td>
+                                <td>True Brotherhood. The challenges they been through breeds lifelong loyalty and a shared world view.</td>
+                                <td>Fragile Team. The bond lasts only as long as there is a common enemy. Once it's time to claim reward, the bond brokes.</td>
+                            </tr>
+                            <tr>
+                                <td class="cop2-table__dim">The Role of Tathagata</td>
+                                <td>He acts as a benevolent judge, handing out well-deserved promotions and rewards.</td>
+                                <td>He acts as a wise psychologist, using the ultimate bait (power and status) to expose their hidden, unhealed charactersitcs.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
 
-                </p>
+            <!-- Full essay card -->
+            <article class="cop2-card cop2-card--essay">
+                <header class="cop2-card__head">
+                    <p class="cop2-card__eyebrow">The Full Epilogue — by William</p>
+                    <h2 class="cop2-card__title">The Full Essay</h2>
+                </header>
+                <div class="cop2-prose">
+                    <p>After the master and his three disciples obtained the Buddhist Scriptures, they returned to the Heavenly Kingdom to meet Tathagata, the supreme Buddha of the world. The four wise adventurers presented the scriptures to Tathagata with the utmost sincerity and respect. After overcoming the eighty-one tribulations, the group had gained a complete rebirth and built what seemed an unbreakable relationship with each other.</p>
+
+                    <p>Tathagata was surprised and pleased when he looked down from the sky. He said to the team: <em>"The long journey has reached its fruition. Through the eighty-one trials, the veil of illusion has been retracted from your eyes and heart. You have now perceived the true nature of life and the void, and found the merit of humility towards all beings of this vast world. I shall grant you status and respect."</em></p>
+
+                    <p>Wukong stepped forward with his usual playful voice: <em>"So, Great Buddha, I thank you for the compliment. After smashing eighty-one trials and saving this monk from countless monsters, I want you to know that I seek the most prestigious prize. Wouldn't you agree?"</em> Pigsy followed: <em>"Oink — every time Wukong went to battle, I was next to Monk Tang to protect him. If I weren't on the journey, Monk Tang would have been captured many times. I used to be Marshal Tianpeng. I have great leadership. Oink — I should be promoted and respected by more believers than the others."</em></p>
+
+                    <p>Monk Tang stepped in with a preaching voice: <em>"Pigsy, Wukong, please be respectful towards Tathagata. You shall keep your words to yourselves."</em> Wukong snapped back: <em>"Shush, Tang. All this time you use that preaching voice on me. You have been holding us back, using tight spells to manipulate me. You are weak — every time you were captured, all you did was scream. You should not be rewarded for anything."</em></p>
+
+                    <p>Friar Sand halted Wukong with a serious voice, but it was too late. Their dispute had grown into a full battle — one of reputation, greed, hatred, and violence. The deep bond forged through years of shared hardship shattered in an instant. They fought just as Wukong had once devastated the Heavenly Kingdom five hundred years before. Intricate furnishings of jade and gold fractured into pieces. History repeated itself: Wukong had learned no respect, Pigsy had not let go of greed, Monk Tang remained arrogant and two-faced, and Friar Sand still lacked the skill to resolve conflict.</p>
+
+                    <p>Through all of this, Tathagata showed no surprise. He sat on his throne with eyes closed, a serene stillness in stark contrast to the chaos around him. This was the eighty-second ordeal — a hidden final test he had set for the team. For even if a group overcomes every challenge in the world, they may still not overcome the greed and flaws within themselves. And to break even the most formidable team takes no more than a few well-chosen words.</p>
+
+                    <p>After their battle had raged for what felt like five hundred years, Tathagata opened his eyes. With a grand sweep of his arm, the scattered jade fragments rose into the air. He pressed his hands together, and every fracture healed, mending back to its original form.</p>
+
+                    <p><em>"The journey has yet to begin. Return to Chang'an."</em></p>
+
+                    <p>And in an instant, the four wise men found themselves back in Chang'an — where a long journey of eighty-one ordeals awaited them once more.</p>
+                </div>
             </article>
+
         </section>
+
+        <footer class="page-footer">
+            <p>&copy; 2023-2026 WPHOTOGRAPHS. All Rights Reserved.</p>
+            <p>The Silver Halide V5 · Photography by William unless noted. Please do not download or share.</p>
+        </footer>
     </main>
+
+    <script src="cursor.js"></script>
+    <script src="nav.js?v=3302"></script>
+    <script src="transition.js?v=3000"></script>
 </body>
 </html>
