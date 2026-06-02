@@ -160,10 +160,18 @@
     grid-row: 1;
 }
 
-/* The text node sits in the second column, second row */
+/* Text content — either a bare text node sibling or a <span> wrapper */
 .cop2-list li > *:not(strong) {
     grid-column: 2;
     grid-row: 2;
+}
+
+/* Italic emphasis inside list items */
+.cop2-list li em {
+    font-style: italic;
+    font-family: "Cormorant Garamond", Georgia, serif;
+    font-size: 1.04em;
+    color: var(--paper);
 }
 
 /* ─── Prose / Essay ───────────────────────────────────────── */
