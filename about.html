@@ -1,178 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About William | The Silver Halide</title>
-    <meta name="description" content="About William, the photographer behind The Silver Halide, a personal archive of travel photography and photo essays.">
-    <link rel="canonical" href="https://wphotographs.com/about.html">
-    <meta property="og:type" content="profile">
-    <meta property="og:site_name" content="The Silver Halide">
-    <meta property="og:title" content="About William">
-    <meta property="og:description" content="About the photographer behind The Silver Halide.">
-    <meta property="og:url" content="https://wphotographs.com/about.html">
-    <meta property="og:image" content="https://wphotographs.com/images/me.webp">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="About William">
-    <meta name="twitter:description" content="About the photographer behind The Silver Halide.">
-    <meta name="twitter:image" content="https://wphotographs.com/images/me.webp">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <script src="theme-init.js?v=3000"></script>
-    <link rel="stylesheet" href="theme.css?v=3312">
-    <link rel="stylesheet" href="about.css?v=3012">
-    <link rel="stylesheet" href="cursor.css?v=3001" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>About William | The Silver Halide</title>
+<meta name="description" content="About William, the photographer behind The Silver Halide — a travelogue in light.">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/about.css">
 </head>
-<body class="about-page">
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
+<body data-theme="light" class="album-body about-body-page">
 
-    <main class="page-shell">
-        <header class="page-topbar">
-            <a href="index.html" class="back-link">Home</a>
-            <button class="topbar-settings-link" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
-                <span class="visually-hidden" data-theme-toggle-label>Light mode</span>
-            </button>
-            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="topbar-links" id="site-nav" aria-label="About">
-                <a href="index.html#collections">Collections</a>
-                <a href="news.html" class="news-link" data-news-link>News</a>
-                <a href="archive.html">More Photos</a>
-                <a href="#contact">Contact</a>
-            </nav>
-        </header>
+<!-- ======================= CURSOR ======================= -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"><span class="cursor-label"></span></div>
+</div>
 
-        <section class="about-grid" aria-labelledby="about-title">
-            <figure class="frame portrait-panel">
-                <img src="images/me.webp" alt="Portrait of William" width="1850" height="2638" decoding="async" fetchpriority="high">
-            </figure>
+<!-- ======================= PROGRESS ======================= -->
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
-            <div class="about-copy stack">
-                <div>
-                    <p class="eyebrow">About the artist</p>
-                    <h1 class="headline" id="about-title">William</h1>
-                </div>
-                <p class="lede">
-                    I build this gallery as a personal archive for travel photography, field notes, and visual experiments.
-                </p>
-                <p class="about-body">
-                   Present this in your message if you are sending a bug report: V4.2.1[patch259]
-                </p>
+<!-- ======================= HEADER ======================= -->
+<header class="site-head">
+  <a class="brand" href="index.html">
+    <span class="brand-cn" lang="zh">影·银盐</span>
+    <span class="brand-en">a travelogue<br>By William</span>
+  </a>
+  <a class="menu-btn album-back" href="index.html">
+    <span class="menu-btn-word">back to the journey</span>
+    <span class="album-back-arrow">←</span>
+  </a>
+</header>
 
-                <div class="detail-grid">
-                    <article class="detail-card">
-                        <span>Base</span>
-                        <p>Beijing, China / Pennsylvania, USA</p>
-                    </article>
-                    <article class="detail-card">
-                        <span>Cameras</span>
-                        <p>Nikon Z9, Canon R5, Sony A7M IV, DJI Mini 3 Pro, iPhone</p>
-                    </article>
-                    <article class="detail-card">
-                        <span>Site</span>
-                        <p>Static HTML, CSS, and vanilla JavaScript</p>
-                    </article>
-                    <article class="detail-card">
-                        <span>Focus</span>
-                        <p>Photography, coding, travel, and driving</p>
-                    </article>
-                    <article class="detail-card">
-                        <span>Fonts Applied</span>
-                        <p>Manrope, PingFang SC, Hiragino Sans GB, Noto Sans SC, Arial, sans-serif, Cormorant Garamond, Georgia, serif</p>
-                    </article>
-                    <article class="detail-card">
-                        <span>Contact</span>
-                        <p>support.wphoto@gmail.com or use the <a href="#contact">contact form</a>.</p>
-                    </article>
-                    
-                </div>
-            </div>
-        </section>
+<main class="album-page about-page">
 
-        <section class="manifesto-grid" aria-label="Working notes">
-            <article class="manifesto-panel">
-                <p class="section-kicker">Manifesto</p>
-                <h2 class="section-title">I am whatever it takes.</h2>
-                <p class="section-copy">
-                    Chasing the light that has traveled millions of years, just to kiss the earth for a second.
-            </article>
+  <!-- ======================= ABOUT GRID ======================= -->
+  <section class="about-grid" aria-labelledby="about-title">
+    <figure class="ph-frame portrait-panel" data-cursor="view">
+      <img src="assets/img/me.webp" alt="Portrait of William" loading="eager" decoding="async">
+    </figure>
 
-            <article class="manifesto-panel">
-                <p class="section-kicker">Reminder</p>
-                <h2 class="section-title">Do Not Download Or Share Without Permission.</h2>
-                <p class="section-copy">
-                    Photography by William unless otherwise noted. Please do not download, repost, or use these images without asking first.
-                </p>
-            </article>
-        </section>
+    <div class="about-copy">
+      <span class="chapter-no" data-anim="fade">about the artist</span>
+      <h1 class="chapter-title" id="about-title" data-anim="chars">William</h1>
+      <p class="lede" data-anim="fade">I build this gallery as a personal archive for travel photography, field notes, and visual experiments.</p>
 
-        <section class="other-project" aria-labelledby="other-project-title">
-            <div class="other-project__copy">
-                <p class="section-kicker">Other Projects</p>
-                <h2 class="section-title" id="other-project-title">Wmatrix</h2>
-                <p class="section-copy">
-                    A separate free web toolbox built to help you work effciently. Currently under development. Last Updated: May, 19/26
-                </p>
-                <a class="cta-link" href="https://william0310.github.io/Wmatrix/" target="_blank" rel="noopener noreferrer" aria-label="Open Wmatrix project">
-                    Visit Wmatrix
-                </a>
-            </div>
+      <div class="detail-grid" data-anim="fade">
+        <article class="detail-card">
+          <span>Base</span>
+          <p>Beijing, China / Pennsylvania, USA</p>
+        </article>
+        <article class="detail-card">
+          <span>Cameras</span>
+          <p>Nikon Z9, Canon R5, Sony A7M IV, DJI Mini 3 Pro, iPhone</p>
+        </article>
+        <article class="detail-card">
+          <span>Site</span>
+          <p>Static HTML, CSS, and vanilla JavaScript</p>
+        </article>
+        <article class="detail-card">
+          <span>Focus</span>
+          <p>Photography, coding, travel, and driving</p>
+        </article>
+        <article class="detail-card">
+          <span>Fonts Applied</span>
+          <p>Cormorant Garamond, Space Grotesk, Songti SC, Noto Serif SC, Hiragino Mincho ProN, serif</p>
+        </article>
+        <article class="detail-card">
+          <span>Contact</span>
+          <p>support.wphoto@gmail.com or use the <a href="#contact">contact form</a>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-            <a class="other-project__preview" href="https://william0310.github.io/Wmatrix/" target="_blank" rel="noopener noreferrer" aria-label="Open Wmatrix project">
-                <img src="images/matrix.png" alt="Screenshot of the Wmatrix project" width="3436" height="2044" loading="lazy" decoding="async">
-            </a>
-        </section>
+  <!-- ======================= MANIFESTO GRID ======================= -->
+  <section class="manifesto-grid" aria-label="Working notes">
+    <article class="manifesto-panel" data-anim="fade">
+      <p class="chapter-no">manifesto</p>
+      <h2 class="manifesto-title" data-anim="chars">I am whatever it takes.</h2>
+      <p class="manifesto-copy">Chasing the light that has traveled millions of years, just to kiss the earth for a second.</p>
+    </article>
 
-        <section class="about-contact" id="contact" aria-labelledby="contact-title">
-            <div class="about-contact__copy">
-                <p class="section-kicker">Contact</p>
-                <h2 class="section-title" id="contact-title">Send a note.</h2>
-                <p class="section-copy">
-                    For photo permission requests, site feedback, collaboration notes, or useful feature ideas, leave a message here. Please make sure your contact info is correct or sent me an Email instead at [support.wphoto@gmail.com].
-                </p>
-            </div>
+    <article class="manifesto-panel" data-anim="fade">
+      <p class="chapter-no">reminder</p>
+      <h2 class="manifesto-title" data-anim="chars">Do Not Download Or Share Without Permission.</h2>
+      <p class="manifesto-copy">Photography by William unless otherwise noted. Please do not download, repost, or use these images without asking first.</p>
+    </article>
+  </section>
 
-            <form class="contact-form glass-card" action="https://formspree.io/f/xzdowldb" method="POST" data-contact-form>
-                <input type="hidden" name="_subject" value="New message from The Silver Halide">
-                <input class="contact-form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+  <!-- ======================= OTHER PROJECT ======================= -->
+  <section class="other-project" aria-labelledby="other-project-title">
+    <div class="other-project__copy" data-anim="fade">
+      <p class="chapter-no">other projects</p>
+      <h2 class="manifesto-title" id="other-project-title" data-anim="chars">Wmatrix</h2>
+      <p class="manifesto-copy">A separate free web toolbox built to help you work efficiently. Currently under development. Last Updated: May, 19/26</p>
+      <a class="album-link other-project__link" href="https://william0310.github.io/Wmatrix/" target="_blank" rel="noopener noreferrer" aria-label="Open Wmatrix project">
+        <em>Visit Wmatrix</em><span class="album-arrow">→</span>
+      </a>
+    </div>
 
-                <label class="contact-field">
-                    <span>Name*</span>
-                    <input type="text" name="name" autocomplete="name" maxlength="80" required>
-                </label>
+    <a class="other-project__preview ph-frame" href="https://william0310.github.io/Wmatrix/" target="_blank" rel="noopener noreferrer" aria-label="Open Wmatrix project" data-cursor="view">
+      <img src="assets/img/matrix.png" alt="Screenshot of the Wmatrix project" loading="lazy" decoding="async">
+    </a>
+  </section>
 
-                <label class="contact-field">
-                    <span>Contact info*</span>
-                    <input type="text" name="contact_info" autocomplete="email" maxlength="160" placeholder="Email, social handle, or phone" required>
-                </label>
+  <!-- ======================= CONTACT ======================= -->
+  <section class="about-contact" id="contact" aria-labelledby="contact-title">
+    <div class="about-contact__copy" data-anim="fade">
+      <p class="chapter-no">contact</p>
+      <h2 class="manifesto-title" id="contact-title" data-anim="chars">Send a note.</h2>
+      <p class="manifesto-copy">For photo permission requests, site feedback, collaboration notes, or useful feature ideas, leave a message here. Please make sure your contact info is correct or send me an email instead at <a href="mailto:support.wphoto@gmail.com">support.wphoto@gmail.com</a>.</p>
+    </div>
 
-                <label class="contact-field">
-                    <span>Notes*</span>
-                    <textarea name="notes" rows="7" minlength="10" maxlength="1600" required></textarea>
-                </label>
+    <form class="contact-form" action="https://formspree.io/f/xzdowldb" method="POST" data-contact-form>
+      <input type="hidden" name="_subject" value="New message from The Silver Halide">
+      <input class="contact-form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
 
-                <div class="contact-form__footer">
-                    <button class="cta-link" type="submit" data-contact-submit>Send message</button>
-                    <p class="contact-form__status" role="status" aria-live="polite" data-contact-status></p>
-                </div>
-            </form>
-        </section>
+      <label class="contact-field">
+        <span>Name*</span>
+        <input type="text" name="name" autocomplete="name" maxlength="80" required>
+      </label>
 
-        <footer class="page-footer">
-            <p>The Silver Halide V5.297</p>
-            <p>Visuals, code, and a gallery still growing.</p>
-        </footer>
-    </main>
+      <label class="contact-field">
+        <span>Contact info*</span>
+        <input type="text" name="contact_info" autocomplete="email" maxlength="160" placeholder="Email, social handle, or phone" required>
+      </label>
 
-    <script src="cursor.js"></script>
-    <script src="nav.js?v=3302"></script>
-    <script src="contact.js?v=3000"></script>
-    <script src="transition.js?v=3000"></script>
+      <label class="contact-field">
+        <span>Notes*</span>
+        <textarea name="notes" rows="7" minlength="10" maxlength="1600" required></textarea>
+      </label>
+
+      <div class="contact-form__footer">
+        <button class="album-link contact-submit" type="submit" data-contact-submit><em>Send message</em><span class="album-arrow">→</span></button>
+        <p class="contact-form__status" role="status" aria-live="polite" data-contact-status></p>
+      </div>
+    </form>
+  </section>
+
+  <footer class="album-foot about-foot">
+    <span class="album-foot-note" lang="zh">影·银盐 — a travelogue by William</span>
+    <a class="album-home" href="index.html">↑ back to the journey</a>
+  </footer>
+</main>
+
+<script src="libs/gsap.min.js"></script>
+<script src="libs/ScrollTrigger.min.js"></script>
+<script src="libs/lenis.min.js"></script>
+<script src="js/about.js"></script>
+<script src="js/contact.js"></script>
 </body>
 </html>

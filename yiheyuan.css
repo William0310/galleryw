@@ -1,9 +1,0 @@
-.series-yiheyuan {
-    --page-accent: #d4ae68;
-    --series-cover: url("images/yih3.webp");
-    --series-cover-position: center 42%;
-}
-
-html[data-theme="light"] .series-yiheyuan {
-    --page-accent: #936329;
-}

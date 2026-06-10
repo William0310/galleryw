@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>行记 — Album</title>
+<meta name="description" content="A photographic album from 行记 — A Travelogue in Light.">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body data-theme="light" class="album-body">
+
+<!-- ======================= CURSOR ======================= -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"><span class="cursor-label"></span></div>
+</div>
+
+<!-- ======================= PROGRESS ======================= -->
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="site-head">
+  <a class="brand" href="index.html">
+    <span class="brand-cn" lang="zh">THS·银盐</span>
+    <span class="brand-en">a travelogue<br>By William</span>
+  </a>
+  <a class="menu-btn album-back" id="backLink" href="index.html">
+    <span class="menu-btn-word">back to the journey</span>
+    <span class="album-back-arrow">←</span>
+  </a>
+</header>
+
+<main class="album-page">
+  <header class="album-head">
+    <span class="chapter-no" id="albumNo">album</span>
+    <span class="chapter-cn" lang="zh" id="albumCn"></span>
+    <h1 class="chapter-title" id="albumTitle"></h1>
+    <p class="chapter-sub" id="albumSub"></p>
+    <span class="album-count" id="albumCount"></span>
+  </header>
+
+  <div class="album-grid" id="albumGrid"></div>
+
+  <footer class="album-foot">
+    <span class="album-foot-note" lang="zh">卷终 — end of album</span>
+    <a class="album-next" id="nextLink" href="#" data-cursor="view"></a>
+    <a class="album-home" href="index.html">↑ back to the journey</a>
+  </footer>
+</main>
+
+<!-- ======================= LIGHTBOX ======================= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-veil" id="lightboxVeil"></div>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+  <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+</div>
+
+<script src="libs/gsap.min.js"></script>
+<script src="libs/ScrollTrigger.min.js"></script>
+<script src="libs/lenis.min.js"></script>
+<script src="js/albums.js"></script>
+<script src="js/album.js"></script>
+</body>
+</html>

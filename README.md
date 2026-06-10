@@ -1,47 +1,46 @@
-# The Silver Halide
+# 行记 — A Travelogue in Light
 
-The Silver Halide is an archival photography project by William, built as a static online gallery for travel photo essays, smaller image studies, and visual experiments.
+A scroll-driven photographic journey built from William's landscape photography,
+organized into six albums: Qinghai, Lijiang, Chongqing, Japan, Beijing, and
+Shot on iPhone. The homepage shows 3–4 photographs per album with the signature
+scroll scenes; each album page (`album.html?a=<slug>`) holds the full set.
 
-This website is powered by GitHub Pages and written by William.
+## Run it
 
-Change Log V2.0 Beta
+```bash
+node serve.mjs
+# → http://127.0.0.1:4173
+```
 
--Added Home Page
+Any static file server works (the site is plain HTML/CSS/JS, no build step) —
+just make sure `.webp` and `.woff2` get correct MIME types.
 
--Added Subpage Qinghai
+## What's inside
 
-Change Log V2.1
+| Piece | How it works |
+|---|---|
+| WebGL hero | Raw WebGL flowmap: pointer/touch velocity is splatted into a ping-pong buffer that displaces and chromatically splits the photo (`js/webgl.js`, no three.js) |
+| Smooth scroll | Lenis, driven by GSAP's ticker |
+| Scroll scenes | GSAP ScrollTrigger — pinned panorama pan, Lijiang zoom-reveal, Fuji clip-path aperture, scroll-reactive marquee |
+| Albums | `js/albums.js` is the single manifest (photos, captions, layout hints); `album.html` renders any album from it |
+| Theme | Body morphs light ⇄ dark as you enter night chapters (Chongqing, myth scroll, the end) |
+| Micro-interactions | Custom cursor, magnetic menu with image previews, FLIP-style lightbox, char/word split text reveals |
+| Mobile | All scenes run on touch; ripple responds to drag; layouts collapse to editorial 2-col grids; `svh` units for iOS chrome |
 
--Change All photos to webp for better loading experience (up to 70% faster estimated based on file size.)
+Libraries are vendored in `libs/` (GSAP 3.13, ScrollTrigger, Lenis 1.3) and
+fonts in `fonts/` (Cormorant Garamond, Space Grotesk) — the site works fully
+offline. Optimized images live in `assets/img/`; the original photographs
+remain untouched in the repository root.
 
-Change Log V2.2
+## Structure
 
--We are almost there!
-
--Lijiang is the only gallery left to be built!
-
-V2.2.1
-
-Website done!
--Made scrolling experience more fluent.
-
-V2.3
-
--added countless mini interactions
-
-V2.4
-
--Redesigned homepage
-
-V3.0 
--Rebuilt for clarity
--added view full frame function
--big performance upgrade since less JS is required.
-
-V3.1
-
--huge loading speed update, up to 100% faster without any comprimise
-
-V3.2+
-
-Check "News" page to see future updates.
+```
+index.html        homepage — hero, album previews, afterword, the end
+album.html        album page shell (album.html?a=qinghai … ?a=iphone)
+css/style.css     design system + sections
+js/webgl.js       hero flowmap shader
+js/main.js        homepage choreography
+js/albums.js      album manifest (photos, captions, layouts)
+js/album.js       album page renderer + interactions
+serve.mjs         tiny static server for local preview
+```

@@ -1,322 +1,275 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>News Center | The Silver Halide</title>
-    <meta name="description" content="News, release notes, and update announcements for The Silver Halide.">
-    <link rel="canonical" href="https://wphotographs.com/news.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="The Silver Halide">
-    <meta property="og:title" content="News Center | The Silver Halide">
-    <meta property="og:description" content="News, release notes, and update announcements for The Silver Halide.">
-    <meta property="og:url" content="https://wphotographs.com/news.html">
-    <meta property="og:image" content="https://wphotographs.com/images/qinghai1.webp">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="News Center | The Silver Halide">
-    <meta name="twitter:description" content="News, release notes, and update announcements for The Silver Halide.">
-    <meta name="twitter:image" content="https://wphotographs.com/images/qinghai1.webp">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
-    <script src="theme-init.js?v=3000"></script>
-    <link rel="stylesheet" href="theme.css?v=3312">
-    <link rel="stylesheet" href="news.css?v=3003">
-    <link rel="stylesheet" href="cursor.css?v=3001" media="(hover: hover) and (pointer: fine) and (min-width: 769px)">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>News Center | The Silver Halide</title>
+<meta name="description" content="News, release notes, and update announcements for The Silver Halide.">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/about.css">
 </head>
-<body class="news-page">
-    <div class="cursor-dot" id="cursor-dot"></div>
-    <div class="cursor-viewfinder" id="cursor-viewfinder"></div>
+<body data-theme="light" class="album-body news-body-page">
 
-    <main class="page-shell">
-        <header class="page-topbar">
-            <a href="index.html" class="back-link">Home</a>
-            <button class="topbar-settings-link" type="button" data-theme-toggle aria-label="Switch to light mode" aria-pressed="false">
-                <span class="visually-hidden" data-theme-toggle-label>Light mode</span>
-            </button>
-            <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="topbar-links" id="site-nav" aria-label="News">
-                <a href="index.html#collections">Collections</a>
-                <a href="news.html" class="news-link" data-news-link>News</a>
-                <a href="archive.html">More Photos</a>
-                <a href="about.html">About</a>
-                <a href="about.html#contact">Contact</a>
-            </nav>
-        </header>
+<!-- ======================= CURSOR ======================= -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"><span class="cursor-label"></span></div>
+</div>
 
-        <section class="news-hero" aria-labelledby="news-title">
-            <p class="eyebrow">News Center</p>
-            <h1 class="headline" id="news-title">Updates worth noticing.</h1>
-            <p class="lede">
-                New photo releases, site changes, and useful feature notes for The Silver Halide. Smaller updates will not appear in this page.
-            </p>
-        </section>
-        <section class="news-list" aria-label="News posts">
-              <article class="news-item">
-                <div class="news-item__date">
-                    <span>June 09</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Announcement</p>
-                    <h2 class="section-title">Website under attack</h2>
-                    <p class="section-copy">
-                       According to cloudflare, wphotographs.com has encoutered thousands of attacks in the past 24 hours, if you are having trouble accessing content on this page from time to time, try again later. I am working on resolving the issue.
-                </div>
-            </article>
-            <article class="news-item news-item--featured">
-                <div class="news-item__date">
-                    <span>May 26</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release note</p>
-                    <h2 class="section-title">V5 redesign is live.</h2>
-                    <p class="section-copy">
-    This update refines the gallery into a cleaner, more focused browsing experience across home and series pages.
+<!-- ======================= PROGRESS ======================= -->
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
 
-The homepage now uses a simpler preview-first layout with larger collection cards, improved typography, cleaner spacing, and stronger light/dark mode presentation. Collection cards feel more consistent across screen sizes, desktop browsing is smoother, and preview interactions are more stable and easier to use.
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>Homepage</span>
-                        <span>Bug Fix</span>
-                        <span>Performance improvement</span>
-                    </div>
-                </div>
-            </article>
- <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 25</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Announcement</p>
-                    <h2 class="section-title">Project Name Change</h2>
-                    <p class="section-copy">
-                       [William's Photo Gallery - WPHOTOGRAPHS] is now ["The Silver Halide" - WPHOTOGRAPHS]
-                </div>
-            </article>
+<!-- ======================= HEADER ======================= -->
+<header class="site-head">
+  <a class="brand" href="index.html">
+    <span class="brand-cn" lang="zh">THS·银盐</span>
+    <span class="brand-en">a travelogue<br>By William</span>
+  </a>
+  <a class="menu-btn album-back" href="index.html">
+    <span class="menu-btn-word">back to the journey</span>
+    <span class="album-back-arrow">←</span>
+  </a>
+</header>
 
+<main class="album-page news-page">
 
+  <section class="news-hero" aria-labelledby="news-title">
+    <span class="chapter-no" data-anim="fade">news center</span>
+    <h1 class="chapter-title" id="news-title" data-anim="chars">Updates worth noticing.</h1>
+    <p class="lede" data-anim="fade">New photo releases, site changes, and useful feature notes for The Silver Halide. Smaller updates will not appear on this page.</p>
+  </section>
 
+  <section class="news-list" aria-label="News posts">
 
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>June 09</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">announcement</p>
+        <h2>Website under attack</h2>
+        <p>According to Cloudflare, wphotographs.com has encountered thousands of attacks in the past 24 hours. If you are having trouble accessing content on this page from time to time, try again later. I am working on resolving the issue.</p>
+      </div>
+    </article>
 
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 26</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V5 redesign is live.</h2>
+        <p>This update refines the gallery into a cleaner, more focused browsing experience across home and series pages. The homepage now uses a simpler preview-first layout with larger collection cards, improved typography, cleaner spacing, and stronger light/dark mode presentation. Collection cards feel more consistent across screen sizes, desktop browsing is smoother, and preview interactions are more stable and easier to use.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>Homepage</span>
+          <span>Bug Fix</span>
+          <span>Performance improvement</span>
+        </div>
+      </div>
+    </article>
 
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 25</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">announcement</p>
+        <h2>Project Name Change</h2>
+        <p>[William's Photo Gallery - WPHOTOGRAPHS] is now ["The Silver Halide" - WPHOTOGRAPHS]</p>
+      </div>
+    </article>
 
-   <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 19</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Announcement</p>
-                    <h2 class="section-title">New Project: Wmatrix</h2>
-                    <p class="section-copy">
-                       Explore a new project that serves as a free, beautiful online tool box developed by William. PS: plugins inside are not done developing yet.
-                    </p>
-                    <a class="news-action-link" href="https://william0310.github.io/Wmatrix/" target="_blank" rel="noopener noreferrer" aria-label="Open Wmatrix project">
-                        Visit Wmatrix
-                    </a>
-                </div>
-            </article>
-            <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 13</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Content Update</p>
-                    <h2 class="section-title">New Album: Shot on iPhone</h2>
-                    <p class="section-copy">
-                       Explore astonishing photos take straigh out of your everyday object: An iPhone.
-                </div>
-            </article>
-         <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 13</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">release note</p>
-                    <h2 class="section-title">V4.2: Feature Drops.</h2>
-                    <p class="section-copy">
-                        Users can now choose from Dark or Light theme for better browsing experience under different lighting condition. AND, users can now fill feedback form if they need to contact me for anything related with this website. ADDITIONALLY I am very happy to announce that this website now supports French, Chinese, Spanish, and Japanese as well.
-                <div class="news-tags" aria-label="Release topics">
-                        <span>Contact & feedback</span>
-                        <span>UI improvement</span>
-                        <span>Language Switch</span>
-                    </div>
-                    </div>
-            </article>
- <section class="news-list" aria-label="News posts">
-            <article class="news-item news-item--featured">
-                <div class="news-item__date">
-                    <span>May 11</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release note</p>
-                    <h2 class="section-title">V4.1</h2>
-                    <p class="section-copy">
-    Homepage should now load faster. Navigation Bar & Simulated Glow UI has been improved. Two bugs have been detected and fixed. And three more photos are added to Japan Album.
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>Performance improvement</span>
-                        <span>Bug fix & UI refine</span>
-                        <span>Content update</span>
-                    </div>
-                </div>
-            </article>
-        <section class="news-list" aria-label="News posts">
-            <article class="news-item news-item--featured">
-                <div class="news-item__date">
-                    <span>May 10</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release note</p>
-                    <h2 class="section-title">V4 redesign is live.</h2>
-                    <p class="section-copy">
-    This site is completely redesigned for better browsing experience. Serveral New features are added like News Room.
-    Important notice: this version is in beta and requires high performance device. I will work on performance improvement this week. And release V4.1 in a timely manner
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>Homepage</span>
-                        <span>Mobile nav</span>
-                        <span>Photo viewer</span>
-                    </div>
-                </div>
-            </article>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 19</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">announcement</p>
+        <h2>New Project: Wmatrix</h2>
+        <p>Explore a new project that serves as a free, beautiful online toolbox developed by William. PS: plugins inside are not done developing yet.</p>
+        <a class="news-action-link" href="https://william0310.github.io/Wmatrix/" target="_blank" rel="noopener noreferrer" aria-label="Open Wmatrix project">Visit Wmatrix</a>
+      </div>
+    </article>
 
-            <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 10</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">release note</p>
-                    <h2 class="section-title">News Center added.</h2>
-                    <p class="section-copy">
-                        Future photo drops and site feature notes will be collected here. 
-                </div>
-            </article>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 13</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">content update</p>
+        <h2>New Album: Shot on iPhone</h2>
+        <p>Explore astonishing photos taken straight out of your everyday object: an iPhone.</p>
+      </div>
+    </article>
 
-            <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 6</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Content Update</p>
-                    <h2 class="section-title">New Collection Added.</h2>
-                    <p class="section-copy">
-                        Collection "Yiheyuan" Featuring 7 Photos were added as a new album. Archive now will also host future travel plans, side collections, and experiments.
-                    </p>
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>YiHeYuan - 7 Photos</span>
-                        <span>[Archive] is now [more photos]</span>
-                        
-                    </div>
-                </div>
-            </article>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 13</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V4.2: Feature Drops.</h2>
+        <p>Users can now choose from Dark or Light theme for better browsing experience under different lighting conditions. AND, users can now fill out a feedback form if they need to contact me for anything related to this website. ADDITIONALLY I am very happy to announce that this website now supports French, Chinese, Spanish, and Japanese as well.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>Contact &amp; feedback</span>
+          <span>UI improvement</span>
+          <span>Language Switch</span>
+        </div>
+      </div>
+    </article>
 
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 11</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V4.1</h2>
+        <p>Homepage should now load faster. Navigation Bar &amp; Simulated Glow UI has been improved. Two bugs have been detected and fixed. And three more photos are added to the Japan album.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>Performance improvement</span>
+          <span>Bug fix &amp; UI refine</span>
+          <span>Content update</span>
+        </div>
+      </div>
+    </article>
 
-     <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 1</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">content update</p>
-                    <h2 class="section-title">More photos added to Lijiang album.</h2>
-                    <p class="section-copy">
-                        2 more photos are added.Go check it out! 
-                </div>
-            </article>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 10</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V4 redesign is live.</h2>
+        <p>This site is completely redesigned for a better browsing experience. Several new features are added, like the News Room. Important notice: this version is in beta and requires a high performance device. I will work on performance improvement this week, and release V4.1 in a timely manner.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>Homepage</span>
+          <span>Mobile nav</span>
+          <span>Photo viewer</span>
+        </div>
+      </div>
+    </article>
 
-    
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 10</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>News Center added.</h2>
+        <p>Future photo drops and site feature notes will be collected here.</p>
+      </div>
+    </article>
 
-      
-            <article class="news-item">
-                <div class="news-item__date">
-                    <span>May 1</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release Note</p>
-                    <h2 class="section-title">V3.1</h2>
-                    <p class="section-copy">
-                        JS Algorithum and Loading Algorithum is rewritten to speed up loading time up to 100%.
-                    </p>
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>Performance Improvement</span>
-                        
-                        
-                    </div>
-                </div>
-            </article>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 6</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">content update</p>
+        <h2>New Collection Added.</h2>
+        <p>Collection "Yiheyuan" featuring 7 photos was added as a new album. The archive will also host future travel plans, side collections, and experiments.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>YiHeYuan - 7 Photos</span>
+          <span>[Archive] is now [more photos]</span>
+        </div>
+      </div>
+    </article>
 
-         <article class="news-item">
-                <div class="news-item__date">
-                    <span>April 28</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release Note</p>
-                    <h2 class="section-title">V3.0 redesign is live.</h2>
-                    <p class="section-copy">
-                        Rebuilt for clarity. Added [view full frame] function. Users might sense lagginess due to the new features being added.
-                    </p>
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>View Full Frame</span>
-                        <span>Nav Bar</span>
-                        <span>Rebuilt from scratch</span>
-                        
-                        
-                    </div>
-                </div>
-            </article>
-             <article class="news-item">
-                <div class="news-item__date">
-                    <span>April 24</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release Note</p>
-                    <h2 class="section-title">V2.4</h2>
-                    <p class="section-copy">
-                       Added Achive section to prepear for future collection push.
-                    </p>
-                   
-                </div>
-            </article>
- <article class="news-item">
-                <div class="news-item__date">
-                    <span>April 17</span>
-                    <strong>2026</strong>
-                </div>
-                <div class="news-item__body">
-                    <p class="section-kicker">Release Note</p>
-                    <h2 class="section-title">V2.3</h2>
-                    <p class="section-copy">
-                        A customized cursuor has been added that does not block or disturb images anymore. Mobile version Homepage UI improvement was made for better experience. 
-                    </p>
-                    <div class="news-tags" aria-label="Release topics">
-                        <span>New Cursor</span>
-                        <span>UI improvement</span>
-                    </div>
-                </div>
-            </article>
-        <footer class="page-footer">
-            <p>News Center</p>
-            <p>Release notes and gallery updates.</p>
-        </footer>
-    </main>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 1</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">content update</p>
+        <h2>More photos added to Lijiang album.</h2>
+        <p>2 more photos are added. Go check it out!</p>
+      </div>
+    </article>
 
-    <script src="cursor.js"></script>
-    <script src="nav.js?v=3302"></script>
-    <script src="transition.js?v=3000"></script>
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>May 1</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V3.1</h2>
+        <p>JS algorithm and loading algorithm rewritten to speed up loading time by up to 100%.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>Performance Improvement</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>April 28</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V3.0 redesign is live.</h2>
+        <p>Rebuilt for clarity. Added [view full frame] function. Users might sense lagginess due to the new features being added.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>View Full Frame</span>
+          <span>Nav Bar</span>
+          <span>Rebuilt from scratch</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>April 24</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V2.4</h2>
+        <p>Added Archive section to prepare for future collection push.</p>
+      </div>
+    </article>
+
+    <article class="news-item" data-anim="fade">
+      <div class="news-item__date">
+        <span>April 17</span>
+        <strong>2026</strong>
+      </div>
+      <div class="news-item__body">
+        <p class="chapter-no" style="margin-bottom:0">release note</p>
+        <h2>V2.3</h2>
+        <p>A customized cursor has been added that does not block or disturb images anymore. Mobile version homepage UI improvement was made for a better experience.</p>
+        <div class="news-tags" aria-label="Release topics">
+          <span>New Cursor</span>
+          <span>UI improvement</span>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <footer class="album-foot about-foot">
+    <span class="album-foot-note" lang="zh">影·银盐 — a travelogue by William</span>
+    <a class="album-home" href="index.html">↑ back to the journey</a>
+  </footer>
+</main>
+
+<script src="libs/gsap.min.js"></script>
+<script src="libs/ScrollTrigger.min.js"></script>
+<script src="libs/lenis.min.js"></script>
+<script src="js/about.js"></script>
 </body>
 </html>
