@@ -17,7 +17,7 @@ window.ALBUMS = {
       { src: 'assets/img/qinghai1.webp', cap: 'rain coming over the spruce', l: 'wide' },
       { src: 'assets/img/Qinghai3.webp',  cap: 'pylons walking the yellow hills', l: 'tall' },
       { src: 'assets/img/ta1.webp',      cap: '塔尔寺 — a door into incense', l: 'tall' },
-      { src: 'assets/img/cow.webp',       cap: 'a local, unimpressed', l: 'std' },
+
       { src: 'assets/img/pano.webp',      cap: 'clouds filing across the plateau', l: 'pano' },
       { src: 'assets/img/qh10.webp',     cap: 'the lake takes the fire calmly', l: 'full' },
       { src: 'assets/img/pano2.webp',    cap: 'big sky country, highland edition', l: 'pano' },
@@ -36,6 +36,7 @@ window.ALBUMS = {
       { src: 'assets/img/lijiang3.webp', cap: '经幡 — wind reading the prayers aloud', l: 'full' },
       { src: 'assets/img/lijiang5.webp', cap: 'where the trees give up', l: 'wide' },
       { src: 'assets/img/mainli.webp',  cap: 'the glacier keeps to itself', l: 'std' },
+      { src: 'assets/img/cow.webp',       cap: 'a local, unimpressed', l: 'std' },
     ],
   },
 
@@ -106,6 +107,10 @@ window.ALBUMS = {
       { src: 'assets/img/iphone10.webp', cap: 'dusk in violet ink', l: 'std' },
       { src: 'assets/img/iphone3.webp',  cap: 'Philadelphia, October edition', l: 'wide' },
       { src: 'assets/img/iphone5.webp',   cap: 'the wind signs its work', l: 'std' },
+      { src: 'assets/img/shotoniphone.webp',  cap: 'a quiet frame, found by accident', l: 'tall' },
+      { src: 'assets/img/shotoniphone2.webp', cap: 'somewhere between here and there', l: 'wide' },
+      { src: 'assets/img/shotoniphone3.webp', cap: 'the city, briefly still', l: 'std' },
+      { src: 'assets/img/shotoniphone4.webp', cap: 'last light before the door closes', l: 'full' },
     ],
   },
 };

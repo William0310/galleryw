@@ -75,6 +75,20 @@ em { font-style: italic; }
 }
 .preloader-curtain { position: absolute; inset: 0; background: var(--ink); transform: scaleY(0); transform-origin: top; }
 
+/* ==================== PAGE TRANSITION ==================== */
+.page-transition {
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--ink);
+  pointer-events: none;
+  transform: scaleY(0); transform-origin: bottom;
+  transition: transform .7s cubic-bezier(.76, 0, .24, 1);
+}
+.page-transition.is-covering { transform: scaleY(1); transform-origin: bottom; }
+.page-transition.is-exiting { transform-origin: top; transform: scaleY(1); }
+@media (prefers-reduced-motion: reduce) {
+  .page-transition { transition: none; }
+}
+
 /* ==================== CURSOR ==================== */
 .cursor { display: none; }
 @media (pointer: fine) {
