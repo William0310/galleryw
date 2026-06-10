@@ -93,7 +93,7 @@ window.ALBUMS = {
   },
 
   iphone: {
-    no: '06', cn: '彼岸', title: 'Shot on iPhone',
+    no: '06', cn: '随拍', title: 'Shot on iPhone',
     sub: 'The Atlantic side of the notebook — soft light, long grass, a phone for a camera.',
     dark: false,
     photos: [
