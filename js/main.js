@@ -79,20 +79,30 @@
     hero.style.background = 'url(assets/img/chaka1.webp) center/cover no-repeat #0c0a08';
   }
 
+  let FIRST_VISIT = true;
+  try { FIRST_VISIT = !sessionStorage.getItem('wp_visited'); sessionStorage.setItem('wp_visited', '1'); } catch (e) {}
+
   const counter = { v: 0 };
   const numEl = document.getElementById('preloaderNum');
   const charEl = document.getElementById('preloaderChar');
   const chars = ['山', '水', '城', '海','爱','永恒'];
   let charIdx = 0;
-  const charTimer = setInterval(() => {
-    charIdx = (charIdx + 1) % chars.length;
-    charEl.textContent = chars[charIdx];
-  }, 360);
+  let charTimer = null;
+  let countTween = null;
 
-  const countTween = gsap.to(counter, {
-    v: 100, duration: 2.1, ease: 'power2.inOut',
-    onUpdate: () => { numEl.textContent = String(Math.round(counter.v)).padStart(2, '0'); },
-  });
+  if (FIRST_VISIT) {
+    charTimer = setInterval(() => {
+      charIdx = (charIdx + 1) % chars.length;
+      charEl.textContent = chars[charIdx];
+    }, 360);
+
+    countTween = gsap.to(counter, {
+      v: 100, duration: 2.1, ease: 'power2.inOut',
+      onUpdate: () => { numEl.textContent = String(Math.round(counter.v)).padStart(2, '0'); },
+    });
+  } else {
+    gsap.set('#preloader', { display: 'none' });
+  }
 
   const heroChars = gsap.utils.toArray('[data-hero-char]');
   const heroWords = gsap.utils.toArray('[data-hero-word]');
@@ -101,22 +111,30 @@
   gsap.set(heroWords, { yPercent: 120 });
   gsap.set(heroFades, { opacity: 0, y: 24 });
 
-  Promise.all([heroPromise, countTween.then ? countTween : Promise.resolve()]).then(([state]) => {
+  Promise.all([heroPromise, countTween ? countTween : Promise.resolve()]).then(([state]) => {
     heroState = state;
     if (!state && !REDUCED) heroFallback();
     if (REDUCED) heroFallback();
-    clearInterval(charTimer);
+    if (charTimer) clearInterval(charTimer);
 
     const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-    tl.to('.preloader-inner', { opacity: 0, y: -30, duration: 0.55, ease: 'power2.in' })
-      .to('#preloader', { yPercent: -100, duration: 1.05, ease: 'expo.inOut' }, '-=0.1')
-      .set('#preloader', { display: 'none' })
-      .add(() => { document.body.classList.add('theme-anim'); }, '<');
+    if (FIRST_VISIT) {
+      tl.to('.preloader-inner', { opacity: 0, y: -30, duration: 0.55, ease: 'power2.in' })
+        .to('#preloader', { yPercent: -100, duration: 1.05, ease: 'expo.inOut' }, '-=0.1')
+        .set('#preloader', { display: 'none' })
+        .add(() => { document.body.classList.add('theme-anim'); }, '<');
 
-    if (state) tl.to(state, { reveal: 1, duration: 2.2, ease: 'power2.out' }, '-=1.0');
-    tl.to(heroChars, { yPercent: 0, opacity: 1, rotate: 0, duration: 1.4, stagger: 0.12 }, '-=1.7')
-      .to(heroWords, { yPercent: 0, duration: 1.2, stagger: 0.07 }, '-=1.1')
-      .to(heroFades, { opacity: 1, y: 0, duration: 1, stagger: 0.12 }, '-=0.9');
+      if (state) tl.to(state, { reveal: 1, duration: 2.2, ease: 'power2.out' }, '-=1.0');
+      tl.to(heroChars, { yPercent: 0, opacity: 1, rotate: 0, duration: 1.4, stagger: 0.12 }, '-=1.7')
+        .to(heroWords, { yPercent: 0, duration: 1.2, stagger: 0.07 }, '-=1.1')
+        .to(heroFades, { opacity: 1, y: 0, duration: 1, stagger: 0.12 }, '-=0.9');
+    } else {
+      tl.add(() => { document.body.classList.add('theme-anim'); });
+      if (state) tl.to(state, { reveal: 1, duration: 1.2, ease: 'power2.out' }, 0);
+      tl.to(heroChars, { yPercent: 0, opacity: 1, rotate: 0, duration: 0.9, stagger: 0.06 }, 0)
+        .to(heroWords, { yPercent: 0, duration: 0.8, stagger: 0.04 }, '-=0.6')
+        .to(heroFades, { opacity: 1, y: 0, duration: 0.7, stagger: 0.06 }, '-=0.5');
+    }
   });
 
   /* ---------- hero scroll-out + webgl feed ---------- */
