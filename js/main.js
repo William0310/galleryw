@@ -68,7 +68,7 @@
   /* ---------- preloader + hero intro ---------- */
   const heroCanvas = document.getElementById('heroCanvas');
   const heroPromise = (window.createHeroGL && !REDUCED)
-    ? window.createHeroGL(heroCanvas, 'assets/img/chaka1.webp')
+    ? window.createHeroGL(heroCanvas, 'assets/img/liuli.webp')
     : Promise.resolve(null);
   let heroState = null;
 
