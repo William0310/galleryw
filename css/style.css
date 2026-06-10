@@ -109,6 +109,14 @@ em { font-style: italic; }
 .progress-bar { height: 100%; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }
 
 /* ==================== HEADER ==================== */
+.site-head-blur {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 119;
+  height: clamp(4.5rem, 9vw, 6.5rem);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  mask-image: linear-gradient(to bottom, #000 60%, transparent);
+  pointer-events: none;
+}
 .site-head {
   position: fixed; top: 0; left: 0; right: 0; z-index: 120;
   display: flex; justify-content: space-between; align-items: flex-start;
