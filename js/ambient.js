@@ -226,8 +226,15 @@
     function bell() {
       if (!scene._audible) return;
       const t0 = ctx.currentTime + 0.02;
-      const base = 196 + Math.random() * 8;     // ~G3, distant
-      const partials = [[1, 0.5, 5.5], [2, 0.3, 4.5], [2.76, 0.22, 3.6], [5.4, 0.12, 2.2], [8.2, 0.06, 1.6]];
+      const base = 98 + Math.random() * 4;     // ~G3, distant
+      // 优化后的泛音列配方
+const partials = [
+    [1, 0.6, 7.0],      // 基音：振幅加大，衰减拉长到 7 秒，留住低沉的尾音
+    [2, 0.3, 4.0],      // 二次泛音：中规中矩
+    [2.76, 0.15, 2.5],  // 不谐和泛音（钟声特有的青铜感）：降低振幅，缩短时间
+    [4.2, 0.05, 0.8],   // 高频泛音A：大幅降低振幅(0.05)，瞬间衰减(0.8秒)
+    [6.0, 0.02, 0.3]    // 高频泛音B（敲击瞬间的金属尖锐感）：几乎不可闻，一闪而过(0.3秒)
+];
       partials.forEach(([mult, amp, dec]) => {
         const o = ctx.createOscillator(); o.type = 'sine'; o.frequency.value = base * mult;
         const g = ctx.createGain();
