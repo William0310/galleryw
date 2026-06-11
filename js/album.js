@@ -16,7 +16,7 @@
   const album = window.ALBUMS[slug] || window.ALBUMS[window.ALBUM_ORDER[0]];
   const key = window.ALBUMS[slug] ? slug : window.ALBUM_ORDER[0];
 
-  document.title = `行记 — ${album.title} · ${album.cn}`;
+  document.title = `WPHOT — ${album.title} · ${album.cn}`;
   if (album.dark) document.body.classList.add('theme-dark');
 
   /* ---------- head ---------- */
