@@ -402,9 +402,12 @@ body.theme-dark .album-link:hover em { color: #41c9e2; }
 /* chapter album entries — bumped up so they read as a clear call to action */
 .chapter .album-link {
   position: relative;
-  margin: clamp(3.5rem, 9vh, 6.5rem) var(--pad) 0;
+  /* full-bleed band: .chapter has no horizontal padding, so the link spans the
+     viewport edge-to-edge on its own — no negative margin (that overshot the
+     viewport by var(--pad) each side and caused a horizontal-scroll white gap).
+     The var(--pad) padding insets the text to line up with the photo grid. */
+  margin: clamp(3.5rem, 9vh, 6.5rem) 0 0;
   padding: 1.7rem var(--pad);
-  margin-left: calc(-1 * var(--pad)); margin-right: calc(-1 * var(--pad));
   border-top: 1px solid var(--ink); border-bottom: 1px solid var(--ink);
   overflow: hidden;
 }
