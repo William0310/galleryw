@@ -258,29 +258,46 @@ const partials = [
 
   /* 北京 — fine willow leaves rustling at the lake's edge */
   function beijing() {
-    const out = gain(0);
+  const out = gain(0);
 
-    const leaves = loop(whiteBuf);
-    const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 2600;
-    const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 4200; bp.Q.value = 0.6;
-    const g = gain(0.06);
-    lfo(g.gain, 7.0, 0.03);            // fine granular flutter
-    lfo(g.gain, 11.3, 0.02);
-    lfo(g.gain, 0.30, 0.04);           // gentle gusts
-    lfo(bp.frequency, 0.5, 800);
-    leaves.connect(hp).connect(bp).connect(g).connect(out);
-    leaves.start();
+  // 1. 主树叶声沙沙声：改用粉红噪声（pinkBuf），听起来更温和、更自然
+  const leaves = loop(pinkBuf);
+  
+  // 滤波器配置：用带通滤波器锁住树叶沙沙声的核心频段，Q值低一点让声音更宽广
+  const bp = ctx.createBiquadFilter(); 
+  bp.type = 'bandpass'; 
+  bp.frequency.value = 2400; 
+  bp.Q.value = 0.4; // 较低的Q值可以让声音更柔和松散
 
-    const l2 = loop(pinkBuf);
-    const hp2 = ctx.createBiquadFilter(); hp2.type = 'highpass'; hp2.frequency.value = 3200;
-    const g2 = gain(0.03);
-    lfo(g2.gain, 9.0, 0.02);
-    lfo(g2.gain, 0.22, 0.02);
-    l2.connect(hp2).connect(g2).connect(out);
-    l2.start();
+  const g = gain(0.04);
 
-    return { out, peak: 0.85, _audible: false };
-  }
+  // 【核心修改】去除之前 7Hz、11Hz 的高速颤动（那是造成蒸汽火车/砂槌声的元凶）
+  // 改用超低频 LFO，模拟大自然微风吹过，树叶一波一波、连绵不绝的“呼吸感”
+  lfo(g.gain, 0.15, 0.025);          // 主微风起伏（约 6.6 秒一个周期）
+  lfo(g.gain, 0.07, 0.015);          // 更宏观的长周期风力变化
+  lfo(g.gain, 0.45, 0.01);           // 极轻微的枝叶无规律乱颤，幅度一定要小
+
+  // 让树叶的音色随风力也产生微妙的飘移（风大时高频多一点，风小时沉闷一点）
+  lfo(bp.frequency, 0.12, 500);
+
+  leaves.connect(bp).connect(g).connect(out);
+  leaves.start();
+
+  // 2. 辅助空气感/远方背景树浪声
+  const l2 = loop(pinkBuf);
+  const hp2 = ctx.createBiquadFilter(); 
+  hp2.type = 'highpass'; 
+  hp2.frequency.value = 1800; // 稍微放低一点截止频率，增加厚度
+
+  const g2 = gain(0.02);
+  lfo(g2.gain, 0.09, 0.015);        // 极其缓慢的背景空气流动
+  lfo(g2.gain, 0.28, 0.01);
+
+  l2.connect(hp2).connect(g2).connect(out);
+  l2.start();
+
+  return { out, peak: 0.85, _audible: false };
+}
 
   const SCENES = { qinghai, lijiang, chongqing, japan, beijing };
 
