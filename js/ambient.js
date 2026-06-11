@@ -216,7 +216,7 @@
     cicada(4300, 67);
     cicada(5200, 74);
 
-    const bellBus = gain(1);
+    const bellBus = gain(1.5);
     const conv = ctx.createConvolver(); conv.buffer = impulse(4.5, 2.4);
     bellBus.connect(conv).connect(out);
     bellBus.connect(gain(0.45)).connect(out);   // a little dry signal too
@@ -248,7 +248,7 @@ const partials = [
 
     let first = true;
     scene.schedule = function next() {
-      const wait = first ? 6000 : (18 + Math.random() * 22) * 1000;
+      const wait = first ? 6000 : (18 + Math.random() * 5) * 1000;
       first = false;
       setTimeout(() => { bell(); next(); }, wait);
     };
