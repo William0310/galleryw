@@ -82,9 +82,13 @@
     return buf;
   }
 
-  const whiteBuf = noise(3, 'white');
-  const pinkBuf  = noise(3, 'pink');
-  const brownBuf = noise(3, 'brown');
+  /* Buffers are generated lazily on first use (which only happens after the
+     first user gesture unlocks audio) — generating ~3s of pink/brown noise is
+     ~400k iterations, so keeping it off the initial load lowers blocking time. */
+  let _white, _pink, _brown;
+  function whiteBuf() { return _white || (_white = noise(3, 'white')); }
+  function pinkBuf()  { return _pink  || (_pink  = noise(3, 'pink'));  }
+  function brownBuf() { return _brown || (_brown = noise(3, 'brown')); }
 
   /* ==========================================================
      SCENES — each returns { out, peak, _audible, schedule? }
@@ -95,7 +99,7 @@
   function qinghai() {
     const out = gain(0);
 
-    const wind = loop(pinkBuf);
+    const wind = loop(pinkBuf());
     const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 480; bp.Q.value = 0.7;
     const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 900;
     const wg = gain(0.16);
@@ -104,7 +108,7 @@
     wind.connect(bp).connect(lp).connect(wg).connect(out);
     wind.start();
 
-    const water = loop(whiteBuf);
+    const water = loop(whiteBuf());
     const wlp = ctx.createBiquadFilter(); wlp.type = 'lowpass'; wlp.frequency.value = 420; wlp.Q.value = 0.5;
     const swell = gain(0.12);
     lfo(swell.gain, 0.30, 0.09);   // a lap every ~3s
@@ -119,7 +123,7 @@
   function lijiang() {
     const out = gain(0);
 
-    const body = loop(pinkBuf);
+    const body = loop(pinkBuf());
     const blp = ctx.createBiquadFilter(); blp.type = 'lowpass'; blp.frequency.value = 1400;
     const bg = gain(0.18);
     lfo(bg.gain, 0.12, 0.10);          // gusting
@@ -127,7 +131,7 @@
     body.connect(blp).connect(bg).connect(out);
     body.start();
 
-    const howl = loop(whiteBuf);
+    const howl = loop(whiteBuf());
     const hbp = ctx.createBiquadFilter(); hbp.type = 'bandpass'; hbp.frequency.value = 1100; hbp.Q.value = 6;
     const hg = gain(0.10);
     lfo(hbp.frequency, 0.09, 600);     // the whistle sweeping
@@ -149,7 +153,7 @@
   function chongqing() {
     const out = gain(0);
 
-    const rumble = loop(brownBuf);
+    const rumble = loop(brownBuf());
     const rlp = ctx.createBiquadFilter(); rlp.type = 'lowpass'; rlp.frequency.value = 110; rlp.Q.value = 0.6;
     const rg = gain(0.5);
     lfo(rg.gain, 0.05, 0.12);
@@ -161,7 +165,7 @@
     lfo(sub.frequency, 0.07, 1.5);
     sub.connect(sg).connect(out); sub.start();
 
-    const hum = loop(pinkBuf);
+    const hum = loop(pinkBuf());
     const hbp = ctx.createBiquadFilter(); hbp.type = 'bandpass'; hbp.frequency.value = 240; hbp.Q.value = 0.5;
     const conv = ctx.createConvolver(); conv.buffer = impulse(2.6, 3.0);
     const hg = gain(0.05);
@@ -174,7 +178,7 @@
       if (!scene._audible) return;
       const t0 = ctx.currentTime;
       const dur = 3.2 + Math.random() * 1.6;
-      const src = loop(whiteBuf);
+      const src = loop(whiteBuf());
       const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.Q.value = 1.4;
       bp.frequency.setValueAtTime(340, t0);
       bp.frequency.linearRampToValueAtTime(900, t0 + dur * 0.5);   // doppler approach
@@ -204,7 +208,7 @@
     chorus.connect(out);
 
     function cicada(freq, amRate) {
-      const src = loop(whiteBuf);
+      const src = loop(whiteBuf());
       const bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = freq; bp.Q.value = 18;
       const am = gain(0.5);
       lfo(am.gain, amRate, 0.5);     // fast tremolo = the buzz
@@ -261,7 +265,7 @@ const partials = [
   const out = gain(0);
 
   // 1. 主树叶声沙沙声：改用粉红噪声（pinkBuf），听起来更温和、更自然
-  const leaves = loop(pinkBuf);
+  const leaves = loop(pinkBuf());
   
   // 滤波器配置：用带通滤波器锁住树叶沙沙声的核心频段，Q值低一点让声音更宽广
   const bp = ctx.createBiquadFilter(); 
@@ -284,7 +288,7 @@ const partials = [
   leaves.start();
 
   // 2. 辅助空气感/远方背景树浪声
-  const l2 = loop(pinkBuf);
+  const l2 = loop(pinkBuf());
   const hp2 = ctx.createBiquadFilter(); 
   hp2.type = 'highpass'; 
   hp2.frequency.value = 1800; // 稍微放低一点截止频率，增加厚度

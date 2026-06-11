@@ -43,7 +43,7 @@
     if (p.l === 'std' || p.l === 'tall') fig.dataset.speed = (i % 2 ? -0.08 : 0.08).toString();
     fig.innerHTML = `
       <div class="ph-frame${p.l === 'full' ? ' deep' : ''}">
-        <img src="${p.src}" alt="${p.cap.replace(/"/g, '&quot;')}" loading="${i < 2 ? 'eager' : 'lazy'}"${p.l === 'full' ? ' data-deep' : ''}>
+        <img src="${p.src}" alt="${p.cap.replace(/"/g, '&quot;')}" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async"${p.l === 'full' ? ' data-deep' : ''}>
       </div>
       <figcaption><span>№${String(i + 1).padStart(2, '0')}</span>${p.cap}</figcaption>`;
     frag.appendChild(fig);
