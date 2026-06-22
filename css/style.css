@@ -74,7 +74,6 @@ em { font-style: italic; }
   color: var(--muted);
 }
 .preloader-curtain { position: absolute; inset: 0; background: var(--ink); transform: scaleY(0); transform-origin: top; }
-html.wp-revisit .preloader { display: none; }
 
 /* ==================== PAGE TRANSITION ==================== */
 .page-transition {
