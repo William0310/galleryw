@@ -387,6 +387,27 @@
     gsap.set('#apertureText', { opacity: 1 });
   }
 
+  /* ---------- datong shadow → sky reveal ---------- */
+  if (document.getElementById('datongPin')) {
+    if (!REDUCED) {
+      const dTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#datongPin', start: 'top top', end: '+=185%',
+          pin: true, scrub: 0.6, anticipatePin: 1,
+        },
+      });
+      gsap.set('#datongPinText', { opacity: 0, y: 28 });
+      // the dark temple layer wipes upward, uncovering the bright dusk plain beneath
+      dTl.fromTo('#datongShadow', { clipPath: 'inset(0% 0% 0% 0%)' }, { clipPath: 'inset(100% 0% 0% 0%)', ease: 'power1.inOut', duration: 1, immediateRender: true })
+        .fromTo('#datongShadow img', { scale: 1.14 }, { scale: 1.34, ease: 'none', duration: 1 }, 0)
+        .fromTo('#datongSky', { scale: 1.28 }, { scale: 1, ease: 'none', duration: 1 }, 0)
+        .to('#datongPinText', { opacity: 1, y: 0, duration: 0.28 }, 0.12)
+        .to('#datongPinText', { opacity: 0, y: -22, duration: 0.24 }, 0.74);
+    } else {
+      gsap.set('#datongShadow', { clipPath: 'inset(0% 0% 0% 0%)' });
+    }
+  }
+
   /* ---------- lightbox ---------- */
   const lightbox = document.getElementById('lightbox');
   const lbImg = document.getElementById('lightboxImg');

@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>WPHOTOGRAPHS · Online Gallery</title>
-<meta name="description" content="An immersive photographic journey — salt lakes of Qinghai, snow mountains of Lijiang, neon gorges of Chongqing, ten thousand gates of Japan, and the far shore.">
+<meta name="description" content="An immersive photographic journey — salt lakes of Qinghai, snow mountains of Lijiang, neon gorges of Chongqing, ten thousand gates of Japan, and the old temples of Datong.">
 <meta property="og:title" content="行记 — A Travelogue in Light">
-<meta property="og:description" content="A scroll-driven photographic journey by William — China · Japan · the far shore.">
+<meta property="og:description" content="A scroll-driven photographic journey by William — Qinghai · Chongqing · Japan · Datong.">
 <meta property="og:image" content="assets/img/chaka1.webp">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="css/style.css?v=10">
+<link rel="stylesheet" href="css/style.css?v=12">
 </head>
 <body data-theme="light">
 
@@ -62,7 +62,7 @@
     <li><a href="#chongqing" data-scrollto="#chongqing" data-preview="assets/img/chongqing1.webp"><em>03</em><span lang="zh">重庆</span><b>Neon Gorge</b></a></li>
     <li><a href="#japan"    data-scrollto="#japan"    data-preview="assets/img/kyoto1.webp"><em>04</em><span lang="zh">日本</span><b>Ten Thousand Gates</b></a></li>
     <li><a href="#beijing"  data-scrollto="#beijing"  data-preview="assets/img/yih3.webp"><em>05</em><span lang="zh">北京</span><b>Garden of Ripples</b></a></li>
-    <li><a href="#iphone"   data-scrollto="#iphone"   data-preview="assets/img/iphone1.webp"><em>06</em><span lang="zh">随拍</span><b>Shot on iPhone</b></a></li>
+    <li><a href="#datong"   data-scrollto="#datong"   data-preview="assets/img/datong5.webp"><em>06</em><span lang="zh">大同</span><b>Where Shadow Meets Sky</b></a></li>
     <li><a href="#about"    data-scrollto="#about"    data-preview="assets/img/me.webp"><em>07</em><span lang="zh">后记</span><b>Afterword</b></a></li>
   </ol>
   <div class="menu-foot">
@@ -99,7 +99,7 @@
   <section class="manifesto">
     <p class="manifesto-text" data-anim="words">
       Between the salt lakes of Qinghai and the neon canyons of Chongqing,
-      between Fuji’s quiet slope and a phone pointed at the Atlantic —
+      between Fuji’s quiet slope and the painted halls of Datong —
       this is a record of <em>light</em>, kept while walking.
       Six albums; the road between them is yours.
     </p>
@@ -296,34 +296,44 @@
     </a>
   </section>
 
-  <!-- ======================= ALBUM 06 — SHOT ON IPHONE ======================= -->
-  <section class="chapter" id="iphone">
+  <!-- ======================= ALBUM 06 — DATONG ======================= -->
+  <section class="chapter" id="datong">
     <header class="chapter-head">
       <span class="chapter-no" data-anim="fade">album 06</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">彼岸拾光</span>
-      <h2 class="chapter-title" data-anim="chars">Shot on<br>iPhone</h2>
-      <p class="chapter-sub" data-anim="fade">The Atlantic side of the notebook — soft light, long grass, a phone for a camera.</p>
+      <span class="chapter-cn" lang="zh" data-anim="fade">大同</span>
+      <h2 class="chapter-title" data-anim="chars">Where Shadow<br>Meets Sky</h2>
+      <p class="chapter-sub" data-anim="fade">Datong — an old northern capital, where the temples keep their shadow and the highlands keep the light.</p>
     </header>
 
-    <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/iphone1.webp" alt="A pale sun setting over swimmers on the beach" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№16</span>the ocean closes for the day</figcaption>
-    </figure>
+    <!-- pinned shadow → sky reveal -->
+    <div class="datong-pin" id="datongPin">
+      <div class="datong-sky"><img src="assets/img/datong-bright9.webp" alt="A wide dusk panorama over the plain beyond Datong" id="datongSky" decoding="async"></div>
+      <div class="datong-shadow" id="datongShadow"><img src="assets/img/datong1.webp" alt="Temple roofs stacked against a hard sky in Datong" decoding="async"></div>
+      <div class="datong-pin-text" id="datongPinText">
+        <span lang="zh">城内 · 城外</span>
+        <p>where the shadow lifts, the sky arrives</p>
+      </div>
+    </div>
 
-    <div class="duo">
-      <figure class="ph tall" data-speed="0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/shotoniphone2.webp" alt="Two birds on weathered posts in pastel light" loading="lazy" decoding="async"></div>
-        <figcaption><span>№17</span>two birds, two opinions</figcaption>
+    <div class="grid">
+      <figure class="ph w5 tall" data-speed="0.1" data-cursor="view">
+        <div class="ph-frame"><img src="assets/img/datong2.webp" alt="Temple eaves stacked against the sky at Huayan Temple, Datong" loading="lazy" decoding="async"></div>
+        <figcaption><span>№16</span>华严寺 — eaves folded against a hard sky</figcaption>
       </figure>
-      <figure class="ph tall push-down" data-speed="-0.12" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/iphone4.webp" alt="Beach signs glowing at dusk" loading="lazy" decoding="async"></div>
-        <figcaption><span>№18</span>the rules, beautifully lit</figcaption>
+      <figure class="ph w7 push-down" data-speed="-0.1" data-cursor="view">
+        <div class="ph-frame"><img src="assets/img/datong5.webp" alt="Three gilded Buddha statues in a darkened temple hall" loading="lazy" decoding="async"></div>
+        <figcaption><span>№17</span>薄伽教藏殿 — three Buddhas keep the gold in the dark</figcaption>
       </figure>
     </div>
 
-    <a class="album-link" href="album.html?a=iphone" data-cursor="view">
-      <em>Open the iPhone album</em>
-      <small>14 photographs <span class="album-arrow">→</span></small>
+    <figure class="ph full" data-cursor="view">
+      <div class="ph-frame deep"><img src="assets/img/datong-bright1.webp" alt="A road curving toward a hill at sunset outside Datong" loading="lazy" data-deep decoding="async"></div>
+      <figcaption><span>№18</span>and beyond the wall, the road keeps the light</figcaption>
+    </figure>
+
+    <a class="album-link" href="datong.html" data-cursor="view">
+      <em>Open the DATONG album</em>
+      <small>20 photographs <span class="album-arrow">→</span></small>
     </a>
   </section>
 
@@ -337,7 +347,7 @@
         <span class="chapter-no" data-anim="fade">afterword · 后记</span>
         <h2 data-anim="chars">I press the shutter, the light<br>does the rest.</h2>
         <p data-anim="fade">I build this gallery as a personal archive for travel photography, field notes, and visual experiments.</p>
-        <p class="about-meta" data-anim="fade">青海 · 丽江 · 重庆 · 京都 · 東京 · 大阪 · 北京</p>
+        <p class="about-meta" data-anim="fade">青海 · 丽江 · 重庆 · 京都 · 東京 · 大阪 · 北京 · 大同</p>
       </div>
     </div>
     <a class="album-link about-link" href="about.html" data-cursor="view">
@@ -375,7 +385,7 @@
 <script src="libs/ScrollTrigger.min.js"></script>
 <script src="libs/lenis.min.js"></script>
 <script src="js/webgl.js?v=2"></script>
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 <script src="js/transition.js?v=2"></script>
 <script src="js/focus.js?v=2"></script>
 <script src="js/ambient.js?v=5"></script>

@@ -91,28 +91,6 @@ window.ALBUMS = {
       { src: 'assets/img/yih5.webp',    cap: 'she got the best seat and knows it', l: 'tall' },
     ],
   },
-
-  iphone: {
-    no: '06', cn: '随拍', title: 'Shot on iPhone',
-    sub: 'The Atlantic side of the notebook — soft light, long grass, a phone for a camera.',
-    dark: false,
-    photos: [
-      { src: 'assets/img/iphone1.webp',  cap: 'the ocean closes for the day', l: 'full' },
-      { src: 'assets/img/iphone8.webp',  cap: 'two birds, two opinions', l: 'tall' },
-      { src: 'assets/img/iphone6.webp',   cap: 'spring files a report', l: 'wide' },
-      { src: 'assets/img/iphone2.webp',   cap: 'the harbor’s slow traffic', l: 'tall' },
-      { src: 'assets/img/iphone9.webp',  cap: 'everyone stays for the last act', l: 'tall' },
-      { src: 'assets/img/iphone4.webp',   cap: 'the rules, beautifully lit', l: 'tall' },
-      { src: 'assets/img/iphone7.webp',   cap: 'the dune’s standing army', l: 'wide' },
-      { src: 'assets/img/iphone10.webp', cap: 'dusk in violet ink', l: 'std' },
-      { src: 'assets/img/iphone3.webp',  cap: 'Philadelphia, October edition', l: 'wide' },
-      { src: 'assets/img/iphone5.webp',   cap: 'the ocean signs its work', l: 'std' },
-      { src: 'assets/img/shotoniphone2.webp',  cap: 'Pier 39', l: 'tall' },
-      { src: 'assets/img/shotoniphone.webp', cap: 'The Golden Gate Bridge in [Karl the fog]', l: 'wide' },
-      { src: 'assets/img/shotoniphone3.webp', cap: 'the city, briefly still', l: 'full' },
-      { src: 'assets/img/shotoniphone4.webp', cap: 'Market Street and the Ferry Building at San Fransico', l: 'std' },
-    ],
-  },
 };
 
-window.ALBUM_ORDER = ['qinghai', 'lijiang', 'chongqing', 'japan', 'beijing', 'iphone'];
+window.ALBUM_ORDER = ['qinghai', 'lijiang', 'chongqing', 'japan', 'beijing'];

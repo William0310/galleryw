@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>行记 — Datong · 大同</title>
+<meta name="description" content="Datong, an old northern capital — temple shadow within the walls, highland light beyond them. A photographic album by William.">
+<link rel="icon" href="assets/img/favicon.png">
+<link rel="stylesheet" href="css/style.css?v=12">
+</head>
+<body data-theme="light" class="datong-body theme-dark">
+
+<div class="grain" aria-hidden="true"></div>
+
+<div class="page-transition is-covering" id="pageTransition" aria-hidden="true"></div>
+
+<!-- ======================= CURSOR ======================= -->
+<div class="cursor" id="cursor" aria-hidden="true">
+  <div class="cursor-dot"></div>
+  <div class="cursor-ring"><span class="cursor-label"></span></div>
+</div>
+
+<!-- ======================= PROGRESS ======================= -->
+<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
+
+<!-- ======================= HEADER ======================= -->
+<div class="site-head-blur" aria-hidden="true"></div>
+<header class="site-head">
+  <a class="brand" href="index.html">
+    <span class="brand-cn" lang="zh">WPHOT</span>
+    <span class="brand-en">a travelogue<br>By William</span>
+  </a>
+</header>
+
+<main class="album-page datong-page">
+  <header class="album-head">
+    <span class="chapter-no">album 06 · 20 photographs</span>
+    <span class="chapter-cn" lang="zh">大同</span>
+    <h1 class="chapter-title">Where Shadow<br>Meets Sky</h1>
+    <p class="chapter-sub">Datong — an old northern capital, where the temples keep their shadow and the highlands keep the light.</p>
+    <p class="chapter-sub">PS: This Album is shot with Sony A7 IV, a camera I am not used to operate, expect a significant decrease in quality.</p>
+    <span class="album-count">城内 · 城外 — scroll from the dark halls to the open hills</span>
+  </header>
+
+  <!-- I — within the walls · the temple dark -->
+  <section class="datong-band datong-dark" id="datongDarkBand" data-theme-dark>
+    <div class="datong-band-head">
+      <span class="datong-band-no">I</span>
+      <span lang="zh">城内</span>
+      <em>within the walls</em>
+    </div>
+    <div class="album-grid" id="datongDark"></div>
+  </section>
+
+  <!-- II — beyond the walls · the highland light -->
+  <section class="datong-band datong-light" id="datongLightBand">
+    <div class="datong-band-head">
+      <span class="datong-band-no">II</span>
+      <span lang="zh">城外</span>
+      <em>beyond the walls</em>
+    </div>
+    <div class="album-grid" id="datongLight"></div>
+  </section>
+
+  <footer class="album-foot">
+    <span class="album-foot-note" lang="zh">卷终 — end of album</span>
+    <a class="album-next" href="index.html" data-cursor="view">back to the journey — <span lang="zh">行记</span> <b>A Travelogue</b> →</a>
+    <a class="album-home" href="index.html">↑ back to the journey</a>
+  </footer>
+</main>
+
+<!-- ======================= LIGHTBOX ======================= -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-veil" id="lightboxVeil"></div>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="" decoding="async">
+  <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+</div>
+
+<script src="libs/gsap.min.js"></script>
+<script src="libs/ScrollTrigger.min.js"></script>
+<script src="libs/lenis.min.js"></script>
+<script src="js/datong.js?v=1"></script>
+<script src="js/transition.js?v=2"></script>
+<script src="js/sound.js?v=6"></script>
+</body>
+</html>

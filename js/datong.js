@@ -1,6 +1,9 @@
 /* ==========================================================
-   行记 — album page
-   Renders one album from the manifest in js/albums.js
+   行记 — Datong (大同) album · custom dark/light subpage
+   datong*        → shown on a dark ground (the temple shadow, within the walls)
+   datong-bright* → shown on a light ground (the highland light, beyond them)
+   The page starts dark; as the bright band rises the body fades to light,
+   reusing the same body.theme-dark mechanism as the homepage chapters.
    ========================================================== */
 (function () {
   'use strict';
@@ -11,43 +14,63 @@
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const MOBILE = window.innerWidth < 821;
 
-  /* ---------- resolve album ---------- */
-  const slug = new URLSearchParams(location.search).get('a');
-  const album = window.ALBUMS[slug] || window.ALBUMS[window.ALBUM_ORDER[0]];
-  const key = window.ALBUMS[slug] ? slug : window.ALBUM_ORDER[0];
+  /* ---------- photographs ---------- */
+  const DARK = [
+    { src: 'assets/img/datong5.webp',  cap: '薄伽教藏殿 — three Buddhas keep the gold in the dark', l: 'full' },
+    { src: 'assets/img/datong2.webp',  cap: '华严寺 — eaves folded against a hard sky', l: 'tall' },
+    { src: 'assets/img/datong4.webp',  cap: 'the great hall holds its breath under weather', l: 'tall' },
+    { src: 'assets/img/datong10.webp', cap: 'the swallows file their evening report', l: 'tall' },
+    { src: 'assets/img/datong7.webp',  cap: '彩塑 — a thousand years of patient gilding', l: 'full' },
+    { src: 'assets/img/datong1.webp',  cap: 'roofs stacked like a closed argument', l: 'wide' },
+    { src: 'assets/img/datong9.webp',  cap: '三圣殿 — a door kept shut on the cold', l: 'tall' },
+    { src: 'assets/img/datong8.webp',  cap: 'autumn leans on the lattice', l: 'tall' },
+    { src: 'assets/img/datong3.webp',  cap: '鼓楼 — the drum tower, kept by the pines', l: 'std' },
+    { src: 'assets/img/datong11.webp', cap: '善化寺 — two lions, one long silence', l: 'wide' },
+    { src: 'assets/img/datong6.webp',  cap: 'a courtyard, read through a keyhole arch', l: 'tall' },
+    { src: 'assets/img/datong12.webp', cap: 'the ridge line, signed by birds', l: 'tall' },
+  ];
+  const BRIGHT = [
+    { src: 'assets/img/datong-bright7.webp', cap: 'out past the wall, the plain exhales at dusk', l: 'pano' },
+    { src: 'assets/img/datong-bright1.webp', cap: 'the valley keeps one road for itself', l: 'wide' },
+    { src: 'assets/img/datong-bright4.webp', cap: 'one tree, holding the whole hill’s attention', l: 'tall' },
+    { src: 'assets/img/datong-bright9.webp', cap: 'the sun sets exactly where the road points', l: 'full' },
+    { src: 'assets/img/datong-bright8.webp', cap: 'a thin moon over the planted hills', l: 'pano' },
+    { src: 'assets/img/datong-bright2.webp', cap: 'new pilgrims, turning on the ridge', l: 'wide' },
+    { src: 'assets/img/datong-bright3.webp', cap: 'an old wind, freshly harvested', l: 'std' },
+    { src: 'assets/img/datong-bright6.webp', cap: 'the highway threads the last of the light', l: 'wide' },
+  ];
 
-  document.title = `WPHOT — ${album.title} · ${album.cn}`;
-  if (album.dark) document.body.classList.add('theme-dark');
+  /* ---------- render both grids (running №, eager for the first couple) ---------- */
+  let n = 0;
+  function render(list, mount) {
+    const frag = document.createDocumentFragment();
+    list.forEach((p) => {
+      n += 1;
+      const fig = document.createElement('figure');
+      fig.className = `ph al-${p.l}`;
+      fig.dataset.cursor = 'view';
+      if (p.l === 'std' || p.l === 'tall') fig.dataset.speed = (n % 2 ? -0.08 : 0.08).toString();
+      fig.innerHTML = `
+        <div class="ph-frame${p.l === 'full' ? ' deep' : ''}">
+          <img src="${p.src}" alt="${p.cap.replace(/"/g, '&quot;')}" loading="${n <= 2 ? 'eager' : 'lazy'}" decoding="async"${p.l === 'full' ? ' data-deep' : ''}>
+        </div>
+        <figcaption><span>№${String(n).padStart(2, '0')}</span>${p.cap}</figcaption>`;
+      frag.appendChild(fig);
+    });
+    mount.appendChild(frag);
+  }
+  render(DARK, document.getElementById('datongDark'));
+  render(BRIGHT, document.getElementById('datongLight'));
 
-  /* ---------- head ---------- */
-  document.getElementById('albumNo').textContent = `album ${album.no} · ${album.photos.length} photographs`;
-  document.getElementById('albumCn').textContent = album.cn;
-  document.getElementById('albumTitle').textContent = album.title;
-  document.getElementById('albumSub').textContent = album.sub;
-  document.getElementById('albumCount').textContent = `${album.photos.length} photographs · scroll`;
-
-  const next = window.ALBUM_ORDER[(window.ALBUM_ORDER.indexOf(key) + 1) % window.ALBUM_ORDER.length];
-  const nextAlbum = window.ALBUMS[next];
-  const nextLink = document.getElementById('nextLink');
-  nextLink.href = `album.html?a=${next}`;
-  nextLink.innerHTML = `next album — <span lang="zh">${nextAlbum.cn}</span> <b>${nextAlbum.title}</b> →`;
-
-  /* ---------- grid ---------- */
-  const grid = document.getElementById('albumGrid');
-  const frag = document.createDocumentFragment();
-  album.photos.forEach((p, i) => {
-    const fig = document.createElement('figure');
-    fig.className = `ph al-${p.l}`;
-    fig.dataset.cursor = 'view';
-    if (p.l === 'std' || p.l === 'tall') fig.dataset.speed = (i % 2 ? -0.08 : 0.08).toString();
-    fig.innerHTML = `
-      <div class="ph-frame${p.l === 'full' ? ' deep' : ''}">
-        <img src="${p.src}" alt="${p.cap.replace(/"/g, '&quot;')}" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async"${p.l === 'full' ? ' data-deep' : ''}>
-      </div>
-      <figcaption><span>№${String(i + 1).padStart(2, '0')}</span>${p.cap}</figcaption>`;
-    frag.appendChild(fig);
+  /* ---------- dark → light on scroll ----------
+     The page loads dark (body has .theme-dark in the markup); once the bright
+     band rises into view the body fades to light, and back again on the way up. */
+  if (!REDUCED) requestAnimationFrame(() => document.body.classList.add('theme-anim'));
+  ScrollTrigger.create({
+    trigger: '#datongLightBand', start: 'top 55%',
+    onEnter: () => document.body.classList.remove('theme-dark'),
+    onLeaveBack: () => document.body.classList.add('theme-dark'),
   });
-  grid.appendChild(frag);
 
   /* ---------- smooth scroll ---------- */
   let lenis = null;
@@ -67,6 +90,12 @@
   /* ---------- head intro ---------- */
   if (!REDUCED) {
     gsap.from('.album-head > *', { y: 40, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.09, delay: 0.15 });
+    gsap.utils.toArray('.datong-band-head').forEach((h) => {
+      gsap.from(h.children, {
+        y: 24, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08,
+        scrollTrigger: { trigger: h, start: 'top 88%', once: true },
+      });
+    });
   }
 
   /* ---------- cursor ---------- */
@@ -168,8 +197,8 @@
     });
   }
 
-  grid.addEventListener('click', (e) => {
-    const img = e.target.closest('img');
+  document.querySelector('.datong-page').addEventListener('click', (e) => {
+    const img = e.target.closest('.ph-frame img');
     if (!img) return;
     const cap = img.closest('figure')?.querySelector('figcaption')?.textContent.trim() || '';
     openLightbox(img, cap);
