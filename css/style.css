@@ -515,6 +515,16 @@ body.theme-dark .album-link:hover em { color: #41c9e2; }
   clip-path: inset(0 100% 0 0);
   transition: clip-path .6s cubic-bezier(.22, 1, .36, 1);
 }
+/* Touch tap feedback: a solid dark-ink wipe over the resident silk, same look
+   as the site's original cover effect. Driven by .is-tapped (js/liquid.js,
+   touchstart/touchend) since mobile Safari won't reliably engage :active. */
+.chapter .album-link::after {
+  content: ''; position: absolute; inset: 0;
+  background: var(--ink); transform: scaleX(0); transform-origin: left;
+  transition: transform .4s cubic-bezier(.22,1,.36,1); z-index: 0;
+}
+.chapter .album-link.is-tapped::after { transform: scaleX(1); }
+body.theme-dark .chapter .album-link::after { background: var(--ink-dark); }
 .chapter .album-link em, .chapter .album-link small, .chapter .album-link .album-arrow {
   position: relative; z-index: 1;
 }
@@ -527,20 +537,20 @@ body.theme-dark .album-link:hover em { color: #41c9e2; }
   transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
 .chapter .album-link small { font-weight: 600; letter-spacing: .32em; }
-/* .is-live is the JS-driven touch equivalent of :hover (js/liquid.js), so
-   tapping the button on mobile gets the same orange/silk + cream-text state */
-.chapter .album-link:hover, .chapter .album-link.is-live { color: var(--bg); }
-.chapter .album-link:hover em, .chapter .album-link.is-live em { color: var(--bg); transform: none; }
-.chapter .album-link:hover small, .chapter .album-link.is-live small { color: var(--bg); opacity: .7; }
-.chapter .album-link:hover em::before, .chapter .album-link.is-live em::before { transform: translateX(.4em); }
-.chapter .album-link:hover .album-arrow, .chapter .album-link.is-live .album-arrow { color: var(--bg); }
+/* .is-live = desktop hover mirror, .is-tapped = mobile tap (dark ink wipe) —
+   both land on the same cream-text state as the original :hover did */
+.chapter .album-link:hover, .chapter .album-link.is-live, .chapter .album-link.is-tapped { color: var(--bg); }
+.chapter .album-link:hover em, .chapter .album-link.is-live em, .chapter .album-link.is-tapped em { color: var(--bg); transform: none; }
+.chapter .album-link:hover small, .chapter .album-link.is-live small, .chapter .album-link.is-tapped small { color: var(--bg); opacity: .7; }
+.chapter .album-link:hover em::before, .chapter .album-link.is-live em::before, .chapter .album-link.is-tapped em::before { transform: translateX(.4em); }
+.chapter .album-link:hover .album-arrow, .chapter .album-link.is-live .album-arrow, .chapter .album-link.is-tapped .album-arrow { color: var(--bg); }
 body.theme-dark .chapter .album-link { border-color: var(--ink-dark); }
 /* keep the same orange frosted overlay in dark chapters; cream text stays
    legible on the warm gradient in both themes */
-body.theme-dark .chapter .album-link:hover, body.theme-dark .chapter .album-link.is-live { color: var(--bg); }
-body.theme-dark .chapter .album-link:hover em, body.theme-dark .chapter .album-link.is-live em,
-body.theme-dark .chapter .album-link:hover small, body.theme-dark .chapter .album-link.is-live small,
-body.theme-dark .chapter .album-link:hover .album-arrow, body.theme-dark .chapter .album-link.is-live .album-arrow { color: var(--bg); }
+body.theme-dark .chapter .album-link:hover, body.theme-dark .chapter .album-link.is-live, body.theme-dark .chapter .album-link.is-tapped { color: var(--bg); }
+body.theme-dark .chapter .album-link:hover em, body.theme-dark .chapter .album-link.is-live em, body.theme-dark .chapter .album-link.is-tapped em,
+body.theme-dark .chapter .album-link:hover small, body.theme-dark .chapter .album-link.is-live small, body.theme-dark .chapter .album-link.is-tapped small,
+body.theme-dark .chapter .album-link:hover .album-arrow, body.theme-dark .chapter .album-link.is-live .album-arrow, body.theme-dark .chapter .album-link.is-tapped .album-arrow { color: var(--bg); }
 @media (max-width: 600px) {
   .chapter .album-link { flex-direction: column; align-items: flex-start; gap: .8rem; }
 }

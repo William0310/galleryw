@@ -1,12 +1,14 @@
 /* ==========================================================
-   行记 — Liquid silk hover (homepage album buttons)
-   A single shared WebGL canvas painted into whichever
-   ".chapter .album-link" is hovered (mouse) or tapped (touch).
-   Domain-warped flow gives the molten-silk motion; a moving
-   specular term adds the satin sheen. One GL context, one
-   program, and the render loop ticks ONLY while a button is
-   live — so it costs nothing at rest. Falls back to the CSS
-   gradient when WebGL isn't available.
+   行记 — Liquid silk (homepage album buttons)
+   Desktop (fine pointer): a single shared WebGL canvas painted
+   into whichever ".chapter .album-link" is hovered.
+   Touch (coarse pointer): the silk is resident inside every
+   button (its own small canvas each), gated by
+   IntersectionObserver so only on-screen buttons actually
+   render — cheap, since a vertical scroller only ever shows
+   one or two at a time. Tapping shows a dark ink wipe over the
+   silk via .is-tapped (the original cover-effect look).
+   Falls back to the CSS gradient when WebGL isn't available.
    ========================================================== */
 
 (function () {
@@ -86,50 +88,123 @@
     }
   `;
 
-  const canvas = document.createElement('canvas');
-  canvas.className = 'liquid-fx-canvas';
-  canvas.setAttribute('aria-hidden', 'true');
-  const gl = canvas.getContext('webgl', {
-    antialias: false, alpha: false, depth: false,
-    stencil: false, preserveDrawingBuffer: false, powerPreference: 'low-power'
-  });
-  if (!gl) return; // keep CSS fallback
-
-  function compile(type, src) {
-    const s = gl.createShader(type);
-    gl.shaderSource(s, src);
-    gl.compileShader(s);
-    if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-      console.error(gl.getShaderInfoLog(s));
+  // Compiles the silk program into a given GL context. Returns the uniform
+  // locations, or null (caller keeps the CSS fallback) if anything fails.
+  function buildProgram(gl) {
+    function compile(type, src) {
+      const s = gl.createShader(type);
+      gl.shaderSource(s, src);
+      gl.compileShader(s);
+      if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
+        console.error(gl.getShaderInfoLog(s));
+        return null;
+      }
+      return s;
+    }
+    const prog = gl.createProgram();
+    const vs = compile(gl.VERTEX_SHADER, VERT);
+    const fs = compile(gl.FRAGMENT_SHADER, FRAG);
+    if (!vs || !fs) return null;
+    gl.attachShader(prog, vs);
+    gl.attachShader(prog, fs);
+    gl.linkProgram(prog);
+    if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
+      console.error(gl.getProgramInfoLog(prog));
       return null;
     }
-    return s;
+    gl.useProgram(prog);
+
+    const buf = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    const aPos = gl.getAttribLocation(prog, 'p');
+    gl.enableVertexAttribArray(aPos);
+    gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+
+    return {
+      uTime: gl.getUniformLocation(prog, 'uTime'),
+      uRes: gl.getUniformLocation(prog, 'uRes'),
+      uDark: gl.getUniformLocation(prog, 'uDark'),
+    };
   }
-  const prog = gl.createProgram();
-  const vs = compile(gl.VERTEX_SHADER, VERT);
-  const fs = compile(gl.FRAGMENT_SHADER, FRAG);
-  if (!vs || !fs) return;
-  gl.attachShader(prog, vs);
-  gl.attachShader(prog, fs);
-  gl.linkProgram(prog);
-  if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-    console.error(gl.getProgramInfoLog(prog));
+
+  function makeCanvas() {
+    const c = document.createElement('canvas');
+    c.className = 'liquid-fx-canvas';
+    c.setAttribute('aria-hidden', 'true');
+    return c;
+  }
+
+  function makeGL(canvas) {
+    return canvas.getContext('webgl', {
+      antialias: false, alpha: false, depth: false,
+      stencil: false, preserveDrawingBuffer: false, powerPreference: 'low-power'
+    });
+  }
+
+  if (coarse) {
+    // ---- Touch: silk is resident inside every button ----
+    links.forEach((el) => {
+      const canvas = makeCanvas();
+      const gl = makeGL(canvas);
+      if (!gl) return; // this button keeps the CSS fallback
+      const u = buildProgram(gl);
+      if (!u) return;
+
+      el.insertBefore(canvas, el.firstChild);
+      canvas.style.clipPath = 'inset(0)'; // always fully visible, no reveal animation
+      document.documentElement.classList.add('liquid-fx');
+
+      const dark = !!el.closest('[data-theme-dark]');
+      gl.uniform1f(u.uDark, dark ? 1.0 : 0.0);
+
+      let raf = 0, startT = 0, visible = false;
+
+      function size() {
+        const r = el.getBoundingClientRect();
+        const w = Math.max(1, Math.round(r.width));
+        const h = Math.max(1, Math.round(r.height));
+        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+        gl.viewport(0, 0, w, h);
+        gl.uniform2f(u.uRes, w, h);
+      }
+      function frame(now) {
+        if (!visible) return;
+        if (!startT) startT = now;
+        gl.uniform1f(u.uTime, (now - startT) * 0.001);
+        gl.drawArrays(gl.TRIANGLES, 0, 3);
+        raf = requestAnimationFrame(frame);
+      }
+
+      // only render while the button is actually on screen
+      const io = new IntersectionObserver((entries) => {
+        visible = entries[0].isIntersecting;
+        cancelAnimationFrame(raf); raf = 0;
+        if (visible) { size(); startT = 0; raf = requestAnimationFrame(frame); }
+      }, { threshold: 0.05 });
+      io.observe(el);
+
+      window.addEventListener('resize', () => { if (visible) size(); }, { passive: true });
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) { cancelAnimationFrame(raf); raf = 0; }
+        else if (visible) { startT = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
+      });
+
+      // tap feedback: dark ink overlay (CSS ::after, see style.css)
+      el.addEventListener('touchstart', () => el.classList.add('is-tapped'), { passive: true });
+      el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('is-tapped'), 220), { passive: true });
+      el.addEventListener('touchcancel', () => el.classList.remove('is-tapped'), { passive: true });
+    });
     return;
   }
-  gl.useProgram(prog);
 
-  const buf = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-  const aPos = gl.getAttribLocation(prog, 'p');
-  gl.enableVertexAttribArray(aPos);
-  gl.vertexAttribPointer(aPos, 2, gl.FLOAT, false, 0, 0);
+  // ---- Desktop (fine pointer): one shared canvas, painted on hover ----
+  const canvas = makeCanvas();
+  const gl = makeGL(canvas);
+  if (!gl) return; // keep CSS fallback
+  const u = buildProgram(gl);
+  if (!u) return;
 
-  const uTime = gl.getUniformLocation(prog, 'uTime');
-  const uRes = gl.getUniformLocation(prog, 'uRes');
-  const uDark = gl.getUniformLocation(prog, 'uDark');
-
-  // only now that the GL pipeline is live do we suppress the CSS fallback
   document.documentElement.classList.add('liquid-fx');
 
   let raf = 0, startT = 0, active = null;
@@ -142,13 +217,13 @@
       canvas.width = w; canvas.height = h;
     }
     gl.viewport(0, 0, w, h);
-    gl.uniform2f(uRes, w, h);
+    gl.uniform2f(u.uRes, w, h);
   }
 
   function frame(now) {
     if (!active) return;
     if (!startT) startT = now;
-    gl.uniform1f(uTime, (now - startT) * 0.001);
+    gl.uniform1f(u.uTime, (now - startT) * 0.001);
     gl.drawArrays(gl.TRIANGLES, 0, 3);
     raf = requestAnimationFrame(frame);
   }
@@ -160,7 +235,7 @@
     size(el);
     const dark = document.body.classList.contains('theme-dark') ||
                  !!el.closest('[data-theme-dark]');
-    gl.uniform1f(uDark, dark ? 1.0 : 0.0);
+    gl.uniform1f(u.uDark, dark ? 1.0 : 0.0);
 
     // left-to-right silk reveal (undistorted, via clip-path)
     canvas.style.clipPath = 'inset(0 100% 0 0)';
@@ -184,20 +259,10 @@
     }, 600);
   }
 
-  if (coarse) {
-    // touch: tapping a button lights it up for as long as the finger is down,
-    // same canvas/shader path as the mouse hover above.
-    links.forEach((el) => {
-      el.addEventListener('touchstart', () => enter(el), { passive: true });
-      el.addEventListener('touchend', () => leave(el), { passive: true });
-      el.addEventListener('touchcancel', () => leave(el), { passive: true });
-    });
-  } else {
-    links.forEach((el) => {
-      el.addEventListener('mouseenter', () => enter(el));
-      el.addEventListener('mouseleave', () => leave(el));
-    });
-  }
+  links.forEach((el) => {
+    el.addEventListener('mouseenter', () => enter(el));
+    el.addEventListener('mouseleave', () => leave(el));
+  });
 
   window.addEventListener('resize', () => { if (active) size(active); }, { passive: true });
   document.addEventListener('visibilitychange', () => {
