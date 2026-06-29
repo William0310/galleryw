@@ -143,54 +143,11 @@
   }
 
   if (coarse) {
-    // ---- Touch: silk is resident inside every button ----
+    // ---- Touch: back to the original plain black/white button — no silk,
+    // no WebGL at all here. Tapping just wipes in the dark ink overlay
+    // (CSS ::after + .is-tapped, see style.css), same as the site's classic
+    // cover effect.
     links.forEach((el) => {
-      const canvas = makeCanvas();
-      const gl = makeGL(canvas);
-      if (!gl) return; // this button keeps the CSS fallback
-      const u = buildProgram(gl);
-      if (!u) return;
-
-      el.insertBefore(canvas, el.firstChild);
-      canvas.style.clipPath = 'inset(0)'; // always fully visible, no reveal animation
-      document.documentElement.classList.add('liquid-fx');
-
-      const dark = !!el.closest('[data-theme-dark]');
-      gl.uniform1f(u.uDark, dark ? 1.0 : 0.0);
-
-      let raf = 0, startT = 0, visible = false;
-
-      function size() {
-        const r = el.getBoundingClientRect();
-        const w = Math.max(1, Math.round(r.width));
-        const h = Math.max(1, Math.round(r.height));
-        if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-        gl.viewport(0, 0, w, h);
-        gl.uniform2f(u.uRes, w, h);
-      }
-      function frame(now) {
-        if (!visible) return;
-        if (!startT) startT = now;
-        gl.uniform1f(u.uTime, (now - startT) * 0.001);
-        gl.drawArrays(gl.TRIANGLES, 0, 3);
-        raf = requestAnimationFrame(frame);
-      }
-
-      // only render while the button is actually on screen
-      const io = new IntersectionObserver((entries) => {
-        visible = entries[0].isIntersecting;
-        cancelAnimationFrame(raf); raf = 0;
-        if (visible) { size(); startT = 0; raf = requestAnimationFrame(frame); }
-      }, { threshold: 0.05 });
-      io.observe(el);
-
-      window.addEventListener('resize', () => { if (visible) size(); }, { passive: true });
-      document.addEventListener('visibilitychange', () => {
-        if (document.hidden) { cancelAnimationFrame(raf); raf = 0; }
-        else if (visible) { startT = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(frame); }
-      });
-
-      // tap feedback: dark ink overlay (CSS ::after, see style.css)
       el.addEventListener('touchstart', () => el.classList.add('is-tapped'), { passive: true });
       el.addEventListener('touchend', () => setTimeout(() => el.classList.remove('is-tapped'), 220), { passive: true });
       el.addEventListener('touchcancel', () => el.classList.remove('is-tapped'), { passive: true });
