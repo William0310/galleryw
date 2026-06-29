@@ -14,6 +14,20 @@
     });
   }
 
+  /* ---------- bfcache restore (mobile back button) ----------
+     When leaving a page we set .is-exiting (curtain covers the screen) and
+     navigate. The browser may freeze that page in the back/forward cache with
+     the curtain still covering. On a back-button restore the scripts do NOT
+     re-run, so the curtain would stay up and hide all content behind a blank
+     panel. pageshow(persisted) is the one event that fires in that case —
+     clear the curtain (and any leftover preloader) so the page is usable. */
+  window.addEventListener('pageshow', (e) => {
+    if (!e.persisted) return;
+    curtain.classList.remove('is-exiting', 'is-covering');
+    const pre = document.getElementById('preloader');
+    if (pre) pre.style.display = 'none';
+  });
+
   /* ---------- exit: cover before navigating to another page ---------- */
   document.addEventListener('click', (e) => {
     if (e.defaultPrevented || e.button !== 0) return;

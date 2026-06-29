@@ -486,45 +486,10 @@ body.theme-dark .album-link:hover em { color: #41c9e2; }
 }
 .chapter .album-link::before {
   content: ''; position: absolute; inset: 0;
-  /* fluid orange — accent base (same as the news & updates button) with lighter
-     and deeper orange blobs that drift over it, for a liquid look. No blur. */
-  background-color: var(--accent);
-  background-image:
-    radial-gradient(42% 62% at 20% 28%, rgba(235,128,66,.95), transparent 60%),
-    radial-gradient(46% 56% at 78% 72%, rgba(160,38,18,.9), transparent 62%),
-    radial-gradient(36% 52% at 60% 18%, rgba(242,156,86,.85), transparent 60%);
-  background-size: 180% 180%; background-repeat: no-repeat;
-  transform: scaleX(0); transform-origin: left;
+  background: var(--ink); transform: scaleX(0); transform-origin: left;
   transition: transform .55s cubic-bezier(.22,1,.36,1); z-index: 0;
 }
-.chapter .album-link:hover::before, .chapter .album-link.is-live::before {
-  transform: scaleX(1);
-  animation: fluidOrange 9s ease-in-out infinite alternate;
-}
-@keyframes fluidOrange {
-  0%   { background-position: 0% 0%, 100% 100%, 50% 0%; }
-  50%  { background-position: 35% 55%, 55% 35%, 85% 60%; }
-  100% { background-position: 100% 100%, 0% 0%, 20% 85%; }
-}
-/* WebGL silk overlay (js/liquid.js). Only active once the GL pipeline is live,
-   at which point .liquid-fx replaces the CSS gradient fallback above. */
-.liquid-fx .chapter .album-link::before { display: none; }
-.liquid-fx-canvas {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  display: block; width: 100%; height: 100%;
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path .6s cubic-bezier(.22, 1, .36, 1);
-}
-/* Touch tap feedback: a solid dark-ink wipe over the resident silk, same look
-   as the site's original cover effect. Driven by .is-tapped (js/liquid.js,
-   touchstart/touchend) since mobile Safari won't reliably engage :active. */
-.chapter .album-link::after {
-  content: ''; position: absolute; inset: 0;
-  background: var(--ink); transform: scaleX(0); transform-origin: left;
-  transition: transform .4s cubic-bezier(.22,1,.36,1); z-index: 0;
-}
-.chapter .album-link.is-tapped::after { transform: scaleX(1); }
-body.theme-dark .chapter .album-link::after { background: var(--ink-dark); }
+.chapter .album-link:hover::before { transform: scaleX(1); }
 .chapter .album-link em, .chapter .album-link small, .chapter .album-link .album-arrow {
   position: relative; z-index: 1;
 }
@@ -537,20 +502,17 @@ body.theme-dark .chapter .album-link::after { background: var(--ink-dark); }
   transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
 .chapter .album-link small { font-weight: 600; letter-spacing: .32em; }
-/* .is-live = desktop hover mirror, .is-tapped = mobile tap (dark ink wipe) —
-   both land on the same cream-text state as the original :hover did */
-.chapter .album-link:hover, .chapter .album-link.is-live, .chapter .album-link.is-tapped { color: var(--bg); }
-.chapter .album-link:hover em, .chapter .album-link.is-live em, .chapter .album-link.is-tapped em { color: var(--bg); transform: none; }
-.chapter .album-link:hover small, .chapter .album-link.is-live small, .chapter .album-link.is-tapped small { color: var(--bg); opacity: .7; }
-.chapter .album-link:hover em::before, .chapter .album-link.is-live em::before, .chapter .album-link.is-tapped em::before { transform: translateX(.4em); }
-.chapter .album-link:hover .album-arrow, .chapter .album-link.is-live .album-arrow, .chapter .album-link.is-tapped .album-arrow { color: var(--bg); }
+.chapter .album-link:hover { color: var(--bg); }
+.chapter .album-link:hover em { color: var(--bg); transform: none; }
+.chapter .album-link:hover small { color: var(--bg); opacity: .7; }
+.chapter .album-link:hover em::before { transform: translateX(.4em); }
+.chapter .album-link:hover .album-arrow { color: var(--bg); }
 body.theme-dark .chapter .album-link { border-color: var(--ink-dark); }
-/* keep the same orange frosted overlay in dark chapters; cream text stays
-   legible on the warm gradient in both themes */
-body.theme-dark .chapter .album-link:hover, body.theme-dark .chapter .album-link.is-live, body.theme-dark .chapter .album-link.is-tapped { color: var(--bg); }
-body.theme-dark .chapter .album-link:hover em, body.theme-dark .chapter .album-link.is-live em, body.theme-dark .chapter .album-link.is-tapped em,
-body.theme-dark .chapter .album-link:hover small, body.theme-dark .chapter .album-link.is-live small, body.theme-dark .chapter .album-link.is-tapped small,
-body.theme-dark .chapter .album-link:hover .album-arrow, body.theme-dark .chapter .album-link.is-live .album-arrow, body.theme-dark .chapter .album-link.is-tapped .album-arrow { color: var(--bg); }
+body.theme-dark .chapter .album-link::before { background: var(--ink-dark); }
+body.theme-dark .chapter .album-link:hover { color: var(--paper-dark); }
+body.theme-dark .chapter .album-link:hover em,
+body.theme-dark .chapter .album-link:hover small,
+body.theme-dark .chapter .album-link:hover .album-arrow { color: var(--paper-dark); }
 @media (max-width: 600px) {
   .chapter .album-link { flex-direction: column; align-items: flex-start; gap: .8rem; }
 }
