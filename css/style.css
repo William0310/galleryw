@@ -497,7 +497,7 @@ body.theme-dark .album-link:hover em { color: #41c9e2; }
   transform: scaleX(0); transform-origin: left;
   transition: transform .55s cubic-bezier(.22,1,.36,1); z-index: 0;
 }
-.chapter .album-link:hover::before {
+.chapter .album-link:hover::before, .chapter .album-link.is-live::before {
   transform: scaleX(1);
   animation: fluidOrange 9s ease-in-out infinite alternate;
 }
@@ -527,18 +527,20 @@ body.theme-dark .album-link:hover em { color: #41c9e2; }
   transition: transform .45s cubic-bezier(.22,1,.36,1);
 }
 .chapter .album-link small { font-weight: 600; letter-spacing: .32em; }
-.chapter .album-link:hover { color: var(--bg); }
-.chapter .album-link:hover em { color: var(--bg); transform: none; }
-.chapter .album-link:hover small { color: var(--bg); opacity: .7; }
-.chapter .album-link:hover em::before { transform: translateX(.4em); }
-.chapter .album-link:hover .album-arrow { color: var(--bg); }
+/* .is-live is the JS-driven touch equivalent of :hover (js/liquid.js), so
+   tapping the button on mobile gets the same orange/silk + cream-text state */
+.chapter .album-link:hover, .chapter .album-link.is-live { color: var(--bg); }
+.chapter .album-link:hover em, .chapter .album-link.is-live em { color: var(--bg); transform: none; }
+.chapter .album-link:hover small, .chapter .album-link.is-live small { color: var(--bg); opacity: .7; }
+.chapter .album-link:hover em::before, .chapter .album-link.is-live em::before { transform: translateX(.4em); }
+.chapter .album-link:hover .album-arrow, .chapter .album-link.is-live .album-arrow { color: var(--bg); }
 body.theme-dark .chapter .album-link { border-color: var(--ink-dark); }
 /* keep the same orange frosted overlay in dark chapters; cream text stays
    legible on the warm gradient in both themes */
-body.theme-dark .chapter .album-link:hover { color: var(--bg); }
-body.theme-dark .chapter .album-link:hover em,
-body.theme-dark .chapter .album-link:hover small,
-body.theme-dark .chapter .album-link:hover .album-arrow { color: var(--bg); }
+body.theme-dark .chapter .album-link:hover, body.theme-dark .chapter .album-link.is-live { color: var(--bg); }
+body.theme-dark .chapter .album-link:hover em, body.theme-dark .chapter .album-link.is-live em,
+body.theme-dark .chapter .album-link:hover small, body.theme-dark .chapter .album-link.is-live small,
+body.theme-dark .chapter .album-link:hover .album-arrow, body.theme-dark .chapter .album-link.is-live .album-arrow { color: var(--bg); }
 @media (max-width: 600px) {
   .chapter .album-link { flex-direction: column; align-items: flex-start; gap: .8rem; }
 }

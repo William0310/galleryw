@@ -1,23 +1,23 @@
 /* ==========================================================
    行记 — Liquid silk hover (homepage album buttons)
    A single shared WebGL canvas painted into whichever
-   ".chapter .album-link" is hovered. Domain-warped flow gives
-   the molten-silk motion; a moving specular term adds the
-   satin sheen. One GL context, one program, and the render
-   loop ticks ONLY while a button is hovered — so it costs
-   nothing at rest. Falls back to the CSS gradient when WebGL
-   or a fine pointer isn't available.
+   ".chapter .album-link" is hovered (mouse) or tapped (touch).
+   Domain-warped flow gives the molten-silk motion; a moving
+   specular term adds the satin sheen. One GL context, one
+   program, and the render loop ticks ONLY while a button is
+   live — so it costs nothing at rest. Falls back to the CSS
+   gradient when WebGL isn't available.
    ========================================================== */
 
 (function () {
   'use strict';
 
-  const fine = window.matchMedia('(pointer: fine)').matches;
+  const coarse = window.matchMedia('(pointer: coarse)').matches;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const links = Array.prototype.slice.call(
     document.querySelectorAll('.chapter .album-link')
   );
-  if (!fine || reduced || !links.length) return; // CSS fallback stays
+  if (reduced || !links.length) return; // CSS fallback stays
 
   const VERT = `
     attribute vec2 p;
@@ -153,9 +153,9 @@
     raf = requestAnimationFrame(frame);
   }
 
-  function enter(e) {
-    const el = e.currentTarget;
+  function enter(el) {
     active = el;
+    el.classList.add('is-live');
     el.insertBefore(canvas, el.firstChild);
     size(el);
     const dark = document.body.classList.contains('theme-dark') ||
@@ -172,11 +172,11 @@
     raf = requestAnimationFrame(frame);
   }
 
-  function leave(e) {
-    const el = e.currentTarget;
+  function leave(el) {
     cancelAnimationFrame(raf);
     raf = 0;
     active = null;
+    el.classList.remove('is-live');
     canvas.style.clipPath = 'inset(0 100% 0 0)';   // retract to the left
     setTimeout(() => {
       // detach only if nothing new grabbed the canvas in the meantime
@@ -184,10 +184,20 @@
     }, 600);
   }
 
-  links.forEach((el) => {
-    el.addEventListener('mouseenter', enter);
-    el.addEventListener('mouseleave', leave);
-  });
+  if (coarse) {
+    // touch: tapping a button lights it up for as long as the finger is down,
+    // same canvas/shader path as the mouse hover above.
+    links.forEach((el) => {
+      el.addEventListener('touchstart', () => enter(el), { passive: true });
+      el.addEventListener('touchend', () => leave(el), { passive: true });
+      el.addEventListener('touchcancel', () => leave(el), { passive: true });
+    });
+  } else {
+    links.forEach((el) => {
+      el.addEventListener('mouseenter', () => enter(el));
+      el.addEventListener('mouseleave', () => leave(el));
+    });
+  }
 
   window.addEventListener('resize', () => { if (active) size(active); }, { passive: true });
   document.addEventListener('visibilitychange', () => {
