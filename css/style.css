@@ -426,6 +426,91 @@ body.theme-dark .progress-bar { background: #41c9e2; }
   -webkit-text-stroke: 1px rgba(236,231,219,.75);
 }
 
+/* ==================== XINJIANG — FLAGSHIP (album 03) ====================
+   A WebGL god-ray panorama (xj-pin) no other album has, plus a continuous
+   ground-colour shift driven via --paper-dark (see js/xinjiang.js). Only a
+   handful of frames live here — the rest are kept for the album page. */
+
+/* --- the pinned WebGL panorama --- */
+.xj-pin {
+  position: relative; height: var(--vh100); overflow: hidden;
+  background: #05070c;
+  margin-bottom: clamp(3rem, 9vh, 6rem);
+}
+.xj-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+/* the still stands in until (or unless) the GL scene takes over */
+.xj-fallback { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.xj-pin.is-gl .xj-fallback { opacity: 0; }
+.xj-pin-text {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; color: #fff; text-shadow: 0 2px 18px rgba(0,0,0,.75);
+}
+/* the sun blows out the middle of this frame — a soft scrim keeps the
+   title legible without reading as a box */
+.xj-pin-text::before {
+  content: ''; position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  width: min(120%, 60rem); aspect-ratio: 2 / 1; z-index: -1;
+  background: radial-gradient(ellipse at center, rgba(6,12,20,.5), rgba(6,12,20,.22) 45%, transparent 72%);
+}
+.xj-pin-text [lang="zh"] {
+  font-family: var(--cjk-serif);
+  font-size: clamp(2.4rem, 8vw, 6rem); letter-spacing: .3em;
+}
+.xj-pin-text p {
+  font-family: var(--serif); font-style: italic;
+  font-size: clamp(.95rem, 2.2vw, 1.45rem); margin-top: 1rem; letter-spacing: .06em;
+}
+.xj-pin-meta {
+  position: absolute; left: var(--pad); right: var(--pad); bottom: 1.4rem; z-index: 2;
+  display: flex; justify-content: space-between; gap: 1rem; pointer-events: none;
+  color: #fff; font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  text-shadow: 0 1px 12px rgba(0,0,0,.6);
+}
+.xj-pin-hint { opacity: .78; }
+
+/* --- full plates: the whole photograph, never cropped ---
+   The rest of the page crops to fixed frames (object-fit: cover). These three
+   do the opposite: the image keeps its own aspect ratio and is bounded by BOTH
+   the column width and a height cap, so whichever limit the device hits first
+   wins and the frame is always shown complete.
+     · max-width  100%   → narrow screens bound it by width
+     · max-height --cap  → short/wide screens bound it by height
+   The cap is per shape, because a 2:3 portrait and a 2.33:1 pano need very
+   different room; min(vh, rem) also keeps it sane on very large displays. */
+.xj-plate { padding: 0 var(--pad); margin: clamp(3.5rem, 10vh, 7rem) 0; }
+.xj-plate .ph-frame {
+  display: grid; place-items: center;
+  background: none;                 /* no letterbox band around the plate */
+}
+.xj-plate img {
+  width: auto; height: auto;
+  max-width: 100%;
+  max-height: var(--xj-cap);
+  object-fit: contain;
+}
+.xj-plate figcaption { justify-content: center; text-align: center; }
+
+.xj-portrait  { --xj-cap: min(84vh, 46rem); }
+.xj-landscape { --xj-cap: min(74vh, 42rem); }
+.xj-pano      { --xj-cap: min(56vh, 34rem); }
+
+/* On a portrait screen the width limit already does the work, so pull the
+   height caps in — otherwise a tall frame fills the phone and the caption
+   below it needs a separate scroll to reach. */
+@media (orientation: portrait) {
+  .xj-portrait  { --xj-cap: min(66vh, 40rem); }
+  .xj-landscape { --xj-cap: min(56vh, 34rem); }
+  .xj-pano      { --xj-cap: min(42vh, 26rem); }
+}
+/* Short landscape viewports (small laptops, phones on their side): height is
+   the scarce axis, so cap harder still. */
+@media (orientation: landscape) and (max-height: 620px) {
+  .xj-portrait  { --xj-cap: 76vh; }
+  .xj-landscape { --xj-cap: 70vh; }
+  .xj-pano      { --xj-cap: 54vh; }
+}
+
 /* ==================== APERTURE PIN (Fuji) ==================== */
 .aperture-pin { position: relative; height: var(--vh100); overflow: hidden; background: transparent; }
 .aperture-frame { position: absolute; inset: 0; will-change: clip-path; clip-path: inset(38% 34% 38% 34%); }
@@ -564,19 +649,10 @@ body.theme-dark .chapter .album-link:hover .album-arrow { color: var(--paper-dar
 body.theme-dark .album-next:hover { color: #41c9e2; }
 .album-home { font-size: .62rem; letter-spacing: .3em; text-transform: uppercase; color: var(--muted); }
 
-/* ==================== DATONG SUBPAGE (dark/light split) ==================== */
-/* Two themed bands on one page — the body.theme-dark toggle (driven from
-   datong.js) supplies the ground colour, so the bands themselves stay
-   transparent and the colours/figcaptions follow the shared theme tokens. */
+/* ==================== DATONG SUBPAGE ==================== */
+/* One dark band — body keeps .theme-dark for the whole page, so the band
+   stays transparent and the colours/figcaptions follow the shared tokens. */
 .datong-band { padding: clamp(1rem, 3vh, 2.5rem) 0 clamp(4rem, 12vh, 8rem); }
-.datong-band-head {
-  display: flex; align-items: baseline; gap: 1.1rem; flex-wrap: wrap;
-  padding: 0 var(--pad); margin-bottom: clamp(2rem, 6vh, 4rem);
-}
-.datong-band-no { font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--accent); }
-.datong-band-head [lang="zh"] { font-family: var(--cjk-serif); font-size: clamp(1.4rem, 3.4vw, 2.1rem); letter-spacing: .18em; }
-.datong-band-head em { font-style: normal; font-size: .62rem; letter-spacing: .34em; text-transform: uppercase; color: var(--muted); }
-body.theme-dark .datong-band-head em { color: rgba(236,231,219,.5); }
 
 /* ==================== ABOUT ==================== */
 .about { padding: clamp(6rem, 18vh, 12rem) var(--pad); }
@@ -642,34 +718,9 @@ body.theme-dark .datong-band-head em { color: rgba(236,231,219,.5); }
 }
 .lightbox-close:hover { background: #ece7db; color: #000; }
 
-/* ==================== AMBIENT SOUND TOGGLE ==================== */
-.sound-toggle {
-  position: fixed; left: var(--pad); bottom: clamp(3.4rem, 8vh, 5rem);
-  z-index: 116; width: 34px; height: 34px;
-  display: flex; align-items: center; justify-content: center;
-  color: #fff; mix-blend-mode: difference;  /* auto-contrasts on any background */
-  opacity: .7;
-  transition: opacity .35s;
-}
-.sound-toggle:hover { opacity: 1; }
-.sound-toggle.is-muted { opacity: .4; }
-body.menu-open .sound-toggle { opacity: 0; pointer-events: none; }
-
-.sound-toggle-bars { display: flex; align-items: center; gap: 3px; height: 15px; }
-.sound-toggle-bars i {
-  width: 2px; height: 100%; background: currentColor; border-radius: 1px;
-  transform: scaleY(.28); transform-origin: center;
-  animation: wp-eq 1.1s ease-in-out infinite;
-}
-.sound-toggle-bars i:nth-child(2) { animation-delay: .18s; }
-.sound-toggle-bars i:nth-child(3) { animation-delay: .36s; }
-.sound-toggle-bars i:nth-child(4) { animation-delay: .54s; }
-.sound-toggle.is-muted .sound-toggle-bars i { animation-play-state: paused; transform: scaleY(.22); }
-@keyframes wp-eq { 0%, 100% { transform: scaleY(.28); } 50% { transform: scaleY(1); } }
 
 /* ==================== REDUCED MOTION ==================== */
 @media (prefers-reduced-motion: reduce) {
   .scroll-cue i { animation: none; }
-  .sound-toggle-bars i { animation: none; }
   * { transition-duration: .01ms !important; }
 }

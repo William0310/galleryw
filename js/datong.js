@@ -1,9 +1,7 @@
 /* ==========================================================
-   行记 — Datong (大同) album · custom dark/light subpage
-   datong*        → shown on a dark ground (the temple shadow, within the walls)
-   datong-bright* → shown on a light ground (the highland light, beyond them)
-   The page starts dark; as the bright band rises the body fades to light,
-   reusing the same body.theme-dark mechanism as the homepage chapters.
+   行记 — Datong (大同) album · dark subpage
+   The album is now a single movement: the temple dark, within the walls.
+   The page stays on the dark ground throughout (body keeps .theme-dark).
    ========================================================== */
 (function () {
   'use strict';
@@ -29,18 +27,8 @@
     { src: 'assets/img/datong6.webp',  cap: 'a courtyard, read through a keyhole arch', l: 'tall' },
     { src: 'assets/img/datong12.webp', cap: 'the ridge line, signed by birds', l: 'tall' },
   ];
-  const BRIGHT = [
-    { src: 'assets/img/datong-bright7.webp', cap: 'out past the wall, the plain exhales at dusk', l: 'pano' },
-    { src: 'assets/img/datong-bright1.webp', cap: 'the valley keeps one road for itself', l: 'wide' },
-    { src: 'assets/img/datong-bright4.webp', cap: 'one tree, holding the whole hill’s attention', l: 'tall' },
-    { src: 'assets/img/datong-bright9.webp', cap: 'the sun sets exactly where the road points', l: 'full' },
-    { src: 'assets/img/datong-bright8.webp', cap: 'a thin moon over the planted hills', l: 'pano' },
-    { src: 'assets/img/datong-bright2.webp', cap: 'new pilgrims, turning on the ridge', l: 'wide' },
-    { src: 'assets/img/datong-bright3.webp', cap: 'an old wind, freshly harvested', l: 'std' },
-    { src: 'assets/img/datong-bright6.webp', cap: 'the highway threads the last of the light', l: 'wide' },
-  ];
 
-  /* ---------- render both grids (running №, eager for the first couple) ---------- */
+  /* ---------- render the grid (running №, eager for the first couple) ---------- */
   let n = 0;
   function render(list, mount) {
     const frag = document.createDocumentFragment();
@@ -60,17 +48,9 @@
     mount.appendChild(frag);
   }
   render(DARK, document.getElementById('datongDark'));
-  render(BRIGHT, document.getElementById('datongLight'));
 
-  /* ---------- dark → light on scroll ----------
-     The page loads dark (body has .theme-dark in the markup); once the bright
-     band rises into view the body fades to light, and back again on the way up. */
+  /* the page stays dark end to end (body keeps .theme-dark from the markup) */
   if (!REDUCED) requestAnimationFrame(() => document.body.classList.add('theme-anim'));
-  ScrollTrigger.create({
-    trigger: '#datongLightBand', start: 'top 55%',
-    onEnter: () => document.body.classList.remove('theme-dark'),
-    onLeaveBack: () => document.body.classList.add('theme-dark'),
-  });
 
   /* ---------- smooth scroll ---------- */
   let lenis = null;
@@ -90,12 +70,6 @@
   /* ---------- head intro ---------- */
   if (!REDUCED) {
     gsap.from('.album-head > *', { y: 40, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.09, delay: 0.15 });
-    gsap.utils.toArray('.datong-band-head').forEach((h) => {
-      gsap.from(h.children, {
-        y: 24, opacity: 0, duration: 1, ease: 'expo.out', stagger: 0.08,
-        scrollTrigger: { trigger: h, start: 'top 88%', once: true },
-      });
-    });
   }
 
   /* ---------- cursor ---------- */

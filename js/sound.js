@@ -9,8 +9,6 @@
 
   let ctx = null;
   function getCtx() {
-    // share the ambient engine's context when present, so both unlock together
-    if (window.WPAudio) return window.WPAudio.resume();
     if (!ctx) ctx = new Ctx();
     if (ctx.state === 'suspended') ctx.resume();
     return ctx;

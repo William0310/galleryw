@@ -40,16 +40,22 @@ window.ALBUMS = {
     ],
   },
 
-  chongqing: {
-    no: '03', cn: '重庆', title: 'Neon Gorge',
-    sub: 'Chongqing — a city stacked on a mountain, wired with light, allergic to flat ground.',
+  xinjiang: {
+    no: '03', cn: '新疆', title: 'Where the Light Comes Down',
+    sub: 'Xinjiang — a sixth of a country, where the mountains make their own weather and the light arrives in columns.',
     dark: true,
     photos: [
-      { src: 'assets/img/chongqing1.webp', cap: '千厮门大桥 — the bridge takes the colour of luck', l: 'full' },
-      { src: 'assets/img/cq2.webp',       cap: 'a stair between two midnights', l: 'tall' },
-      { src: 'assets/img/cq4.webp',       cap: 'the horizontal skyscraper, weather incoming', l: 'tall' },
-      { src: 'assets/img/cq5.webp',       cap: 'every lane votes for the skyline', l: 'full' },
-      { src: 'assets/img/cq3.webp',       cap: '两江交汇 — two rivers shake hands, in silver', l: 'pano' },
+      { src: 'assets/img/xj1.webp',  cap: '天山日暮 — the sun files its report through the cloud', l: 'pano' },
+      { src: 'assets/img/xj8.webp',  cap: 'the reservoir keeps a turquoise nobody mixed', l: 'tall' },
+      { src: 'assets/img/xj3.webp',  cap: '雪岭 — the snow line, drawn once and never revised', l: 'full' },
+      { src: 'assets/img/xj2.webp',  cap: 'the valley hands the light down in stages', l: 'tall' },
+      { src: 'assets/img/xj5.webp',  cap: 'weather arrives on the steppe before it is announced', l: 'pano' },
+      { src: 'assets/img/xj7.webp',  cap: 'ridge behind ridge, each one paler than its word', l: 'tall' },
+      { src: 'assets/img/xj10.webp', cap: '安集海大峡谷 — the river writes in a hand nobody reads', l: 'full' },
+      { src: 'assets/img/xj6.webp',  cap: 'one cloud, posted over the spruce like a notice', l: 'tall' },
+      { src: 'assets/img/xj4.webp',  cap: 'the grassland takes the whole sun without flinching', l: 'wide' },
+      { src: 'assets/img/xj11.webp', cap: '赛里木湖 — water clear enough to read the stones through', l: 'tall' },
+      { src: 'assets/img/xj9.webp',  cap: 'the only colour left in the valley, walking', l: 'pano' },
     ],
   },
 
@@ -93,4 +99,4 @@ window.ALBUMS = {
   },
 };
 
-window.ALBUM_ORDER = ['qinghai', 'lijiang', 'chongqing', 'japan', 'beijing'];
+window.ALBUM_ORDER = ['qinghai', 'lijiang', 'xinjiang', 'japan', 'beijing'];

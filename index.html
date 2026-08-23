@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>WPHOTOGRAPHS · Online Gallery</title>
-<meta name="description" content="An immersive photographic journey — salt lakes of Qinghai, snow mountains of Lijiang, neon gorges of Chongqing, ten thousand gates of Japan, and the old temples of Datong.">
+<meta name="description" content="An immersive photographic journey — salt lakes of Qinghai, snow mountains of Lijiang, the Tianshan ranges of Xinjiang, ten thousand gates of Japan, and the old temples of Datong.">
 <meta property="og:title" content="行记 — A Travelogue in Light">
-<meta property="og:description" content="A scroll-driven photographic journey by William — Qinghai · Chongqing · Japan · Datong.">
+<meta property="og:description" content="A scroll-driven photographic journey by William — Qinghai · Xinjiang · Japan · Datong.">
 <meta property="og:image" content="assets/img/chaka1.webp">
 <meta property="og:type" content="website">
 <link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="css/style.css?v=20">
+<link rel="stylesheet" href="css/style.css?v=26">
 </head>
 <body data-theme="light">
 
@@ -60,10 +60,10 @@
   <ol class="menu-list">
     <li><a href="#qinghai"  data-scrollto="#qinghai"  data-preview="assets/img/lake1.webp"><em>01</em><span lang="zh">青海</span><b>The Highland Light</b></a></li>
     <li><a href="#lijiang"  data-scrollto="#lijiang"  data-preview="assets/img/lijiang4.webp"><em>02</em><span lang="zh">丽江</span><b>Snow Mountain Watches</b></a></li>
-    <li><a href="#chongqing" data-scrollto="#chongqing" data-preview="assets/img/chongqing1.webp"><em>03</em><span lang="zh">重庆</span><b>Neon Gorge</b></a></li>
+    <li><a href="#xinjiang" data-scrollto="#xinjiang" data-preview="assets/img/xj8.webp"><em>03</em><span lang="zh">新疆</span><b>Where the Light Comes Down</b></a></li>
     <li><a href="#japan"    data-scrollto="#japan"    data-preview="assets/img/kyoto1.webp"><em>04</em><span lang="zh">日本</span><b>Ten Thousand Gates</b></a></li>
     <li><a href="#beijing"  data-scrollto="#beijing"  data-preview="assets/img/yih3.webp"><em>05</em><span lang="zh">北京</span><b>Garden of Ripples</b></a></li>
-    <li><a href="#datong"   data-scrollto="#datong"   data-preview="assets/img/datong5.webp"><em>06</em><span lang="zh">大同</span><b>Where Shadow Meets Sky</b></a></li>
+    <li><a href="#datong"   data-scrollto="#datong"   data-preview="assets/img/datong5.webp"><em>06</em><span lang="zh">大同</span><b>Within the Walls</b></a></li>
     <li><a href="#about"    data-scrollto="#about"    data-preview="assets/img/me.webp"><em>07</em><span lang="zh">后记</span><b>Afterword</b></a></li>
   </ol>
   <div class="menu-foot">
@@ -87,7 +87,7 @@
           <span class="hero-line"><i data-hero-word>By</i> <i data-hero-word>William</i></span>
         </span>
       </h1>
-      <p class="hero-sub" data-hero-fade>Salt lakes · snow mountains · neon gorges · quiet shrines —<br><span class="only-fine">move the pointer, the lake remembers.</span><span class="only-coarse">drag a finger across the water — it remembers.</span></p>
+      <p class="hero-sub" data-hero-fade>Salt lakes · snow mountains · Tianshan light · quiet shrines —<br><span class="only-fine">move the pointer, the lake remembers.</span><span class="only-coarse">drag a finger across the water — it remembers.</span></p>
     </div>
     <div class="hero-foot" data-hero-fade>
       <span class="hero-coord">35.06°N 135.80°E — Rurikoin, Kyoto</span>
@@ -99,7 +99,7 @@
   <!-- ======================= MANIFESTO ======================= -->
   <section class="manifesto">
     <p class="manifesto-text" data-anim="words">
-      Between the salt lakes of Qinghai and the neon canyons of Chongqing,
+      Between the salt lakes of Qinghai and the light-struck ranges of the Tianshan,
       between Fuji’s quiet slope and the painted halls of Datong —
       this is a record of <em>light</em>, kept while walking.
       Six albums; the road between them is yours.
@@ -189,38 +189,59 @@
     </a>
   </section>
 
-  <!-- ======================= ALBUM 03 — CHONGQING (dark) ======================= -->
-  <section class="chapter chapter-dark" id="chongqing" data-theme-dark>
+  <!-- ======================= ALBUM 03 — XINJIANG (flagship, dark) ======================= -->
+  <!-- theme is driven by js/xinjiang.js (not the generic [data-theme-dark]
+       handler): this chapter's pinned scene grows it well past its own
+       measured box, so the dark ground is anchored to #japan instead -->
+  <section class="chapter chapter-dark chapter-xj" id="xinjiang">
     <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 03</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">山城重庆</span>
-      <h2 class="chapter-title" data-anim="chars">Neon<br>Gorge</h2>
-      <p class="chapter-sub" data-anim="fade">Chongqing — a city stacked on a mountain, wired with light, allergic to flat ground.</p>
+      <span class="chapter-no" data-anim="fade">album 03 · flagship</span>
+      <span class="chapter-cn" lang="zh" data-anim="fade">天山南北</span>
+      <h2 class="chapter-title" data-anim="chars">Where the Light<br>Comes Down</h2>
+      <p class="chapter-sub" data-anim="fade">Xinjiang — a sixth of a country, where the mountains make their own weather and the light arrives in columns.</p>
     </header>
 
-    <div class="marquee" id="marquee1" aria-hidden="true">
-      <div class="marquee-track"><span>8D魔幻城市 — NEON GORGE — 山城 — MOUNTAIN CITY — 不夜城 — 8D魔幻城市 — NEON GORGE — 山城 — MOUNTAIN CITY — 不夜城 — </span><span>8D魔幻城市 — NEON GORGE — 山城 — MOUNTAIN CITY — 不夜城 — 8D魔幻城市 — NEON GORGE — 山城 — MOUNTAIN CITY — 不夜城 — </span></div>
+    <!-- FLAGSHIP: WebGL god-ray panorama, pinned + scroll-scrubbed -->
+    <div class="xj-pin" id="xjPin">
+      <canvas class="xj-canvas" id="xjCanvas" aria-hidden="true"></canvas>
+      <img class="xj-fallback" id="xjFallback" src="assets/img/xj1.webp" alt="Sunset light falling in columns over the Tianshan range and a reservoir" decoding="async">
+      <div class="xj-pin-text" id="xjPinText">
+        <span lang="zh">天山日暮</span>
+        <p>the sun files its report through the cloud</p>
+      </div>
+      <div class="xj-pin-meta">
+        <span>43.9°N 81.3°E — 伊犁 · Ili</span>
+        <span class="xj-pin-hint">keep scrolling — the range runs west</span>
+      </div>
     </div>
 
-    <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/chongqing1.webp" alt="Qiansimen bridge burning red across the night skyline" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№07</span>千厮门大桥 — the bridge takes the colour of luck</figcaption>
+    <div class="marquee" id="marquee1" aria-hidden="true">
+      <div class="marquee-track"><span>天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — 安集海 — ANJIHAI — 天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — </span><span>天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — 安集海 — ANJIHAI — 天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — </span></div>
+    </div>
+
+    <!-- Three plates. Unlike the cropped .ph.full frames elsewhere on the
+         page, these show each photograph WHOLE — the cap adapts to the
+         viewport, so nothing is cut off on any screen. See .xj-plate. -->
+    <figure class="ph xj-plate xj-portrait" data-cursor="view">
+      <div class="ph-frame"><img src="assets/img/xj8.webp" width="1833" height="2750" alt="A turquoise reservoir in a canyon under alpenglow peaks" loading="lazy" decoding="async"></div>
+      <figcaption><span>№07</span>the reservoir keeps a turquoise nobody mixed</figcaption>
     </figure>
 
-    <div class="duo">
-      <figure class="ph tall" data-speed="0.12" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/cq2.webp" alt="Cyan towers above a rooftop stair" loading="lazy" decoding="async"></div>
-        <figcaption><span>№08</span>a stair between two midnights</figcaption>
-      </figure>
-      <figure class="ph tall push-down" data-speed="-0.12" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/cq4.webp" alt="Raffles City towers in storm light" loading="lazy" decoding="async"></div>
-        <figcaption><span>№09</span>the horizontal skyscraper, weather incoming</figcaption>
-      </figure>
-    </div>
+    <blockquote class="pull" data-anim="words"><span lang="zh">山高，云低，光自有征途。</span><br>High mountains, low cloud — the light finds its own way down.</blockquote>
 
-    <a class="album-link" href="album.html?a=chongqing" data-cursor="view">
-      <em>Open the Chongqing album</em>
-      <small>5 photographs <span class="album-arrow">→</span></small>
+    <figure class="ph xj-plate xj-landscape" data-cursor="view">
+      <div class="ph-frame"><img src="assets/img/xj3.webp" width="2800" height="1867" alt="Glaciated peaks above spruce forest and a braided river bed" loading="lazy" decoding="async"></div>
+      <figcaption><span>№08</span>雪岭 — the snow line, drawn once and never revised</figcaption>
+    </figure>
+
+    <figure class="ph xj-plate xj-pano" data-cursor="view">
+      <div class="ph-frame"><img src="assets/img/xj9.webp" width="2600" height="1114" alt="Bay horses walking across a desaturated valley below dark forest" loading="lazy" decoding="async"></div>
+      <figcaption><span>№09</span>马群 — the only colour left in the valley, walking</figcaption>
+    </figure>
+
+    <a class="album-link" href="album.html?a=xinjiang" data-cursor="view">
+      <em>Open the XINJIANG album</em>
+      <small>11 photographs <span class="album-arrow">→</span></small>
     </a>
   </section>
 
@@ -302,17 +323,17 @@
     <header class="chapter-head">
       <span class="chapter-no" data-anim="fade">album 06</span>
       <span class="chapter-cn" lang="zh" data-anim="fade">大同</span>
-      <h2 class="chapter-title" data-anim="chars">Where Shadow<br>Meets Sky</h2>
-      <p class="chapter-sub" data-anim="fade">Datong — an old northern capital, where the temples keep their shadow and the highlands keep the light.</p>
+      <h2 class="chapter-title" data-anim="chars">Within<br>the Walls</h2>
+      <p class="chapter-sub" data-anim="fade">Datong — an old northern capital, where the temples keep their shadow and a thousand years of gilding waits in the dark.</p>
     </header>
 
-    <!-- pinned shadow → sky reveal -->
+    <!-- pinned roofs → inner hall reveal -->
     <div class="datong-pin" id="datongPin">
-      <div class="datong-sky"><img src="assets/img/datong-bright9.webp" alt="A wide dusk panorama over the plain beyond Datong" id="datongSky" decoding="async"></div>
+      <div class="datong-sky"><img src="assets/img/datong7.webp" alt="Painted clay figures gilded in a darkened temple hall in Datong" id="datongSky" decoding="async"></div>
       <div class="datong-shadow" id="datongShadow"><img src="assets/img/datong1.webp" alt="Temple roofs stacked against a hard sky in Datong" decoding="async"></div>
       <div class="datong-pin-text" id="datongPinText">
-        <span lang="zh">城内 · 城外</span>
-        <p>where the shadow lifts, the sky arrives</p>
+        <span lang="zh">城内 · 殿中</span>
+        <p>past the roofs, the gold keeps its own dark</p>
       </div>
     </div>
 
@@ -328,13 +349,13 @@
     </div>
 
     <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/datong-bright1.webp" alt="A road curving toward a hill at sunset outside Datong" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№18</span>and beyond the wall, the road keeps the light</figcaption>
+      <div class="ph-frame deep"><img src="assets/img/datong4.webp" alt="The great hall of a Datong temple under heavy weather" loading="lazy" data-deep decoding="async"></div>
+      <figcaption><span>№18</span>the great hall holds its breath under weather</figcaption>
     </figure>
 
     <a class="album-link" href="datong.html" data-cursor="view">
       <em>Open the DATONG album</em>
-      <small>20 photographs <span class="album-arrow">→</span></small>
+      <small>12 photographs <span class="album-arrow">→</span></small>
     </a>
   </section>
 
@@ -387,9 +408,9 @@
 <script src="libs/lenis.min.js?v=2"></script>
 <script src="js/webgl.js?v=2"></script>
 <script src="js/main.js?v=4"></script>
+<script src="js/xinjiang.js?v=8"></script>
 <script src="js/transition.js?v=3"></script>
 <script src="js/focus.js?v=3"></script>
-<script src="js/ambient.js?v=5"></script>
-<script src="js/sound.js?v=6"></script>
+<script src="js/sound.js?v=7"></script>
 </body>
 </html>
