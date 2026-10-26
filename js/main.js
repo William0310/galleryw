@@ -213,7 +213,7 @@
 
   menuLinks.forEach((a) => {
     a.addEventListener('mouseenter', () => {
-      if (!menuPreviewImg) return;
+      if (!menuPreviewImg || !a.dataset.preview) return;
       menuPreviewImg.src = a.dataset.preview;
       gsap.to('#menuPreview', { opacity: 1, duration: 0.4 });
       gsap.fromTo(menuPreviewImg, { scale: 1.15 }, { scale: 1, duration: 0.7, ease: 'power2.out' });
