@@ -246,9 +246,10 @@ body.menu-open .menu-btn-lines i:last-child { width: 100%; transform: translateY
   transition: color .35s, transform .45s cubic-bezier(.22,1,.36,1);
 }
 .menu-list a:hover b { color: var(--accent); transform: translateX(.4em); }
-/* Cruise entry: invisible CJK placeholder keeps the title aligned with the other rows; brand gradient text */
-.menu-list .menu-cruise span { visibility: hidden; }
-.menu-list .menu-cruise b { margin-left: -.12em; }
+/* Cruise entry: centered, larger, brand-colored text */
+.menu-list .menu-cruise a { justify-content: center; }
+.menu-list .menu-cruise b { font-size: clamp(2rem, 6.2vh, 3.8rem); }
+.menu-list .menu-cruise a:hover b { transform: none; }
 .menu-list .menu-cruise b, .menu-list .menu-cruise a:hover b {
   background: linear-gradient(100deg, #d9d9ff 0%, #4f4fff 100%);
   -webkit-background-clip: text; background-clip: text; color: transparent; padding-right: .08em;
