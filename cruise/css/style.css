@@ -100,7 +100,13 @@ figure { margin: 0; }
 
 .glass-visual { position: relative; }
 .shot-tall { width: min(340px, 80%); filter: drop-shadow(0 24px 40px var(--shadow)); border-radius: 26px; }
-.cube { position: absolute; width: clamp(130px, 34%, 210px); left: 2%; bottom: 4%; pointer-events: none; animation: bob 8s ease-in-out infinite; }
+.mate-img { width: min(360px, 70%); animation: bob 8s ease-in-out infinite; }
+.soon { margin-left: 4px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 999px; font-size: .68rem; color: var(--accent); }
+.badge-soon { color: var(--accent); border-color: var(--accent); }
+.btn-off { background: var(--surface); color: var(--muted); border: 1px solid var(--line); cursor: default; }
+.btn-off:hover { opacity: 1; }
+.hero-cube { width: clamp(150px, 24vw, 230px); margin: 0 auto; animation: bob 8s ease-in-out infinite; }
+.note { margin: 0; font-size: .88rem; color: var(--muted); }
 @keyframes bob { 50% { transform: translateY(-10px) rotate(4deg); } }
 
 .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }

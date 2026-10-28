@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mate · A free, local AI assistant for Cruise</title>
+<meta name="description" content="Mate is a free AI assistant that runs on your Mac. It reads, translates and summarizes web pages, and guides your cursor. Coming soon to Cruise.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Mate">
+<meta property="og:description" content="A free AI assistant that runs entirely on your Mac. Coming soon.">
+<meta property="og:image" content="assets/mate.png">
+<link rel="icon" type="image/png" href="assets/matemini.png">
+<link rel="stylesheet" href="css/style.css?v=4">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="index.html" aria-label="Cruise">
+      <img src="assets/icon-256.png" alt="" width="28" height="28">
+      <span>Cruise</span>
+    </a>
+    <nav class="links" aria-label="Main">
+      <a href="#does" data-i18n="m_nav1">What Mate does</a>
+      <a href="#private" data-i18n="m_nav2">Private by design</a>
+    </nav>
+    <div class="nav-end">
+      <button class="lang" id="lang" type="button" aria-label="Switch language">中文</button>
+      <a class="btn btn-sm" href="index.html" data-i18n="m_back_btn">Back to Cruise</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-in">
+    <img class="hero-cube" src="assets/mate.png" width="900" height="900" alt="Mate icon, a cube of clear glass">
+    <p class="badge badge-soon" data-i18n="coming">Coming soon</p>
+    <h1 class="wm"><span class="wm-cruise" style="animation:none">Mate</span></h1>
+    <p class="tagline" data-i18n="m_tag">A free AI assistant for the web, running entirely on your Mac.</p>
+    <p class="lede" data-i18n="m_lede">Mate reads, translates and summarizes the page you are on, and points your cursor at the button you could not find.</p>
+    <div class="cta">
+      <span class="btn btn-off" aria-disabled="true" data-i18n="coming">Coming soon</span>
+      <a class="link" href="index.html" data-i18n="m_back">Back to Cruise</a>
+    </div>
+    <p class="note" data-i18n="m_note">Mate has not been released yet. It will arrive in a future update of Cruise.</p>
+  </div>
+</section>
+
+<section class="row" id="does">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow" data-i18n="m_nav1">What Mate does</p>
+      <h2 data-i18n="m_h1">Read less. Understand more.</h2>
+    </div>
+    <div class="grid">
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 12h28M10 22h28M10 32h18"/></svg>
+        <h3 data-i18n="f1_h">Reads the page</h3>
+        <p data-i18n="f1_p">Ask what a long article says, or what a confusing page wants from you.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 14h20M18 10v4M12 14c1 7 6 12 12 14M24 14c-1 7-6 12-12 14"/><path d="M28 38l6-16 6 16M30 34h8"/></svg>
+        <h3 data-i18n="f2_h">Translates</h3>
+        <p data-i18n="f2_p">Turn a page or a paragraph into a language you read, without leaving it.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="9" y="8" width="30" height="32" rx="6"/><path d="M16 18h16M16 25h16M16 32h9"/></svg>
+        <h3 data-i18n="f3_h">Summarizes</h3>
+        <p data-i18n="f3_p">Get the short version of a long page, then decide whether to read the rest.</p>
+      </article>
+      <article>
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8l22 16-10 2 6 12-5 2-6-12-7 7z"/></svg>
+        <h3 data-i18n="f4_h">Guides your cursor</h3>
+        <p data-i18n="f4_p">Cannot find the right button? Mate moves your cursor to it and shows you where to click.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="row alt" id="private">
+  <div class="wrap split">
+    <div class="copy">
+      <p class="eyebrow" data-i18n="m_nav2">Private by design</p>
+      <h2 data-i18n="m_h2">It runs on your Mac. Nothing leaves it.</h2>
+      <p data-i18n="m_p2">Mate uses your computer's processor to run open-source models locally. It is fast, it does not send the pages you read to a server, and it is completely free.</p>
+    </div>
+    <ul class="facts">
+      <li data-i18n="m_1">Open-source models, run on your own processor</li>
+      <li data-i18n="m_2">Your pages and questions stay on your Mac</li>
+      <li data-i18n="m_3">No account, no subscription, free</li>
+    </ul>
+  </div>
+</section>
+
+<section class="get">
+  <div class="wrap get-in">
+    <img src="assets/matemini.png" width="96" height="96" alt="Mate icon">
+    <h2 data-i18n="m_end">Mate is on its way.</h2>
+    <a class="btn" href="index.html" data-i18n="m_back">Back to Cruise</a>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>Created by William with love and patience, all rights reserved.</span>
+    <span data-i18n="foot">Made with SwiftUI.</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=4"></script>
+</body>
+</html>
