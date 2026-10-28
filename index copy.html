@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cruise · Cruise through the internet like a captain</title>
+<meta name="description" content="Cruise is a native SwiftUI browser for Mac with large Liquid Glass panels, Pin Tabs, Smart Search and isolated Profiles.">
+<meta name="theme-color" content="#f6f3fb" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#07071a" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Cruise">
+<meta property="og:description" content="Cruise through the internet like a captain.">
+<meta property="og:image" content="assets/cruisehomepage.png">
+<link rel="icon" type="image/png" href="assets/icon-256.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,500;1,600&family=Lexend+Zetta:wght@300;400&family=Noto+Serif+SC:wght@500;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="gl" aria-hidden="true"></canvas>
+
+<header class="nav glass" id="nav">
+  <a class="nav-brand" href="#top" aria-label="Cruise">
+    <img src="assets/icon-256.png" alt="" width="30" height="30">
+    <span>Cruise</span>
+  </a>
+  <nav class="nav-links" aria-label="Main">
+    <a href="#glass" data-i18n="nav_glass">Liquid Glass</a>
+    <a href="#pins" data-i18n="nav_pins">Pin Tabs</a>
+    <a href="#search" data-i18n="nav_search">Smart Search</a>
+    <a href="#profiles" data-i18n="nav_profiles">Profiles</a>
+  </nav>
+  <div class="nav-end">
+    <button class="lang" id="lang" type="button" aria-label="Switch language">中</button>
+    <a class="btn btn-small" href="#download" data-i18n="download">Download</a>
+    <button class="menu" id="menu" type="button" aria-label="Menu" aria-expanded="false" aria-controls="sheet"><i></i><i></i></button>
+  </div>
+  <div class="sheet" id="sheet">
+    <a href="#glass" data-i18n="nav_glass">Liquid Glass</a>
+    <a href="#pins" data-i18n="nav_pins">Pin Tabs</a>
+    <a href="#search" data-i18n="nav_search">Smart Search</a>
+    <a href="#profiles" data-i18n="nav_profiles">Profiles</a>
+  </div>
+</header>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-top wrap">
+    <h1 class="wm" aria-label="Websurf Cruise">
+      <span class="wm-web" aria-hidden="true">Web</span><span class="wm-surf" aria-hidden="true">surf</span><span class="wm-cruise" aria-hidden="true">Cruise</span>
+    </h1>
+    <p class="tagline" data-i18n="tagline">Cruise through the internet like a captain.</p>
+    <p class="lede" data-i18n="lede">A browser written natively in SwiftUI. Large panes of Liquid Glass, and motion that feels alive.</p>
+    <div class="cta-row">
+      <a class="btn" id="download" href="#cta" data-i18n="download_mac">Download for Mac</a>
+      <a class="btn btn-ghost glass" href="#glass" data-i18n="see_features">See what's inside</a>
+    </div>
+    <ul class="pills" aria-label="Highlights">
+      <li>SwiftUI</li><li>Liquid Glass</li><li>Pin Tabs</li><li data-i18n="nav_search">Smart Search</li><li data-i18n="nav_profiles">Profiles</li>
+    </ul>
+  </div>
+  <div class="hero-shot wrap" id="heroShot">
+    <div class="shot-frame" data-tilt>
+      <img src="assets/cruisehomepage.png" width="1752" height="1606" alt="Cruise browser window with a Liquid Glass sidebar over a desert wallpaper and the new tab page">
+    </div>
+  </div>
+</section>
+
+<!-- LIQUID GLASS -->
+<section class="feature" id="glass">
+  <div class="wrap grid">
+    <div class="copy reveal">
+      <p class="eyebrow" data-i18n="nav_glass">Liquid Glass</p>
+      <h2 data-i18n="glass_h">The sidebar <em>is</em> the window.</h2>
+      <p data-i18n="glass_p">Cruise gives the sidebar one large sheet of Liquid Glass. It picks up your wallpaper and the colors of the page, so the browser feels like part of your desktop instead of a box on top of it.</p>
+      <ul class="ticks">
+        <li data-i18n="glass_1">Large, continuous glass surfaces</li>
+        <li data-i18n="glass_2">Spring motion on every tab, pane and button</li>
+        <li data-i18n="glass_3">Native SwiftUI, so it behaves like the rest of macOS</li>
+      </ul>
+    </div>
+    <div class="visual reveal">
+      <div class="tall" data-tilt>
+        <img src="assets/liquidglasssidebar.png" width="526" height="1084" alt="The Cruise sidebar as translucent glass over the Golden Gate Bridge">
+        <span class="chip glass c1">SwiftUI</span>
+        <span class="chip glass c2" data-i18n="chip_wall">Follows your wallpaper</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIN TABS -->
+<section class="feature alt" id="pins">
+  <div class="wrap grid rev">
+    <div class="copy reveal">
+      <p class="eyebrow" data-i18n="nav_pins">Pin Tabs</p>
+      <h2 data-i18n="pins_h">Keep the few that <em>matter.</em></h2>
+      <p data-i18n="pins_p">Pin the sites you open every day. They sit at the top of the sidebar as large tiles, one click away, and stay put while everything else comes and goes.</p>
+      <p class="try" data-i18n="pins_try">Try it. Tap the pin on a tab, or tap a tile to unpin.</p>
+      <figure class="inset glass">
+        <img src="assets/Pinnedtab.png" width="504" height="450" alt="Three pinned tabs in the Cruise sidebar: Apple, Google and IKEA">
+        <figcaption data-i18n="pins_cap">Pinned in Cruise</figcaption>
+      </figure>
+    </div>
+    <div class="visual reveal">
+      <div class="mock" id="pinMock" aria-label="Pin Tabs demo"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SMART SEARCH -->
+<section class="feature" id="search">
+  <div class="wrap grid">
+    <div class="copy reveal">
+      <p class="eyebrow" data-i18n="nav_search">Smart Search</p>
+      <h2 data-i18n="search_h">One field. <em>Anywhere</em> you want to go.</h2>
+      <p data-i18n="search_p">Type an address, a question or the name of a tab. Cruise works out what you mean and puts the best answer first.</p>
+      <ul class="ticks">
+        <li data-i18n="search_1">Jumps to a site, a search, or a tab you already have open</li>
+        <li data-i18n="search_2">Pinned tabs show up before anything else</li>
+        <li data-i18n="search_3">Press ⌘L from anywhere to start typing</li>
+      </ul>
+    </div>
+    <div class="visual reveal">
+      <div class="sfind" id="sfind">
+        <div class="wall wall-dusk"></div>
+        <div class="sbar glass">
+          <svg viewBox="0 0 20 20" width="18" height="18" aria-hidden="true"><circle cx="8.5" cy="8.5" r="5.5" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M13 13l4 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+          <input id="q" type="text" inputmode="search" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Search or enter address" aria-label="Search or enter address" aria-controls="results">
+          <kbd>⌘L</kbd>
+        </div>
+        <ul class="results glass" id="results" role="listbox" aria-label="Suggestions"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROFILES -->
+<section class="feature alt" id="profiles">
+  <div class="wrap grid rev">
+    <div class="copy reveal">
+      <p class="eyebrow" data-i18n="nav_profiles">Profiles</p>
+      <h2 data-i18n="prof_h">Work, personal, <em>kept apart.</em></h2>
+      <p data-i18n="prof_p">Each profile has its own tabs, pinned sites, cookies and sign-ins. Switch in one click and nothing crosses over.</p>
+      <div class="seg glass" role="tablist" id="seg" aria-label="Profile"></div>
+      <ul class="ticks" id="profTicks">
+        <li data-i18n="prof_1">Separate sign-ins for the same site</li>
+        <li data-i18n="prof_2">Its own wallpaper, so you always know where you are</li>
+        <li data-i18n="prof_3">Switch without closing a single tab</li>
+      </ul>
+    </div>
+    <div class="visual reveal">
+      <div class="mock" id="profMock" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
+<!-- NATIVE -->
+<section class="native" id="native">
+  <div class="wrap">
+    <div class="center reveal">
+      <p class="eyebrow" data-i18n="nat_eye">Built for the Mac</p>
+      <h2 data-i18n="nat_h">Native from the <em>first pixel.</em></h2>
+    </div>
+    <div class="cards">
+      <article class="card glass reveal">
+        <h3 data-i18n="nat1_h">SwiftUI, all the way</h3>
+        <p data-i18n="nat1_p">No web shell around a web page. The interface is made of the same controls as the apps you already use.</p>
+      </article>
+      <article class="card glass reveal">
+        <h3 data-i18n="nat2_h">Glass that moves</h3>
+        <p data-i18n="nat2_p">Panels stretch, settle and morph with springs. Opening a tab or switching a profile feels like handling an object.</p>
+      </article>
+      <article class="card glass reveal">
+        <h3 data-i18n="nat3_h">The page comes first</h3>
+        <p data-i18n="nat3_p">Everything lives in the sidebar, so the web page gets the whole window and a clean, rounded frame.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="final" id="cta">
+  <div class="wrap center reveal">
+    <img class="final-logo" src="assets/cruiseIcon.png" width="1280" height="1280" alt="Cruise">
+    <p class="tagline" data-i18n="tagline">Cruise through the internet like a captain.</p>
+    <div class="cta-row">
+      <a class="btn" href="#cta" data-i18n="download_mac">Download for Mac</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>© 2026 Cruise</span>
+    <span data-i18n="foot">Made with SwiftUI.</span>
+  </div>
+</footer>
+
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
+<script src="js/gl.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
