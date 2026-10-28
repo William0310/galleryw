@@ -7,36 +7,32 @@
 <meta name="robots" content="noindex">
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="assets/icon-256.png">
-<link rel="stylesheet" href="css/style.css?v=5">
+<link rel="stylesheet" href="css/style.css?v=6">
 <style>
   .go { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 18px; padding: 24px var(--gutter); }
-  .count { margin: 0; font-size: clamp(5rem, 24vw, 9rem); line-height: 1; font-weight: 300; letter-spacing: -.05em; font-variant-numeric: tabular-nums; }
+  .go h1 { margin: 0; font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 600; letter-spacing: -.03em; text-wrap: balance; }
   .go p { margin: 0; }
+  .choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
 </style>
 </head>
 <body>
 <main class="go">
-  <p class="count" id="count" aria-live="polite">5</p>
-  <p id="msg">Redirecting to Google Drive. Please make sure your network is available.</p>
-  <a class="link" id="now" href="https://drive.google.com/drive/folders/1R5EPsb7RW19aWFOIsxobI-dkCrRIhtNB?usp=sharing">Go now</a>
+  <h1 id="q">Where would you like to download from?</h1>
+  <div class="choices">
+    <a class="btn" href="https://drive.google.com/drive/folders/1R5EPsb7RW19aWFOIsxobI-dkCrRIhtNB?usp=sharing">Google Drive</a>
+    <a class="btn" href="https://1drv.ms/f/c/776b6f48cda9ca6b/IgDDgHQDIks-Q6BhwgsxB4F8AWaFUnNjMwWNTavU-wr492U?e=85wRzS">OneDrive</a>
+  </div>
+  <p class="note" id="msg">You will be taken to the service you choose. Please make sure your network is available.</p>
 </main>
 <script>
 (() => {
-  const URL_ = 'https://drive.google.com/drive/folders/1R5EPsb7RW19aWFOIsxobI-dkCrRIhtNB?usp=sharing';
   let lang = null; try { lang = localStorage.getItem('cruise-lang'); } catch (e) {}
   if ((lang || navigator.language || '').toLowerCase().startsWith('zh')) {
     document.documentElement.lang = 'zh-CN';
-    document.getElementById('msg').textContent = '即将跳转至 Google Drive，请确保网络可用。';
-    document.getElementById('now').textContent = '立即前往';
+    document.getElementById('q').textContent = '选择下载渠道';
+    document.getElementById('msg').textContent = '点击后将跳转至所选网盘，请确保网络可用。';
   }
-  let n = 5;
-  const el = document.getElementById('count');
-  const t = setInterval(() => {
-    n -= 1; el.textContent = Math.max(n, 0);
-    if (n <= 0) { clearInterval(t); location.href = URL_; }
-  }, 1000);
 })();
 </script>
-<noscript><meta http-equiv="refresh" content="5;url=https://drive.google.com/drive/folders/1R5EPsb7RW19aWFOIsxobI-dkCrRIhtNB?usp=sharing"></noscript>
 </body>
 </html>
