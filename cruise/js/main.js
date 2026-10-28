@@ -6,6 +6,7 @@
   const ZH = {
     nav_glass: '液态玻璃', nav_adaptive: '自适应', nav_more: '更多',
     download: '下载', download_mac: '下载 Mac 版', learn: '了解更多',
+    dl_note: '点击下载后将跳转至 Google Drive，请确保网络可用。',
     badge: '为 Mac 用 SwiftUI 打造',
     tagline: '像船长一样，巡航整个互联网。',
     lede: '大块液态玻璃，灵动自然的动效，还有一个会融入网页的侧边栏。',
