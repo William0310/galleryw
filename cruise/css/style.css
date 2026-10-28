@@ -186,3 +186,8 @@ figure { margin: 0; }
 .done { text-align: center; padding-block: 48px; display: flex; flex-direction: column; align-items: center; gap: 12px; }
 .done h2 { margin: 0; }
 .done p { margin: 0; color: var(--muted); }
+.hint { margin: 8px 0 0 4px; font-size: .85rem; color: var(--muted); }
+.terms { border: 1px solid var(--line); border-radius: 22px; padding: 22px 22px 14px; background: var(--surface); }
+.terms h2 { margin: 0 0 10px; font-size: 1.05rem; letter-spacing: -.02em; }
+.terms ul { margin: 0 0 14px; padding-left: 1.2em; color: var(--muted); font-size: .93rem; display: flex; flex-direction: column; gap: 6px; }
+.terms .agree { border-top: 1px solid var(--line); padding-top: 16px; }

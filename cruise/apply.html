@@ -8,7 +8,7 @@
 <meta name="color-scheme" content="light dark">
 <link rel="icon" type="image/png" href="assets/icon-256.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="stylesheet" href="css/style.css?v=13">
+<link rel="stylesheet" href="css/style.css?v=16">
 </head>
 <body>
 
@@ -29,7 +29,7 @@
 <section class="apply">
   <div class="wrap apply-in">
     <h1 class="apply-h" data-i18n="ap_h">Cruise Alpha Tester Application</h1>
-    <p class="apply-p" data-i18n="ap_p">Cruise is in alpha. Leave a way to reach you.</p>
+    <p class="apply-p" data-i18n="ap_p">Cruise is currently in early alpha testing. Anyone willing to try it and give feedback is welcome to apply.</p>
 
     <form id="apply" class="form" action="https://formspree.io/f/mljjbqbw" method="POST" novalidate>
       <input type="hidden" name="_subject" value="Cruise alpha application">
@@ -38,15 +38,26 @@
       <div class="field">
         <label for="contact" data-i18n="ap_email">Your Email / Contact Information</label>
         <input id="contact" name="contact" type="text" autocomplete="email" required placeholder="you@example.com, or another way to reach you" data-i18n-ph="ap_eph">
+        <p class="hint" data-i18n="ap_hint">Used to send test invitations, version updates and important security notices.</p>
       </div>
 
-      <label class="agree">
-        <input type="checkbox" name="agreed" value="yes" required>
-        <span data-i18n="ap_agree">I understand that Cruise is experimental alpha software, is not yet notarized by Apple, and may contain bugs. I agree to provide feedback if I encounter issues. Cruise itself contains no malicious code and does not collect your data, but I remain responsible for any risk of data or property loss from using it.</span>
-      </label>
+      <div class="terms">
+        <h2 data-i18n="ap_notes_h">Testing notes</h2>
+        <ul>
+          <li data-i18n="ap_n1">Cruise is experimental software and may contain bugs, compatibility issues or unknown security vulnerabilities.</li>
+          <li data-i18n="ap_n2">The current test build is not signed with an Apple Developer ID or notarized by Apple. macOS may require you to manually approve it before it runs.</li>
+          <li data-i18n="ap_n3">Do not use Cruise as your only or main browser, and avoid important accounts or sensitive data during testing.</li>
+          <li data-i18n="ap_n4">Back up important data beforehand. If you run into problems, you can stop using Cruise at any time and contact the developer.</li>
+          <li data-i18n="ap_n5">Cruise may store browsing history, cookies and other data on your Mac, as normal browsing requires, but no information will be sent to the developer.</li>
+        </ul>
+        <label class="agree">
+          <input type="checkbox" name="agreed" value="yes" required>
+          <span data-i18n="ap_agree">I have read and understand the testing notes above, and I agree to provide feedback if I encounter issues. Cruise itself contains no malicious code and does not collect your data, but I remain responsible for any risk of data or property loss from using it.</span>
+        </label>
+      </div>
 
       <p class="err" id="err" role="alert" hidden></p>
-      <button class="btn submit" id="send" type="submit" data-i18n="ap_send">Submit application</button>
+      <button class="btn submit" id="send" type="submit" data-i18n="ap_send">Proceed to download</button>
     </form>
 
   </div>
@@ -60,7 +71,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=13"></script>
+<script src="js/main.js?v=16"></script>
 <script>
 (() => {
   const ENDPOINT = document.getElementById('apply').action;
