@@ -107,7 +107,6 @@ figure { margin: 0; }
 .btn-off:hover { opacity: 1; }
 .hero-cube { width: clamp(150px, 24vw, 230px); margin: 0 auto; animation: bob 8s ease-in-out infinite; }
 .note { margin: 0; font-size: .88rem; color: var(--muted); }
-.dl-note { margin-top: -6px; font-size: .78rem; opacity: .85; }
 @keyframes bob { 50% { transform: translateY(-10px) rotate(4deg); } }
 
 .trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
