@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cruise · Alpha Access</title>
+<meta name="description" content="Apply for Cruise alpha access.">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" type="image/png" href="assets/icon-256.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="stylesheet" href="css/style.css?v=11">
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="./" aria-label="Cruise">
+      <img src="assets/icon-256.png" alt="" width="28" height="28">
+      <span>Cruise</span>
+    </a>
+    <div class="nav-end">
+      <button class="lang" id="lang" type="button" aria-label="Switch language">中文</button>
+      <a class="btn btn-sm" href="./" data-i18n="m_back_btn">Back to Cruise</a>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="apply">
+  <div class="wrap apply-in">
+    <h1 class="apply-h" data-i18n="ap_h">Cruise Alpha Tester Application</h1>
+    <p class="apply-p" data-i18n="ap_p">Cruise is in alpha. Tell us a little about yourself and we will send you access.</p>
+
+    <form id="apply" class="form" action="https://formspree.io/f/mljjbqbw" method="POST" novalidate>
+      <input type="hidden" name="_subject" value="Cruise alpha application">
+      <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">
+
+      <fieldset>
+        <legend data-i18n="ap_kind">What kind of Mac user are you?</legend>
+        <label class="opt"><input type="radio" name="user_type" value="Regular Mac user" checked><span data-i18n="ap_k1">Regular Mac user</span></label>
+        <label class="opt"><input type="radio" name="user_type" value="Developer / power user"><span data-i18n="ap_k2">Developer / power user</span></label>
+        <label class="opt"><input type="radio" name="user_type" value="Designer / creative"><span data-i18n="ap_k3">Designer / creative</span></label>
+      </fieldset>
+
+      <div class="field">
+        <label for="mac" data-i18n="ap_mac">What Mac are you using?</label>
+        <select id="mac" name="mac">
+          <option value="Apple Silicon, macOS 26" data-i18n="ap_m1">Apple Silicon, macOS 26</option>
+          <option value="Apple Silicon, macOS 15 or earlier" data-i18n="ap_m2">Apple Silicon, macOS 15 or earlier</option>
+          <option value="Intel, macOS 26" data-i18n="ap_m3">Intel, macOS 26</option>
+          <option value="Intel, macOS 15 or earlier" data-i18n="ap_m4">Intel, macOS 15 or earlier</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="interest" data-i18n="ap_int">What interests you about Cruise?</label>
+        <textarea id="interest" name="interest" rows="3" placeholder="Liquid Glass, native WebKit, vertical tabs..." data-i18n-ph="ap_ph"></textarea>
+      </div>
+
+      <div class="field">
+        <label for="email" data-i18n="ap_email">Your email, so we can send you access</label>
+        <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+      </div>
+
+      <label class="agree">
+        <input type="checkbox" name="agreed" value="yes" required>
+        <span data-i18n="ap_agree">I understand that Cruise is experimental alpha software, is not yet notarized by Apple, and may contain bugs. I agree to provide feedback if I encounter issues.</span>
+      </label>
+
+      <p class="err" id="err" role="alert" hidden></p>
+      <button class="btn submit" id="send" type="submit" data-i18n="ap_send">Submit application</button>
+    </form>
+
+    <div class="done" id="done" hidden>
+      <h2 data-i18n="ap_done_h">Thank you.</h2>
+      <p data-i18n="ap_done_p">Your application has been received. We will be in touch by email.</p>
+      <a class="link" href="./" data-i18n="m_back">Back to Cruise</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span>Created by William with love and patience, all rights reserved.</span>
+    <span data-i18n="foot">Made with SwiftUI.</span>
+  </div>
+</footer>
+
+<script src="js/main.js?v=11"></script>
+<script>
+(() => {
+  const ENDPOINT = document.getElementById('apply').action;
+  const $ = id => document.getElementById(id);
+  const zh = () => document.documentElement.lang === 'zh-CN';
+  const say = (en, cn) => { const e = $('err'); e.textContent = zh() ? cn : en; e.hidden = false; };
+  $('apply').addEventListener('submit', async ev => {
+    ev.preventDefault();
+    $('err').hidden = true;
+    const f = ev.target;
+    if (!f.email.validity.valid || !f.email.value) return say('Please enter a valid email address.', '请填写有效的邮箱地址。');
+    if (!f.agreed.checked) return say('Please tick the box to confirm you understand.', '请勾选确认框。');
+    if (ENDPOINT.includes('REPLACE_ME')) return say('This form is not connected yet.', '表单尚未连接。');
+    const btn = $('send'); btn.disabled = true;
+    try {
+      const r = await fetch(ENDPOINT, { method: 'POST', body: new FormData(f), headers: { Accept: 'application/json' } });
+      if (!r.ok) throw 0;
+      f.hidden = true; $('done').hidden = false; window.scrollTo({ top: 0 });
+    } catch (e) {
+      btn.disabled = false;
+      say('Something went wrong. Please try again in a moment.', '出错了，请稍后再试。');
+    }
+  });
+})();
+</script>
+</body>
+</html>

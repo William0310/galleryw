@@ -6,8 +6,21 @@
   const ZH = {
     nav_glass: '液态玻璃', nav_adaptive: '自适应', nav_more: '更多',
     download: '下载', download_mac: '下载 Mac 版', learn: '了解更多',
+    apply: '申请 Alpha 内测', apply_s: '申请',
+    ap_h: 'Cruise Alpha 测试申请', ap_p: 'Cruise 正处于 Alpha 阶段。简单介绍一下你自己，我们会把使用权限发给你。',
+    ap_kind: '你是哪种 Mac 用户？', ap_k1: '普通 Mac 用户', ap_k2: '开发者 / 高级用户', ap_k3: '设计师 / 创意工作者',
+    ap_mac: '你在用什么 Mac？', ap_m1: 'Apple 芯片，macOS 26', ap_m2: 'Apple 芯片，macOS 15 或更早', ap_m3: 'Intel，macOS 26', ap_m4: 'Intel，macOS 15 或更早',
+    ap_int: 'Cruise 的哪些方面吸引你？', ap_ph: '液态玻璃、原生 WebKit、垂直标签页……',
+    ap_email: '你的邮箱，方便我们发送使用权限',
+    ap_agree: '我了解 Cruise 是实验性的 Alpha 软件，尚未经 Apple 公证，可能存在 bug。遇到问题时，我同意提供反馈。',
+    ap_send: '提交申请', ap_done_h: '谢谢你。', ap_done_p: '我们已收到你的申请，会通过邮件联系你。',
     badge: '为 Mac 用 SwiftUI 打造',
-    tagline: '像船长一样，巡航整个互联网。',
+    tagline: '一款原生 Mac 浏览器，拥有液态玻璃、Spaces，以及一个可以由你定制的网页。',
+    care_h: '为你的 Mac 而生，用心打造。',
+    t1_h: '原生 WebKit', t1_p: '由 Apple 的浏览器引擎驱动。',
+    t2_h: '隐私优先', t2_p: '你的所有数据都保存在你的 Mac 本地。隐私与安全是我们的重中之重。',
+    t3_h: '独立项目', t3_p: '由一位独立开发者打造并维护。',
+    t4_h: '透明的 Alpha 版本', t4_p: 'Cruise 目前处于 Alpha 测试阶段。构建版本尚未使用 Apple Developer ID 签名，也未经 Apple 公证。打开前，macOS 可能需要你手动批准该 App。',
     lede: '大块液态玻璃，灵动自然的动效，还有一个会融入网页的侧边栏。',
     glass_h: '玻璃做的侧边栏。',
     glass_p: '一整块液态玻璃承载地址栏、标签页和固定标签。它透出你的壁纸与网页的色彩，让浏览器融入桌面，而不是盖在桌面上。',
@@ -44,10 +57,12 @@
     m_end: 'Mate 就要来了。'
   };
   const orig = new Map($$('[data-i18n]').map(el => [el, el.innerHTML]));
+  const phOrig = new Map($$('[data-i18n-ph]').map(el => [el, el.placeholder]));
   const langBtn = $('#lang');
   function setLang(l) {
     document.documentElement.lang = l === 'zh' ? 'zh-CN' : 'en';
     $$('[data-i18n]').forEach(el => { const k = el.dataset.i18n; el.innerHTML = l === 'zh' && ZH[k] ? ZH[k] : orig.get(el); });
+    $$('[data-i18n-ph]').forEach(el => { el.placeholder = l === 'zh' && ZH[el.dataset.i18nPh] ? ZH[el.dataset.i18nPh] : phOrig.get(el); });
     langBtn.textContent = l === 'zh' ? 'English' : '中文';
     langBtn.dataset.l = l;
     try { localStorage.setItem('cruise-lang', l); } catch (e) {}
