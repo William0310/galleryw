@@ -21,6 +21,12 @@
     --btn-bg: #f5f5f7; --btn-ink: #000; --shadow: rgba(0, 0, 0, .7);
   }
 }
+:root.force-dark {
+  --bg: #000000; --surface: #111113; --ink: #f5f5f7; --muted: #98989f;
+  --line: rgba(255, 255, 255, .16); --accent: #9a9aff;
+  --btn-bg: #f5f5f7; --btn-ink: #000; --shadow: rgba(0, 0, 0, .7);
+  color-scheme: dark;
+}
 
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 72px; -webkit-text-size-adjust: 100%; color-scheme: light dark; }
