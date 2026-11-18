@@ -478,7 +478,7 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "天外之地",
+          "zh": "凄美地",
           "en": "Lands Beyond the Heavens",
           "body": "Salt flats, barley fields and a lake the size of a small sea. On the plateau everything is wider, brighter, and further away than it looks."
         },
