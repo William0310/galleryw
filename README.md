@@ -6,6 +6,14 @@ A static photography site, no build step. Seven albums, each with its own look a
 node serve.mjs        # → http://localhost:4173  (needs http://, file:// won't load ES modules)
 ```
 
+## Publishing
+
+Before every push, stamp a new version so visitors' browsers don't keep old files from cache:
+
+```bash
+node tools/bump-version.mjs
+```
+
 ## Admin (editing text)
 
 Double-click **Wphoto Admin.command** (or run `node admin/server.mjs`). It opens

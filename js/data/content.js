@@ -1174,7 +1174,7 @@ export default {
         "Panorama viewer"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-7.webp",
+        "src": "assets/posters/wphotographs-7.webp?v=20261117-1618",
         "caption": "VII — Transcendence"
       }
     },
@@ -1215,7 +1215,7 @@ export default {
         "Performance improvement"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-6.webp",
+        "src": "assets/posters/wphotographs-6.webp?v=20261117-1618",
         "caption": "VI — Eternity"
       }
     },
@@ -1231,7 +1231,7 @@ export default {
         "Performance improvement"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-5.webp",
+        "src": "assets/posters/wphotographs-5.webp?v=20261117-1618",
         "caption": "5.0 — The Silver Halide"
       }
     },
@@ -1271,7 +1271,7 @@ export default {
         "Photo viewer"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-4.webp",
+        "src": "assets/posters/wphotographs-4.webp?v=20261117-1618",
         "caption": "4.0 — Timeless"
       }
     },
@@ -1314,7 +1314,7 @@ export default {
         "Rebuilt from scratch"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-3.webp",
+        "src": "assets/posters/wphotographs-3.webp?v=20261117-1618",
         "caption": "3.0 — Clarity"
       }
     },
