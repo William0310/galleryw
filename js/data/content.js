@@ -1179,6 +1179,16 @@ export default {
       }
     },
     {
+      "date": "2026-11-04",
+      "type": "project",
+      "kicker": "New project",
+      "title": "Cruise (Discontinued)",
+      "body": "Cruise is a Browser built with 100% SwiftUI, with built in free, and local AI. It focuses on effcient browsing experience and has been discontinued  due to Authentication issues.",
+      "tags": [
+        "Browser Project"
+      ]
+    },
+    {
       "date": "2026-08-23",
       "type": "content",
       "kicker": "Content update",
@@ -1222,6 +1232,16 @@ export default {
         "src": "assets/posters/wphotographs-5.webp?v=20261117-1625",
         "caption": "5.0 — The Silver Halide"
       }
+    },
+    {
+      "date": "2026-05-25",
+      "type": "project",
+      "kicker": "New project",
+      "title": "Wmatrix (Discontinued)",
+      "body": "A free toolbox that provides large amount of daily tools, like unit conversion, immersive screen savor, Hex color code conversion etc.",
+      "tags": [
+        "Toolbox · Free & No Ads"
+      ]
     },
     {
       "date": "2026-05-13",
