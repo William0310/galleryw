@@ -339,6 +339,8 @@ function renderNews(el) {
       field({ label: 'Title', wide: true, get: () => n.title, set: (v) => { n.title = v; drawSum(); } }),
       field({ label: 'Text', area: true, wide: true, rows: 4, get: () => n.body, set: (v) => { n.body = v; } }),
       tags, linkHref, linkLabel,
+      field({ label: 'Poster image', hint: 'optional, e.g. assets/posters/wphotographs-8.webp', wide: true, get: () => n.poster?.src, set: (v) => { if (v) n.poster = { ...(n.poster || {}), src: v }; else delete n.poster; } }),
+      field({ label: 'Poster caption', hint: 'optional', wide: true, get: () => n.poster?.caption, set: (v) => { if (n.poster) n.poster.caption = v; } }),
     );
     const del = document.createElement('button');
     del.type = 'button';

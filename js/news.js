@@ -27,6 +27,7 @@ news.forEach((n, i) => {
       <div class="nw-item__body">
         <p class="nw-item__kicker"><i class="nw-dot nw-dot--${n.type}"></i>${esc(n.kicker || LABEL[n.type])}</p>
         <h2 class="nw-item__title">${esc(n.title)}</h2>
+        ${n.poster ? `<figure class="nw-poster"><img src="${esc(n.poster.src)}" alt="${esc(n.poster.caption || n.title)} — theme poster" loading="lazy" decoding="async"><figcaption>Theme poster · ${esc(n.poster.caption || '')}</figcaption></figure>` : ''}
         <p class="nw-item__text">${esc(n.body)}</p>
         ${n.tags ? `<ul class="nw-tags">${n.tags.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>` : ''}
         ${n.link ? `<a class="nw-link" href="${n.link.href}" data-link data-en="${esc(n.link.label)}">${esc(n.link.label)} <i>→</i></a>` : ''}

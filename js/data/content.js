@@ -9,8 +9,8 @@ export default {
       "loc": "茶卡盐湖 · Chaka Salt Lake"
     },
     "chaka2": {
-      "t": "盐湖之泪",
-      "e": "Tears of Salt Lake",
+      "t": "一捧盐",
+      "e": "A handful of salt",
       "loc": "茶卡盐湖 · Chaka Salt Lake"
     },
     "qinghai3": {
@@ -34,8 +34,8 @@ export default {
       "loc": "青海 · Qinghai"
     },
     "pano2": {
-      "t": "无垠",
-      "e": "Boundless",
+      "t": "远处有雨",
+      "e": "Rain on the horizon",
       "loc": "青海 · Qinghai"
     },
     "ta1": {
@@ -69,8 +69,8 @@ export default {
       "loc": "丽江 · Lijiang"
     },
     "lijiang4": {
-      "t": "晴雪",
-      "e": "Snow in sunlight",
+      "t": "云从山后来",
+      "e": "Clouds over the ridge",
       "loc": "玉龙雪山 · Jade Dragon Snow Mountain"
     },
     "lijiang5": {
@@ -79,18 +79,18 @@ export default {
       "loc": "玉龙雪山 · Jade Dragon Snow Mountain"
     },
     "lij1": {
-      "t": "天上林间",
+      "t": "林间",
       "e": "Between the pines",
       "loc": "丽江 · Lijiang"
     },
     "lij2": {
-      "t": "日照金山",
-      "e": "Rose Mountain",
+      "t": "框景",
+      "e": "A frame for the mountain",
       "loc": "丽江 · Lijiang"
     },
     "cow": {
-      "t": "“住客”",
-      "e": "“The Resident\"",
+      "t": "林下",
+      "e": "Afternoon in the woods",
       "loc": "丽江 · Lijiang"
     },
     "xj1": {
@@ -401,12 +401,12 @@ export default {
     "img_3388": {
       "t": "老爷车",
       "e": "Low and slow",
-      "loc": "Pier39 · SF"
+      "loc": ""
     },
     "img_4469": {
-      "t": "安集海日落",
-      "e": "Sunset of AnJiHai",
-      "loc": "xinjiang · 新疆"
+      "t": "退潮",
+      "e": "Low tide under the cliffs",
+      "loc": ""
     },
     "fxn-2026-08-30-1413499e5d50dbe518": {
       "t": "雾中金门",
@@ -431,22 +431,22 @@ export default {
     "jpg-42": {
       "t": "路灯亮起",
       "e": "The first streetlight",
-      "loc": "Lands End · SF"
+      "loc": ""
     },
     "jpg-43": {
       "t": "海中礁石",
       "e": "Rocks offshore",
-      "loc": "Lands End · SF"
+      "loc": ""
     },
     "jpg-44": {
       "t": "沉入海里",
       "e": "The sun goes under",
-      "loc": "Lands End · SF"
+      "loc": ""
     },
     "jpg-52": {
       "t": "小径",
       "e": "The path down",
-      "loc": "Lands End · SF"
+      "loc": ""
     }
   },
   "albums": [
@@ -478,8 +478,8 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "凄美地",
-          "en": "Lands Beyond the Heavens",
+          "zh": "天空在这里落到地面。",
+          "en": "Up here the sky comes down to lie on the ground.",
           "body": "Salt flats, barley fields and a lake the size of a small sea. On the plateau everything is wider, brighter, and further away than it looks."
         },
         {
@@ -518,8 +518,8 @@ export default {
         },
         {
           "type": "quote",
-          "zh": "盐湖·熔金",
-          "en": "The molten gold."
+          "zh": "风一直吹。",
+          "en": "The wind never stops."
         },
         {
           "type": "pano",
@@ -555,8 +555,8 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "山止于天",
-          "en": "Where moutain meets the sky",
+          "zh": "雪线以下，是蓝得发亮的天。",
+          "en": "Below the snow line, a sky so blue it hums.",
           "body": "Granite teeth, glacial water and pine shade. The mountain rearranges its clouds every few minutes; you just wait and look up again."
         },
         {
@@ -621,8 +621,8 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "界碑之外是异域，人烟之外是天堂。",
-          "en": "Beyond the boundary marker lies a  realm; beyond the reach of human lies paradise.",
+          "zh": "路很长，光来得很慢。",
+          "en": "Long roads. Slow light.",
           "body": "Days that end at ten at night, storms you can watch for an hour before they arrive, and valleys that keep opening into bigger valleys."
         },
         {
@@ -654,8 +654,8 @@ export default {
         },
         {
           "type": "quote",
-          "zh": "奔腾烈马",
-          "en": "Galloping Steed"
+          "zh": "天黑得很晚。",
+          "en": "Night comes late out here."
         },
         {
           "type": "pano",
@@ -816,8 +816,8 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "水与落日之舞。",
-          "en": "The Dance of Water and Sunset.",
+          "zh": "湖面把夕阳拉得很长。",
+          "en": "The lake stretches the sunset out.",
           "body": "Lacquer, gold leaf and willow. One late afternoon at the Summer Palace, from the painted gates down to the water at Kunming Lake."
         },
         {
@@ -842,7 +842,7 @@ export default {
         },
         {
           "type": "quote",
-          "zh": "夕阳与流年都不等人。",
+          "zh": "金色只停留一会儿。",
           "en": "Gold only stays for a moment."
         }
       ]
@@ -880,8 +880,8 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "悯众生。",
-          "en": "Compassion.",
+          "zh": "殿内很暗，佛像在暗处等着。",
+          "en": "Inside the halls it is dark, and the statues wait in it.",
           "body": "A thousand years of timber, brackets and gilded clay — then out through the gate, up onto the wind-blown hills and the old volcanoes beyond the city."
         },
         {
@@ -987,9 +987,9 @@ export default {
       "short": "Misc.",
       "zh": "杂记",
       "title": "Elsewhere",
-      "zhTitle": "他处",
+      "zhTitle": "他处 · 夜与暮",
       "coords": "29.56°N · 106.55°E",
-      "note": "记录无名的瞬间",
+      "note": "重庆 · 路上 · Elsewhere",
       "cover": "chongqing1",
       "focus": [
         0.4,
@@ -1000,7 +1000,7 @@ export default {
       "blocks": [
         {
           "type": "intro",
-          "zh": "华灯初上",
+          "zh": "一座把夜晚叠起来的城市，和路上的黄昏。",
           "en": "A city that stacks its nights in layers — and the dusks found along the way.",
           "body": "Odds and ends from the road: Chongqing’s bridges and towers that never quite go dark, then coastlines, cliffs and long evenings somewhere else."
         },
@@ -1102,7 +1102,7 @@ export default {
     "spec": [
       {
         "label": "Base",
-        "value": "USA & China"
+        "value": "China / USA"
       },
       {
         "label": "Cameras",
@@ -1110,7 +1110,7 @@ export default {
       },
       {
         "label": "Focus",
-        "value": "Photography, travel, exploration"
+        "value": "Photography, coding, travel, and driving"
       },
       {
         "label": "Site",
@@ -1153,8 +1153,8 @@ export default {
       "date": "2026-11-17",
       "type": "release",
       "kicker": "Release note",
-      "title": "About page and Newsroom refresh.",
-      "body": "An update on newsroom is release, the new version provides better clearity.",
+      "title": "About page and Newsroom.",
+      "body": "An About page with a contact form, and this Newsroom for photo releases and site notes. Smaller fixes will not be listed here.",
       "tags": [
         "About",
         "Newsroom",
@@ -1172,6 +1172,22 @@ export default {
         "WebGL",
         "Mobile parity",
         "Panorama viewer"
+      ],
+      "poster": {
+        "src": "assets/posters/wphotographs-7.webp",
+        "caption": "VII — Transcendence"
+      }
+    },
+    {
+      "date": "2026-10-28",
+      "type": "project",
+      "kicker": "Brand new project",
+      "title": "CRUISE",
+      "body": "Greater and better — a native Mac browser with Liquid Glass, Spaces, and a web you can make your own. Visit wphotographs.com/cruise/ to see more.",
+      "tags": [
+        "Mac + SwiftUI",
+        "Arc-like experience",
+        "Local free AI"
       ]
     },
     {
@@ -1197,7 +1213,11 @@ export default {
       "tags": [
         "Redesign",
         "Performance improvement"
-      ]
+      ],
+      "poster": {
+        "src": "assets/posters/wphotographs-6.webp",
+        "caption": "VI — Eternity"
+      }
     },
     {
       "date": "2026-05-26",
@@ -1209,7 +1229,11 @@ export default {
         "Homepage",
         "Bug fix",
         "Performance improvement"
-      ]
+      ],
+      "poster": {
+        "src": "assets/posters/wphotographs-5.webp",
+        "caption": "5.0 — The Silver Halide"
+      }
     },
     {
       "date": "2026-05-13",
@@ -1245,7 +1269,11 @@ export default {
         "Homepage",
         "Mobile nav",
         "Photo viewer"
-      ]
+      ],
+      "poster": {
+        "src": "assets/posters/wphotographs-4.webp",
+        "caption": "4.0 — Timeless"
+      }
     },
     {
       "date": "2026-05-06",
@@ -1284,7 +1312,11 @@ export default {
         "View full frame",
         "Nav bar",
         "Rebuilt from scratch"
-      ]
+      ],
+      "poster": {
+        "src": "assets/posters/wphotographs-3.webp",
+        "caption": "3.0 — Clarity"
+      }
     },
     {
       "date": "2026-04-24",
