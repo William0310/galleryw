@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Home — one road through seven places. Colours come from JS (--bg / --ink / --accent)
+   and change chapter by chapter.
+   ========================================================================== */
+
+body.home {
+  --bg: #ebe8e1;
+  --ink: #151412;
+  --accent: #c2451e;
+  --fg: var(--ink);
+  --muted: color-mix(in srgb, var(--ink) 55%, var(--bg));
+  --line: color-mix(in srgb, var(--ink) 16%, transparent);
+  background: var(--bg);
+  color: var(--ink);
+  color-scheme: light;
+}
+/* Let page text sit above the WebGL layer (z 2) while giant words sit beneath it. */
+.home .page { z-index: auto; }
+.gl-world { position: fixed; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: 2; }
+html.is-expanding .gl-world { z-index: 70; }
+html.is-expanding body { pointer-events: none; }
+html:not(.no-webgl) .tile img, html:not(.no-webgl) .ch__ph img { opacity: 0 !important; }
+html:not(.no-webgl) .tile { background: transparent; }
+
+/* ---------- Preloader ----------------------------------------------------------- */
+.preloader { position: fixed; inset: 0; z-index: 90; background: #ebe8e1; color: #151412; clip-path: inset(0 0 0 0); }
+.preloader__strip { position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #151412; transform-origin: left; transform: scaleX(0); }
+.preloader__row { position: absolute; left: var(--pad); right: var(--pad); top: calc(50% - 0.95em); display: flex; justify-content: space-between; align-items: flex-end; font-family: 'Archivo', var(--f-sans); font-size: clamp(2rem, 6vw, 5rem); line-height: 1; }
+.preloader__brand { font-weight: 300; font-stretch: 125%; letter-spacing: -0.02em; }
+.preloader__num { font-weight: 800; font-stretch: 62%; font-variant-numeric: tabular-nums; }
+
+/* ---------- Hero: contact strips + kinetic title -------------------------------- */
+.hero { position: relative; height: 100vh; height: 100svh; min-height: 420px; overflow: hidden; }
+.hero__rows { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: repeat(4, auto); align-content: center; gap: 2vh; padding: calc(var(--head-h) + 2vh) 0 6vh; }
+.hero__row { min-width: 0; overflow: visible; will-change: transform; }
+.hero__track { display: flex; gap: 1.2vw; width: max-content; will-change: transform; }
+.tile { position: relative; display: block; height: 18vh; height: 18svh; aspect-ratio: var(--ar); flex: none; background: color-mix(in srgb, var(--ink) 6%, transparent); }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1); }
+.tile__label { position: absolute; left: 8px; bottom: 6px; z-index: 3; font-family: var(--f-cjk-serif); font-size: 12px; letter-spacing: 0.3em; color: #fff; opacity: 0; transition: opacity 0.4s; text-shadow: 0 1px 8px rgba(0, 0, 0, 0.5); }
+.tile:hover .tile__label { opacity: 1; }
+.hero__title {
+  position: relative; z-index: 3; transform-origin: center; text-align: center; pointer-events: none;
+  font-family: 'Archivo', var(--f-sans); font-weight: 300; font-stretch: 100%;
+  font-size: min(11.2vw, 13rem); line-height: 1.02; letter-spacing: -0.035em; white-space: nowrap;
+  color: var(--ink);
+}
+.hero__title .sw { padding-bottom: 0.12em; margin-bottom: -0.12em; }
+.hero__meta { position: absolute; z-index: 3; top: calc(var(--head-h) + 1vh); left: var(--pad); right: var(--pad); display: flex; justify-content: space-between; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.6; pointer-events: none; opacity: 0; }
+.hero__count { text-align: right; }
+.hero__hint { position: absolute; z-index: 3; left: 50%; bottom: calc(2.4vh + env(safe-area-inset-bottom)); transform: translateX(-50%); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; opacity: 0; }
+.hero__hint span { display: inline-block; animation: nudge 2.4s var(--ease) infinite; }
+@keyframes nudge { 0%, 100% { transform: none; } 50% { transform: translateY(4px); } }
+
+/* ---------- Chapters (shared) ---------------------------------------------------- */
+.ch { position: relative; }
+.ch__stage { position: relative; height: 100vh; height: 100svh; overflow: hidden; }
+.ch__word { position: absolute; z-index: 1; white-space: nowrap; line-height: 0.8; pointer-events: none; color: var(--ink); user-select: none; }
+.ch__ph { position: absolute; z-index: 1; display: block; aspect-ratio: var(--ar); background: transparent; cursor: pointer; }
+.ch__ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; }
+.ch__text { position: absolute; z-index: 3; display: grid; gap: 0.7rem; width: min(28vw, 380px); }
+.ch__n { display: flex; justify-content: space-between; gap: 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid var(--line); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+.ch__name { display: flex; align-items: baseline; flex-wrap: wrap; gap: 0 0.8rem; font-weight: 400; line-height: 0.95; }
+.ch__en { font-size: clamp(2.6rem, 4.6vw, 4.8rem); letter-spacing: -0.02em; }
+.ch__zh { font-family: var(--f-cjk-serif); font-size: clamp(1.1rem, 1.5vw, 1.4rem); letter-spacing: 0.35em; }
+.ch__title { font-family: var(--f-serif); font-style: italic; font-size: 1.15rem; line-height: 1.3; }
+.ch__blurb { font-size: 14px; line-height: 1.65; color: var(--muted); }
+.ch__cta { justify-self: start; display: inline-flex; align-items: center; gap: 0.9rem; min-height: 46px; margin-top: 0.4rem; padding: 0 20px; border: 1px solid var(--ink); border-radius: 999px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; transition: background 0.35s, color 0.35s; }
+.ch__cta small { font-size: 10px; opacity: 0.6; letter-spacing: 0.08em; }
+.ch__cta i { font-style: normal; transition: transform 0.5s var(--ease); }
+.ch__cta:hover { background: var(--ink); color: var(--bg); }
+.ch__cta:hover i { transform: translateX(6px); }
+
+/* ---------- 01 Qinghai: enormous type, a panorama crossing beneath it ---------- */
+.ch--qinghai .ch__word { left: 0; top: 30%; font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 125%; font-size: 21vw; letter-spacing: -0.04em; opacity: 0.92; }
+.ch--qinghai .ch__ph--a { right: 5vw; top: 11vh; width: 33vw; }
+.ch--qinghai .ch__ph--b { left: 4vw; top: 57vh; height: 32vh; aspect-ratio: auto; width: calc(32vh * var(--ar)); }
+.ch--qinghai .ch__ph--c { left: 35vw; top: 18vh; width: 19vw; }
+.ch--qinghai .ch__text { left: var(--pad); top: calc(var(--head-h) + 6vh); }
+.ch--qinghai .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: clamp(2.2rem, 3.6vw, 3.8rem); letter-spacing: -0.03em; }
+
+/* ---------- 02 Lijiang: three columns climbing at different speeds -------------- */
+.ch--lijiang .ch__word { right: 3vw; top: 8vh; writing-mode: vertical-rl; font-family: var(--f-cjk-serif); font-weight: 600; font-size: 24vh; letter-spacing: 0.06em; color: var(--accent); opacity: 0.85; }
+.ch--lijiang .ch__ph--a { left: 4vw; top: 10vh; width: 30vw; }
+.ch--lijiang .ch__ph--b { left: 38vw; top: 6vh; width: 16vw; }
+.ch--lijiang .ch__ph--c { left: 52vw; top: 48vh; width: 28vw; }
+.ch--lijiang .ch__text { left: var(--pad); bottom: 8vh; }
+.ch--lijiang .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 700; font-stretch: 110%; letter-spacing: -0.03em; }
+
+/* ---------- 03 Xinjiang: a cinema slit opening, then two frames rise ------------ */
+.ch--xinjiang .ch__word { left: 0; bottom: 3vh; font-family: 'Archivo', var(--f-sans); font-weight: 800; font-stretch: 62%; font-size: 26vh; letter-spacing: 0.3em; opacity: 0.18; }
+.ch--xinjiang .ch__ph--a { left: 8vw; top: calc(50% - 18vw); width: 84vw; }
+.ch--xinjiang .ch__ph--b { left: 12vw; top: 32vh; width: 17vw; }
+.ch--xinjiang .ch__ph--c { right: 10vw; top: 42vh; width: 30vw; }
+.ch--xinjiang .ch__text { right: var(--pad); top: calc(var(--head-h) + 3vh); width: min(24vw, 340px); }
+.ch--xinjiang .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 750; font-stretch: 62%; text-transform: uppercase; letter-spacing: 0.2em; }
+.ch--xinjiang .ch__blurb { display: none; }
+
+/* ---------- 04 Japan: white space, ink, a vertical name ---------------------------- */
+.ch--japan .ch__word { right: 5vw; top: 14vh; writing-mode: vertical-rl; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', var(--f-cjk-serif); font-weight: 300; font-size: 15vh; letter-spacing: 0.4em; }
+.ch--japan .ch__word::after { content: ''; display: block; width: 0.32em; height: 0.32em; margin-top: 0.3em; margin-inline: auto; background: var(--accent); }
+.ch--japan .ch__ph--a { left: 9vw; top: 16vh; width: 38vw; }
+.ch--japan .ch__ph--b { left: 57vw; top: 10vh; width: 14vw; }
+.ch--japan .ch__ph--c { left: 45vw; top: 56vh; width: 27vw; }
+.ch--japan .ch__text { left: 9vw; bottom: 9vh; width: min(26vw, 360px); }
+.ch--japan .ch__en { font-family: var(--f-serif-jp); font-style: italic; font-weight: 300; }
+.ch--japan .ch__zh { font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'Noto Serif JP', serif; }
+.ch--japan .ch__cta { border-color: var(--line); }
+
+/* ---------- 05 Beijing: hanging scrolls on lacquer ---------------------------------- */
+.ch--beijing .ch__word { left: 50%; bottom: -6vh; transform-origin: bottom center; translate: -50% 0; font-family: var(--f-cjk-serif); font-weight: 900; font-size: 42vh; letter-spacing: 0.04em; color: transparent; background: linear-gradient(170deg, #f9e2a6 10%, #d9a441 45%, #8a5a1e 95%); -webkit-background-clip: text; background-clip: text; opacity: 0.55; }
+.ch--beijing .ch__ph--b { left: 6vw; top: 13vh; width: 17vw; outline: 1px solid rgba(240, 192, 96, 0.35); outline-offset: 10px; }
+.ch--beijing .ch__ph--a { left: 30vw; top: 20vh; width: 40vw; outline: 1px solid rgba(240, 192, 96, 0.35); outline-offset: 10px; }
+.ch--beijing .ch__ph--c { right: 6vw; top: 9vh; width: 17vw; outline: 1px solid rgba(240, 192, 96, 0.35); outline-offset: 10px; }
+.ch--beijing .ch__text { left: var(--pad); bottom: 7vh; width: min(24vw, 340px); }
+.ch--beijing .ch__en { font-family: var(--f-serif); font-style: italic; font-weight: 500; }
+.ch--beijing .ch__zh { font-weight: 700; color: var(--accent); }
+
+/* ---------- 06 Datong: a lamp in the hall, then daylight --------------------------- */
+.ch--datong .ch__word { left: 50%; top: 50%; translate: -50% -50%; font-family: var(--f-cjk-serif); font-weight: 400; font-size: 40vh; letter-spacing: 0.25em; opacity: 0.12; }
+.ch--datong .ch__ph--a { left: 22vw; top: 11vh; width: 54vw; }
+.ch--datong .ch__ph--b { right: 5vw; top: 8vh; width: 14vw; }
+.ch--datong .ch__ph--c { right: 7vw; bottom: 8vh; width: 26vw; }
+.ch--datong .ch__text { left: var(--pad); bottom: 7vh; width: min(18vw, 300px); }
+.ch--datong .ch__blurb { display: none; }
+.ch--datong .ch__en { font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.6em; text-transform: uppercase; }
+.ch--datong .ch__zh { font-size: clamp(2.6rem, 4.6vw, 4.6rem); letter-spacing: 0.2em; }
+
+/* ---------- 07 Misc: neon night ----------------------------------------------------- */
+.ch--misc .ch__word { left: 0; top: 4vh; font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 75%; font-size: 22vw; color: transparent; -webkit-text-stroke: 1.5px var(--accent); text-shadow: 0 0 40px rgba(255, 59, 92, 0.35); opacity: 0.8; }
+.ch--misc .ch__ph--a { left: 24vw; top: 22vh; width: 50vw; }
+.ch--misc .ch__ph--b { left: 5vw; top: 30vh; width: 15vw; }
+.ch--misc .ch__ph--c { right: 5vw; top: 12vh; width: 15vw; }
+.ch--misc .ch__text { right: var(--pad); bottom: 6vh; width: min(24vw, 340px); }
+.ch--misc .ch__blurb { display: none; }
+.ch--misc .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 75%; text-transform: uppercase; text-shadow: -0.03em 0 rgba(255, 59, 92, 0.8), 0.03em 0 rgba(34, 211, 238, 0.8); }
+.ch--misc .ch__cta { border-color: #22d3ee; color: #22d3ee; }
+
+/* ---------- Route rail + phone chip ------------------------------------------------- */
+.route { position: fixed; z-index: 40; left: calc(var(--pad) * 0.5); top: 50%; transform: translateY(-50%); display: flex; gap: 12px; opacity: 0; pointer-events: none; transition: opacity 0.5s; mix-blend-mode: difference; color: #fff; }
+.in-journey .route { opacity: 1; pointer-events: auto; }
+.route__line { position: relative; width: 1px; background: rgba(255, 255, 255, 0.3); }
+.route__line i { position: absolute; inset: 0; background: #fff; transform-origin: top; transform: scaleY(0); }
+.route ol { list-style: none; display: grid; gap: 4px; }
+.route button { display: flex; align-items: baseline; gap: 8px; min-height: 26px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; opacity: 0.45; transition: opacity 0.3s; }
+.route .route__zh { font-family: var(--f-cjk-serif); font-size: 12px; letter-spacing: 0.2em; }
+.route .route__en { max-width: 0; overflow: hidden; white-space: nowrap; transition: max-width 0.5s var(--ease); text-transform: uppercase; }
+.route li.is-active button, .route button:hover { opacity: 1; }
+.route li.is-active .route__en, .route button:hover .route__en { max-width: 12em; }
+.chip { display: none; }
+
+/* ---------- Custom cursor -------------------------------------------------------------- */
+.cursor { position: fixed; left: 0; top: 0; z-index: 75; pointer-events: none; mix-blend-mode: difference; }
+.cursor::before { content: ''; position: absolute; left: -5px; top: -5px; width: 10px; height: 10px; border-radius: 50%; background: #fff; transition: transform 0.45s var(--ease); }
+.cursor__label { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%) scale(0.4); display: grid; place-items: center; width: 84px; height: 84px; border-radius: 50%; background: #fff; color: #000; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; transition: transform 0.45s var(--ease), opacity 0.3s; }
+.cursor.is-on::before { transform: scale(0); }
+.cursor.is-on .cursor__label { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+@media (hover: hover) and (pointer: fine) { .home .tile, .home .ch__ph { cursor: none; } }
+
+/* ---------- About + The End (night) --------------------------------------------------- */
+.about { position: relative; z-index: 3; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 2vw; align-items: center; padding: 22vh var(--pad) 14vh; }
+.about__img { grid-column: 2 / span 4; aspect-ratio: 4 / 5; overflow: hidden; }
+.about__img img { width: 100%; height: 116%; margin-top: -8%; object-fit: cover; }
+.about__text { grid-column: 7 / span 5; display: grid; gap: 1.4rem; }
+.about__kicker { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.about__lead { font-family: 'Archivo', var(--f-sans); font-weight: 300; font-stretch: 110%; font-size: clamp(2rem, 3.6vw, 3.4rem); line-height: 1.02; letter-spacing: -0.02em; }
+.about__body { max-width: 44ch; font-size: 15px; line-height: 1.7; }
+.about__body--muted { color: var(--muted); font-size: 13px; }
+.about__links { display: flex; flex-wrap: wrap; gap: 0.6rem 1.8rem; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+.about__links a { border-bottom: 1px solid currentColor; padding-bottom: 2px; }
+.about__links a:hover { color: var(--accent); }
+.end__pages { display: flex; gap: 1.4rem; }
+.end__pages a:hover { color: var(--ink); }
+.end { position: relative; z-index: 3; background: var(--bg); padding: 8vh var(--pad) calc(24px + env(safe-area-inset-bottom)); }
+/* Screen blending drops the photo's own black, so the neon floats on the page colour
+   with no visible box; the radial mask feathers any stray glow at the edges. */
+.end__sign { width: min(560px, 82vw); margin: 0 auto 12vh; aspect-ratio: 1; mix-blend-mode: screen; -webkit-mask-image: radial-gradient(closest-side, #000 70%, transparent); mask-image: radial-gradient(closest-side, #000 70%, transparent); }
+.end__img { width: 100%; height: 100%; object-fit: cover; animation: neon 6s infinite steps(1); }
+@keyframes neon { 0%, 100% { filter: none; } 41% { filter: brightness(0.55); } 42% { filter: none; } 43% { filter: brightness(0.4); } 44% { filter: none; } 77% { filter: brightness(0.7); } 78% { filter: none; } }
+.end__row { display: flex; justify-content: space-between; align-items: center; padding-top: 18px; border-top: 1px solid var(--line); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.end__top { min-height: 44px; text-transform: uppercase; letter-spacing: 0.12em; }
+.end__top:hover { color: var(--ink); }
+
+/* ---------- Reduced motion: a calm static layout ----------------------------------- */
+.is-static .ch__stage { height: auto; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3vw; align-items: start; padding: 16vh var(--pad); }
+.is-static .ch__word { display: none; }
+.is-static .ch__ph { position: relative; inset: auto !important; width: auto !important; height: auto !important; aspect-ratio: var(--ar) !important; }
+.is-static .ch__text { position: relative; inset: auto !important; grid-column: 1 / -1; width: auto; max-width: 520px; }
+
+/* ---------- Phones (and portrait tablets, which share the tall composition) ---------- */
+@media (max-width: 760px), (orientation: portrait) and (max-width: 1100px) {
+  .tile { height: 14svh; }
+  .hero__track { gap: 2.4vw; }
+  .hero__title { font-size: 12.4vw; }
+  .ch__text { left: var(--pad) !important; right: var(--pad) !important; top: auto !important; bottom: calc(74px + env(safe-area-inset-bottom)) !important; width: auto !important; gap: 0.5rem; }
+  .ch__blurb { display: none; }
+  .ch__en { font-size: clamp(2rem, 11vw, 3rem); }
+  .ch__cta { display: none; } /* the floating chip is the phone's Enter button */
+
+  .ch--qinghai .ch__word { top: 33svh; font-size: 24vw; }
+  .ch--qinghai .ch__ph--a { right: 4vw; top: 11svh; width: 64vw; }
+  .ch--qinghai .ch__ph--c { left: 4vw; top: 27svh; width: 42vw; }
+  .ch--qinghai .ch__ph--b { left: 4vw; top: 43svh; height: 21svh; width: calc(21svh * var(--ar)); }
+
+  .ch--lijiang .ch__word { right: 2vw; top: 10svh; font-size: 13svh; }
+  .ch--lijiang .ch__ph--a { left: 4vw; top: 11svh; width: 62vw; }
+  .ch--lijiang .ch__ph--b { left: 52vw; top: 26svh; width: 32vw; }
+  .ch--lijiang .ch__ph--c { left: 8vw; top: 42svh; width: 58vw; }
+
+  .ch--xinjiang .ch__word { bottom: auto; top: 10svh; font-size: 12svh; letter-spacing: 0.2em; }
+  .ch--xinjiang .ch__ph--a { left: 4vw; width: 92vw; top: 22svh; }
+  .ch--xinjiang .ch__ph--b { left: 5vw; top: 34svh; width: 36vw; }
+  .ch--xinjiang .ch__ph--c { right: 5vw; top: 40svh; width: 50vw; }
+
+  .ch--japan .ch__word { right: 4vw; top: 9svh; font-size: 7svh; }
+  .ch--japan .ch__ph--a { left: 6vw; top: 12svh; width: 70vw; }
+  .ch--japan .ch__ph--b { left: 60vw; top: 33svh; width: 32vw; }
+  .ch--japan .ch__ph--c { left: 6vw; top: 46svh; width: 54vw; }
+
+  .ch--beijing .ch__word { font-size: 26svh; bottom: 18svh; }
+  .ch--beijing .ch__ph--a { left: 5vw; top: 11svh; width: 90vw; }
+  .ch--beijing .ch__ph--b { left: 5vw; top: 39svh; width: 38vw; }
+  .ch--beijing .ch__ph--c { right: 5vw; top: 36svh; width: 38vw; left: auto; }
+
+  .ch--datong .ch__word { font-size: 16svh; top: 38%; }
+  .ch--datong .ch__ph--a { left: 4vw; top: 12svh; width: 92vw; }
+  .ch--datong .ch__ph--b { left: 4vw; right: auto; top: 42svh; width: 34vw; }
+  .ch--datong .ch__ph--c { right: 4vw; bottom: auto; top: 50svh; width: 54vw; }
+
+  .ch--misc .ch__word { top: 8svh; font-size: 24vw; }
+  .ch--misc .ch__ph--a { left: 4vw; top: 16svh; width: 92vw; }
+  .ch--misc .ch__ph--b { left: 4vw; top: 42svh; width: 38vw; }
+  .ch--misc .ch__ph--c { right: 4vw; top: 38svh; width: 38vw; }
+
+  .route { display: none; }
+  .chip { position: fixed; z-index: 40; left: 50%; bottom: calc(12px + env(safe-area-inset-bottom)); transform: translate(-50%, 140%); display: flex; align-items: center; gap: 10px; padding: 6px 6px 6px 16px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 88%, transparent); color: var(--bg); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; transition: transform 0.6s var(--ease); white-space: nowrap; }
+  .chip__name { font-family: var(--f-cjk-serif); letter-spacing: 0.1em; }
+  .chip__go { min-height: 36px; padding: 0 14px; border-radius: 999px; background: var(--bg); color: var(--ink); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; }
+  .in-journey .chip { transform: translate(-50%, 0); }
+  .about { grid-template-columns: 1fr; row-gap: 2.4rem; padding: 14vh var(--pad) 10vh; }
+  .about__img, .about__text { grid-column: 1; }
+  .about__img { width: 78%; }
+  .is-static .ch__stage { grid-template-columns: 1fr 1fr; }
+}
+
+/* ---------- Short landscape screens (phones on their side) ------------------------- */
+@media (orientation: landscape) and (max-height: 520px) {
+  .route { display: none; }
+  .ch__text { width: min(34vw, 300px) !important; gap: 0.3rem; }
+  .ch__blurb { display: none; }
+  .ch__en { font-size: 1.9rem !important; }
+  .ch__title { font-size: 0.95rem; }
+  .ch__n { font-size: 10px; padding-bottom: 0.3rem; }
+  .ch__cta { min-height: 36px; padding: 0 14px; margin-top: 0.2rem; }
+  .ch--datong .ch__zh { font-size: 1.6rem; }
+  .ch--datong .ch__en { font-size: 11px !important; }
+  .ch--japan .ch__ph--a { width: 30vw; }
+}
+.is-static .route, .is-static .chip { display: none; }

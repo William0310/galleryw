@@ -1,417 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>WPHOTOGRAPHS · Online Gallery</title>
-<meta name="description" content="An immersive photographic journey — salt lakes of Qinghai, snow mountains of Lijiang, the Tianshan ranges of Xinjiang, ten thousand gates of Japan, and the old temples of Datong.">
-<meta property="og:title" content="行记 — A Travelogue in Light">
-<meta property="og:description" content="A scroll-driven photographic journey by William — Qinghai · Xinjiang · Japan · Datong.">
-<meta property="og:image" content="assets/img/chaka1.webp">
-<meta property="og:type" content="website">
-<link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="css/style.css?v=30">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wphotographs — Landscapes & Cities</title>
+  <meta name="description" content="Wphotographs — landscape and city photography from Qinghai, Lijiang, Xinjiang, Japan, Beijing and Datong.">
+  <meta name="theme-color" content="#ebe8e1">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/jetbrains-mono.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script>try{var d=JSON.parse(sessionStorage.getItem('wp-curtain')||'null');if(d&&!d.silent)document.documentElement.classList.add('is-entering');}catch(e){}</script>
+  <script type="importmap">{ "imports": { "three": "./vendor/three.min.js" } }</script>
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script type="module" src="js/home.js"></script>
 </head>
-<body data-theme="light">
-
-<div class="page-ambient" aria-hidden="true"></div>
-<div class="grain" aria-hidden="true"></div>
-
-<div class="page-transition" id="pageTransition" aria-hidden="true"></div>
-
-<!-- ======================= PRELOADER ======================= -->
-<div class="preloader" id="preloader">
-  <div class="preloader-inner">
-    <div class="preloader-char" id="preloaderChar">山</div>
-    <div class="preloader-count"><span id="preloaderNum">00</span></div>
-    <div class="preloader-label">loading the journey</div>
+<body class="home">
+  <div class="preloader" aria-hidden="true">
+    <div class="preloader__strip"></div>
+    <div class="preloader__row">
+      <span class="preloader__brand">Wphoto</span>
+      <span class="preloader__num">00</span>
+    </div>
   </div>
-  <div class="preloader-curtain"></div>
-</div>
 
-<!-- ======================= CURSOR ======================= -->
-<div class="cursor" id="cursor" aria-hidden="true">
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"><span class="cursor-label"></span></div>
-</div>
-
-<!-- ======================= PROGRESS ======================= -->
-<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
-
-<!-- ======================= HEADER ======================= -->
-<div class="site-head-blur" aria-hidden="true"></div>
-<header class="site-head" id="siteHead">
-  <a class="brand" href="#top" data-scrollto="#top">
-    <span class="brand-cn" lang="zh">WPHOTO</span>
-    <span class="brand-en">a travelogue<br>by William</span>
-  </a>
-  <button class="menu-btn" id="menuBtn" aria-label="Open albums" aria-expanded="false">
-    <span class="menu-btn-word" data-open="albums" data-close="close">albums</span>
-    <span class="menu-btn-lines"><i></i><i></i></span>
-  </button>
-</header>
-
-<!-- ======================= MENU OVERLAY ======================= -->
-<nav class="menu" id="menu" aria-hidden="true">
-  <div class="menu-bg"></div>
-  <div class="menu-preview" id="menuPreview">
-    <img src="assets/img/lake1.webp" alt="" id="menuPreviewImg" loading="lazy" decoding="async">
-  </div>
-  <ol class="menu-list">
-    <li><a href="#qinghai"  data-scrollto="#qinghai"  data-preview="assets/img/lake1.webp"><em>01</em><span lang="zh">青海</span><b>The Highland Light</b></a></li>
-    <li><a href="#lijiang"  data-scrollto="#lijiang"  data-preview="assets/img/lijiang4.webp"><em>02</em><span lang="zh">丽江</span><b>Snow Mountain Watches</b></a></li>
-    <li><a href="#xinjiang" data-scrollto="#xinjiang" data-preview="assets/img/xj8.webp"><em>03</em><span lang="zh">新疆</span><b>Where the Light Comes Down</b></a></li>
-    <li><a href="#japan"    data-scrollto="#japan"    data-preview="assets/img/kyoto1.webp"><em>04</em><span lang="zh">日本</span><b>Ten Thousand Gates</b></a></li>
-    <li><a href="#beijing"  data-scrollto="#beijing"  data-preview="assets/img/yih3.webp"><em>05</em><span lang="zh">北京</span><b>Garden of Ripples</b></a></li>
-    <li><a href="#datong"   data-scrollto="#datong"   data-preview="assets/img/datong5.webp"><em>06</em><span lang="zh">大同</span><b>Within the Walls</b></a></li>
-    <li><a href="#about"    data-scrollto="#about"    data-preview="assets/img/me.webp"><em>07</em><span lang="zh">后记</span><b>Afterword</b></a></li>
-    <li class="menu-cruise"><a href="cruise/"><b>Cruise</b></a></li>
-  </ol>
-  <div class="menu-foot">
-    <span>travel · love · remember</span>
-    <span lang="zh">山 河 城 海</span>
-  </div>
-</nav>
-
-<main id="top">
-
-  <!-- ======================= HERO ======================= -->
-  <section class="hero" id="hero">
-    <canvas class="hero-canvas" id="heroCanvas"></canvas>
-    <div class="hero-veil"></div>
-    <div class="hero-content">
-      <p class="hero-kicker" data-hero-fade>a photographic record · 2023 — 2026</p>
-      <h1 class="hero-title">
-        <span class="hero-cn" lang="zh"><i data-hero-char>W</i><i data-hero-char>PHOTO</i></span>
-        <span class="hero-en">
-          <span class="hero-line"><i data-hero-word>A</i> <i data-hero-word>TRAVELOGUE</i></span>
-          <span class="hero-line"><i data-hero-word>By</i> <i data-hero-word>William</i></span>
-        </span>
-      </h1>
-      <p class="hero-sub" data-hero-fade>Salt lakes · snow mountains · Tianshan light · quiet shrines —<br><span class="only-fine">move the pointer, the lake remembers.</span><span class="only-coarse">drag a finger across the water — it remembers.</span></p>
-    </div>
-    <div class="hero-foot" data-hero-fade>
-      <span class="hero-coord">35.06°N 135.80°E — Rurikoin, Kyoto</span>
-      <span class="scroll-cue"><i></i>scroll</span>
-      <span class="hero-coord right">京都 · 琉璃光院</span>
-    </div>
-  </section>
-
-  <!-- ======================= MANIFESTO ======================= -->
-  <section class="manifesto">
-    <p class="manifesto-text" data-anim="words">
-      Between the salt lakes of Qinghai and the light-struck ranges of the Tianshan,
-      between Fuji’s quiet slope and the painted halls of Datong —
-      this is a record of <em>light</em>, kept while walking.
-      Six albums; the road between them is yours.
-    </p>
-    <figure class="mani-float mani-float-1" data-speed="-0.35"><img src="assets/img/cow.webp" alt="A highland cow in pine shadow" loading="lazy" decoding="async"></figure>
-    <figure class="mani-float mani-float-2" data-speed="0.45"><img src="assets/img/ta1.webp" alt="Painted gate of Kumbum monastery" loading="lazy" decoding="async"></figure>
-    <figure class="mani-float mani-float-3" data-speed="-0.2"><img src="assets/img/kyo4.webp" alt="A lantern over shrine steps at dusk" loading="lazy" decoding="async"></figure>
-  </section>
-
-  <!-- ======================= ALBUM 01 — QINGHAI ======================= -->
-  <section class="chapter" id="qinghai">
-    <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 01</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">青海高原</span>
-      <h2 class="chapter-title" data-anim="chars">The Highland<br>Light</h2>
-      <p class="chapter-sub" data-anim="fade">Qinghai — 3,000 metres up, the sky is a mirror and the grass runs to every horizon.</p>
-    </header>
-
-    <!-- pinned panorama pan -->
-    <div class="pano-pin" id="panoPin">
-      <div class="pano-track"><img src="assets/img/qjpano.webp" alt="Panorama of a mountain road across Qilian meadows" id="panoImg" decoding="async"></div>
-      <div class="pano-caption"><span>祁连山中 — the road over the pass</span><span class="pano-hint">keep scrolling, the valley turns</span></div>
-    </div>
-
-    <div class="grid">
-      <figure class="ph w7" data-speed="0.08" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/lake1.webp" alt="A farm gate opening to Qinghai Lake" loading="lazy" decoding="async"></div>
-        <figcaption><span>№01</span>a gate left open to Qinghai Lake</figcaption>
-      </figure>
-      <figure class="ph w4 push-down" data-speed="-0.12" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/chaka2.webp" alt="A handful of salt crystals from the lake" loading="lazy" decoding="async"></div>
-        <figcaption><span>№02</span>the lake, held in one hand</figcaption>
-      </figure>
-    </div>
-
-    <blockquote class="pull" data-anim="words"><span lang="zh">盐湖之上，天空照见自己。</span><br>Above the salt, the sky studies its own face.</blockquote>
-
-    <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/qh10.webp" alt="Burning sunset over Qinghai Lake" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№03</span>the lake takes the fire calmly — Qinghai Lake, dusk</figcaption>
-    </figure>
-
-    <a class="album-link" href="album.html?a=qinghai" data-cursor="view">
-      <em>Open the QINGHAI album</em>
-      <small>11 photographs <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= ALBUM 02 — LIJIANG ======================= -->
-  <section class="chapter" id="lijiang">
-    <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 02</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">玉龙雪山</span>
-      <h2 class="chapter-title" data-anim="chars">Where the Snow<br>Mountain Watches</h2>
-      <p class="chapter-sub" data-anim="fade">Lijiang — the Jade Dragon keeps thirteen peaks, and every street ends in one of them.</p>
-    </header>
-
-    <!-- pinned zoom reveal -->
-    <div class="zoom-pin" id="zoomPin">
-      <div class="zoom-frame" id="zoomFrame">
-        <img src="assets/img/lijiang1.webp" alt="Blue Moon Valley beneath Jade Dragon Snow Mountain" decoding="async">
+  <main class="page">
+    <section class="hero" aria-label="Wphotographs">
+      <div class="hero__rows" aria-hidden="true"></div>
+      <h1 class="hero__title">Wphotographs</h1>
+      <div class="hero__meta">
+        <p>Landscapes &amp; cities<br>China · Japan</p>
+        <p class="hero__count"><span data-total>—</span> frames<br>7 albums</p>
       </div>
-      <div class="zoom-text" id="zoomText">
-        <span lang="zh">蓝月谷</span>
-        <p>Blue Moon Valley — glacier water, the colour of weather</p>
+      <p class="hero__hint"><span>Scroll</span> — seven places, one road</p>
+    </section>
+
+    <div class="chapters"></div>
+
+    <section class="about" aria-label="About">
+      <div class="about__img"><img src="assets/photos/me-960.webp" alt="The photographer at a desk, drawing" loading="lazy" decoding="async"></div>
+      <div class="about__text">
+        <p class="about__kicker">About</p>
+        <p class="about__lead">Photographs by William.</p>
+        <p class="about__body">Wphotographs collects landscapes, temples and cities, mostly from western China and Japan — made on long walks, early mornings and late buses. Each album is laid out to feel a little like the place it came from.</p>
+        <p class="about__body about__body--muted">Click any frame to step into its album. Inside, every photo opens full screen, and panoramas can be dragged.</p>
+        <p class="about__links"><a href="about.html" data-link data-en="About">More about William →</a><a href="news.html" data-link data-en="Newsroom">What’s new →</a></p>
       </div>
-    </div>
+    </section>
 
-    <div class="trio">
-      <figure class="ph" data-speed="0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/lij1.webp" alt="Golden meadow before the snow peaks" loading="lazy" decoding="async"></div>
-        <figcaption><span>№04</span>the dry meadow at 3,200 m</figcaption>
-      </figure>
-      <figure class="ph" data-speed="-0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/lijiang4.webp" alt="Snow peaks of the Jade Dragon range" loading="lazy" decoding="async"></div>
-        <figcaption><span>№05</span>thirteen peaks, counted twice</figcaption>
-      </figure>
-      <figure class="ph" data-speed="0.16" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/lij2.webp" alt="A woven wreath framing the sunset peaks" loading="lazy" decoding="async"></div>
-        <figcaption><span>№06</span>the mountain, framed by someone’s wish</figcaption>
-      </figure>
-    </div>
-
-    <a class="album-link" href="album.html?a=lijiang" data-cursor="view">
-      <em>Open the LIJIANG album</em>
-      <small>7 photographs <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= ALBUM 03 — XINJIANG (flagship, dark) ======================= -->
-  <!-- theme is driven by js/xinjiang.js (not the generic [data-theme-dark]
-       handler): this chapter's pinned scene grows it well past its own
-       measured box, so the dark ground is anchored to #japan instead -->
-  <section class="chapter chapter-xj" id="xinjiang">
-    <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 03 · flagship</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">天山南北</span>
-      <h2 class="chapter-title" data-anim="chars">Where the Light<br>Comes Down</h2>
-      <p class="chapter-sub" data-anim="fade">Xinjiang — a sixth of a country, where the mountains make their own weather and the light arrives in columns.</p>
-    </header>
-
-    <!-- FLAGSHIP: WebGL god-ray panorama, pinned + scroll-scrubbed -->
-    <div class="xj-pin" id="xjPin">
-      <canvas class="xj-canvas" id="xjCanvas" aria-hidden="true"></canvas>
-      <img class="xj-fallback" id="xjFallback" src="assets/img/xj1.webp" alt="Sunset light falling in columns over the Tianshan range and a reservoir" decoding="async">
-      <div class="xj-pin-text" id="xjPinText">
-        <span lang="zh">天山日暮</span>
-        <p>the sun files its report through the cloud</p>
+    <footer class="end">
+      <div class="end__sign"><img class="end__img" src="assets/photos/cq6-960.webp" alt="A neon sign that reads “The End”" loading="lazy" decoding="async"></div>
+      <div class="end__row">
+        <span>Wphotographs © <span class="end__year">2026</span></span>
+        <nav class="end__pages" aria-label="Pages"><a href="about.html" data-link data-en="About">About</a><a href="news.html" data-link data-en="Newsroom">Newsroom</a></nav>
+        <button type="button" class="end__top">Back to the start ↑</button>
       </div>
-      <div class="xj-pin-meta">
-        <span>43.9°N 81.3°E — 伊犁 · Ili</span>
-        <span class="xj-pin-hint">keep scrolling — the range runs west</span>
-      </div>
-    </div>
-
-    <div class="marquee" id="marquee1" aria-hidden="true">
-      <div class="marquee-track"><span>天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — 安集海 — ANJIHAI — 天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — </span><span>天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — 安集海 — ANJIHAI — 天山 — TIANSHAN — 赛里木湖 — SAILIMU — 伊犁河谷 — ILI VALLEY — </span></div>
-    </div>
-
-    <!-- Three plates. Unlike the cropped .ph.full frames elsewhere on the
-         page, these show each photograph WHOLE — the cap adapts to the
-         viewport, so nothing is cut off on any screen. See .xj-plate. -->
-    <figure class="ph xj-plate xj-portrait" data-cursor="view">
-      <div class="ph-frame"><img src="assets/img/xj8.webp" width="1833" height="2750" alt="A turquoise reservoir in a canyon under alpenglow peaks" loading="lazy" decoding="async"></div>
-      <figcaption><span>№07</span>the reservoir keeps a turquoise nobody mixed</figcaption>
-    </figure>
-
-    <blockquote class="pull" data-anim="words"><span lang="zh">山高，云低，光自有征途。</span><br>High mountains, low cloud — the light finds its own way down.</blockquote>
-
-    <figure class="ph xj-plate xj-landscape" data-cursor="view">
-      <div class="ph-frame"><img src="assets/img/xj3.webp" width="2800" height="1867" alt="Glaciated peaks above spruce forest and a braided river bed" loading="lazy" decoding="async"></div>
-      <figcaption><span>№08</span>雪岭 — the snow line, drawn once and never revised</figcaption>
-    </figure>
-
-    <figure class="ph xj-plate xj-pano" data-cursor="view">
-      <div class="ph-frame"><img src="assets/img/xj9.webp" width="2600" height="1114" alt="Bay horses walking across a desaturated valley below dark forest" loading="lazy" decoding="async"></div>
-      <figcaption><span>№09</span>马群 — the only colour left in the valley, walking</figcaption>
-    </figure>
-
-    <a class="album-link" href="album.html?a=xinjiang" data-cursor="view">
-      <em>Open the XINJIANG album</em>
-      <small>11 photographs <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= ALBUM 04 — JAPAN ======================= -->
-  <section class="chapter" id="japan">
-    <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 04</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">日本紀行</span>
-      <h2 class="chapter-title" data-anim="chars">Ten Thousand<br>Gates</h2>
-      <p class="chapter-sub" data-anim="fade">Japan — a country that files its miracles neatly: one volcano, ten thousand torii, trains on time.</p>
-    </header>
-
-    <!-- aperture reveal -->
-    <div class="aperture-pin" id="aperturePin">
-      <div class="aperture-frame" id="apertureFrame">
-        <img src="assets/img/fuj1.webp" alt="Mount Fuji beyond a wooden jetty and a white boat" decoding="async">
-      </div>
-      <div class="aperture-text" id="apertureText">
-        <span lang="zh">富士山</span>
-        <p>Mt Fuji and Lake Kawaguchi</p>
-      </div>
-    </div>
-
-    <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/fuji1.webp" alt="A red torii before the distant Fuji" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№10</span>the gate and the mountain agree on red</figcaption>
-    </figure>
-
-    <div class="duo">
-      <figure class="ph tall" data-speed="0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/kyo3.webp" alt="Kyoto framed by the dark beams of Kiyomizu" loading="lazy" decoding="async"></div>
-        <figcaption><span>№11</span>清水寺 — the city kept in a wooden frame</figcaption>
-      </figure>
-      <figure class="ph tall push-down" data-speed="-0.12" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/osa.webp" alt="A narrow Osaka alley at night" loading="lazy" decoding="async"></div>
-        <figcaption><span>№12</span>an alley with its own opinion of light</figcaption>
-      </figure>
-    </div>
-
-    <a class="album-link" href="album.html?a=japan" data-cursor="view">
-      <em>Open the JAPAN album</em>
-      <small>14 photographs <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= ALBUM 05 — BEIJING ======================= -->
-  <section class="chapter" id="beijing">
-    <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 05</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">颐和园</span>
-      <h2 class="chapter-title" data-anim="chars">The Garden of<br>Clear Ripples</h2>
-      <p class="chapter-sub" data-anim="fade">Beijing — the Summer Palace at closing hour, when the lake gets the light to itself.</p>
-    </header>
-
-    <div class="grid">
-      <figure class="ph w5 tall" data-speed="0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/yih1.webp" alt="The Tower of Buddhist Incense above the trees" loading="lazy" decoding="async"></div>
-        <figcaption><span>№13</span>佛香阁 — the tower above the green</figcaption>
-      </figure>
-      <figure class="ph w7 push-down" data-speed="-0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/yih6.webp" alt="A painted paifang framing the tower" loading="lazy" decoding="async"></div>
-        <figcaption><span>№14</span>Sunset along with Willow</figcaption>
-      </figure>
-    </div>
-
-    <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/yih3.webp" alt="Autumn garden reflected in dark lacquer windows" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№15</span>星拱瑶枢 — autumn, reflected in lacquer and glass</figcaption>
-    </figure>
-
-    <a class="album-link" href="album.html?a=beijing" data-cursor="view">
-      <em>Open the BEIJING album</em>
-      <small>8 photographs <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= ALBUM 06 — DATONG ======================= -->
-  <section class="chapter" id="datong">
-    <header class="chapter-head">
-      <span class="chapter-no" data-anim="fade">album 06</span>
-      <span class="chapter-cn" lang="zh" data-anim="fade">大同</span>
-      <h2 class="chapter-title" data-anim="chars">Within<br>the Walls</h2>
-      <p class="chapter-sub" data-anim="fade">Datong — an old northern capital, where the temples keep their shadow and a thousand years of gilding waits in the dark.</p>
-    </header>
-
-    <!-- pinned roofs → inner hall reveal -->
-    <div class="datong-pin" id="datongPin">
-      <div class="datong-sky"><img src="assets/img/datong7.webp" alt="Painted clay figures gilded in a darkened temple hall in Datong" id="datongSky" decoding="async"></div>
-      <div class="datong-shadow" id="datongShadow"><img src="assets/img/datong1.webp" alt="Temple roofs stacked against a hard sky in Datong" decoding="async"></div>
-      <div class="datong-pin-text" id="datongPinText">
-        <span lang="zh">城内 · 殿中</span>
-        <p>past the roofs, the gold keeps its own dark</p>
-      </div>
-    </div>
-
-    <div class="grid">
-      <figure class="ph w5 tall" data-speed="0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/datong2.webp" alt="Temple eaves stacked against the sky at Huayan Temple, Datong" loading="lazy" decoding="async"></div>
-        <figcaption><span>№16</span>华严寺 — eaves folded against a hard sky</figcaption>
-      </figure>
-      <figure class="ph w7 push-down" data-speed="-0.1" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/datong5.webp" alt="Three gilded Buddha statues in a darkened temple hall" loading="lazy" decoding="async"></div>
-        <figcaption><span>№17</span>薄伽教藏殿 — three Buddhas keep the gold in the dark</figcaption>
-      </figure>
-    </div>
-
-    <figure class="ph full" data-cursor="view">
-      <div class="ph-frame deep"><img src="assets/img/datong4.webp" alt="The great hall of a Datong temple under heavy weather" loading="lazy" data-deep decoding="async"></div>
-      <figcaption><span>№18</span>the great hall holds its breath under weather</figcaption>
-    </figure>
-
-    <a class="album-link" href="datong.html" data-cursor="view">
-      <em>Open the DATONG album</em>
-      <small>12 photographs <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= ABOUT ======================= -->
-  <section class="about" id="about">
-    <div class="about-inner">
-      <figure class="about-photo" data-cursor="view">
-        <div class="ph-frame"><img src="assets/img/me.webp" alt="William, in front of Jade Dragon Snow Mountain" loading="lazy" decoding="async"></div>
-      </figure>
-      <div class="about-text">
-        <span class="chapter-no" data-anim="fade">afterword · 后记</span>
-        <h2 data-anim="chars">I press the shutter, the light<br>does the rest.</h2>
-        <p data-anim="fade">I build this gallery as a personal archive for travel photography, field notes, and visual experiments.</p>
-        <p class="about-meta" data-anim="fade">青海 · 丽江 · 重庆 · 京都 · 東京 · 大阪 · 北京 · 大同</p>
-      </div>
-    </div>
-    <a class="album-link about-link" href="about.html" data-cursor="view">
-      <em>More about William</em>
-      <small>bio · gear · contact <span class="album-arrow">→</span></small>
-    </a>
-  </section>
-
-  <!-- ======================= THE END ======================= -->
-  <footer class="end" id="end" data-theme-dark>
-    <div class="end-img"><img src="assets/img/cq6.webp" alt="THE END, in white on black" loading="lazy" id="endImg" decoding="async"></div>
-    <div class="end-content">
-      <p class="end-note">To be continued — <span lang="zh">谢谢</span></p>
-      <button class="end-top" id="backTop" data-cursor="view">back to the beginning ↑</button>
-      <a class="end-news" href="news.html" data-cursor="view">news &amp; updates →</a>
-      <div class="end-credits">
-        <span>photographed &amp; kept by <b>William</b></span>
-        <span lang="zh">W行记 — 山河城海，皆为路过，唯光永存。</span>
-        <span>© 2026 · built with love &amp; patience · All Rights Reserved</span>
-      </div>
-    </div>
-  </footer>
-
-</main>
-
-<!-- ======================= LIGHTBOX ======================= -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <div class="lightbox-veil" id="lightboxVeil"></div>
-  <img class="lightbox-img" id="lightboxImg" src="" alt="" decoding="async">
-  <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
-  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
-</div>
-
-<script src="libs/gsap.min.js?v=2"></script>
-<script src="libs/ScrollTrigger.min.js?v=2"></script>
-<script src="libs/lenis.min.js?v=2"></script>
-<script src="js/webgl.js?v=2"></script>
-<script src="js/main.js?v=6"></script>
-<script src="js/xinjiang.js?v=9"></script>
-<script src="js/transition.js?v=3"></script>
-<script src="js/focus.js?v=3"></script>
-<script src="js/sound.js?v=7"></script>
+    </footer>
+  </main>
 </body>
 </html>

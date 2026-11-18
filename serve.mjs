@@ -1,38 +1,34 @@
-// Minimal static file server for local preview: node serve.mjs
+// Tiny static server for local preview: `node serve.mjs` → http://localhost:4173
+// (ES modules and WebGL textures need http://, not file://.)
 import { createServer } from 'node:http';
-import { readFile } from 'node:fs/promises';
+import { readFile, stat } from 'node:fs/promises';
 import { extname, join, normalize } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const ROOT = new URL('.', import.meta.url).pathname;
-const PORT = 4173;
-const MIME = {
-  '.html': 'text/html; charset=utf-8',
-  '.css': 'text/css; charset=utf-8',
-  '.js': 'text/javascript; charset=utf-8',
-  '.mjs': 'text/javascript; charset=utf-8',
-  '.webp': 'image/webp',
-  '.jpg': 'image/jpeg',
-  '.jpeg': 'image/jpeg',
-  '.png': 'image/png',
-  '.woff2': 'font/woff2',
-  '.json': 'application/json',
-  '.svg': 'image/svg+xml',
-  '.ico': 'image/x-icon',
+const root = fileURLToPath(new URL('.', import.meta.url));
+const port = Number(process.env.PORT) || 4173;
+const types = {
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
+  '.css': 'text/css; charset=utf-8', '.json': 'application/json', '.webp': 'image/webp', '.png': 'image/png',
+  '.jpg': 'image/jpeg', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.ico': 'image/x-icon',
 };
 
 createServer(async (req, res) => {
   try {
     let path = decodeURIComponent(new URL(req.url, 'http://x').pathname);
     if (path.endsWith('/')) path += 'index.html';
-    const file = normalize(join(ROOT, path));
-    if (!file.startsWith(normalize(ROOT))) { res.writeHead(403); res.end(); return; }
-    const data = await readFile(file);
+    const file = normalize(join(root, path));
+    if (!file.startsWith(root)) { res.writeHead(403).end(); return; }
+    const s = await stat(file);
+    if (!s.isFile()) throw new Error('not a file');
+    const body = await readFile(file);
+    const ext = extname(file);
     res.writeHead(200, {
-      'Content-Type': MIME[extname(file).toLowerCase()] || 'application/octet-stream',
-      'Cache-Control': 'no-cache',
+      'Content-Type': types[ext] || 'application/octet-stream',
+      'Cache-Control': ext === '.webp' || ext === '.woff2' ? 'public, max-age=86400' : 'no-cache',
     });
-    res.end(data);
+    res.end(body);
   } catch {
-    res.writeHead(404); res.end('not found');
+    res.writeHead(404, { 'Content-Type': 'text/plain' }).end('Not found');
   }
-}).listen(PORT, '127.0.0.1', () => console.log(`serving on http://127.0.0.1:${PORT}`));
+}).listen(port, () => console.log(`Wphotographs → http://localhost:${port}`));

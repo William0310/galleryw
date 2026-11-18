@@ -1,46 +1,57 @@
-# 行记 — A Travelogue in Light
+# Wphotographs
 
-A scroll-driven photographic journey built from William's landscape photography,
-organized into six albums: Qinghai, Lijiang, Chongqing, Japan, Beijing, and
-Shot on iPhone. The homepage shows 3–4 photographs per album with the signature
-scroll scenes; each album page (`album.html?a=<slug>`) holds the full set.
-
-## Run it
+A static photography site, no build step. Seven albums, each with its own look and its own WebGL hero.
 
 ```bash
-node serve.mjs
-# → http://127.0.0.1:4173
+node serve.mjs        # → http://localhost:4173  (needs http://, file:// won't load ES modules)
 ```
 
-Any static file server works (the site is plain HTML/CSS/JS, no build step) —
-just make sure `.webp` and `.woff2` get correct MIME types.
+## Admin (editing text)
 
-## What's inside
+Double-click **Wphoto Admin.command** (or run `node admin/server.mjs`). It opens
+http://localhost:4180/admin/ where you can edit:
 
-| Piece | How it works |
-|---|---|
-| WebGL hero | Raw WebGL flowmap: pointer/touch velocity is splatted into a ping-pong buffer that displaces and chromatically splits the photo (`js/webgl.js`, no three.js) |
-| Smooth scroll | Lenis, driven by GSAP's ticker |
-| Scroll scenes | GSAP ScrollTrigger — pinned panorama pan, Lijiang zoom-reveal, Fuji clip-path aperture, scroll-reactive marquee |
-| Albums | `js/albums.js` is the single manifest (photos, captions, layout hints); `album.html` renders any album from it |
-| Theme | Body morphs light ⇄ dark as you enter night chapters (Chongqing, myth scroll, the end) |
-| Micro-interactions | Custom cursor, magnetic menu with image previews, FLIP-style lightbox, char/word split text reveals |
-| Mobile | All scenes run on touch; ripple responds to drag; layouts collapse to editorial 2-col grids; `svh` units for iOS chrome |
+- every album's names, titles, coordinates and the text on its page (introductions, quotes, chapters)
+- every photo's Chinese title, English title and place
+- the About page (spec sheet rows, manifesto, contact text)
+- the Newsroom (new post, edit, delete)
 
-Libraries are vendored in `libs/` (GSAP 3.13, ScrollTrigger, Lenis 1.3) and
-fonts in `fonts/` (Cormorant Garamond, Space Grotesk) — the site works fully
-offline. Optimized images live in `assets/img/`; the original photographs
-remain untouched in the repository root.
+**Save** (⌘S) writes `js/data/content.js`; the site reads it directly, so reload any page to see
+the change (the admin's **Preview** pane does this for you). Every save keeps a backup in
+`admin/backups/` (last 40; not committed to git). The admin only runs on your own computer —
+on the public site `/admin/` can't save anything and is excluded in robots.txt.
 
-## Structure
+## Layout
 
-```
-index.html        homepage — hero, album previews, afterword, the end
-album.html        album page shell (album.html?a=qinghai … ?a=iphone)
-css/style.css     design system + sections
-js/webgl.js       hero flowmap shader
-js/main.js        homepage choreography
-js/albums.js      album manifest (photos, captions, layouts)
-js/album.js       album page renderer + interactions
-serve.mjs         tiny static server for local preview
-```
+| Path | What |
+| --- | --- |
+| `index.html`, `album.html` | Home and the album template (`album.html?a=qinghai`, `lijiang`, `xinjiang`, `japan`, `beijing`, `datong`, `misc`) |
+| `js/data/content.js` | **All content**: captions, album text and layout blocks, About, Newsroom. Edited by the admin; also plain JSON you can edit by hand. Move a photo between albums by moving its id in the `blocks`. |
+| `js/data/albums.js`, `news.js` | Small helpers that read `content.js` |
+| `about.html`, `news.html` | About page (with the Formspree contact form) and Newsroom |
+| `js/data/meta.js` | Generated: sizes, blur placeholders, colours for every photo |
+| `js/gl/world.js` | Home WebGL layer: every home photo is a plane revealed with its album's effect (mirror, frost, slit, ink, scroll, candle, neon) |
+| `js/gl/album-hero.js` | Per-album hero shaders on album pages |
+| `js/album/` | Block renderer and ScrollTrigger choreography |
+| `css/album.css` | Shared blocks, then one `.t-<album>` theme each |
+| `assets/img/` | Your originals (untouched) |
+| `assets/photos/` | Responsive variants generated from the originals |
+
+## Adding or changing photos
+
+1. Put the file in `assets/img/` (webp).
+2. Regenerate variants + metadata (needs Pillow: `pip install Pillow`):
+   `python3 tools/process_images.py`
+3. Place the id in a block in `js/data/content.js`, then give it a caption in the admin.
+   The three frames each album shows on the home page are its `picks` (the first must be the
+   album `cover`, so entering from the home page lands on the same frame); its home-page
+   colours are `palette`.
+
+Block types: `intro`, `full`, `row`, `pano` (pinned horizontal scroll), `strip`, `solo`, `chapter`
+(optional `palette` to shift page colours), `quote`, `marquee`, `counter`, `grid`, `sequence`.
+
+## three.js
+
+Pages load `vendor/three.min.js`, a tree-shaken subset. If you use a new three.js class, add it to
+`tools/three-entry.js` and rebuild:
+`npx esbuild tools/three-entry.js --bundle --minify --format=esm --outfile=vendor/three.min.js`

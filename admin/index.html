@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Wphoto Admin</title>
+  <link rel="icon" href="../assets/img/favicon.png">
+  <link rel="stylesheet" href="admin.css">
+  <script type="module" src="admin.js"></script>
+</head>
+<body>
+  <aside class="side">
+    <div class="side__brand">Wphoto <span>Admin</span></div>
+    <nav class="side__nav" aria-label="Sections"></nav>
+    <div class="side__foot">
+      <button type="button" class="btn btn--primary" data-save disabled>Save <kbd>⌘S</kbd></button>
+      <p class="side__status" data-status>Loading…</p>
+      <a class="side__link" href="../index.html" target="_blank" rel="noopener">Open site ↗</a>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="main__head">
+      <div>
+        <p class="main__kicker" data-kicker></p>
+        <h1 class="main__title" data-title></h1>
+      </div>
+      <div class="main__actions">
+        <a class="btn" data-view target="_blank" rel="noopener">View page ↗</a>
+        <button type="button" class="btn" data-toggle-preview aria-pressed="false">Preview</button>
+      </div>
+    </header>
+    <div class="main__body" data-body></div>
+  </main>
+
+  <section class="preview" data-preview hidden>
+    <div class="preview__bar">
+      <span data-preview-url></span>
+      <span class="preview__sizes">
+        <button type="button" data-size="phone" aria-label="Phone width">Phone</button>
+        <button type="button" data-size="full" aria-label="Full width">Wide</button>
+        <button type="button" data-reload aria-label="Reload preview">↻</button>
+        <button type="button" data-close-preview aria-label="Close preview">✕</button>
+      </span>
+    </div>
+    <div class="preview__frame"><iframe title="Page preview" data-frame></iframe></div>
+  </section>
+
+  <div class="toast" data-toast role="status" aria-live="polite"></div>
+</body>
+</html>

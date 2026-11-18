@@ -1,184 +1,96 @@
-/* ==========================================================
-   行记 — album page
-   Renders one album from the manifest in js/albums.js
-   ========================================================== */
-(function () {
-  'use strict';
+import { albums, albumBySlug, photoIds } from './data/albums.js';
+import { initScroll, gsap, ScrollTrigger, scrollToTop } from './core/scroll.js';
+import { initNav } from './core/nav.js';
+import { initTransitions } from './core/transition.js';
+import { createLightbox } from './core/lightbox.js';
+import { pick, heroPx } from './core/img.js';
+import { renderHero, renderBlocks, renderNext, renderFoot } from './album/render.js';
+import { heroMotion, blockMotion } from './album/motion.js';
+import { AlbumHero } from './gl/album-hero.js';
 
-  gsap.registerPlugin(ScrollTrigger);
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+const slug = new URLSearchParams(location.search).get('a');
+const album = albumBySlug[slug] || albums[0];
 
-  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const MOBILE = window.innerWidth < 821;
+document.title = `${album.name} ${album.zh} — Wphotographs`;
+document.body.classList.add(`t-${album.slug}`);
+document.querySelector('meta[name="theme-color"]')?.setAttribute('content', getComputedStyle(document.body).getPropertyValue('--bg').trim());
 
-  /* ---------- resolve album ---------- */
-  const slug = new URLSearchParams(location.search).get('a');
-  const album = window.ALBUMS[slug] || window.ALBUMS[window.ALBUM_ORDER[0]];
-  const key = window.ALBUMS[slug] ? slug : window.ALBUM_ORDER[0];
+initScroll();
+const arrival = initTransitions();
+const seamless = !!(arrival && arrival.silent);
+if (seamless) document.documentElement.classList.add('is-seamless');
+initNav({ current: album });
 
-  document.title = `WPHOT — ${album.title} · ${album.cn}`;
-  if (album.dark) document.body.classList.add('theme-dark');
-  // lets an album carry its own paper colour (see body.album-xinjiang)
-  document.body.classList.add('album-' + key);
+const main = document.querySelector('main');
+const hero = renderHero(album);
+main.append(hero, renderBlocks(album), renderNext(album));
+document.body.append(renderFoot());
 
-  /* ---------- head ---------- */
-  document.getElementById('albumNo').textContent = `album ${album.no} · ${album.photos.length} photographs`;
-  document.getElementById('albumCn').textContent = album.cn;
-  document.getElementById('albumTitle').textContent = album.title;
-  document.getElementById('albumSub').textContent = album.sub;
-  document.getElementById('albumCount').textContent = `${album.photos.length} photographs · scroll`;
+// Swap the hero placeholder to a real image right away (GL takes over when ready).
+const fallback = hero.querySelector('.hero__fallback');
+const full = new Image();
+full.decoding = 'async';
+full.src = pick(album.cover, heroPx());
+full.decode().then(() => { fallback.src = full.src; fallback.classList.add('is-sharp'); }).catch(() => {});
 
-  const next = window.ALBUM_ORDER[(window.ALBUM_ORDER.indexOf(key) + 1) % window.ALBUM_ORDER.length];
-  const nextAlbum = window.ALBUMS[next];
-  const nextLink = document.getElementById('nextLink');
-  nextLink.href = `album.html?a=${next}`;
-  nextLink.innerHTML = `next album — <span lang="zh">${nextAlbum.cn}</span> <b>${nextAlbum.title}</b> →`;
-
-  /* ---------- grid ---------- */
-  const grid = document.getElementById('albumGrid');
-  const frag = document.createDocumentFragment();
-  album.photos.forEach((p, i) => {
-    const fig = document.createElement('figure');
-    fig.className = `ph al-${p.l}`;
-    fig.dataset.cursor = 'view';
-    if (p.l === 'std' || p.l === 'tall') fig.dataset.speed = (i % 2 ? -0.08 : 0.08).toString();
-    fig.innerHTML = `
-      <div class="ph-frame${p.l === 'full' ? ' deep' : ''}">
-        <img src="${p.src}" alt="${p.cap.replace(/"/g, '&quot;')}" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async"${p.l === 'full' ? ' data-deep' : ''}>
-      </div>
-      <figcaption><span>№${String(i + 1).padStart(2, '0')}</span>${p.cap}</figcaption>`;
-    frag.appendChild(fig);
+// --- WebGL hero -------------------------------------------------------------------------
+const gl = new AlbumHero(hero.querySelector('.hero__media'), album);
+// Arriving from the home page's full-screen cover into a framed hero (Japan's "print on
+// paper"): start the frame full-bleed and let it settle into its margins.
+function settleFrame() {
+  const media = hero.querySelector('.hero__media');
+  const cs = getComputedStyle(media);
+  const to = { top: cs.top, right: cs.right, bottom: cs.bottom, left: cs.left };
+  if (Object.values(to).every((v) => parseFloat(v) === 0)) return;
+  gsap.fromTo(media, { top: 0, right: 0, bottom: 0, left: 0 }, {
+    ...to, duration: 1.5, delay: 0.2, ease: 'expo.inOut',
+    onUpdate: () => gl.ok && gl.resize(),
+    onComplete: () => { gsap.set(media, { clearProps: 'top,right,bottom,left' }); gl.ok && gl.resize(); },
   });
-  grid.appendChild(frag);
+}
+if (seamless) settleFrame();
 
-  /* ---------- smooth scroll ---------- */
-  let lenis = null;
-  if (!REDUCED) {
-    lenis = new Lenis({ duration: 1.25, smoothWheel: true });
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add((t) => lenis.raf(t * 1000));
-    gsap.ticker.lagSmoothing(0);
-  }
+let started = false;
+const start = () => {
+  if (started) return;
+  started = true;
+  gl.intro(0.1, seamless);
+  heroMotion(hero, gl);
+};
+if (gl.ok) {
+  gl.load().then(() => { hero.classList.add('gl-ready'); start(); }).catch((e) => { console.warn(e); start(); });
+  setTimeout(start, 4000); // never block the page on a slow texture
+} else start();
 
-  /* ---------- progress ---------- */
-  gsap.to('#progressBar', {
-    scaleX: 1, ease: 'none',
-    scrollTrigger: { trigger: document.body, start: 'top top', end: 'max', scrub: 0.4 },
-  });
+gsap.ticker.add((t, dt) => gl.ok && gl.render(t, dt / 1000));
 
-  /* ---------- head intro ---------- */
-  if (!REDUCED) {
-    gsap.from('.album-head > *', { y: 40, opacity: 0, duration: 1.2, ease: 'expo.out', stagger: 0.09, delay: 0.15 });
-  }
+// --- blocks -------------------------------------------------------------------------------
+blockMotion(main, album);
 
-  /* ---------- cursor ---------- */
-  const cursor = document.getElementById('cursor');
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const dot = cursor.querySelector('.cursor-dot');
-    const ring = cursor.querySelector('.cursor-ring');
-    const label = cursor.querySelector('.cursor-label');
-    const dotX = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power2.out' });
-    const dotY = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power2.out' });
-    const ringX = gsap.quickTo(ring, 'x', { duration: 0.45, ease: 'power3.out' });
-    const ringY = gsap.quickTo(ring, 'y', { duration: 0.45, ease: 'power3.out' });
-    window.addEventListener('mousemove', (e) => {
-      dotX(e.clientX); dotY(e.clientY); ringX(e.clientX); ringY(e.clientY);
-    }, { passive: true });
-    document.addEventListener('mouseover', (e) => {
-      const t = e.target.closest('[data-cursor], a, button');
-      if (t) {
-        cursor.classList.add('is-view');
-        label.textContent = t.dataset.cursor === 'view' ? 'view' : '';
-      } else {
-        cursor.classList.remove('is-view');
-      }
-    });
-  }
+// --- lightbox: every frame on the page in reading order ---------------------------------
+const lb = createLightbox();
+const ids = photoIds(album);
+main.addEventListener('click', (e) => {
+  const opener = e.target.closest('[data-open]');
+  const fig = e.target.closest('.ph');
+  if (e.target.closest('a')) return;
+  const id = opener ? opener.dataset.open : fig?.dataset.id;
+  if (!id) return;
+  lb.open(ids, Math.max(0, ids.indexOf(id)), opener ? null : fig.querySelector('.ph__frame'));
+});
 
-  /* ---------- reveals + parallax ---------- */
-  if (!REDUCED) {
-    document.querySelectorAll('.ph .ph-frame').forEach((frame) => {
-      const img = frame.querySelector('img');
-      gsap.set(frame, { clipPath: 'inset(100% 0% 0% 0%)' });
-      gsap.set(img, { scale: 1.32 });
-      ScrollTrigger.create({
-        trigger: frame, start: 'top 88%', once: true,
-        onEnter: () => {
-          gsap.to(frame, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.35, ease: 'expo.inOut' });
-          gsap.to(img, { scale: 1, duration: 1.8, ease: 'expo.out', delay: 0.1 });
-        },
-      });
-    });
-    document.querySelectorAll('.ph-frame.deep img').forEach((img) => {
-      gsap.fromTo(img, { yPercent: -11 }, {
-        yPercent: 0, ease: 'none',
-        scrollTrigger: { trigger: img.closest('.ph-frame'), start: 'top bottom', end: 'bottom top', scrub: true },
-      });
-    });
-    const PX = MOBILE ? 0.5 : 1;
-    document.querySelectorAll('[data-speed]').forEach((el) => {
-      const speed = parseFloat(el.dataset.speed) * PX;
-      gsap.fromTo(el, { y: speed * 220 }, {
-        y: speed * -220, ease: 'none',
-        scrollTrigger: { trigger: el, start: 'top bottom', end: 'bottom top', scrub: true },
-      });
-    });
-  }
+// --- scroll progress + back to top --------------------------------------------------------
+const bar = document.createElement('div');
+bar.className = 'progress';
+bar.innerHTML = '<i></i>';
+document.body.append(bar);
+ScrollTrigger.create({ start: 0, end: 'max', onUpdate: (st) => { bar.firstChild.style.transform = `scaleY(${st.progress})`; } });
+document.querySelector('.foot__top')?.addEventListener('click', () => scrollToTop());
 
-  /* ---------- lightbox ---------- */
-  const lightbox = document.getElementById('lightbox');
-  const lbImg = document.getElementById('lightboxImg');
-  const lbVeil = document.getElementById('lightboxVeil');
-  const lbCap = document.getElementById('lightboxCap');
-  const lbClose = document.getElementById('lightboxClose');
-  let lbOpen = false;
+// Layout can shift when web fonts arrive; re-measure pins once everything settles.
+document.fonts?.ready.then(() => ScrollTrigger.refresh());
+window.addEventListener('load', () => ScrollTrigger.refresh());
+document.addEventListener('wp:restored', () => ScrollTrigger.refresh());
 
-  function openLightbox(img, caption) {
-    if (lbOpen) return;
-    lbOpen = true;
-    const rect = img.getBoundingClientRect();
-    lbImg.src = img.currentSrc || img.src;
-    lbCap.textContent = caption || '';
-    lightbox.classList.add('is-open');
-    if (lenis) lenis.stop();
-    const natW = img.naturalWidth || rect.width;
-    const natH = img.naturalHeight || rect.height;
-    const margin = Math.min(window.innerWidth, window.innerHeight) * 0.06;
-    const maxW = window.innerWidth - margin * 2;
-    const maxH = window.innerHeight - margin * 2 - 40;
-    const ratio = Math.min(maxW / natW, maxH / natH);
-    const tw = natW * ratio, th = natH * ratio;
-    const tx = (window.innerWidth - tw) / 2, ty = (window.innerHeight - th - 30) / 2;
-    gsap.set(lbImg, { left: rect.left, top: rect.top, width: rect.width, height: rect.height });
-    gsap.to(lbVeil, { opacity: 1, duration: 0.45, ease: 'power2.out' });
-    gsap.to(lbImg, { left: tx, top: ty, width: tw, height: th, duration: 0.75, ease: 'expo.inOut' });
-    gsap.to([lbCap, lbClose], { opacity: 1, duration: 0.4, delay: 0.4 });
-  }
-
-  function closeLightbox() {
-    if (!lbOpen) return;
-    lbOpen = false;
-    gsap.to([lbCap, lbClose], { opacity: 0, duration: 0.2 });
-    gsap.to(lbImg, { opacity: 0, scale: 0.96, duration: 0.4, ease: 'power2.in' });
-    gsap.to(lbVeil, {
-      opacity: 0, duration: 0.5, delay: 0.1,
-      onComplete: () => {
-        lightbox.classList.remove('is-open');
-        gsap.set(lbImg, { opacity: 1, scale: 1 });
-        if (lenis) lenis.start();
-      },
-    });
-  }
-
-  grid.addEventListener('click', (e) => {
-    const img = e.target.closest('img');
-    if (!img) return;
-    const cap = img.closest('figure')?.querySelector('figcaption')?.textContent.trim() || '';
-    openLightbox(img, cap);
-  });
-  lbVeil.addEventListener('click', closeLightbox);
-  lbClose.addEventListener('click', closeLightbox);
-  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
-
-  window.addEventListener('load', () => ScrollTrigger.refresh());
-})();
+// Handle for debugging / performance checks from the console.
+window.__wp = { gl, lb, gsap, ScrollTrigger };

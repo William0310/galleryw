@@ -197,3 +197,4 @@ figure { margin: 0; }
 .terms h2 { margin: 0 0 10px; font-size: 1.05rem; letter-spacing: -.02em; }
 .terms ul { margin: 0 0 14px; padding-left: 1.2em; color: var(--muted); font-size: .93rem; display: flex; flex-direction: column; gap: 6px; }
 .terms .agree { border-top: 1px solid var(--line); padding-top: 16px; }
+.shot-sum { width: min(520px, 100%); border-radius: 26px; }

@@ -1,143 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>About William | WPHOTOGRAPHS</title>
-<meta name="description" content="About William, the photographer behind WPHOTOGRAPHS — a travelogue in light.">
-<link rel="icon" href="assets/img/favicon.png">
-<link rel="stylesheet" href="css/style.css?v=28">
-<link rel="stylesheet" href="css/about.css?v=2">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>About William — Wphotographs</title>
+  <meta name="description" content="About William, the photographer behind Wphotographs.">
+  <meta name="theme-color" content="#ebe8e1">
+  <link rel="icon" href="assets/img/favicon.png">
+  <link rel="preload" href="fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <script>try{var d=JSON.parse(sessionStorage.getItem('wp-curtain')||'null');if(d&&!d.silent)document.documentElement.classList.add('is-entering');}catch(e){}</script>
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
+  <script type="module" src="js/about.js"></script>
 </head>
-<body data-theme="light" class="album-body about-body-page">
+<body class="pg pg--about">
+  <main class="page">
+    <section class="ab-hero" aria-labelledby="ab-name">
+      <p class="pg-kicker" data-reveal data-text="kicker"></p>
+      <h1 class="ab-name" id="ab-name" data-text="name"></h1>
+      <figure class="ab-portrait">
+        <div class="ab-portrait__frame"><img src="assets/photos/me-960.webp" srcset="assets/photos/me-480.webp 480w, assets/photos/me-960.webp 960w, assets/img/me.webp 1254w" sizes="(max-width: 760px) 80vw, 34vw" alt="Portrait of the photographer at a desk, drawing" decoding="async"></div>
+        <figcaption data-text="portraitCaption"></figcaption>
+      </figure>
+      <p class="ab-lede" data-reveal data-text="lede"></p>
+    </section>
 
-<div class="grain" aria-hidden="true"></div>
+    <section class="ab-spec" aria-label="Details">
+      <header class="ab-spec__head" data-reveal><span>Spec sheet</span><span>№ 001</span></header>
+      <dl class="ab-spec__list"></dl>
+    </section>
 
-<div class="page-transition is-covering" id="pageTransition" aria-hidden="true"></div>
+    <section class="ab-manifesto" aria-label="Manifesto">
+      <p class="pg-kicker">Manifesto</p>
+      <p class="ab-manifesto__big" data-text="manifesto"></p>
+      <p class="ab-manifesto__sub" data-reveal data-text="manifestoSub"></p>
+    </section>
 
-<!-- ======================= CURSOR ======================= -->
-<div class="cursor" id="cursor" aria-hidden="true">
-  <div class="cursor-dot"></div>
-  <div class="cursor-ring"><span class="cursor-label"></span></div>
-</div>
+    <section class="ab-notice" aria-label="Usage reminder">
+      <div class="ab-notice__track" aria-hidden="true"><span data-text="notice" data-suffix=" · "></span><span data-text="notice" data-suffix=" · "></span></div>
+      <p class="ab-notice__copy" data-reveal data-text="noticeCopy"></p>
+    </section>
 
-<!-- ======================= PROGRESS ======================= -->
-<div class="progress" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
-
-<!-- ======================= HEADER ======================= -->
-<div class="site-head-blur" aria-hidden="true"></div>
-<header class="site-head">
-  <a class="brand" href="index.html">
-    <span class="brand-cn" lang="zh">WPHOT</span>
-    <span class="brand-en">a travelogue<br>By William</span>
-  </a>
-</header>
-
-<main class="album-page about-page">
-
-  <!-- ======================= ABOUT GRID ======================= -->
-  <section class="about-grid" aria-labelledby="about-title">
-    <figure class="ph-frame portrait-panel" data-cursor="view">
-      <img src="assets/img/me.webp" alt="Portrait of William" loading="eager" decoding="async">
-    </figure>
-
-    <div class="about-copy">
-      <span class="chapter-no" data-anim="fade">about the artist</span>
-      <h1 class="chapter-title" id="about-title" data-anim="chars">William</h1>
-      <p class="lede" data-anim="fade">I build this gallery as a personal archive for travel photography, field notes, and visual experiments.</p>
-
-      <div class="detail-grid" data-anim="fade">
-        <article class="detail-card">
-          <span>Base</span>
-          <p>China / USA</p>
-        </article>
-        <article class="detail-card">
-          <span>Cameras</span>
-          <p>Nikon Z9, Canon R5, Sony A7M IV, DJI Mini 3 Pro, iPhones</p>
-        </article>
-        <article class="detail-card">
-          <span>Site</span>
-          <p> HTML, CSS, and vanilla JavaScript</p>
-        </article>
-        <article class="detail-card">
-          <span>Focus</span>
-          <p>Photography, coding, travel, and driving</p>
-        </article>
-        <article class="detail-card">
-          <span>Fonts Applied</span>
-          <p>Cormorant Garamond, Space Grotesk, Songti SC, Noto Serif SC, Hiragino Mincho ProN, serif</p>
-        </article>
-        <article class="detail-card">
-          <span>Contact</span>
-          <p>support.wphoto@gmail.com or use the <a href="#contact">contact form</a>.</p>
-        </article>
+    <section class="ab-contact" id="contact" aria-labelledby="contact-title">
+      <div class="ab-contact__copy">
+        <p class="pg-kicker" data-reveal>Contact</p>
+        <h2 class="pg-h2" id="contact-title" data-text="contactTitle"></h2>
+        <p class="pg-body" data-reveal data-html="contactCopy"></p>
       </div>
-    </div>
-  </section>
-
-  <!-- ======================= MANIFESTO GRID ======================= -->
-  <section class="manifesto-grid" aria-label="Working notes">
-    <article class="manifesto-panel" data-anim="fade">
-      <p class="chapter-no">manifesto</p>
-      <h2 class="manifesto-title" data-anim="chars">I am whatever it takes.</h2>
-      <p class="manifesto-copy">Chasing the light that has traveled millions of years, just to kiss the earth for a second.</p>
-    </article>
-
-    <article class="manifesto-panel" data-anim="fade">
-      <p class="chapter-no">reminder</p>
-      <h2 class="manifesto-title" data-anim="chars">Do Not Download Or Share Without Permission.</h2>
-      <p class="manifesto-copy">Photography by William unless otherwise noted. Please do not download, repost, or use these images without asking first.</p>
-    </article>
-  </section>
-
-  <!-- ======================= OTHER PROJECT ======================= -->
-
-  <!-- ======================= CONTACT ======================= -->
-  <section class="about-contact" id="contact" aria-labelledby="contact-title">
-    <div class="about-contact__copy" data-anim="fade">
-      <p class="chapter-no">contact</p>
-      <h2 class="manifesto-title" id="contact-title" data-anim="chars">Send a note.</h2>
-      <p class="manifesto-copy">For photo permission requests, site feedback, collaboration notes, useful feature ideas, and more; leave a message here. Please make sure your contact info is correct or send me an email instead at <a href="mailto:support.wphoto@gmail.com">support.wphoto@gmail.com</a>.</p>
-    </div>
-
-    <form class="contact-form" action="https://formspree.io/f/xzdowldb" method="POST" data-contact-form>
-      <input type="hidden" name="_subject" value="New message from Wphotographs">
-      <input class="contact-form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-      <label class="contact-field">
-        <span>Name*</span>
-        <input type="text" name="name" autocomplete="name" maxlength="80" required>
-      </label>
-
-      <label class="contact-field">
-        <span>Contact info*</span>
-        <input type="text" name="contact_info" autocomplete="email" maxlength="160" placeholder="Email, social handle, or phone" required>
-      </label>
-
-      <label class="contact-field">
-        <span>Notes*</span>
-        <textarea name="notes" rows="7" minlength="10" maxlength="1600" required></textarea>
-      </label>
-
-      <div class="contact-form__footer">
-        <button class="album-link contact-submit" type="submit" data-contact-submit><em>Send message</em><span class="album-arrow">→</span></button>
-        <p class="contact-form__status" role="status" aria-live="polite" data-contact-status></p>
-      </div>
-    </form>
-  </section>
-
-  <footer class="album-foot about-foot">
-    <span class="album-foot-note" lang="zh">影VI — a travelogue by William</span>
-    <a class="album-home" href="index.html">↑ back to the journey</a>
-  </footer>
-</main>
-
-<script src="libs/gsap.min.js"></script>
-<script src="libs/ScrollTrigger.min.js"></script>
-<script src="libs/lenis.min.js"></script>
-<script src="js/about.js?v=2"></script>
-<script src="js/transition.js?v=3"></script>
-<script src="js/sound.js?v=7"></script>
-<script src="js/contact.js?v=2"></script>
+      <form class="form" action="https://formspree.io/f/xzdowldb" method="POST" data-contact-form novalidate>
+        <input type="hidden" name="_subject" value="New message from Wphotographs">
+        <input class="form__trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label class="field"><span>Name *</span><input type="text" name="name" autocomplete="name" maxlength="80" required></label>
+        <label class="field"><span>Contact info *</span><input type="text" name="contact_info" autocomplete="email" maxlength="160" placeholder="Email, social handle, or phone" required></label>
+        <label class="field field--area"><span>Notes *</span><textarea name="notes" rows="6" minlength="10" maxlength="1600" required></textarea></label>
+        <div class="form__foot">
+          <button class="pg-btn" type="submit" data-contact-submit><span>Send message</span><i>→</i></button>
+          <p class="form__status" role="status" aria-live="polite" data-contact-status></p>
+        </div>
+      </form>
+    </section>
+  </main>
 </body>
 </html>
