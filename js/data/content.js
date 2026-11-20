@@ -535,9 +535,9 @@ export default {
         "lijiang1"
       ],
       "palette": {
-        "bg": "#d8e3ee",
-        "ink": "#0b1f3a",
-        "accent": "#1f5fd1"
+        "bg": "#eef3f8",
+        "ink": "#0a1f3d",
+        "accent": "#2456d6"
       },
       "name": "Lijiang",
       "zh": "丽江",
@@ -1174,7 +1174,7 @@ export default {
         "Panorama viewer"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-7.webp?v=20261119-2039",
+        "src": "assets/posters/wphotographs-7.webp?v=20261119-2046",
         "caption": "VII — Transcendence"
       }
     },
@@ -1213,7 +1213,7 @@ export default {
         "Performance improvement"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-6.webp?v=20261119-2039",
+        "src": "assets/posters/wphotographs-6.webp?v=20261119-2046",
         "caption": "VI — Eternity"
       }
     },
@@ -1229,7 +1229,7 @@ export default {
         "Performance improvement"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-5.webp?v=20261119-2039",
+        "src": "assets/posters/wphotographs-5.webp?v=20261119-2046",
         "caption": "5.0 — The Silver Halide"
       }
     },
@@ -1279,7 +1279,7 @@ export default {
         "Photo viewer"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-4.webp?v=20261119-2039",
+        "src": "assets/posters/wphotographs-4.webp?v=20261119-2046",
         "caption": "4.0 — Timeless"
       }
     },
@@ -1322,7 +1322,7 @@ export default {
         "Rebuilt from scratch"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-3.webp?v=20261119-2039",
+        "src": "assets/posters/wphotographs-3.webp?v=20261119-2046",
         "caption": "3.0 — Clarity"
       }
     },
