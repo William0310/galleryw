@@ -14,7 +14,7 @@ import { THREE, createRenderer, loadTexture, glsl } from './common.js';
 import { env, damp } from '../core/env.js';
 import { gsap, scroll } from '../core/scroll.js';
 
-export const FX = { tile: 0, mirror: 1, frost: 2, slit: 3, ink: 4, scroll: 5, candle: 6, neon: 7 };
+export const FX = { tile: 0, mirror: 1, frost: 2, slit: 3, ink: 4, scroll: 5, candle: 6, neon: 7, develop: 8 };
 
 const vert = /* glsl */ `
   uniform float uVel, uHover, uExpand;
@@ -125,6 +125,13 @@ const frag = /* glsl */ `
       vec2 u2 = zuv + vec2(sh, 0.0);
       col = vec3(tex(u2 + vec2(c2, 0.0)).r, tex(u2).g, tex(u2 - vec2(c2, 0.0)).b);
       col *= 0.92 + 0.08 * sin(uv.y * 600.0);
+    } else if (fx == 8) {
+      // develop: a print surfacing in the darkroom tray — neutral, suits any photo
+      float t = n * 0.55 + (1.0 - uv.y) * 0.45;
+      a = wipe(t, r, 0.14);
+      col = tex(zuv);
+      float dev = smoothstep(0.0, 1.0, r);
+      col = mix(col * vec3(0.18, 0.16, 0.14), col, dev);
     } else {
       // hero tile: monochrome contact print until touched
       float t = n * 0.5 + (1.0 - uv.y) * 0.5;

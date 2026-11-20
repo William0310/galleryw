@@ -974,14 +974,14 @@ export default {
     {
       "slug": "misc",
       "picks": [
-        "chongqing1",
-        "cq2",
-        "cq4"
+        "jpg-44",
+        "fxn-2026-08-30-1413499e5d50dbe518",
+        "cq2"
       ],
       "palette": {
-        "bg": "#0d1119",
-        "ink": "#d8f3ff",
-        "accent": "#ff3b5c"
+        "bg": "#151517",
+        "ink": "#ecebe7",
+        "accent": "#d9a05b"
       },
       "name": "Miscellaneous",
       "short": "Misc.",
@@ -990,13 +990,13 @@ export default {
       "zhTitle": "他处",
       "coords": "29.56°N · 106.55°E",
       "note": "记录无名的瞬间",
-      "cover": "chongqing1",
+      "cover": "jpg-44",
       "focus": [
-        0.4,
-        0.5
+        0.5,
+        0.55
       ],
-      "fx": "neon",
-      "accent": "#ff3b5c",
+      "fx": "drift",
+      "accent": "#d9a05b",
       "blocks": [
         {
           "type": "intro",
@@ -1010,9 +1010,9 @@ export default {
           "zh": "夜",
           "en": "Night · Chongqing",
           "palette": {
-            "bg": "#05070b",
-            "fg": "#d8f3ff",
-            "muted": "#6d8796"
+            "bg": "#0f1013",
+            "fg": "#ecebe7",
+            "muted": "#8c8a85"
           }
         },
         {
@@ -1174,7 +1174,7 @@ export default {
         "Panorama viewer"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-7.webp?v=20261119-2046",
+        "src": "assets/posters/wphotographs-7.webp?v=20261119-2102",
         "caption": "VII — Transcendence"
       }
     },
@@ -1213,7 +1213,7 @@ export default {
         "Performance improvement"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-6.webp?v=20261119-2046",
+        "src": "assets/posters/wphotographs-6.webp?v=20261119-2102",
         "caption": "VI — Eternity"
       }
     },
@@ -1229,7 +1229,7 @@ export default {
         "Performance improvement"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-5.webp?v=20261119-2046",
+        "src": "assets/posters/wphotographs-5.webp?v=20261119-2102",
         "caption": "5.0 — The Silver Halide"
       }
     },
@@ -1279,7 +1279,7 @@ export default {
         "Photo viewer"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-4.webp?v=20261119-2046",
+        "src": "assets/posters/wphotographs-4.webp?v=20261119-2102",
         "caption": "4.0 — Timeless"
       }
     },
@@ -1322,7 +1322,7 @@ export default {
         "Rebuilt from scratch"
       ],
       "poster": {
-        "src": "assets/posters/wphotographs-3.webp?v=20261119-2046",
+        "src": "assets/posters/wphotographs-3.webp?v=20261119-2102",
         "caption": "3.0 — Clarity"
       }
     },

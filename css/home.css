@@ -71,7 +71,8 @@ html:not(.no-webgl) .tile { background: transparent; }
 .ch__cta:hover i { transform: translateX(6px); }
 
 /* ---------- 01 Qinghai: enormous type, a panorama crossing beneath it ---------- */
-.ch--qinghai .ch__word { left: 0; top: 30%; font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 125%; font-size: 21vw; letter-spacing: -0.04em; opacity: 0.92; }
+/* Hollow: keeps the plateau-sized scale without shouting over the photos and text. */
+.ch--qinghai .ch__word { left: 0; top: 30%; font-family: 'Archivo', var(--f-sans); font-weight: 800; font-stretch: 125%; font-size: 21vw; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1.2px color-mix(in srgb, var(--ink) 45%, transparent); }
 .ch--qinghai .ch__ph--a { right: 5vw; top: 11vh; width: 33vw; }
 .ch--qinghai .ch__ph--b { left: 4vw; top: 57vh; height: 32vh; aspect-ratio: auto; width: calc(32vh * var(--ar)); }
 .ch--qinghai .ch__ph--c { left: 35vw; top: 18vh; width: 19vw; }
@@ -79,7 +80,8 @@ html:not(.no-webgl) .tile { background: transparent; }
 .ch--qinghai .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 125%; text-transform: uppercase; font-size: clamp(2.2rem, 3.6vw, 3.8rem); letter-spacing: -0.03em; }
 
 /* ---------- 02 Lijiang: three columns climbing at different speeds -------------- */
-.ch--lijiang .ch__word { right: 3vw; top: 8vh; writing-mode: vertical-rl; font-family: var(--f-cjk-serif); font-weight: 600; font-size: 24vh; letter-spacing: 0.06em; color: var(--accent); opacity: 0.85; }
+/* Hairline sans instead of textbook Songti: light, airy, like thin mountain air. */
+.ch--lijiang .ch__word { right: 3vw; top: 8vh; writing-mode: vertical-rl; font-family: 'PingFang SC', 'Hiragino Sans GB', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif; font-weight: 100; font-size: 24vh; letter-spacing: 0.18em; color: var(--accent); opacity: 0.9; }
 .ch--lijiang .ch__ph--a { left: 4vw; top: 10vh; width: 30vw; }
 .ch--lijiang .ch__ph--b { left: 38vw; top: 6vh; width: 16vw; }
 .ch--lijiang .ch__ph--c { left: 52vw; top: 48vh; width: 28vw; }
@@ -126,14 +128,14 @@ html:not(.no-webgl) .tile { background: transparent; }
 .ch--datong .ch__zh { font-size: clamp(2.6rem, 4.6vw, 4.6rem); letter-spacing: 0.2em; }
 
 /* ---------- 07 Misc: neon night ----------------------------------------------------- */
-.ch--misc .ch__word { left: 0; top: 4vh; font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 75%; font-size: 22vw; color: transparent; -webkit-text-stroke: 1.5px var(--accent); text-shadow: 0 0 40px rgba(255, 59, 92, 0.35); opacity: 0.8; }
+.ch--misc .ch__word { left: 0; top: 4vh; font-family: 'Archivo', var(--f-sans); font-weight: 300; font-stretch: 100%; font-size: 21vw; letter-spacing: -0.04em; color: transparent; -webkit-text-stroke: 1px color-mix(in srgb, var(--ink) 35%, transparent); }
 .ch--misc .ch__ph--a { left: 24vw; top: 22vh; width: 50vw; }
 .ch--misc .ch__ph--b { left: 5vw; top: 30vh; width: 15vw; }
 .ch--misc .ch__ph--c { right: 5vw; top: 12vh; width: 15vw; }
 .ch--misc .ch__text { right: var(--pad); bottom: 6vh; width: min(24vw, 340px); }
 .ch--misc .ch__blurb { display: none; }
-.ch--misc .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 900; font-stretch: 75%; text-transform: uppercase; text-shadow: -0.03em 0 rgba(255, 59, 92, 0.8), 0.03em 0 rgba(34, 211, 238, 0.8); }
-.ch--misc .ch__cta { border-color: #22d3ee; color: #22d3ee; }
+.ch--misc .ch__en { font-family: 'Archivo', var(--f-sans); font-weight: 400; font-stretch: 100%; letter-spacing: -0.03em; }
+.ch--misc .ch__zh { color: var(--accent); }
 
 /* ---------- Route rail + phone chip -------------------------------------------------
    Collapsed it is only numbers + progress line (narrow enough that chapter text clears it).

@@ -32,7 +32,7 @@ const CH = {
   japan: { fx: FX.ink, word: '日本' },
   beijing: { fx: FX.scroll, word: '北京' },
   datong: { fx: FX.candle, word: '大同' },
-  misc: { fx: FX.neon, word: 'ELSEWHERE' },
+  misc: { fx: FX.develop, word: 'ELSEWHERE' },
 };
 
 const world = new World();

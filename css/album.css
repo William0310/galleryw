@@ -292,27 +292,15 @@
 .t-datong .b-full { padding: 10vh var(--pad); }
 .t-datong .b-row, .t-datong .b-grid { padding-block: 8vh; }
 
-/* ---------- 杂记 Misc — neon city ---------------------------------------------------- */
+/* ---------- 杂记 Misc — a neutral contact sheet: works for any mix of photographs -- */
 .t-misc {
-  --bg: #05070b; --fg: #d8f3ff; --muted: #6d8796; --accent: #ff3b5c;
-  --f-display: 'Archivo', var(--f-sans); --display-weight: 900; --display-stretch: 75%;
+  --bg: #151517; --fg: #ecebe7; --muted: #8c8a85; --accent: #d9a05b;
+  --f-display: 'Archivo', var(--f-sans); --display-weight: 300; --display-stretch: 100%;
 }
-.t-misc .hero__name { text-transform: uppercase; font-size: clamp(2.8rem, 10.4vw, 11.5rem); letter-spacing: -0.01em; text-shadow: -0.03em 0 rgba(255, 59, 92, 0.75), 0.03em 0 rgba(34, 211, 238, 0.75); }
-.t-misc .hero__zh { font-family: var(--f-mono); letter-spacing: 0.6em; color: #22d3ee; }
-.t-misc .hero__en { font-family: var(--f-mono); font-style: normal; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; }
-.t-misc .b-intro__lead { font-family: var(--f-mono); font-weight: 500; font-size: clamp(1.6rem, 4.4vw, 4.4rem); letter-spacing: 0; }
-.t-misc .b-intro__lead .sw__i { text-shadow: 0 0 18px rgba(34, 211, 238, 0.45); }
-.t-misc .b-intro__en { font-family: var(--f-mono); font-style: normal; color: var(--accent); font-size: clamp(1rem, 1.6vw, 1.4rem); }
-.t-misc .ph__t { font-family: var(--f-mono); color: #22d3ee; }
-.t-misc .next__name { text-transform: uppercase; }
-
-/* Portrait tablets: the sunset sequence stacks like on phones. */
-@media (orientation: portrait) and (min-width: 761px) {
-  .b-seq__pin { grid-template-columns: 1fr; grid-template-rows: 1fr auto; justify-items: center; gap: 3vh; }
-  .b-seq__stack { grid-column: 1; height: auto; width: min(70vw, 60svh); }
-  .b-seq__labels { grid-column: 1; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
-  .b-seq__labels li.is-active { transform: none; }
-}
+.t-misc .hero__name { font-size: clamp(2.6rem, 9.6vw, 10.5rem); letter-spacing: -0.04em; }
+.t-misc .hero__zh { letter-spacing: 0.5em; color: var(--accent); }
+.t-misc .b-intro__lead { font-weight: 400; }
+.t-misc .b-intro__en { color: var(--accent); }
 
 /* ---------- Narrow screens -------------------------------------------------------------- */
 @media (max-width: 760px) {

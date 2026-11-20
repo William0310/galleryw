@@ -178,6 +178,22 @@ const FX = {
         return lit;
       }`,
   },
+  drift: {
+    // General-purpose: film grain, a slow breathing push-in, soft vignette and a faint
+    // warm light that follows the pointer — nothing tied to one kind of photograph.
+    grain: 0.045, fade: [0.08, 0.08, 0.09], fadeAmt: 0.65,
+    frag: /* glsl */ `
+      vec3 fx(vec2 uv, vec2 suv) {
+        float z = 1.0 - 0.025 * (0.5 + 0.5 * sin(uTime * 0.12)) * uIntro;
+        vec2 par = (uMouse - 0.5) * 0.012 * uIntro;
+        vec3 col = img((uv - 0.5) * z + 0.5 + par);
+        float v = smoothstep(1.25, 0.35, length((suv - 0.5) * vec2(uAspect, 1.0) * 0.9));
+        col *= mix(1.0, mix(0.72, 1.0, v), uIntro);
+        vec2 d = (suv - uMouse) * vec2(uAspect, 1.0);
+        col += vec3(1.0, 0.8, 0.6) * 0.06 * exp(-dot(d, d) * 3.0) * uIntro;
+        return col;
+      }`,
+  },
   neon: {
     grain: 0.05, fade: [0.02, 0.027, 0.043], fadeAmt: 0.65,
     uniforms: () => ({ uGlitch: { value: 0 } }),

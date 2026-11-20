@@ -28,8 +28,8 @@ const REVEALS = {
     .fromTo(frame, { clipPath: 'inset(0% 50% 0% 50%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.6, ease: 'expo.inOut' })
     .fromTo(inner, { scale: 1.2, filter: 'brightness(0.3)' }, { scale: 1, filter: 'brightness(1)', duration: 2, ease: 'power2.out', clearProps: 'filter' }, 0),
   misc: (frame, inner) => gsap.timeline()
-    .fromTo(frame, { clipPath: 'inset(0% 100% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.9, ease: 'steps(7)' })
-    .fromTo(inner, { xPercent: 8 }, { xPercent: 0, duration: 1.2, ease: 'expo.out' }, 0),
+    .fromTo(frame, { clipPath: 'inset(12% 0% 0% 0%)', opacity: 0 }, { clipPath: 'inset(0% 0% 0% 0%)', opacity: 1, duration: 1.4, ease: 'power3.out' })
+    .fromTo(inner, { yPercent: 6, scale: 1.08 }, { yPercent: 0, scale: 1, duration: 1.8, ease: 'power3.out' }, 0),
 };
 
 export function heroMotion(hero, gl) {
