@@ -126,7 +126,7 @@ figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-2); text-align:
 .chips li { padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; color: var(--ink-2); }
 
 /* ---------- 03 Resize demo (conceptual, drawn in CSS) ----------------------------- */
-.demo__canvas { --w: 58%; position: relative; aspect-ratio: 4 / 3; border-radius: 18px; background: var(--ivory-2); overflow: hidden; display: flex; gap: 3%; padding: 7% 0 7% 6%; }
+.demo__canvas { --w: 58%; position: relative; aspect-ratio: 4 / 3; border-radius: 18px; background: var(--ivory-2); overflow: hidden; display: flex; gap: 16px; padding: 7% 0 7% 6%; }
 .demo__card { position: relative; flex: none; height: 100%; border-radius: 12px; background: #fff; box-shadow: 0 20px 40px -24px rgba(60, 45, 30, 0.35); padding: 6%; display: grid; align-content: start; gap: 9px; transition: width 0.1s linear; }
 .demo__card--a { width: var(--w); }
 .demo__card--b { width: 52%; opacity: 0.75; }
@@ -135,7 +135,9 @@ figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-2); text-align:
 .demo__card i:nth-child(2) { width: 86%; }
 .demo__card i:nth-child(3) { width: 70%; }
 .demo__card b { display: block; margin-top: 10px; height: 38%; border-radius: 8px; background: linear-gradient(135deg, #F2E4DC, #EADFD6); }
-.demo__handle { position: absolute; top: 50%; left: calc(6% + var(--w)); width: 8px; height: 56px; margin: -28px 0 0 6px; border-radius: 8px; background: color-mix(in srgb, #fff 65%, transparent); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+/* The handle lives inside the resizing card, centred in the 16 px gap, so it always
+   stays on the card's right edge. */
+.demo__handle { position: absolute; top: 50%; right: -12px; width: 8px; height: 56px; margin-top: -28px; border-radius: 8px; background: color-mix(in srgb, #fff 65%, transparent); box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14), inset 0 0 0 1px rgba(255, 255, 255, 0.9); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); z-index: 1; }
 
 /* ---------- 04 Profiles ---------------------------------------------------------- */
 .profiles__visual { position: relative; display: grid; place-items: center; aspect-ratio: 4 / 3.4; border-radius: 18px; background: var(--ivory-2); }
