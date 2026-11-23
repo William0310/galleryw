@@ -45,6 +45,7 @@ export function initNav({ current = null } = {}) {
           <a href="index.html" data-link data-en="Wphotographs">Home</a>
           <a href="about.html" data-link data-en="About">About</a>
           <a href="news.html" data-link data-en="Newsroom">Newsroom</a>
+          <a href="ataraxia/">Ataraxia ↗</a>
         </nav>
         <span>Wphotographs © ${new Date().getFullYear()}</span>
       </div>

@@ -16,7 +16,7 @@ export function initPage() {
   foot.className = 'pg-foot';
   foot.innerHTML = `
     <a href="index.html" data-link data-en="Wphotographs" class="pg-foot__home">Wphotographs</a>
-    <nav aria-label="Pages"><a href="about.html" data-link data-en="About">About</a><a href="news.html" data-link data-en="Newsroom">Newsroom</a></nav>
+    <nav aria-label="Pages"><a href="about.html" data-link data-en="About">About</a><a href="news.html" data-link data-en="Newsroom">Newsroom</a><a href="ataraxia/">Ataraxia</a></nav>
     <button type="button" class="pg-foot__top">Back to top ↑</button>`;
   document.querySelector('main').append(foot);
   foot.querySelector('.pg-foot__top').addEventListener('click', () => scrollToTop());

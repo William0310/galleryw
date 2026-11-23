@@ -39,6 +39,14 @@ for (const page of PAGES) {
   await writeFile(join(ROOT, page), html);
 }
 
+// The Ataraxia subsite: its stylesheet and script.
+{
+  const ap = join(ROOT, 'ataraxia/index.html');
+  let html = await readFile(ap, 'utf8');
+  html = html.replace(/(href="css\/ataraxia\.css|src="js\/ataraxia\.js)(\?v=[^"]*)?"/g, `$1?v=${V}"`);
+  await writeFile(ap, html);
+}
+
 // Poster images referenced from content.js.
 const cpath = join(ROOT, 'js/data/content.js');
 let content = await readFile(cpath, 'utf8');

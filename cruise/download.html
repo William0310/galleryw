@@ -1,38 +1,8 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Cruise · Download</title>
+<html lang="en"><head><meta charset="utf-8">
+<title>Ataraxia — A Quieter Way to Explore the Web</title>
 <meta name="robots" content="noindex">
-<meta name="color-scheme" content="light dark">
-<link rel="icon" type="image/png" href="assets/icon-256.png">
-<link rel="stylesheet" href="css/style.css?v=21">
-<style>
-  .go { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; gap: 18px; padding: 24px var(--gutter); }
-  .go h1 { margin: 0; font-size: clamp(1.6rem, 5vw, 2.4rem); font-weight: 600; letter-spacing: -.03em; text-wrap: balance; }
-  .go p { margin: 0; }
-  .choices { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px; }
-</style>
-</head>
-<body>
-<main class="go">
-  <h1 id="q">Where would you like to download from?</h1>
-  <div class="choices">
-    <a class="btn" href="https://drive.google.com/drive/folders/1R5EPsb7RW19aWFOIsxobI-dkCrRIhtNB?usp=sharing">Google Drive</a>
-    <a class="btn" href="https://1drv.ms/f/c/776b6f48cda9ca6b/IgDDgHQDIks-Q6BhwgsxB4F8AWaFUnNjMwWNTavU-wr492U?e=85wRzS">OneDrive</a>
-  </div>
-  <p class="note" id="msg">You will be taken to the service you choose. Please make sure your network is available.</p>
-</main>
-<script>
-(() => {
-  let lang = null; try { lang = localStorage.getItem('cruise-lang'); } catch (e) {}
-  if ((lang || navigator.language || '').toLowerCase().startsWith('zh')) {
-    document.documentElement.lang = 'zh-CN';
-    document.getElementById('q').textContent = '选择下载渠道';
-    document.getElementById('msg').textContent = '点击后将跳转至所选网盘，请确保网络可用。';
-  }
-})();
-</script>
-</body>
-</html>
+<link rel="canonical" href="https://wphotographs.com/ataraxia/">
+<meta http-equiv="refresh" content="0; url=/ataraxia/">
+<script>location.replace("/ataraxia/" + location.hash);</script>
+</head><body><p>Cruise has been retired. Continue to <a href="/ataraxia/">Ataraxia</a>.</p></body></html>

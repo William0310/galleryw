@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ataraxia — A Quieter Way to Explore the Web</title>
+  <meta name="description" content="Ataraxia is an independent spatial browser for Mac. Explore a calmer web with continuous browsing, native Liquid Glass and thoughtfully designed interactions.">
+  <meta name="theme-color" content="#F5F3ED">
+  <link rel="canonical" href="https://wphotographs.com/ataraxia/">
+  <link rel="icon" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ataraxia">
+  <meta property="og:title" content="Ataraxia — A Quieter Way to Explore the Web">
+  <meta property="og:description" content="An independent spatial browser for Mac. More room for your ideas, less noise between them.">
+  <meta property="og:url" content="https://wphotographs.com/ataraxia/">
+  <meta property="og:image" content="https://wphotographs.com/ataraxia/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/ataraxia.css?v=20261122-1737">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Ataraxia",
+    "operatingSystem": "macOS",
+    "applicationCategory": "BrowserApplication",
+    "description": "An independent spatial browser for Mac, built on Chromium with native SwiftUI and AppKit.",
+    "softwareVersion": "0.9.1",
+    "url": "https://wphotographs.com/ataraxia/",
+    "image": "https://wphotographs.com/ataraxia/assets/og-image.jpg"
+  }
+  </script>
+  <script type="module" src="js/ataraxia.js?v=20261122-1737"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="nav" data-nav>
+    <a class="nav__brand" href="#top" aria-label="Ataraxia — back to top">
+      <img src="assets/img/icon-256.webp" alt="" width="28" height="28">
+      <span>Ataraxia</span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#features">Features</a>
+      <a href="#explore">Explore</a>
+    </nav>
+    <a class="nav__home" href="../">Wphotographs <span aria-hidden="true">↗</span></a>
+  </header>
+
+  <main id="main">
+    <!-- ======================= HERO ======================= -->
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__mark reveal" style="--d: 0">
+        <img src="assets/img/icon-512.webp" srcset="assets/img/icon-256.webp 256w, assets/img/icon-512.webp 512w, assets/img/icon-1024.webp 1024w" sizes="120px" width="120" height="120" alt="Ataraxia app icon: a coral, embossed letter A on warm ivory">
+      </div>
+      <p class="eyebrow hero__eyebrow reveal" style="--d: 1">A spatial browser for Mac</p>
+      <h1 class="hero__title reveal" id="hero-title" style="--d: 2">A quieter way to <em>explore</em> the web.</h1>
+      <p class="hero__sub reveal" style="--d: 3">A spatial browser for Mac. More room for your ideas, less noise between them.</p>
+      <div class="hero__actions reveal" style="--d: 4">
+        <a class="btn btn--primary" href="#spatial">Explore Ataraxia</a>
+        <a class="btn btn--quiet" href="#features">See it in action <span aria-hidden="true">→</span></a>
+      </div>
+      <figure class="hero__shot reveal" style="--d: 5">
+        <img src="assets/img/canvas-1600.webp" srcset="assets/img/canvas-960.webp 960w, assets/img/canvas-1600.webp 1600w, assets/img/canvas-2628.webp 2628w" sizes="(max-width: 760px) 94vw, min(1180px, 84vw)" width="2628" height="2010" alt="Ataraxia window with two web pages side by side on one continuous canvas: Apple's iPhone page on the left and OpenAI's page on the right, their edges softly dissolving into the warm ivory background." fetchpriority="high">
+        <figcaption>Two pages, one continuous space. A real Ataraxia window.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ======================= 01 SPATIAL ======================= -->
+    <section class="spatial" id="spatial" aria-labelledby="spatial-title" data-spatial>
+      <div class="spatial__sticky">
+        <div class="spatial__copy">
+          <p class="eyebrow"><span class="num">01</span> / A different dimension</p>
+          <h2 class="h2" id="spatial-title">Your pages, <em>side by side.</em></h2>
+          <p class="lede">Instead of burying every page behind another tab, Ataraxia gives the web a continuous space of its own.</p>
+          <ol class="steps" data-steps>
+            <li class="is-on"><span>Continuous canvas</span>Pages sit next to each other. Swipe horizontally to travel between them.</li>
+            <li><span>Free Peek</span>Stop anywhere in between, with a neighbouring page half in view.</li>
+            <li><span>Weak snapping</span>Settle near a page and it aligns gently. Stop elsewhere and nothing pulls at you.</li>
+            <li><span>Independent cards</span>Every page keeps its own address, history and navigation.</li>
+          </ol>
+        </div>
+        <div class="spatial__stage" aria-hidden="true">
+          <div class="spatial__window">
+            <img class="spatial__img" src="assets/img/canvas-1600.webp" srcset="assets/img/canvas-1600.webp 1600w, assets/img/canvas-2628.webp 2628w" sizes="(max-width: 760px) 180vw, 120vw" alt="" loading="lazy" width="2628" height="2010">
+          </div>
+          <div class="spatial__track"><i data-track></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= 02 LIGHT TUNNEL ======================= -->
+    <section class="section tunnel" id="features" aria-labelledby="tunnel-title">
+      <div class="section__head">
+        <p class="eyebrow reveal"><span class="num">02</span> / The art of less</p>
+        <h2 class="h2 reveal" id="tunnel-title">Let the edges <em>disappear.</em></h2>
+        <p class="lede reveal">Webpages gently dissolve into their surroundings, keeping your attention on the content instead of the container.</p>
+      </div>
+      <div class="compare reveal" data-compare style="--split: 50%">
+        <div class="compare__frame">
+          <img class="compare__img compare__img--real" src="assets/img/canvas-1600.webp" srcset="assets/img/canvas-960.webp 960w, assets/img/canvas-1600.webp 1600w, assets/img/canvas-2628.webp 2628w" sizes="(max-width: 760px) 94vw, 1080px" alt="Ataraxia's Light Tunnel: page edges feather and blur into the warm ivory canvas." loading="lazy" width="2628" height="2010">
+          <div class="compare__hard" aria-hidden="true">
+            <img class="compare__img" src="assets/img/canvas-1600.webp" srcset="assets/img/canvas-960.webp 960w, assets/img/canvas-1600.webp 1600w, assets/img/canvas-2628.webp 2628w" sizes="(max-width: 760px) 94vw, 1080px" alt="" loading="lazy" width="2628" height="2010">
+          </div>
+          <span class="compare__tag compare__tag--l">Illustration · hard edges</span>
+          <span class="compare__tag compare__tag--r">Ataraxia · real capture</span>
+          <input class="compare__range" type="range" min="8" max="92" value="50" aria-label="Compare a hard-edged illustration with Ataraxia's dissolving edges" data-compare-range>
+          <span class="compare__handle" aria-hidden="true"></span>
+        </div>
+        <p class="note">The left side is a conceptual illustration: the same capture with its soft edges cut away to mimic a conventional window. The right side is Ataraxia as it renders.</p>
+      </div>
+      <ul class="chips reveal" aria-label="Light Tunnel details">
+        <li>Edge dissolve</li><li>Progressive blur</li><li>Feathered page edges</li><li>Warm ivory canvas</li><li>Minimal boundaries</li>
+      </ul>
+    </section>
+
+    <!-- ======================= 03 RESIZE ======================= -->
+    <section class="section resize" aria-labelledby="resize-title">
+      <div class="split">
+        <div class="split__copy">
+          <p class="eyebrow reveal"><span class="num">03</span> / Your space, your way</p>
+          <h2 class="h2 reveal" id="resize-title">Make room for <em>what matters.</em></h2>
+          <p class="lede reveal">Move to the right edge of a page and a small Liquid Glass handle appears. Drag it, and the page widens or narrows exactly as far as you want.</p>
+          <ul class="list reveal">
+            <li>Adjustable card widths, from compact to wider than the window</li>
+            <li>Pages reflow naturally, without reloading</li>
+            <li>Neighbouring pages shift along the canvas</li>
+            <li>Widths are remembered across restarts</li>
+          </ul>
+        </div>
+        <figure class="demo reveal" aria-label="Conceptual illustration of resizing a card">
+          <div class="demo__canvas" data-demo>
+            <div class="demo__card demo__card--a"><i></i><i></i><i></i><b></b></div>
+            <div class="demo__card demo__card--b"><i></i><i></i><i></i></div>
+            <span class="demo__handle"></span>
+          </div>
+          <figcaption>Conceptual illustration — not a product capture.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ======================= 04 PROFILES ======================= -->
+    <section class="section profiles" aria-labelledby="profiles-title">
+      <div class="split split--rev">
+        <figure class="profiles__visual reveal">
+          <div class="profiles__rail">
+            <img src="assets/img/profiles-108.webp" width="108" height="348" alt="Profile Rail design: round glass buttons labelled P, S and W, above a menu button.">
+          </div>
+          <div class="profiles__axes" aria-hidden="true">
+            <span class="axis axis--v">Profiles</span>
+            <span class="axis axis--h">Pages</span>
+          </div>
+          <figcaption>Profile Rail · design in progress</figcaption>
+        </figure>
+        <div class="split__copy">
+          <p class="eyebrow reveal"><span class="num">04</span> / Separate identities <span class="badge">In development</span></p>
+          <h2 class="h2 reveal" id="profiles-title">Different worlds. <em>One browser.</em></h2>
+          <p class="lede reveal">Profile Spaces will add a second direction: browse horizontally within a profile, and move vertically between profiles, each with its own place on the Rail.</p>
+          <ul class="list reveal">
+            <li>Separate website sign-ins and cookies for each profile</li>
+            <li>Independent spatial layouts</li>
+            <li>Shared bookmarks and history</li>
+            <li>Distinct native glass profile controls</li>
+          </ul>
+          <p class="note reveal">Profile Spaces are not part of the current build. They are meant to keep browsing sessions apart, not to act as a security boundary or a separate macOS account.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================= DETAILS ======================= -->
+    <section class="section details" aria-labelledby="details-title">
+      <div class="section__head section__head--center">
+        <h2 class="h2 reveal" id="details-title">Every detail, <em>considered.</em></h2>
+      </div>
+      <div class="bento">
+        <article class="tile tile--omni reveal">
+          <div class="tile__media tile__media--pad"><img src="assets/img/omnibox-1178.webp" width="1178" height="230" alt="Ataraxia's Omnibox expanded inside the address capsule: the query 'hello' with a Google search suggestion and a history match." loading="lazy"></div>
+          <p class="tile__kicker">Smart Omnibox</p>
+          <h3 class="h3">Everything you need, in one place.</h3>
+          <p>One field for addresses and search, with suggestions from your history and bookmarks. Google search by default, online suggestions only if you turn them on, all inside a native Liquid Glass capsule that expands in place.</p>
+        </article>
+        <article class="tile tile--load reveal">
+          <div class="tile__media tile__media--pad"><img src="assets/img/loading-1294.webp" width="1294" height="100" alt="The address capsule glowing with soft coral light while google.com loads." loading="lazy"></div>
+          <p class="tile__kicker">Elegant loading</p>
+          <h3 class="h3">Progress, without the noise.</h3>
+          <p>No bright bar racing across the top. The address capsule fills with a soft coral glow that follows the real page load, then fades away.</p>
+        </article>
+        <article class="tile tile--start reveal">
+          <div class="tile__media"><img src="assets/img/startpage-1600.webp" srcset="assets/img/startpage-960.webp 960w, assets/img/startpage-1600.webp 1600w, assets/img/startpage-2628.webp 2628w" sizes="(max-width: 760px) 94vw, 56vw" width="2628" height="2010" alt="Ataraxia's Start Page: the embossed logo, a 'Good afternoon' greeting in italic serif and four quick-access shortcuts on warm ivory." loading="lazy"></div>
+          <p class="tile__kicker">A thoughtful start</p>
+          <h3 class="h3">A little calm before every journey.</h3>
+          <p>The embossed Ataraxia mark, a greeting set in italic serif and four quiet shortcuts on warm ivory. Nothing more.</p>
+        </article>
+        <article class="tile tile--session reveal">
+          <p class="tile__kicker">Session restoration</p>
+          <h3 class="h3">Pick up where you <em>left off.</em></h3>
+          <p>Quit and come back to the same space.</p>
+          <ul class="list list--small">
+            <li>Your open cards, in order</li>
+            <li>Each card's width</li>
+            <li>Where you were on the canvas</li>
+            <li>Even a Free Peek between two pages</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ======================= PHILOSOPHY ======================= -->
+    <section class="philosophy" id="philosophy" aria-labelledby="phil-title">
+      <p class="eyebrow eyebrow--light reveal">ἀταραξία · tranquillity</p>
+      <h2 class="philosophy__title reveal" id="phil-title">A little more <em>stillness.</em></h2>
+      <div class="philosophy__body">
+        <p class="reveal">The web is boundless. Our attention isn't.</p>
+        <p class="reveal">Ataraxia was created around a simple idea: browsing should feel <em>open, deliberate and calm.</em></p>
+        <p class="reveal">Not another layer of noise. Just more room to think.</p>
+      </div>
+    </section>
+
+    <!-- ======================= CLOSING ======================= -->
+    <section class="closing" id="explore" aria-labelledby="closing-title">
+      <img class="closing__lockup reveal" src="assets/img/logo-lockup-full.webp" width="864" height="1120" alt="Ataraxia logo: the embossed coral A above the Ataraxia wordmark, with the line 'Browsing, Elevated'." loading="lazy">
+      <h2 class="h2 closing__title reveal" id="closing-title">The web, with room to <em>breathe.</em></h2>
+      <p class="lede reveal">An independent spatial browser, thoughtfully made for Mac.</p>
+      <div class="hero__actions reveal">
+        <a class="btn btn--primary" href="#spatial">Explore the features</a>
+        <a class="btn btn--quiet" href="#availability">Learn about availability <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="avail reveal" id="availability">
+        <h3 class="h3">Availability</h3>
+        <p>Ataraxia is in active development. The current build, version 0.9.1, is a private preview and is not yet available for public download.</p>
+        <dl class="status">
+          <div><dt>Available in 0.9.1</dt><dd>Spatial canvas · Free Peek · weak snapping · Light Tunnel edges · resizable cards · coral loading · session restoration · Start Page · Smart Omnibox, bookmarks and history</dd></div>
+          <div><dt>In development</dt><dd>Profile Spaces</dd></div>
+        </dl>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span class="foot__brand"><img src="assets/img/icon-256.webp" alt="" width="20" height="20"> Ataraxia</span>
+    <span>For macOS · Version 0.9.1, in development</span>
+    <span>© 2026 · <a href="../">wphotographs.com</a></span>
+  </footer>
+</body>
+</html>
