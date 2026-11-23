@@ -50,11 +50,14 @@ img.addEventListener('load', onScroll);
 update();
 
 // 02 — Light Tunnel comparison slider (keyboard and touch via the native range input).
+// (Section removed for now; kept so it works again once the refined demo returns.)
 const compare = document.querySelector('[data-compare]');
-const range = compare.querySelector('[data-compare-range]');
-const setSplit = () => compare.style.setProperty('--split', `${range.value}%`);
-range.addEventListener('input', setSplit);
-setSplit();
+if (compare) {
+  const range = compare.querySelector('[data-compare-range]');
+  const setSplit = () => compare.style.setProperty('--split', `${range.value}%`);
+  range.addEventListener('input', setSplit);
+  setSplit();
+}
 
 // 03 — conceptual resize demo: the handle drifts between two widths while in view.
 const demo = document.querySelector('[data-demo]');
