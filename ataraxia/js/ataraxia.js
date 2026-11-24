@@ -49,8 +49,10 @@ function update() {
   const p = Math.min(1, Math.max(0, -r.top / Math.max(1, total)));
   // Ease the pan so the view lingers on each "stop" (the left page, the Peek, the right page).
   const eased = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
-  const travel = Math.max(0, img.offsetWidth - win.clientWidth);
-  img.style.setProperty('--x', `${-eased * travel}px`);
+  // Pan only inside the window: the capture's outer 3.6% is its frame and shadow.
+  const inset = img.offsetWidth * 0.036;
+  const travel = Math.max(0, img.offsetWidth - 2 * inset - win.clientWidth);
+  img.style.setProperty('--x', `${-inset - eased * travel}px`);
   track.style.setProperty('--p', p.toFixed(3));
   const i = Math.min(steps.length - 1, Math.floor(p * steps.length));
   steps.forEach((s, k) => s.classList.toggle('is-on', k === i));

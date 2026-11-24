@@ -80,7 +80,7 @@ em { font-style: italic; }
 .hero__sub { margin-top: 26px; font-size: clamp(1.05rem, 1.6vw, 1.3rem); color: var(--ink-2); max-width: 30em; text-wrap: balance; }
 .hero__actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 18px; margin-top: 34px; }
 .hero__shot { width: min(var(--max), 100%); margin-top: clamp(48px, 8vh, 96px); }
-.hero__shot img { width: 100%; filter: drop-shadow(0 40px 60px rgba(70, 55, 40, 0.10)); }
+.hero__shot img { width: 100%; }
 figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-2); text-align: center; }
 
 /* ---------- Reveal ----------------------------------------------------------- */
@@ -218,7 +218,7 @@ figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-2); text-align:
 @media (max-width: 1020px) {
   .spatial { height: auto; }
   .spatial__sticky { position: static; height: auto; grid-template-columns: 1fr; padding-block: clamp(80px, 12vh, 130px); }
-  .spatial__window { aspect-ratio: auto; -webkit-mask-image: none; mask-image: none; }
+  .spatial__window { background: none; border-radius: 0; aspect-ratio: auto; -webkit-mask-image: none; mask-image: none; }
   .spatial__img { position: static; height: auto; width: 100%; transform: none; }
   .spatial__track { display: none; }
   .steps li { opacity: 1; }
