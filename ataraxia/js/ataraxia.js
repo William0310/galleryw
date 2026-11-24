@@ -27,10 +27,22 @@ const steps = [...spatial.querySelectorAll('[data-steps] li')];
 const track = spatial.querySelector('[data-track]');
 const wide = window.matchMedia('(min-width: 1021px)');
 
+// 02 — the immersive capture settles into place as it arrives (a slow, small push-in).
+const shot = document.querySelector('[data-immersive]');
+function settle() {
+  if (!shot || reduce) return;
+  const top = shot.getBoundingClientRect().top;
+  const k = Math.min(1, Math.max(0, 1 - (top - innerHeight * 0.25) / (innerHeight * 0.7)));
+  const e = 1 - Math.pow(1 - k, 3);
+  shot.style.setProperty('--s', (0.93 + 0.07 * e).toFixed(4));
+  shot.style.setProperty('--o', (0.25 + 0.75 * e).toFixed(3));
+}
+
 let ticking = false;
 function update() {
   ticking = false;
   nav.classList.toggle('is-scrolled', window.scrollY > 8);
+  settle();
   if (!wide.matches || reduce) return;
   const r = spatial.getBoundingClientRect();
   const total = spatial.offsetHeight - window.innerHeight;

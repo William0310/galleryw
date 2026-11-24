@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preload" href="fonts/cormorant.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/cormorant-italic.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/ataraxia.css?v=20261123-1903">
+  <link rel="stylesheet" href="css/ataraxia.css?v=20261123-2217">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -27,12 +27,12 @@
     "operatingSystem": "macOS",
     "applicationCategory": "BrowserApplication",
     "description": "An independent spatial browser for Mac, built on Chromium with native SwiftUI and AppKit.",
-    "softwareVersion": "0.9.1",
+    "softwareVersion": "0.11.0",
     "url": "https://wphotographs.com/ataraxia/",
     "image": "https://wphotographs.com/ataraxia/assets/og-image.jpg"
   }
   </script>
-  <script type="module" src="js/ataraxia.js?v=20261123-1903"></script>
+  <script type="module" src="js/ataraxia.js?v=20261123-2217"></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -44,6 +44,7 @@
     </a>
     <nav class="nav__links" aria-label="Sections">
       <a href="#philosophy">Philosophy</a>
+      <a href="#immersive">Immersive</a>
       <a href="#features">Features</a>
       <a href="#iphone">iPhone</a>
       <a href="#explore">Explore</a>
@@ -93,11 +94,34 @@
       </div>
     </section>
 
+    <!-- ======================= 02 IMMERSIVE ======================= -->
+    <section class="immersive" id="immersive" aria-labelledby="immersive-title">
+      <div class="section__head section__head--center">
+        <p class="eyebrow immersive__eyebrow reveal"><span class="num">02</span> / Immersive Browsing <span class="badge">In development</span></p>
+        <h2 class="h2 immersive__title reveal" id="immersive-title">Where the page ends, <em>nothing begins.</em></h2>
+        <p class="lede immersive__lede reveal">Web pages have always lived in boxes. Here, the page dissolves into the window around it, carrying its own colours outward until you can no longer say where it stopped.</p>
+      </div>
+      <figure class="immersive__shot" data-immersive>
+        <img src="assets/img/immersive-1440.webp" srcset="assets/img/immersive-960.webp 960w, assets/img/immersive-1440.webp 1440w, assets/img/immersive-2000.webp 2000w" sizes="(max-width: 760px) 100vw, min(1440px, 94vw)" width="2000" height="1339" alt="Apple's website in an Ataraxia window. The page has no visible border: its reds, violets, oranges and blues fade softly outward into the warm ivory window on every side." loading="lazy">
+        <figcaption>Captured in Ataraxia for Mac.</figcaption>
+      </figure>
+      <div class="edges">
+        <figure class="edges__bottom reveal">
+          <img src="assets/img/immersive-bottom.webp" width="1200" height="335" alt="Close-up of the bottom edge: violet, olive, orange and blue each continue downward beneath the tile they came from." loading="lazy">
+          <figcaption><strong>The colour comes from the page.</strong> Each stretch of the edge lends its own colour to the space beside it. Violet beneath violet, orange beneath orange.</figcaption>
+        </figure>
+        <figure class="edges__side reveal" style="--d: 1">
+          <img src="assets/img/immersive-side.webp" width="410" height="590" alt="Close-up of the right edge: a dark photograph softening into warm ivory with no hard line." loading="lazy">
+          <figcaption><strong>No line to find.</strong> Content loosens gradually into ivory, on all four sides.</figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- ======================= 03 RESIZE ======================= -->
     <section class="section resize" id="features" aria-labelledby="resize-title">
       <div class="split">
         <div class="split__copy">
-          <p class="eyebrow reveal"><span class="num">02</span> / Your space, your way</p>
+          <p class="eyebrow reveal"><span class="num">03</span> / Your space, your way</p>
           <h2 class="h2 reveal" id="resize-title">Make room for <em>what matters.</em></h2>
           <p class="lede reveal">Move to the right edge of a page and a small Liquid Glass handle appears. Drag it, and the page widens or narrows exactly as far as you want.</p>
           <ul class="list reveal">
@@ -125,16 +149,16 @@
           <figcaption>Profile Spaces · concept illustration. Each row is a profile, with its own pages running sideways.</figcaption>
         </figure>
         <div class="split__copy">
-          <p class="eyebrow reveal"><span class="num">03</span> / Separate identities <span class="badge">In development</span></p>
+          <p class="eyebrow reveal"><span class="num">04</span> / Separate identities</p>
           <h2 class="h2 reveal" id="profiles-title">Different worlds. <em>One browser.</em></h2>
-          <p class="lede reveal">Profile Spaces will add a second direction: browse horizontally within a profile, and move vertically between profiles, each with its own place on the Rail.</p>
+          <p class="lede reveal">Profile Spaces add a second direction: browse horizontally within a profile, and move vertically between profiles, each with its own place on the Rail.</p>
           <ul class="list reveal">
             <li>Separate website sign-ins and cookies for each profile</li>
             <li>Independent spatial layouts</li>
             <li>Shared bookmarks and history</li>
             <li>Distinct native glass profile controls</li>
           </ul>
-          <p class="note reveal">Profile Spaces are not part of the current build. They are meant to keep browsing sessions apart, not to act as a security boundary or a separate macOS account.</p>
+          <p class="note reveal">Up to three profiles. Profile Spaces keep browsing sessions apart; they are not a security boundary or a separate macOS account.</p>
         </div>
       </div>
     </section>
@@ -180,7 +204,7 @@
     <!-- ======================= IPHONE ======================= -->
     <section class="iphone" id="iphone" aria-labelledby="iphone-title">
       <div class="section__head section__head--center">
-        <p class="eyebrow iphone__eyebrow reveal"><span class="num">04</span> / Ataraxia for iPhone <span class="badge">In development</span></p>
+        <p class="eyebrow iphone__eyebrow reveal"><span class="num">05</span> / Ataraxia for iPhone <span class="badge">In development</span></p>
         <h2 class="h2 reveal" id="iphone-title">The same calm, <em>in your hand.</em></h2>
         <p class="lede iphone__lede reveal">A companion for the moments away from your Mac, shaped for one hand and a smaller window.</p>
       </div>
@@ -228,10 +252,10 @@
       </div>
       <div class="avail reveal" id="availability">
         <h3 class="h3">Availability</h3>
-        <p>Ataraxia is in active development. The current build, version 0.9.1, is a private preview and is not yet available for public download.</p>
+        <p>Ataraxia is in active development. The current build, version 0.11.0, is a private preview and is not yet available for public download.</p>
         <dl class="status">
-          <div><dt>Available in 0.9.1 for Mac</dt><dd>Spatial canvas · Free Peek · weak snapping · resizable cards · coral loading · session restoration · Start Page · Smart Omnibox, bookmarks and history</dd></div>
-          <div><dt>In development</dt><dd>Profile Spaces · Ataraxia for iPhone (iOS 26 or later)</dd></div>
+          <div><dt>Available in 0.11.0 for Mac</dt><dd>Spatial canvas · Free Peek · weak snapping · resizable cards · coral loading · session restoration · Start Page · Smart Omnibox, bookmarks and history · Profile Spaces</dd></div>
+          <div><dt>In development</dt><dd>Immersive Browsing · Ataraxia for iPhone (iOS 26 or later)</dd></div>
         </dl>
       </div>
     </section>
@@ -239,7 +263,7 @@
 
   <footer class="foot">
     <span class="foot__brand"><img src="assets/img/icon-256.webp" alt="" width="20" height="20"> Ataraxia</span>
-    <span>For macOS · Version 0.9.1, in development</span>
+    <span>For macOS · Version 0.11.0, in development</span>
     <span>© 2026 · <a href="../">wphotographs.com</a></span>
   </footer>
 </body>
