@@ -140,6 +140,12 @@ figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-2); text-align:
 .edges figcaption { text-align: left; font-size: 15px; line-height: 1.6; margin-top: 20px; max-width: 36em; min-height: 6.4em; }
 .edges strong { display: block; font: 500 1.45rem/1.2 var(--serif); color: var(--ink); margin-bottom: 6px; }
 
+/* Immersive Mode: the window itself turns to glass over the desktop. */
+.mode { display: grid; grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.5fr); gap: clamp(36px, 5vw, 80px); align-items: center; max-width: 1360px; margin: clamp(110px, 16vh, 190px) auto 0; padding: 0 var(--pad); }
+.mode__title { margin-top: 14px; }
+.mode__shot img { width: 100%; border-radius: clamp(14px, 1.6vw, 22px); box-shadow: 0 50px 90px -50px rgba(20, 40, 60, 0.55); }
+.mode__shot figcaption { margin-top: 16px; }
+
 /* ---------- 03 Resize demo (conceptual, drawn in CSS) ----------------------------- */
 .demo__canvas { --w: 58%; position: relative; aspect-ratio: 4 / 3; border-radius: 18px; background: var(--ivory-2); overflow: hidden; display: flex; gap: 16px; padding: 7% 0 7% 6%; }
 .demo__card { position: relative; flex: none; height: 100%; border-radius: 12px; background: #fff; box-shadow: 0 20px 40px -24px rgba(60, 45, 30, 0.35); padding: 6%; display: grid; align-content: start; gap: 9px; transition: width 0.1s linear; }
@@ -216,6 +222,7 @@ figcaption { margin-top: 14px; font-size: 13px; color: var(--ink-2); text-align:
 
 /* ---------- Tablet & phone ---------------------------------------------------------- */
 @media (max-width: 1020px) {
+  .mode { grid-template-columns: 1fr; }
   .spatial { height: auto; }
   .spatial__sticky { position: static; height: auto; grid-template-columns: 1fr; padding-block: clamp(80px, 12vh, 130px); }
   .spatial__window { background: none; border-radius: 0; aspect-ratio: auto; -webkit-mask-image: none; mask-image: none; }
